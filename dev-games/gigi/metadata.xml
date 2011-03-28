@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer>
+	<email>krytzz@soylent.eu</email>
+	<name>steffen stramm</name>
+</maintainer>
+<herd>games</herd>
+<use>
+  <flag name='devil'>Enable image loading via DevIL.</flag>
+  <flag name='ois'>Enable OIS support.</flag>
+  <flag name='ogre'>Enable OGRE support.</flag>
+</use>
+</pkgmetadata>

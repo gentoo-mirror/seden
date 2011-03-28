@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>playboys</herd>
+  <use>
+    <flag name="xml">Do all serialization using xml archives. Otherwise, binary archives will be used.</flag>
+  </use>
+</pkgmetadata>
