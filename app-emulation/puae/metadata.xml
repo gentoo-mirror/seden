@@ -6,7 +6,15 @@
   <email>sven.eden@gmx.de</email>
   <description>The creator of this ebuild, but not the official maintainer</description>
 </maintainer>
-<!-- <longdescription></longdescription> -->
+<longdescription>PUAE tries to continue where E-UAE left off..
+PUAE versioning is based on the merged WinUAE version..
+
+All is done by:
+  Mustafa 'GnoStiC' TUFAN (mustafa.tufan@gmail.com)
+
+with fixes from:
+  Steven 'xaind' Saunders (MacOSX)
+  'wuffe' (FreeBSD)</longdescription>
 <use>
   <flag name='profiling'>Build a profiling (SLOW!) version</flag>
 <!-- currently broken, won't compile/link  <flag name='a2065'>Enable A2065 Ethernet emulation</flag> -->

@@ -1,0 +1,17 @@
+# ChangeLog for app-emulation/puae
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*puae-2.3.2_pre9999 (28 Mar 2011)
+
+  28 Mar 2011; Sven Eden <seden@gmx.de> +puae-2.3.2_pre9999.ebuild : Upstream
+  has changed the version number. But as it is still a live version, the
+  pre9999 suffix will stay
+
+  28 Mar 2011; Sven Eden <seden@gmx.de> -puae-2.3.1_pre9999.ebuild : Remove
+  old ebuild, git pull is unversioned.
+
+*puae-2.3.1_pre9999 (27 Mar 2011)
+
+  27 Mar 2011; Sven Eden <seden@gmx.de> +puae-2.3.1_pre9999.ebuild : Initial
+  release via seden overlay. 

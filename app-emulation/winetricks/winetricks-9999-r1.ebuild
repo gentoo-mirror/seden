@@ -13,14 +13,14 @@ ESVN_PROJECT="${PN}"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk kde"
+IUSE="gnome kde"
 
 SLOT="0"
 
 DEPEND=""
 RDEPEND="
 	app-emulation/wine
-	gtk? ( gnome-extra/zenity )
+	gnome? ( gnome-extra/zenity )
 	kde? ( kde-base/kdialog )
 "
 
