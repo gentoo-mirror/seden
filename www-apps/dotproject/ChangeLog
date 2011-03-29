@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*dotproject-2.1.5-r2 (29 Mar 2011)
+
+  29 Mar 2011; Sven Eden <sven.eden@gmx.de> +dotproject-2.1.5-r2.ebuild :
+  WEBAPP_MANUAL_SLOT="yes" was missing which is neccessary for manual
+  slotting which itself is neccessary for -r* ebuilds.
+
+  29 Mar 2011; Sven Eden <sven.eden@gmx.de> -dotproject-2.1.5-r1.ebuild :
+  Removed obsolete ebuild.
+
 *dotproject-2.1.5-r1 (27 Mar 2011)
 
   27 Mar 2011; Sven Eden <sven.eden@gmx.de> +dotproject-2.1.5-r1.ebuild :
