@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<!-- 
-$Header: /var/cvsroot/gentoo-x86/skel.metadata.xml,v 1.18 2008/07/28 19:27:05 cardoe Exp $
-
-This is the example metadata file.
-The root element of this file is <pkgmetadata>. Within this element a 
-number of subelements are allowed: herd, maintainer, and 
-longdescription. herd is a required subelement.
-
-For a full description look at:
-http://www.gentoo.org/proj/en/devrel/handbook/handbook.xml?part=2&chap=4
-
-
-Before committing, please remove the comments from this file. They are 
-not relevant for general metadata.xml files.
--->
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>@gentoo.org</email>
-<!--  <description>Description of the maintainership</description> -->
+  <email>sven.eden@gmx.de</email>
+  <description>The creator of this ebuild, but not the official maintainer</description>
 </maintainer>
-<!-- <longdescription>Long description of the package</longdescription> -->
-<!--
+<longdescription>Crystal Space — A modular, configurable, and extensible rendering engine supporting OpenGL and advanced features such as shaders and lighting systems, physics, 3D sounds, animation blending, foliage, terrain, virtual file system, physical peripherals, and more.</longdescription>
 <use>
-  <flag name='flag'>Description of how USE='flag' affects this package</flag>
-  <flag name='userland_GNU'>Description of how USERLAND='GNU' affects this
-	  package</flag>
-  <flag name='aspell'>Uses <pkg>app-text/aspell</pkg> for spell checking.
-	  Requires an installed dictionary from <cat>app-dicts</cat></flag>
+  <flag name='python'>Add Python bindings/flag>
+  <flag name='optimized'>Build optimized versions of the libraries (default)</flag>
+  <flag name='debug'>Build debug versions of the libraries</flag>
+  <flag name='profile'>Build profiling versions of the libraries (slow)</flag>
 </use>
--->
 </pkgmetadata>

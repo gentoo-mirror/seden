@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>playboys</herd>
+<herd>no-herd</herd>
+<maintainer>
+  <email>sven.eden@gmx.de</email>
+  <description>The creator of this ebuild, but not the official maintainer</description>
+</maintainer>
+<longdescription>
+MISSING
+</longdescription>
   <use>
     <flag name="xml">Do all serialization using xml archives. Otherwise, binary archives will be used.</flag>
   </use>
