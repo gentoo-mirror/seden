@@ -163,10 +163,12 @@ pkg_postinst() {
 	# Fill cache directory for the examples
   # Update in 2.1-r1: Let's give users a "ready to use" loop instead 
   # single commands:
-	elog "for map in castle isomap parallaxtest r3dtest stenciltest terrain terrainf ; do"
+	elog "--- cut and paste ---"
+	echo "for map in castle isomap parallaxtest r3dtest stenciltest terrain terrainf ; do"
   # new in 2.1: Thanks to the CRYSTAL env var, the path to the maps does
   # not need to be given. As a matter of fact it is important to *not*
   # use the map name with a full path.
-	elog "  lighter2 --simpletui ${map}"
-	elog "done"
+	echo "  lighter2 --simpletui \$map"
+	echo "done"
+	elog "--- cut and paste ---"
 }
