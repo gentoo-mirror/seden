@@ -4,9 +4,13 @@
 <herd>no-herd</herd>
 <maintainer>
   <email>sven.eden@gmx.de</email>
-  <description>The creator of this ebuild, but not the official maintainer</description>
+  <description>The creator of this ebuild, but not the official
+maintainer</description>
 </maintainer>
-<longdescription>Crystal Space — A modular, configurable, and extensible rendering engine supporting OpenGL and advanced features such as shaders and lighting systems, physics, 3D sounds, animation blending, foliage, terrain, virtual file system, physical peripherals, and more.</longdescription>
+<longdescription>Crystal Space - A modular, configurable, and extensible
+rendering engine supporting OpenGL and advanced features such as shaders and
+lighting systems, physics, 3D sounds, animation blending, foliage, terrain,
+virtual file system, physical peripherals, and more.</longdescription>
 <use>
   <flag name='python'>Add Python bindings/flag>
   <flag name='optimized'>Build optimized versions of the libraries (default)</flag>
