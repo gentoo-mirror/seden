@@ -2,6 +2,17 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*unoconv-0.4-r3 (19 May 2011)
+
+  19 May 2011; Sven Eden <sven.eden@gmx.de> +unoconv-0.4-r3.ebuild: Added
+  a new patch fix_libreoffice_support.patch to make unoconv eventually
+  work with libreoffice. Successfully tested with version 3.3.2
+
+*unoconv-0.4-r2 (18 May 2011)
+
+  18 May 2011; Sven Eden <sven.eden@gmx.de> +unoconv-0.4-r2.ebuild: Added
+  optional dependency for libreoffice, as it should be usable as well
+
 *unoconv-0.4-r1 (17 May 2011)
 
   17 May 2011; Sven Eden <sven.eden@gmx.de> +unoconv-0.4-r1.ebuild: New
