@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*freeorion-9999-r6 (26 Jun 2011)
+
+  26 Jun 2011; Sven Eden <sven.eden@gmx.de> +freeorion-9999-r6.ebuild :
+  - xml Use-Flag no longer needed
+  - FreeOrion no longer compiles against boost <1.46
+
 *freeorion-9999-r5 (27 Mar 2011)
 
   27 Mar 2011; Sven Eden <sven.eden@gmx.de> +freeorion-9999-r5.ebuild :
