@@ -1,8 +1,0 @@
-# ChangeLog for net-mail/davmail
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*davmail-3.9.1_p1646 (27 Mar 2011)
-
-  27 Mar 2011; Sven Eden <sven.eden@gmx.de> +davmail-3.9.1_p1646.ebuild :
-  Initial commit of the ebuild.
