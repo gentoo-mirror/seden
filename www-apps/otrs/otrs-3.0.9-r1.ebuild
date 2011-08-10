@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="ajax mysql postgres fastcgi ldap gd pdf soap linguas_en linguas_de"
+IUSE="ajax mysql postgres fastcgi ldap gd pdf linguas_en linguas_de"
 
 RDEPEND="${DEPEND}
 	virtual/mta
@@ -33,7 +33,6 @@ RDEPEND="${DEPEND}
 	virtual/perl-MIME-Base64
 	virtual/perl-libnet
 
-	soap? ( >=dev-perl/SOAP-Lite-0.712 )
 	ajax? ( >=dev-perl/JSON-XS-2.3 )
 	apache2? ( =www-apache/libapreq2-2* )
 	fastcgi? ( dev-perl/FCGI )
