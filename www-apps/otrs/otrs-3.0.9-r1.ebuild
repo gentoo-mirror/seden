@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 	virtual/perl-MIME-Base64
 	virtual/perl-libnet
 
-	soap? ( dev-perl/SOAP-Lite )
+	soap? ( >=dev-perl/SOAP-Lite-0.712 )
 	ajax? ( >=dev-perl/JSON-XS-2.3 )
 	apache2? ( =www-apache/libapreq2-2* )
 	fastcgi? ( dev-perl/FCGI )
