@@ -1,0 +1,9 @@
+# ChangeLog for dev-java/swt
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*swt-3.7.ebuild (15 Aug 2011)
+
+  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +swt-3.7.ebuild :
+  Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
+  (gentoo@mattwhitlock.name), fixed by Slayer (slayer.rus@gmail.com).
