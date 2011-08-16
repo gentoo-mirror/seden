@@ -2,6 +2,12 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*jetty-bin-6.1.26-r1.ebuild (16 Aug 2011)
+
+  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +jetty-bin-6.1.26-r1.ebuild :
+  Changed the ebuild to install as "jetty" and not "jetty-bin". Eclipse
+  3.7 now merges fine with it.
+
 *jetty-bin-6.1.26.ebuild (15 Aug 2011)
 
   15 Aug 2011; Sven Eden <sven.eden@gmx.de> +jetty-bin-6.1.26.ebuild :
