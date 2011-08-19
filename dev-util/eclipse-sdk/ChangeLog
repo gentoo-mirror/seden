@@ -2,14 +2,20 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-*eclipse-sdk-3.7.0.ebuild (15 Aug 2011)
+*eclipse-sdk-3.7.0-r2.ebuild (15 Aug 2011)
 
-  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0.ebuild :
-  Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
-  (gentoo@mattwhitlock.name), fixed by Slayer (slayer.rus@gmail.com).
+  19 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r2.ebuild :
+  Added dependency for dev-java/ant-nodeps if doc use flag is set.
 
 *eclipse-sdk-3.7.0-r1.ebuild (15 Aug 2011)
 
   15 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r1.ebuild :
   Changed to use java-virtuals/jetty-server:6 instead of jetty directly as
   a dependency.
+
+*eclipse-sdk-3.7.0.ebuild (15 Aug 2011)
+
+  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0.ebuild :
+  Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
+  (gentoo@mattwhitlock.name), fixed by Slayer (slayer.rus@gmail.com).
+
