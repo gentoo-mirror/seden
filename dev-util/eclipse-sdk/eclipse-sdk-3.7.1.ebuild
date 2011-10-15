@@ -30,7 +30,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc gnome source"
 
 # ant dependencies should really be >=1.8.2
-CDEPEND=">=dev-java/swt-${PV%.0}_rc4:${SLOT}
+CDEPEND=">=dev-java/swt-${BUILD_VER%.0}_rc4:${SLOT}
 	>=dev-java/ant-1.8.1
 	>=dev-java/asm-3.3.1:3
 	>=dev-java/commons-codec-1.3
@@ -163,9 +163,9 @@ src_unpack() {
 	#		-e 's/^buildId=.*$/buildId='"${BUILD_ID}"'/' \
 	#		-i build.properties -i pdebuild.properties || die
 	eant unpack
-	cp -r "${S}/build/eclipse-${PV}-src/"* "${buildDir}/" || die "Copying sources failed"
-	rm -r "${S}/build/eclipse-${PV}-src" || die "Removing dir failed"
-	ln -s "eclipse-${BUILD_LABEL}-src" "${S}/build/eclipse-${PV}-src" || die "Creating link failed"
+	cp -r "${S}/build/eclipse-${BUILD_VER}-src/"* "${buildDir}/" || die "Copying sources failed"
+	rm -r "${S}/build/eclipse-${BUILD_VER}-src" || die "Removing dir failed"
+	ln -s "eclipse-${BUILD_LABEL}-src" "${S}/build/eclipse-${BUILD_VER}-src" || die "Creating link failed"
 
 }
 
