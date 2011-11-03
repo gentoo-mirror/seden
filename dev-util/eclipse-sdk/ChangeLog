@@ -2,6 +2,20 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1.ebuild (03 Nov 2011)
+
+  03 Nov 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.1.ebuild :
+  Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
+  (gentoo@mattwhitlock.name), added RESTRICT="mirror" by me, added Tomcat-7
+  patch by Small Penguin (dark.shadow@gmx.at) and QA fixes by ScytheMan
+  (scytheman666@gmail.com).
+
+*eclipse-sdk-3.7.0-r3.ebuild (03 Nov 2011)
+
+  03 Nov 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r3.ebuild :
+  QA-fixed version by ScytheMan (scytheman666@gmail.com), taken from Bug
+  #325271 with added Tomcat-7 patch by Small Penguin (dark.shadow@gmx.at).
+
 *eclipse-sdk-3.7.0-r2.ebuild (15 Aug 2011)
 
   19 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r2.ebuild :
