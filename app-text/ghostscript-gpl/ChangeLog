@@ -1,0 +1,9 @@
+# ChangeLog for app-text/ghostscript
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ghostscript-gpl-9.04-r5.ebuild (03 Nov 2011)
+
+  03 Nov 2011; Sven Eden <sven.eden@gmx.de> +ghostscript-gpl-9.04-r5.ebuild :
+  Added a patch files/gs9.04-fix-invalid-uuid-generation.patch taken from
+  bugs.ghostscript.com to fix a PDF/A issue
