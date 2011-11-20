@@ -45,7 +45,7 @@ src_prepare() {
 
 	# Thanks to parallel build, tools/build68k might be called before it is ready.
 	# Little but nasty solution: Add a small delay
-	epatch "${FILESDIR}"002_wait_for_build68k_to_be_ready.patch
+	epatch "${FILESDIR}"/002_wait_for_build68k_to_be_ready.patch
 }
 
 src_configure() {
