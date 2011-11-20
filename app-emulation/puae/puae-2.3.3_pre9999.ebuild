@@ -13,13 +13,10 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="a2091 +alsa amax +audio cdtv cd32 +debugger dga \
+IUSE="a2065 a2091 +alsa amax +audio cdtv cd32 +debugger dga \
       drvsnd enforcer +fpu gayle +gtk jit ncr +natmem noflags ncurses \
 			profiling qt +save-state scsi-device +sdl +sdl-gfx sdl-gl \
 			sdl-sound threads +ui vidmode +xarcade X"
-
-# Broken USE-Flags due to compilation/linking failures:
-# IUSE="${IUSE} a2065"
 
 RDEPEND="
 	alsa?      ( !sdl-sound? ( media-libs/alsa-lib ) )
@@ -45,6 +42,10 @@ src_prepare() {
 
 	# One of the unzip.h files (why use two anyway?) is wrong (right now), fix it:
 	epatch "${FILESDIR}"/001_fix_wrong_unzip_h.patch
+
+	# Thanks to parallel build, tools/build68k might be called before it is ready.
+	# Little but nasty solution: Add a small delay
+	epatch "${FILESDIR}"002_wait_for_build68k_to_be_ready.patch
 }
 
 src_configure() {
