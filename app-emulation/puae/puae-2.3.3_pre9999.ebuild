@@ -38,14 +38,14 @@ DEPEND="${DEPEND} ${RDEPEND}
 "
 
 src_prepare() {
-	eautoreconf
-
 	# One of the unzip.h files (why use two anyway?) is wrong (right now), fix it:
 	epatch "${FILESDIR}"/001_fix_wrong_unzip_h.patch
 
 	# Thanks to parallel build, tools/build68k might be called before it is ready.
 	# Little but nasty solution: Add a small delay
 	epatch "${FILESDIR}"/002_wait_for_build68k_to_be_ready.patch
+
+	eautoreconf
 }
 
 src_configure() {
