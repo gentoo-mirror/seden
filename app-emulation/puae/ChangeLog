@@ -2,6 +2,18 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*puae-2.3.2_pre9999 (20 Nov 2011)
+*files/001_fix_wrong_unzip_h.patch (20 Nov 2011)
+
+  20 Nov 2011; Sven Eden <seden@gmx.de> +puae-2.3.3_pre9999.ebuild, 
+  +files/001_fix_wrong_unzip.h.patch : Upstream has changed the version number.
+  But as it is still a live version, the pre9999 suffix will stay. Further
+  the bsdsock USE flag is removed, adding bsdsock emulation is no longer
+  optional. A wrong unzip.h version is fixed by the additional patch.
+
+  20 Mar 2011; Sven Eden <seden@gmx.de> -puae-2.3.2_pre9999.ebuild : Remove
+  old ebuild, git pull is unversioned.
+
 *puae-2.3.2_pre9999 (28 Mar 2011)
 
   28 Mar 2011; Sven Eden <seden@gmx.de> +puae-2.3.2_pre9999.ebuild : Upstream

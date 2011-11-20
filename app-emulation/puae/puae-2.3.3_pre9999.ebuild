@@ -4,7 +4,7 @@
 
 EAPI="2"
 
-inherit autotools flag-o-matic git
+inherit autotools flag-o-matic git-2
 
 DESCRIPTION="PUAE tries to continue where E-UAE left off."
 HOMEPAGE="https://github.com/GnoStiC/PUAE"
@@ -13,7 +13,7 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="a2091 +alsa amax +audio bsdsock cdtv cd32 +debugger dga \
+IUSE="a2091 +alsa amax +audio cdtv cd32 +debugger dga \
       drvsnd enforcer +fpu gayle +gtk jit ncr +natmem noflags ncurses \
 			profiling qt +save-state scsi-device +sdl +sdl-gfx sdl-gl \
 			sdl-sound threads +ui vidmode +xarcade X"
@@ -42,6 +42,9 @@ DEPEND="${DEPEND} ${RDEPEND}
 
 src_prepare() {
 	eautoreconf
+
+	# One of the unzip.h files (why use two anyway?) is wrong (right now), fix it:
+	epatch "${FILESDIR}"/001_fix_wrong_unzip_h.patch
 }
 
 src_configure() {
@@ -192,20 +195,20 @@ src_configure() {
 		needSDL=$((needSDL+1))
 		myconf="${myconf} --with-sdl"
 	fi
-	
+
 	# Need sdl test programs?
 	if [ ${needSDL} -gt 0 ] ; then
 		myconf="${myconf} --enable-sdltest"
 	else
 		myconf="${myconf} --disable-sdltest"
 	fi
-	
+
 	# And now go for it:
 	econf \
 		$(use_enable profiling) \
+		$(use_enable a2065) \
 		$(use_enable a2091) \
 		$(use_enable amax) \
-		$(use_enable bsdsock) \
 		$(use_enable cdtv) \
 		$(use_enable cd32) \
 		$(use_enable debugger) \
@@ -217,11 +220,8 @@ src_configure() {
 		$(use_enable scsi-device) \
 		$(use_enable save-state) \
 		$(use_enable xarcade) \
+		--enable-bsdsock \
 		${myconf} || die "econf failed"
-
-		# Broken USE flags:
-		#		$(use_enable a2065) \
-
 }
 
 src_compile() {
