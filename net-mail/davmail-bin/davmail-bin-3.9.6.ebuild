@@ -24,7 +24,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="menu server"
 
-DEPEND="|| ( virtual/jre:1.6 virtual/jdk:1.6 )"
+DEPEND="|| ( virtual/jre:1.6 virtual/jdk:1.6 )
+  !net-mail/davmail"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
