@@ -2,6 +2,11 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*jetty-bin-6.1.26-r2.ebuild (22 Nov 2011)
+
+  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +jetty-bin-6.1.26-r2.ebuild :
+  Added USE_Flag "tomcat7" to depend on tomcat:3.0 instead of 2.5.
+
 *jetty-bin-6.1.26-r1.ebuild (16 Aug 2011)
 
   15 Aug 2011; Sven Eden <sven.eden@gmx.de> +jetty-bin-6.1.26-r1.ebuild :
