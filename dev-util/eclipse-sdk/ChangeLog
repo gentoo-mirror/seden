@@ -2,6 +2,15 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.0-r4.ebuild (02 Jan 2012)
+*eclipse-sdk-3.7.1-r1.ebuild (02 Jan 2012)
+  02.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r4.ebuild,
+  +eclise-sdk-3.7.1-r1.ebuild : sat4j-pseudo and sat4j-core are now in the
+  official tree, the new ebuilds use them by slot 2.3.
+  -eclipse-sdk-3.7.0.ebuild, -eclipse-sdk-3.7.0-r1.ebuild,
+  -eclipse-sdk-3.7.0-r2.ebuild, -eclipse-sdk-3.7.0-r3.ebuild,
+  -eclipse-sdk-3.7.1.ebuild: Remove old ebuilds.
+
 *eclipse-sdk-3.7.1.ebuild (03 Nov 2011)
 
   03 Nov 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.1.ebuild :
@@ -32,4 +41,3 @@
   15 Aug 2011; Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0.ebuild :
   Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
   (gentoo@mattwhitlock.name), fixed by Slayer (slayer.rus@gmail.com).
-

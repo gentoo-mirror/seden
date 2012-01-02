@@ -46,8 +46,8 @@ CDEPEND=">=dev-java/swt-${PV%.0}_rc4:${SLOT}
 	>=dev-java/junit-4.8.2:4
 	>=dev-java/lucene-2.9.1:2.9
 	>=dev-java/lucene-analyzers-2.9.1:2.9
-	>=dev-java/sat4j-core-2.3.0:2
-	>=dev-java/sat4j-pseudo-2.3.0:2
+	>=dev-java/sat4j-core-2.3.0:2.3
+	>=dev-java/sat4j-pseudo-2.3.0:2.3
 	dev-java/tomcat-servlet-api:2.5
 	>=www-servers/tomcat-7:7
 	java-virtuals/jetty-server:6
