@@ -104,10 +104,10 @@ OSGI_DEPENDENCIES=(
 	'org.mortbay.jetty.util - jetty-6 jetty-util'
 #	'org.mortbay.jetty.util jetty-util-6.1.26 jetty-6 jetty-util'
 	'org.objectweb.asm - asm-3'
-	'org.sat4j.core - sat4j-core-2'
-#	'org.sat4j.core org.sat4j.core sat4j-core-2'
-	'org.sat4j.pb - sat4j-pseudo-2'
-#	'org.sat4j.pb org.sat4j.pb sat4j-pseudo-2'
+	'org.sat4j.core - sat4j-core-2.3'
+#	'org.sat4j.core org.sat4j.core sat4j-core-2.3'
+	'org.sat4j.pb - sat4j-pseudo-2.3'
+#	'org.sat4j.pb org.sat4j.pb sat4j-pseudo-2.3'
 )
 NONOSGI_DEPENDENCIES=(
 	'org.apache.ant ant-antlr'

@@ -2,6 +2,16 @@
 # Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.0-r5.ebuild (05 Jan 2012)
+*eclipse-sdk-3.7.1-r2.ebuild (05 Jan 2012)
+  02.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r5.ebuild,
+  +eclise-sdk-3.7.1-r2.ebuild : The previous ebuilds did not specify the
+  correct versions for sat4j, the prepare stage still searched for slot
+  2 instead of 2.3. Thanks again to Robin Kauffman <robink@creosotehill.org>
+  and Jānis Iraids <jiraids@inbox.lv> for reporting this issue.
+  -eclipse-sdk-3.7.0-r4.ebuild, -eclipse-sdk-3.7.1-r1.ebuild: Remove faulty
+  ebuilds.
+
 *eclipse-sdk-3.7.0-r4.ebuild (02 Jan 2012)
 *eclipse-sdk-3.7.1-r1.ebuild (02 Jan 2012)
   02.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r4.ebuild,
