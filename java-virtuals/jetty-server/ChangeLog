@@ -1,6 +1,14 @@
 # ChangeLog for java-virtuals/jetty-server
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*jetty-server-6-r1.ebuild (01 Feb 2012)
+
+  02 Feb 2012; Sven Eden <sven.eden@gmx.de>
+  -jetty-server-6.ebuild
+  +jetty-server-6-r1.ebuild :
+  Removed all dependencies that are neither present in the portage tree
+  nor in my own overlay.
 
 *jetty-server-6.ebuild (15 Aug 2011)
 
