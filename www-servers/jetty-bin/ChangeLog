@@ -2,6 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Feb 2012; Sven Eden <sven.eden@gmx.de>
+  -jetty-bin-7.5.4.ebuild :
+  It is not possible to make Eclipse be happy with jetty-7, so
+  drop it.
+
 *jetty-bin-7.5.4.ebuild (02 Feb 2012)
 *jetty-bin-6.1.26-r3.ebuild (02 Feb 2012)
 

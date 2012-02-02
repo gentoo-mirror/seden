@@ -2,6 +2,18 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02.Feb.2012 Sven Eden <sven.eden@gmx.de>
+  -eclise-sdk-3.7.1-r4.ebuild :
+  It makes no sense, the version 6 of jetty is wired-in so hard, there
+  is no use in trying to update to jetty-7
+
+*eclipse-sdk-3.7.1-r5.ebuild (02 Feb 2012)
+  02.Feb.2012 Sven Eden <sven.eden@gmx.de>
+  +eclise-sdk-3.7.1-r5.ebuild :
+  -eclise-sdk-3.7.1-r4.ebuild :
+  When using jetty-7, it is named org.eclipse.jetty and no longer
+  org.mortbay.jetty.
+
 *eclipse-sdk-3.7.1-r4.ebuild (02 Feb 2012)
   02.Feb.2012 Sven Eden <sven.eden@gmx.de>
   +eclise-sdk-3.7.1-r4.ebuild :

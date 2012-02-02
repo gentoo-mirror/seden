@@ -2,6 +2,10 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  02 Feb 2012; Sven Eden <sven.eden@gmx.de>
+  -jetty-server-7-r2.ebuild :
+  Eclipse won't accept jetty-7, so drop it.
+
 *jetty-server-7-r2.ebuild (02 Feb 2012)
 *jetty-server-6-r4.ebuild (02 Feb 2012)
 
