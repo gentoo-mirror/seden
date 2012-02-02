@@ -102,7 +102,7 @@ OSGI_DEPENDENCIES=(
 
 # Add jetty 6 to OSGI deps unless jetty 7 is wanted:
 if use jetty7 ; then
-	OSGI_DEPENDENCIES[${#OSGI_DEPENDENCIES[*]}]='org.mortbay.jetty.server - jetty-7 jetty'
+	OSGI_DEPENDENCIES[${#OSGI_DEPENDENCIES[*]}]='org.mortbay.jetty.server - jetty-7 jetty-server'
 	OSGI_DEPENDENCIES[${#OSGI_DEPENDENCIES[*]}]='org.mortbay.jetty.util - jetty-7 jetty-util'
 else
 	OSGI_DEPENDENCIES[${#OSGI_DEPENDENCIES[*]}]='org.mortbay.jetty.server - jetty-6 jetty'
