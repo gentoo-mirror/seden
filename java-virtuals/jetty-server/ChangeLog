@@ -2,9 +2,19 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-*jetty-server-6-r1.ebuild (01 Feb 2012)
+*jetty-server-7.ebuild (02 Feb 2012)
+*jetty-server-6-r2.ebuild (02 Feb 2012)
 
   02 Feb 2012; Sven Eden <sven.eden@gmx.de>
+  +jetty-server-7.ebuild
+  +jetty-server-6-r2.ebuild
+  -jetty-server-6-r1.ebuild :
+  Added virtual for jetty 7, fixed an issue with the slot 6 ebuild and
+  cleaned up old ebuilds
+
+*jetty-server-6-r1.ebuild (01 Feb 2012)
+
+  01 Feb 2012; Sven Eden <sven.eden@gmx.de>
   -jetty-server-6.ebuild
   +jetty-server-6-r1.ebuild :
   Removed all dependencies that are neither present in the portage tree

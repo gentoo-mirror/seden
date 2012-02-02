@@ -1,10 +1,14 @@
 # ChangeLog for dev-util/eclipse-sdk
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*eclipse-sdk-3.7.1-r3.ebuild (02 Feb 2012)
+  02.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r3.ebuild :
+  First candidate to support jetty7
 
 *eclipse-sdk-3.7.0-r5.ebuild (05 Jan 2012)
 *eclipse-sdk-3.7.1-r2.ebuild (05 Jan 2012)
-  02.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r5.ebuild,
+  05.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r5.ebuild,
   +eclise-sdk-3.7.1-r2.ebuild : The previous ebuilds did not specify the
   correct versions for sat4j, the prepare stage still searched for slot
   2 instead of 2.3. Thanks again to Robin Kauffman <robink@creosotehill.org>

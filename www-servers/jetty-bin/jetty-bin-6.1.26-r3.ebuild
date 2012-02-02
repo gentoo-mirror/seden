@@ -14,15 +14,18 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="Apache-2.0"
 
 MY_PN="jetty"
-MY_JETTY="${PN}-${SLOT}"
+#MY_JETTY="${PN}-${SLOT}"
+MY_JETTY="${MY_PN}-${SLOT}"
 
-IUSE="anttasks client ldap ssl stats"
+IUSE="anttasks client ldap ssl stats tomcat7"
 
 SRC_URI="http://dist.codehaus.org/jetty/jetty-${PV}/jetty-${PV}.zip
 	anttasks? ( http://dist.codehaus.org/jetty/jetty-${PV}/jetty-ant-${PV}.jar )"
 RESTRICT="mirror"
 
-DEPEND="dev-java/tomcat-servlet-api:2.5
+DEPEND="
+  tomcat7? ( dev-java/tomcat-servlet-api:3.0 )
+  !tomcat7? ( dev-java/tomcat-servlet-api:2.5 )
 	!www-servers/jetty:${SLOT}
 	!www-servers/jetty-eclipse:${SLOT}
 	!www-servers/jetty-eclipse-bin:${SLOT}
@@ -41,8 +44,8 @@ src_install() {
     cd "${S}"
     rm -f etc/jetty-sslengine.xml
 
-    #java-pkg_jarinto "/usr/share/${MY_JETTY}/lib/"
-    #java-pkg_sointo "/usr/lib/${MY_JETTY}"
+    java-pkg_jarinto "/usr/share/${MY_JETTY}/lib/"
+    java-pkg_sointo "/usr/lib/${MY_JETTY}"
 
     java-pkg_dojar start.jar
     java-pkg_newjar lib/${MY_PN}-${PV}.jar ${MY_PN}.jar
@@ -94,11 +97,11 @@ src_install() {
 
     dodir /etc/conf.d
     insinto /etc/conf.d
-    newins ${FILESDIR}/conf.d/${MY_PN} ${MY_JETTY}
+    newins ${FILESDIR}/conf.d/${MY_JETTY} ${MY_JETTY}
     
     dodir /etc/init.d
     exeinto /etc/init.d
-    newexe ${FILESDIR}/init.d/${MY_PN} ${MY_JETTY}
+    newexe ${FILESDIR}/init.d/${MY_JETTY} ${MY_JETTY}
 
     dodir /var/log/${MY_JETTY}
 
@@ -107,7 +110,7 @@ src_install() {
     dodir ${JETTY_HOME}/contexts
     dodir ${JETTY_HOME}/resources
     dosym ${JAVA_PKG_JARDEST} ${JETTY_HOME}/lib
-    dosym ${JAVA_PKG_JARDEST}/start.jar ${JETTY_HOME}/
+    dosym ${JAVA_PKG_JARDEST}/start.jar ${JETTY_HOME}/start.jar
     dosym /etc/${MY_JETTY} ${JETTY_HOME}/etc
     dosym /var/log/${MY_JETTY} ${JETTY_HOME}/logs
 
@@ -123,9 +126,11 @@ src_install() {
     echo "/usr/share/ant/lib/*" >> ${START_CONFIG}
     echo "/usr/share/slf4j-api/lib/*" >> ${START_CONFIG}
     echo "/usr/share/jta/lib/*" >> ${START_CONFIG}
-    echo "/usr/share/tomcat-servlet-api-2.5/lib/*" >> ${START_CONFIG}
-    #echo "" >> ${START_CONFIG}
-    #echo "" >> ${START_CONFIG}
+    if use tomcat7 ; then
+      echo "/usr/share/tomcat-servlet-api-3.0/lib/*" >> ${START_CONFIG}
+    else
+      echo "/usr/share/tomcat-servlet-api-2.5/lib/*" >> ${START_CONFIG}
+    fi
     echo "" >> ${START_CONFIG}
     echo "\$(jetty.home)/resources/" >> ${START_CONFIG}
 }
@@ -134,6 +139,7 @@ pkg_preinst () {
     enewuser jetty
     fowners jetty:jetty /var/log/${MY_JETTY}
     fperms g+w /var/log/${MY_JETTY}
-    #mv ${D}/usr/share/${PN}-${SLOT}/package.env ${D}/usr/share/${MY_JETTY}/package.env
+    mv ${D}/usr/share/${PN}-${SLOT}/package.env ${D}/usr/share/${MY_JETTY}/package.env
+    rm -rf ${D}/usr/share/${PN}-${SLOT}
 }
 
