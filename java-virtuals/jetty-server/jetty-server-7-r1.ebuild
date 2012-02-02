@@ -19,4 +19,4 @@ RDEPEND="
   www-servers/jetty-bin:${SLOT}
 	>=dev-java/java-config-2.1.8"
 
-JAVA_VIRTUAL_PROVIDES="jetty-bin-${SLOT}"
+JAVA_VIRTUAL_PROVIDES="jetty-server-${SLOT} jetty-bin-${SLOT} jetty-${SLOT}"
