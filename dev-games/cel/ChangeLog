@@ -1,6 +1,15 @@
 # ChangeLog for dev-games/cel
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*cel-2.0_beta3 (16 Feb 2012)
+
+  16 Feb 2012; Sven Eden <sven.eden@gmx.de>
+  +cel-2.0_beta3.ebuild
+  -cel-1.9_pre9999.ebuild
+  -cel-2.1_pre9999.ebuild
+  Added ebuild for official beta of the upcoming stable release, removed
+  obsolete ebuilds
 
 *cel-2.1_pre9999-r1 (17 May 2011)
 

@@ -1,21 +1,24 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=4
 
-inherit autotools eutils flag-o-matic multilib java-pkg-opt-2 subversion wxwidgets versionator
+inherit autotools eutils flag-o-matic multilib java-pkg-opt-2 wxwidgets versionator
 
 MY_PV=$(get_version_component_range 1-2)
+MY_BETA="beta3"
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Portable 3D Game Development Kit written in C++"
 HOMEPAGE="http://www.crystalspace3d.org/"
-ESVN_REPO_URI="https://crystal.svn.sourceforge.net/svnroot/crystal/CS/trunk"
+SRC_URI="http://www.crystalspace3d.org/downloads/release/${PN}-src-${MY_PV}${MY_BETA}.tar.bz2"
+RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
-IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg mng ode +optimize png profile python static-plugins speex truetype vorbis wxwidgets"
+IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg mng ode +optimize \
+      png profile python static-plugins speex truetype vorbis wxwidgets"
 
 SLOT="0"
 
@@ -49,8 +52,7 @@ DEPEND="${COMMON_DEP}
 	dev-util/pkgconfig
   dev-util/ftjam"
 
-S=${WORKDIR}/${MY_P}
-
+S=${WORKDIR}/${PN}-src-${MY_PV}${MY_BETA}
 
 src_prepare() {
 	# As flags are managed by debug, optimize and profile USE flags,
@@ -100,34 +102,20 @@ src_configure() {
 		ewarn "optimize is the CS default and thus chosen."
 	fi
 
-	econf \
-		--without-lcms \
-		--without-jackasyn \
-		--with-x \
-		--with-mesa \
-		--disable-make-emulation \
-		--without-perl \
-		--with-python \
-		--disable-separate-debug-info \
+	myconf="${myconf} --without-lcms --without-jackasyn \
+		--with-x --with-mesa --disable-make-emulation --without-perl \
+		--with-python --disable-separate-debug-info \
 		--disable-optimize-mode-debug-info \
-		$(use_with java) \
-		$(use_with bullet) \
-		$(use_with png) \
-		$(use_with jpeg) \
-		$(use_with mng) \
-		$(use_with vorbis) \
-		$(use_with speex) \
-		$(use_with 3ds) \
-		$(use_with ode) \
 		$(use_with truetype freetype2) \
-		$(use_with cal3d) \
 		$(use_with wxwidgets wx) \
 		$(use_with wxwidgets GTK) \
 		$(use_with cegui CEGUI) \
 		$(use_with cg Cg) \
-		$(use_with alsa asound) \
-		${myconf} \
-		|| die "configure failed."
+		$(use_with alsa asound) "
+  for myuse in java bullet png jpeg mng vorbis speex 3ds ode cal3d; do
+    myconf="${myconf} $(use_with ${myuse})"
+  done
+  econf ${myconf} || die "configure failed."
 }
 
 src_compile() {
@@ -146,15 +134,19 @@ src_install() {
 		jam -q -s DESTDIR="${D}" install_${installTarget} \
 			|| die "jam install_${installTarget} failed"
 	done
+
+	# install static-plugins if wanted
 	if use static-plugins; then
 		jam -q -s DESTDIR="${D}" install_staticplugins \
 			|| die "jam install_staticplugins failed"
 	fi
+
+	# install documentation if wanted
 	if use doc; then
 		jam -q -s DESTDIR="${D}" install_doc || die "jam install_doc failed"
 	fi
 
-	# As the target install_doc uses crystalspace-1.9 as target, but dodoc
+	# As the target install_doc uses crystalspace-${MY_PV} as target, but dodoc
 	# uses ${PF}, this said var has to be manipulated first.
 	local oldPF=${PF}
 	PF=${MY_P}
@@ -163,6 +155,10 @@ src_install() {
 
 	echo "CRYSTAL_PLUGIN=/usr/$(get_libdir)/${MY_P}" > 90crystalspace
 	echo "CRYSTAL_CONFIG=/etc/${MY_P}" >> 90crystalspace
+  # "CRYSTAL" seems to be an env var that is now important, althoug it
+  # existed already in CS-1.4 and was never actually needed for CS to
+  # work properly
+	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
 	doenvd 90crystalspace
 }
 
@@ -170,9 +166,14 @@ pkg_postinst() {
 	elog "Examples coming with this package, need correct light calculation"
 	elog "Do the following commands, with the root account, to fix that:"
 	# Fill cache directory for the examples
-	local dir
-	for dir in castle isomap parallaxtest r3dtest stenciltest terrain terrainf;
-	do
-		elog "lighter2 --simpletui /usr/share/${MY_P}/data/maps/${dir}"
-	done
+	elog "--- cut and paste ---"
+	echo
+	echo "for map in \$(find /usr/share/${MY_P}/data/maps -maxdepth 1 -mindepth 1 -type d) ; do"
+  # new in 2.0: Thanks to the CRYSTAL env var, the path to the maps does
+  # not need to be given. As a matter of fact it is important to *not*
+  # use the map name with a full path.
+	echo "  lighter2 --simpletui \$map"
+	echo "done"
+	echo
+	elog "--- cut and paste ---"
 }
