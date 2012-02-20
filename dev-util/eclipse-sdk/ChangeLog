@@ -2,12 +2,25 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r4.ebuild (20 Feb 2012)
+
+  20.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r4.ebuild :
+  Changed the use of ant-* to version 1.8.2 as shown by Andreas
+  Sturmlechner <andreas.sturmlechner@gmail.com>.
+  Added tomcat-api dependency to NONOSGI, it has
+  org.apache.tomcat.PeriodicEventListener included which is missing
+  according to the jetty error page that shows up when trying to browse
+  to the local help page.
+
+*eclipse-sdk-3.7.1-r5.ebuild (02 Feb 2012)
+
   02.Feb.2012 Sven Eden <sven.eden@gmx.de>
-  -eclise-sdk-3.7.1-r4.ebuild :
+  -eclise-sdk-3.7.1-r5.ebuild :
   It makes no sense, the version 6 of jetty is wired-in so hard, there
   is no use in trying to update to jetty-7
 
 *eclipse-sdk-3.7.1-r5.ebuild (02 Feb 2012)
+
   02.Feb.2012 Sven Eden <sven.eden@gmx.de>
   +eclise-sdk-3.7.1-r5.ebuild :
   -eclise-sdk-3.7.1-r4.ebuild :
@@ -15,17 +28,21 @@
   org.mortbay.jetty.
 
 *eclipse-sdk-3.7.1-r4.ebuild (02 Feb 2012)
+
   02.Feb.2012 Sven Eden <sven.eden@gmx.de>
   +eclise-sdk-3.7.1-r4.ebuild :
   -eclise-sdk-3.7.1-r3.ebuild :
   Fixed a wrong entry, jetty.jar is now named jetty-server.jar
 
 *eclipse-sdk-3.7.1-r3.ebuild (02 Feb 2012)
+
   02.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r3.ebuild :
   First candidate to support jetty7
 
 *eclipse-sdk-3.7.0-r5.ebuild (05 Jan 2012)
+
 *eclipse-sdk-3.7.1-r2.ebuild (05 Jan 2012)
+
   05.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r5.ebuild,
   +eclise-sdk-3.7.1-r2.ebuild : The previous ebuilds did not specify the
   correct versions for sat4j, the prepare stage still searched for slot
@@ -35,7 +52,9 @@
   ebuilds.
 
 *eclipse-sdk-3.7.0-r4.ebuild (02 Jan 2012)
+
 *eclipse-sdk-3.7.1-r1.ebuild (02 Jan 2012)
+
   02.Jan.2012 Sven Eden <sven.eden@gmx.de> +eclipse-sdk-3.7.0-r4.ebuild,
   +eclise-sdk-3.7.1-r1.ebuild : sat4j-pseudo and sat4j-core are now in the
   official tree, the new ebuilds use them by slot 2.3. Thanks to Robin
