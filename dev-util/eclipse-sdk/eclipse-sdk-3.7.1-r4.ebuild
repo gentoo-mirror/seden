@@ -109,7 +109,6 @@ OSGI_DEPENDENCIES=(
 #	'org.sat4j.pb org.sat4j.pb sat4j-pseudo-2.3'
 )
 NONOSGI_DEPENDENCIES=(
-	'org.apache.tomcat tomcat-7 tomcat-api'
 	'org.apache.ant ant-antlr'
 	'org.apache.ant ant-apache-bcel'
 	'org.apache.ant ant-apache-bsf'

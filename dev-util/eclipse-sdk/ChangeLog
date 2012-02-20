@@ -7,10 +7,6 @@
   20.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r4.ebuild :
   Changed the use of ant-* to version 1.8.2 as shown by Andreas
   Sturmlechner <andreas.sturmlechner@gmail.com>.
-  Added tomcat-api dependency to NONOSGI, it has
-  org.apache.tomcat.PeriodicEventListener included which is missing
-  according to the jetty error page that shows up when trying to browse
-  to the local help page.
 
 *eclipse-sdk-3.7.1-r5.ebuild (02 Feb 2012)
 
