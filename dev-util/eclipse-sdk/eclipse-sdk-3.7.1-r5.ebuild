@@ -139,7 +139,7 @@ ALL_WS='carbon cocoa gtk motif photon win32 wpf'
 ALL_ARCH='alpha arm ia64 mips mipsel PA_RISC ppc ppc64 s390 s390x sparc sparc64 x86 x86_64'
 
 pkg_pretend() {
-	CHECKREQS_MEMORY="1536M"
+	CHECKREQS_MEMORY="1280M"
 	if use doc ; then
 		CHECKREQS_DISK_BUILD="3072M"
 	else
@@ -151,7 +151,7 @@ pkg_pretend() {
 buildDir="${S}/build/eclipse-${BUILD_VER}-src"
 
 pkg_setup() {
-	CHECKREQS_MEMORY="1536M"
+	CHECKREQS_MEMORY="1280M"
 	if use doc ; then
 		CHECKREQS_DISK_BUILD="3072M"
 	else

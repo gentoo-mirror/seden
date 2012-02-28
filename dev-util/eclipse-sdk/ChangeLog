@@ -2,6 +2,20 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r5.ebuild (28 Feb 2012)
+
+  28.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r5.ebuild :
+  Changed the memory requirements from 1536M to 1280M, which is two and
+  a half times the set Xmx value for 512M instead of the previous three
+  times. The build works fine with this lower settings and allows users
+  with 1.5GB RAM to merge eclipse without manual tweaks.
+
+  28.Feb.2012 Sven Eden <sven.eden@gmx.de>
+  -eclipse-sdk-3.7.0-r5.ebuild,
+  -eclipse-sdk-3.7.1-r2.ebuild,
+  -eclipse-sdk-3.7.1-r4.ebuild :
+  Removed obsolete ebuilds
+
 *eclipse-sdk-3.7.1-r4.ebuild (20 Feb 2012)
 
   20.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r4.ebuild :
