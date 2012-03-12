@@ -32,7 +32,7 @@ IUSE="doc gnome source"
 
 ANT="1.8.2"
 
-CDEPEND=">=dev-java/swt-${BUILD_VER}:${SLOT}
+CDEPEND="~dev-java/swt-${BUILD_VER}:${SLOT}
 	>=dev-java/ant-${ANT}
 	>=dev-java/asm-3.3.1:3
 	>=dev-java/commons-codec-1.3
