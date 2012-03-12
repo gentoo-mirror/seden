@@ -1,9 +1,0 @@
-# ChangeLog for dev-java/asm
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*asm-3.3.1.ebuild (15 Aug 2011)
-
-  15 Aug 2011; Sven Eden <sven.eden@gmx.de> +asm-3.3.1.ebuild :
-  Initial commit of the ebuild. Taken from Bug #325271, written by Matt Whitlock
-  (gentoo@mattwhitlock.name).

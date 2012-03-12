@@ -2,6 +2,18 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r6.ebuild (12 Mar 2012)
+
+  12.Mar.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r6.ebuild :
+  Add libpng:1.2 to RDEPEND, and set the minimum version of SWT to the build
+  version of Eclipse-SDK. This should fix issues users having when compiling
+  Eclipse-SDK without the proper version (or any) of SWT installed, and
+  should fix some runtime issues when the old libpng variant is missing.
+
+  12.Mar.2012 Sven Eden <sven.eden@gmx.de>
+  -eclipse-sdk-3.7.1-r5.ebuild :
+  Removed obsolete ebuilds
+
 *eclipse-sdk-3.7.1-r5.ebuild (28 Feb 2012)
 
   28.Feb.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r5.ebuild :
