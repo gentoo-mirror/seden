@@ -49,7 +49,9 @@ MY_AVAILABLE_LINGUAS=" cs de et fi fr it nl pl pt sk sl sv zh_CN"
 IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
 
 src_prepare() {
-	if [ "$PV" = "9999" ]; then
+	if [ "$PV" != "9999" ]; then
+		epatch "${FILESDIR}"/0.6.31-fix_xgnokii_inclusion.patch
+	else
 		epatch "${FILESDIR}"/${P}-icon.patch
 		epatch "${FILESDIR}"/${P}-translations.patch
 		intltoolize --force --copy --automake || die "intltoolize error"
@@ -79,7 +81,7 @@ src_configure() {
 		$(use_enable debug rlpdebug) \
 		--enable-security \
 		--disable-unix98test \
-		--enable-libpcsclite \
+		$(use_enable pcsc-lite libpcsclite) \
 		|| die "configure failed"
 }
 
