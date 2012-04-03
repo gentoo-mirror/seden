@@ -20,10 +20,10 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls bluetooth ical irda sms postgres mysql usb X debug"
+IUSE="nls bluetooth ical irda sms postgres mysql usb X debug +pcsc-lite"
 
 RDEPEND="!app-mobilephone/smstools
-	>=sys-apps/pcsc-lite-1.8.3
+	pcsc-lite? ( >=sys-apps/pcsc-lite-1.8.3 )
 	X? ( x11-libs/gtk+:2 )
 	bluetooth? ( >=net-wireless/bluez-4.99 )
 	sms? (
