@@ -13,19 +13,15 @@ ESVN_PROJECT="${PN}"
 
 LICENSE="GPL-2 CCPL-Attribution-ShareAlike-3.0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cg debug threads xml"
+IUSE="cg debug threads"
 
 SLOT="0"
 
 RDEPEND="
 	dev-games/gigi[ogre,threads=]
-	||	(	threads? ( >=dev-games/ogre-1.7.1[boost,cg=,boost-threads] )
-			 !threads? ( >=dev-games/ogre-1.7.1[boost,cg=,-boost-threads] )
-		)
+	>=dev-games/ogre-1.7.4[threads=]
 	<dev-lang/python-3
-	||	(	dev-libs/boost:1.44
-				dev-libs/boost:1.45
-		)
+	>=dev-libs/boost-1.47
 	media-gfx/graphviz
 	media-libs/freealut
 	>=media-libs/libogg-1.1.3
@@ -57,13 +53,6 @@ src_configure() {
 	# Type-Pun pointers always break strict aliasing rules,
 	# and this thing is full of those
 	append-flags -fno-strict-aliasing
-
-	# using xml serialization seems to break on linker level with
-	# boost-1.45. For this the new xml USE flag will switch to
-	# binary archives if -xml is used:
-	use xml || sed -i -e \
-		"s:define FREEORION_BINARY_SERIALIZATION 0:define FREEORION_BINARY_SERIALIZATION 1:" \
-		FreeOrion/util/Serialize.h || die "sed FreeOrion/util/Serialize.h failed"
 
 	local mycmakeargs+=(
 		$(cmake-utils_use_enable debug DEBUG)

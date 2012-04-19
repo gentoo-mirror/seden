@@ -1,6 +1,15 @@
 # ChangeLog for games-strategy/freeorion
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*freeorion-9999-r7 (19 Apr 2012)
+
+  19 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +freeorion-9999-r7.ebuild,
+  -freeorion-9999-r5.ebuild,
+  -freeorion-9999-r6.ebuild:
+  ogre has been updated and does not fit any more to the old ebuilds.
+  Further this eliminates the nead for Cg if multi threading is wanted.
 
 *freeorion-9999-r6 (26 Jun 2011)
 
