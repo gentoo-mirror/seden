@@ -17,8 +17,8 @@ RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
-IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg mng ode +optimize \
-      png profile python static-plugins speex truetype vorbis wxwidgets"
+IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg lcms +march-native mng ode \
+      +optimize perl png profile +python static-plugins speex truetype vorbis wxwidgets +X"
 
 SLOT="0"
 
@@ -55,10 +55,6 @@ DEPEND="${COMMON_DEP}
 S=${WORKDIR}/${PN}-src-${MY_PV}${MY_BETA}
 
 src_prepare() {
-	# As flags are managed by debug, optimize and profile USE flags,
-	# they need to be stripped first. If we do not do this, the calling
-	# lines grow so large, that jam segfaults.
-	strip-flags
 
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target
@@ -80,6 +76,20 @@ src_configure() {
 		need-wxwidgets gtk2
 	fi
 
+	# As flags are managed by debug, optimize and profile USE flags,
+	# they need to be removed first. If we do not do this, the calling
+	# lines grow so large, that jam segfaults.
+	CFLAGS=""
+	CXXFLAGS=""
+	LDFLAGS=""
+	# This is quite contrary to the "gentoo way", but the configuration
+	# script runs in exactly one mode, optimize (default), profile or
+	# debug. All of these enable different CFLAGS and LDFLAGS. And to
+	# make this even more complicated, configure knows a bunch of arguments
+	# for a lot of LDFLAGS, too. I have not found a way to disable them
+	# all, ending up with a lot of redundant or even negating flag
+	# arrangements.
+
 	# debug profile and optimize are mutually exclusive
 	if use debug ; then
 		myconf="--enable-debug --disable-optimize --disable-profile"
@@ -99,20 +109,23 @@ src_configure() {
 	else
 		# optimize is the default anyway
 		myconf="--disable-debug --enable-optimize --disable-profile"
-		ewarn "optimize is the CS default and thus chosen."
 	fi
 
-	myconf="${myconf} --without-lcms --without-jackasyn \
-		--with-x --with-mesa --disable-make-emulation --without-perl \
-		--with-python --disable-separate-debug-info \
-		--disable-optimize-mode-debug-info \
+	# add -march=native configure flag if wanted
+	if use march-native ; then
+		myconf="${myconf} --enable-cpu-specific-optimizations=native"
+	fi
+
+	myconf="${myconf} --without-jackasyn \
 		$(use_with truetype freetype2) \
 		$(use_with wxwidgets wx) \
 		$(use_with wxwidgets GTK) \
 		$(use_with cegui CEGUI) \
 		$(use_with cg Cg) \
-		$(use_with alsa asound) "
-  for myuse in java bullet png jpeg mng vorbis speex 3ds ode cal3d; do
+		$(use_with cg CgGL) \
+		$(use_with alsa asound) \
+		$(use_with X x)"
+  for myuse in java bullet lcms png jpeg mng perl python vorbis speex 3ds ode cal3d; do
     myconf="${myconf} $(use_with ${myuse})"
   done
   econf ${myconf} || die "configure failed."
@@ -160,6 +173,12 @@ src_install() {
   # work properly
 	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
 	doenvd 90crystalspace
+
+	# Applications that do not read CRYSTAL_CONFIG need vfs.cfg in $CRYSTAL:
+	dosym /etc/${MY_P}/vfs.cfg /usr/share/${MY_P}/vfs.cfg
+
+	# Applications that do not read CRYSTAL_PLUGIN need the libdir in CRYSTAL#
+	dosym /usr/$(get_libdir)/${MY_P} /usr/share/${MY_P}/libs
 }
 
 pkg_postinst() {
