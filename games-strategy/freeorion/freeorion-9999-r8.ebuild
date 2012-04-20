@@ -46,7 +46,7 @@ src_prepare() {
 
 	# gcc-4.6.2 crashes with an internal segfault on EffectParser.cpp
 	# Solution: remove those includes, that are way too much.
-	epatch "${FILESDIR}/remove_cruft_EffectParser.cpp.patch
+	epatch "${FILESDIR}/remove_cruft_EffectParser.cpp.patch"
 }
 
 src_configure() {
