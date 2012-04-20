@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0_beta3-r2 (20 Apr 2012)
+
+  20 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0_beta3-r2.ebuild
+  -crystalspace-2.0_beta3-r1.ebuild
+  Removed the notification about the light calculation. It is not advisable
+  to do that being root in this version.
+
 *crystalspace-2.0_beta3-r1 (19 Apr 2012)
 
   19 Apr 2012; Sven Eden <sven.eden@gmx.de>

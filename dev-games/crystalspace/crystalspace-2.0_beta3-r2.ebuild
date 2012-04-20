@@ -180,19 +180,3 @@ src_install() {
 	# Applications that do not read CRYSTAL_PLUGIN need the libdir in CRYSTAL#
 	dosym /usr/$(get_libdir)/${MY_P} /usr/share/${MY_P}/libs
 }
-
-pkg_postinst() {
-	elog "Examples coming with this package, need correct light calculation"
-	elog "Do the following commands, with the root account, to fix that:"
-	# Fill cache directory for the examples
-	elog "--- cut and paste ---"
-	echo
-	echo "for map in \$(find /usr/share/${MY_P}/data/maps -maxdepth 1 -mindepth 1 -type d) ; do"
-  # new in 2.0: Thanks to the CRYSTAL env var, the path to the maps does
-  # not need to be given. As a matter of fact it is important to *not*
-  # use the map name with a full path.
-	echo "  lighter2 --simpletui \$map"
-	echo "done"
-	echo
-	elog "--- cut and paste ---"
-}
