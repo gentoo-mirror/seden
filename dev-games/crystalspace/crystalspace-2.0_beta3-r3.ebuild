@@ -141,7 +141,7 @@ src_compile() {
 	fi
 
 	# No cs-config-2.0 script is ready, but contains some defects that are to be patched away:
-	epatch epatch "${FILESDIR}"/${MY_P}-cs-config.patch
+	epatch "${FILESDIR}"/${MY_P}-cs-config.patch
 }
 
 src_install() {
