@@ -1,0 +1,29 @@
+--- FreeOrion/parse/EffectParser.cpp	2012-04-20 13:12:33.892274619 +0200
++++ FreeOrion/parse/EffectParser.cpp	2012-04-20 12:54:54.382219385 +0200
+@@ -5,18 +5,22 @@
+ #include "Label.h"
+ #include "ValueRefParser.h"
+ #include "../universe/Effect.h"
+-#include "../universe/ValueRef.h"
++//#include "../universe/ValueRef.h"
+ 
+-#include <GG/ReportParseError.h>
+ 
+-#include <boost/spirit/home/phoenix.hpp>
++#define DEBUG_PARSERS 0
++
++#if DEBUG_PARSERS
++#  include <GG/ReportParseError.h>
++#endif
+ 
+ 
++#include <boost/spirit/home/phoenix.hpp>
++
+ namespace qi = boost::spirit::qi;
+ namespace phoenix = boost::phoenix;
+ 
+ 
+-#define DEBUG_PARSERS 0
+ 
+ namespace {
+     struct effect_parser_rules {

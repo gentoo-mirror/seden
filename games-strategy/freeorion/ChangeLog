@@ -2,6 +2,16 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*freeorion-9999-r8 (20 Apr 2012)
+
+  20 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +freeorion-9999-r8.ebuild,
+  -freeorion-9999-r7.ebuild:
+	gcc-4.6.2 crashes on EffectParser.cpp which preprocesses into a
+	275,320 lines sized file. Two includes that add a huge amount
+	of files are unnecessary and are patched away now, reducing the
+	size by over 80,000 lines. Now it can be compiled with gcc-4.6.2.
+
 *freeorion-9999-r7 (19 Apr 2012)
 
   19 Apr 2012; Sven Eden <sven.eden@gmx.de>
