@@ -139,6 +139,9 @@ src_compile() {
 		jam -q ${jamopts} staticplugins \
 		|| die "staticplugins compile failed (jam -q ${jamopts})"
 	fi
+
+	# No cs-config-2.0 script is ready, but contains some defects that are to be patched away:
+	epatch epatch "${FILESDIR}"/${MY_P}-cs-config.patch
 }
 
 src_install() {
@@ -168,7 +171,7 @@ src_install() {
 
 	echo "CRYSTAL_PLUGIN=/usr/$(get_libdir)/${MY_P}" > 90crystalspace
 	echo "CRYSTAL_CONFIG=/etc/${MY_P}" >> 90crystalspace
-  # "CRYSTAL" seems to be an env var that is now important, althoug it
+  # "CRYSTAL" seems to be an env var that is now important, although it
   # existed already in CS-1.4 and was never actually needed for CS to
   # work properly
 	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
@@ -177,12 +180,6 @@ src_install() {
 	# Applications that do not read CRYSTAL_CONFIG need vfs.cfg in $CRYSTAL:
 	dosym /etc/${MY_P}/vfs.cfg /usr/share/${MY_P}/vfs.cfg
 
-	# Applications that do not read CRYSTAL_PLUGIN need the libdir in CRYSTAL#
+	# Applications that do not read CRYSTAL_PLUGIN need the libdir in $CRYSTAL:
 	dosym /usr/$(get_libdir)/${MY_P} /usr/share/${MY_P}/libs
-
-	# Actually cs-config is too stupid to gather that the PREFIX is /usr and
-	# assumes it it /usr/share/crystalspace-2.0. We therefore need to link
-	# the location of the libcrystalspace*.so libaries to lib:
-	dosym /usr/$(get_libdir) /usr/share/${MY_P}/lib
-
 }

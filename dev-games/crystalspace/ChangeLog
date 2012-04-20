@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0_beta3-r3 (20 Apr 2012)
+
+  20 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0_beta3-r3.ebuild
+  -crystalspace-2.0_beta3-r2.ebuild
+  Instead of symlinking everything together, a new patch now fixes
+  the borked cs-config-2.0 script.
+
 *crystalspace-2.0_beta3-r2 (20 Apr 2012)
 
   20 Apr 2012; Sven Eden <sven.eden@gmx.de>
