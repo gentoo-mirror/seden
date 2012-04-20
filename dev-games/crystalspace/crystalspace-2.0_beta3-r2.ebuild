@@ -179,4 +179,10 @@ src_install() {
 
 	# Applications that do not read CRYSTAL_PLUGIN need the libdir in CRYSTAL#
 	dosym /usr/$(get_libdir)/${MY_P} /usr/share/${MY_P}/libs
+
+	# Actually cs-config is too stupid to gather that the PREFIX is /usr and
+	# assumes it it /usr/share/crystalspace-2.0. We therefore need to link
+	# the location of the libcrystalspace*.so libaries to lib:
+	dosym /usr/$(get_libdir) /usr/share/${MY_P}/lib
+
 }
