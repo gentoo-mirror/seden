@@ -1,0 +1,52 @@
+--- mk/autoconf/compiler.m4	2012-04-27 20:54:23.302884670 +0200
++++ mk/autoconf/compiler.m4	2012-04-27 21:05:29.549586201 +0200
+@@ -104,7 +104,6 @@
+     AC_REQUIRE([AC_CANONICAL_HOST])
+     AS_IF([test -n "$CC"],[
+ 	CS_EMIT_BUILD_PROPERTY([CMD.CC], [$CC])
+-	CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS], [$CPPFLAGS $CFLAGS], [+])
+ 	_CS_COMPILER_NAME([$CC], [C], [$ac_compiler_gnu])
+ 	AC_MSG_CHECKING([for C compiler version])
+ 	_CS_COMPILER_VERSION([$CC], [C])
+@@ -113,8 +112,9 @@
+ 	    [AC_MSG_RESULT([$_CS_COMPILER_VERSION_SH([C])])])
+ 	
+ 	# Check if compiler recognizes -pipe directive.
+-	CS_EMIT_BUILD_FLAGS([if $CC accepts -pipe], [cs_cv_prog_cc_pipe],
+-	    [CS_CREATE_TUPLE([-pipe])], [C], [COMPILER.CFLAGS], [append])
++	CS_CHECK_BUILD_FLAGS([if $CC accepts -pipe], [cs_cv_prog_cc_pipe],
++	    [CS_CREATE_TUPLE([-pipe])], [C],
++			[CS_APPEND_TRIMMED([cs_cflags], [cs_cv_prog_cc_pipe])])
+ 
+         # Check if compiler recognizes Sparc v9 CPU. Ugly to pollute
+         # project-agnostic C compiler check, but it is needed by assembly code
+@@ -122,10 +122,10 @@
+         # hurt if the option is not recognized.
+ 	case $host_cpu in
+ 	    sparc*)
+-		CS_EMIT_BUILD_FLAGS([if $CC handles Sparc v9],
++		CS_CHECK_BUILD_FLAGS([if $CC handles Sparc v9],
+             	    [cs_cv_prog_cc_sparc_v9],
+-            	    [CS_CREATE_TUPLE([-mcpu=v9])], [C], [COMPILER.CFLAGS],
+-		        [append])
++            	    [CS_CREATE_TUPLE([-mcpu=v9])], [C],
++            	    [CS_APPEND_TRIMMED([cs_cflags], [cs_cv_prog_cc_sparc_v9])])
+ 		;;
+ 	esac
+ 
+@@ -161,7 +161,6 @@
+     AC_REQUIRE([AC_PROG_CXX])
+     AS_IF([test -n "$CXX"],[
+ 	CS_EMIT_BUILD_PROPERTY([CMD.C++], [$CXX])
+-	CS_EMIT_BUILD_PROPERTY([COMPILER.C++FLAGS], [$CPPFLAGS $CXXFLAGS], [+])
+ 	_CS_COMPILER_NAME([$CXX], [C++], [$ac_compiler_gnu])
+ 	AC_MSG_CHECKING([for C++ compiler version])
+ 	_CS_COMPILER_VERSION([$CXX], [C++])
+@@ -273,7 +272,6 @@
+     CS_CHECK_TOOLS([LD], [ld])
+     CS_EMIT_BUILD_PROPERTY([CMD.LD], [$LD])
+     
+-    CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS], [$LDFLAGS], [+])
+ 
+     # Check if compiler/linker recognizes -shared directive which is needed for
+     # linking plugin modules.  Unfortunately, the Apple compiler (and possibly

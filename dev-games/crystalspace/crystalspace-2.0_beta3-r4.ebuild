@@ -17,8 +17,8 @@ RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
-IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg lcms +march-native mng ode \
-      +optimize perl png profile +python static-plugins speex truetype vorbis wxwidgets +X"
+IUSE="3ds alsa bullet cal3d cegui cg debug doc java jpeg lcms mng ode \
+      perl png +python static-plugins speex truetype vorbis wxwidgets +X"
 
 SLOT="0"
 
@@ -55,6 +55,45 @@ DEPEND="${COMMON_DEP}
 S=${WORKDIR}/${PN}-src-${MY_PV}${MY_BETA}
 
 src_prepare() {
+	# configure.ac forces /usr/local/lib (and /usr/local/include if present) upon
+	# users, which is a bad thing to do. Patch in a check to not do this if the
+	# --prefix, --libdir and/or --includedir options lead to default paths.
+	epatch "${FILESDIR}"/${MY_P}-remove_hardcoded_libpath.patch
+
+	# The maintainers enforce a mode of optimize, profile or debug upon users,
+	# enabling all sorts of C[XX]/LDFLAGS which might clash horribly with make.conf.
+	# Solution: Path a new mode "custom" in which is activated unless a user sets
+	#  the use flag "debug"
+	epatch "${FILESDIR}"/${MY_P}-add_custom_mode.patch
+	epatch "${FILESDIR}"/${MY_P}-add_custom_variant.patch
+
+	# Before the new custom mode can be put into action, two additional changes are
+	# needed:
+	# A) Add two functions to add only content to shell variables that is not present
+	#    yet (used on all tries to modify C[XX]/LFLAGS.*), and
+	# B) Change configure.ac to NOT dump Jam vars until everything is set.
+	# C) Change m4 functions to not dump Jam vars we save and use elsewhere.
+	# A:
+	epatch "${FILESDIR}"/${MY_P}-add_var_trimmer.patch
+	# B:
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_01.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_02.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_03.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_04.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_05.patch
+	# C:
+	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_compiler_funcs.patch
+
+	# data/[*/]Jamfile seem to miss some entries - not updated, yet?
+	epatch "${FILESDIR}"/${MY_P}-data_add_missing.patch
+	epatch "${FILESDIR}"/${MY_P}-data_sky_add_missing.patch
+	epatch "${FILESDIR}"/${MY_P}-maps_flarge_add_missing.patch
+
+	# vfs.cfg lists an old zip, that doesn't seem to exist any more
+	epatch "${FILESDIR}"/${MY_P}-fix_vfs_template.patch
+
+	# cs-config doesn't look into /usr/lib[32|64], yet, so patch it in:
+	epatch "${FILESDIR}"/${MY_P}-add_usr_lib_to_cs-config.patch
 
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target
@@ -76,44 +115,11 @@ src_configure() {
 		need-wxwidgets gtk2
 	fi
 
-	# As flags are managed by debug, optimize and profile USE flags,
-	# they need to be removed first. If we do not do this, the calling
-	# lines grow so large, that jam segfaults.
-	CFLAGS=""
-	CXXFLAGS=""
-	LDFLAGS=""
-	# This is quite contrary to the "gentoo way", but the configuration
-	# script runs in exactly one mode, optimize (default), profile or
-	# debug. All of these enable different CFLAGS and LDFLAGS. And to
-	# make this even more complicated, configure knows a bunch of arguments
-	# for a lot of LDFLAGS, too. I have not found a way to disable them
-	# all, ending up with a lot of redundant or even negating flag
-	# arrangements.
-
 	# debug profile and optimize are mutually exclusive
 	if use debug ; then
-		myconf="--enable-debug --disable-optimize --disable-profile"
-		if use optimize ; then
-			ewarn "debug version chosen, optimize USE flag ignored."
-		fi
-		if use profile ; then
-			ewarn "debug version chosen, profile USE flag ignored."
-		fi
-	elif use profile ; then
-		myconf="--disable-debug --disable-optimize --enable-profile"
-		if use optimize ; then
-			ewarn "profile version chosen, optimize USE flag ignored."
-		fi
-	elif use optimize ; then
-		myconf="--disable-debug --enable-optimize --disable-profile"
+		myconf="--enable-debug"
 	else
-		# optimize is the default anyway
-		myconf="--disable-debug --enable-optimize --disable-profile"
-	fi
-
-	# add -march=native configure flag if wanted
-	if use march-native ; then
-		myconf="${myconf} --enable-cpu-specific-optimizations=native"
+		myconf="--enable-custom"
 	fi
 
 	myconf="${myconf} --without-jackasyn \
@@ -139,9 +145,6 @@ src_compile() {
 		jam -q ${jamopts} staticplugins \
 		|| die "staticplugins compile failed (jam -q ${jamopts})"
 	fi
-
-	# No cs-config-2.0 script is ready, but contains some defects that are to be patched away:
-	epatch "${FILESDIR}"/${MY_P}-cs-config.patch
 }
 
 src_install() {
@@ -169,12 +172,9 @@ src_install() {
 	dodoc README docs/history*
 	PF=${oldPF}
 
+	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
 	echo "CRYSTAL_PLUGIN=/usr/$(get_libdir)/${MY_P}" > 90crystalspace
 	echo "CRYSTAL_CONFIG=/etc/${MY_P}" >> 90crystalspace
-  # "CRYSTAL" seems to be an env var that is now important, although it
-  # existed already in CS-1.4 and was never actually needed for CS to
-  # work properly
-	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
 	doenvd 90crystalspace
 
 	# Applications that do not read CRYSTAL_CONFIG need vfs.cfg in $CRYSTAL:

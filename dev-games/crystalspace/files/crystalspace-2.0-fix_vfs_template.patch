@@ -1,0 +1,20 @@
+--- plugins/filesys/vfs/vfs.cfg.template	2012-01-14 04:39:58.000000000 +0100
++++ plugins/filesys/vfs/vfs.cfg.template	2012-04-23 21:29:26.793294787 +0200
+@@ -42,7 +42,7 @@
+ VFS.Mount.lev/projectortest  = $(CS_MAPDIR)$/projectortest$/
+ VFS.Mount.lev/parallaxtest = $(CS_MAPDIR)$/parallaxtest$/
+ VFS.Mount.lev/stenciltest = $(CS_MAPDIR)$/stenciltest$/
+-VFS.Mount.lev/isomap   = $(CS_MAPDIR)$/isomap.zip, $(CS_MAPDIR)$/isomap$/
++VFS.Mount.lev/isomap   = $(CS_MAPDIR)$/isomap$/
+ VFS.Mount.lev/partsys  = $(CS_MAPDIR)$/partsys$/
+ VFS.Mount.lev/space    = $(CS_MAPDIR)$/space$/space.zip
+ VFS.Mount.lev/terrain  = $(CS_MAPDIR)$/terrain$/
+@@ -71,7 +71,7 @@
+ VFS.Mount.lib/sintel   = $(CS_DATADIR)$/sintel$/
+ VFS.Mount.lib/startme  = $(CS_DATADIR)$/startme.zip
+ VFS.Mount.lib/hairtest = $(CS_DATADIR)$/hairtest$/
+-VFS.Mount.lib/sky      = $(CS_MAPDIR)$/sky$/
++VFS.Mount.lib/sky      = $(CS_DATADIR)$/sky$/
+ 
+ ; General CEGUI data
+ VFS.Mount.cegui  			= $(CS_DATADIR)$/cegui$/

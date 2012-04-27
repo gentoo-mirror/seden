@@ -1,0 +1,78 @@
+--- ./scripts/cs-config/cs-config.temppost	2012-04-24 06:53:26.269812856 +0200
++++ ./scripts/cs-config/cs-config.temppost	2012-04-24 07:02:39.263175118 +0200
+@@ -4,36 +4,46 @@
+ lflags=""
+ 
+ for libname in lib${libcrystalspace}.so \
+-	       lib${libcrystalspace}.dylib \
+-	       lib${libcrystalspace}.a \
+-	       ; do
+-    if test -r "$prefix/Jamfile" && \
+-	test -r "$prefix/$makeout/libs/$libname"; then
+-	libdir="$prefix/$makeout/libs"
+-	lflags="-L$libdir"
+-    elif test -z "$libdir" && test -r "${exec_prefix}/lib/$libname"; then
+-	libdir="${exec_prefix}/lib"
+-	lflags="-L${exec_prefix}/lib"
+-    else
+-	my_IFS=$IFS; IFS=$PATH_SEPARATOR
+-	for p in $_CRYSTAL_ACTUAL
+-	  do
+-	  if test -r "$p/Jamfile" && \
+-	      test -r "$p/$makeout/libs/$libname"; then
+-	      libdir="$p/$makeout/libs"
+-	      lflags="-L$libdir"
+-	      break
+-	  elif test -z "$libdir" && test -r "${p}/lib/$libname"; then
+-	      libdir="${p}/lib"
+-	      lflags="-L$libdir"
+-	      break
+-	  fi
+-	done
+-	IFS=$my_IFS
+-    fi
+-    if test -n "$lflags" ; then
++               lib${libcrystalspace}.dylib \
++               lib${libcrystalspace}.a \
++               ; do
++  if test -r "$prefix/Jamfile" && \
++      test -r "$prefix/$makeout/libs/$libname"; then
++    libdir="$prefix/$makeout/libs"
++    lflags="-L$libdir"
++  elif test -z "$libdir" && \
++       test -r "${exec_prefix}/lib/$libname"; then
++    libdir="${exec_prefix}/lib"
++    lflags="-L${exec_prefix}/lib"
++  # Test default locations for cases where CS is installed using a package manager
++  elif test -z "$libdir"; then
++    for p in lib lib64 lib32 ; do
++      if test -r "/usr/${p}/$libname"; then
++        libdir="/usr/${p}"
++        lflags="-L$libdir"
+         break
+-    fi
++      fi
++    done
++  else
++    my_IFS=$IFS; IFS=$PATH_SEPARATOR
++    for p in $_CRYSTAL_ACTUAL ; do
++      if test -r "$p/Jamfile" && \
++         test -r "$p/$makeout/libs/$libname"; then
++        libdir="$p/$makeout/libs"
++        lflags="-L$libdir"
++        break
++      elif test -z "$libdir" && \
++           test -r "${p}/lib/$libname"; then
++        libdir="${p}/lib"
++        lflags="-L$libdir"
++        break
++      fi
++    done
++    IFS=$my_IFS
++  fi
++  if test -n "$lflags" ; then
++    break
++  fi
+ done
+ 
+ # Look for build tools such as relaytool

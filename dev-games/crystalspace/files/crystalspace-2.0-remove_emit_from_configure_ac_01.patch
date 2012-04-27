@@ -1,0 +1,249 @@
+--- configure.ac	2012-04-27 19:14:14.745903867 +0200
++++ configure.ac	2012-04-27 19:17:01.585912459 +0200
+@@ -134,6 +134,18 @@
+ 
+ 
+ #------------------------------------------------------------------------------
++# Save current CFLAGS, CXXFLAGS, CPPFLAGS and LDFLAGS for th custom mode
++#------------------------------------------------------------------------------
++CS_APPEND_TRIMMED([cs_cflags_custom], [$CPPFLAGS $CFLAGS])
++CS_APPEND_TRIMMED([cs_cxxflags_custom], [$CPPFLAGS $CXXFLAGS])
++CS_APPEND_TRIMMED([cs_ldflags_custom], [$LDFLAGS])
++CS_ERASE_VAR(CFLAGS)
++CS_ERASE_VAR(CPPFLAGS)
++CS_ERASE_VAR(CXXFLAGS)
++CS_ERASE_VAR(LDFLAGS)
++
++
++#------------------------------------------------------------------------------
+ # The cs-win32libs package is a convenience archive made available to Windows
+ # users of Crystal Space.  It contains common libraries, headers, and tools
+ # (such as zlib, libjpeg, cal3d, etc.) usable by MSVC, Mingw/MSYS, and Cygwin
+@@ -145,12 +157,11 @@
+ 
+ 
+ #------------------------------------------------------------------------------
+-# Use the CPPFLAGS, CXXFLAGS, CFLAGS, and LDFLAGS passed to configure, as well
+-# as any additional flags provided by cs-win32libs.
++# Use the CPPFLAGS, CXXFLAGS, CFLAGS, and LDFLAGS provided by cs-win32libs.
+ #------------------------------------------------------------------------------
+-CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS], [$CPPFLAGS $CFLAGS], [+])
+-CS_EMIT_BUILD_PROPERTY([COMPILER.C++FLAGS], [$CPPFLAGS $CXXFLAGS], [+])
+-CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS], [$LDFLAGS], [+])
++CS_APPEND_TRIMMED([cs_cflags], [$CPPFLAGS $CFLAGS])
++CS_APPEND_TRIMMED([cs_cxxflags], [$CPPFLAGS $CXXFLAGS])
++CS_APPEND_TRIMMED([cs_ldflags], [$LDFLAGS])
+ 
+ 
+ 
+@@ -175,7 +186,7 @@
+ 
+ #------------------------------------------------------------------------------
+ # Check for pthread.  Also check if pthread implementation supports the
+-# recursive mutex extension and `atfork' functionality.
++# recursive mutex extension and 'atfork' functionality.
+ #------------------------------------------------------------------------------
+ CS_CHECK_PTHREAD([cygwin*])
+ CS_EMIT_BUILD_RESULT([cs_cv_sys_pthread], [PTHREAD])
+@@ -201,10 +212,11 @@
+     [], [enable_static_baselibs=no])
+ AC_MSG_RESULT([$enable_static_baselibs])
+ AS_IF([test $enable_static_baselibs = yes],
+-    [CS_EMIT_BUILD_FLAGS([for -static-libgcc],
++    [CS_CHECK_BUILD_FLAGS([for -static-libgcc],
+         [cs_cv_prog_link_static_libgcc], [CS_CREATE_TUPLE([-static-libgcc])],
+-        [C], [COMPILER.LFLAGS], [+])
+-    libstdcxx=`$CXX -print-file-name=libstdc++.a`
++        [C],
++	[CS_APPEND_TRIMMED([cs_ldflags], [$cs_cv_prog_link_static_libgcc])])
++    libstdcxx='$CXX -print-file-name=libstdc++.a'
+     CS_EMIT_BUILD_FLAGS([for static libstdc++],
+         [cs_cv_prog_link_static_libstdcxx],
+         CS_CREATE_TUPLE([$libstdcxx]),
+@@ -375,8 +387,7 @@
+ # diagnostics from warning to error status.
+ #------------------------------------------------------------------------------
+ CS_COMPILER_WARNINGS([C++], [cs_cv_prog_cxx_enable_warnings],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS],
+-	[$cs_cv_prog_cxx_enable_warnings], [+])])
++    [CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cxx_enable_warnings])])
+ 
+ CS_COMPILER_ERRORS([C++], [cs_cv_prog_cxx_enable_errors])
+ 
+@@ -389,13 +400,12 @@
+ 	[$cs_cv_prog_cxx_ignore_uninitialized])])
+ 
+ CS_COMPILER_IGNORE_PRAGMAS([C++], [cs_cv_prog_cxx_ignore_unknown_pragmas],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS],
+-	[$cs_cv_prog_cxx_ignore_unknown_pragmas], [+])])
++        [CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cxx_ignore_unknown_pragmas])])
+ 
+-# On MacOS/X, use of `long double' in csutil/formatter.h causes complaints.
++# On MacOS/X, use of 'long double' in csutil/formatter.h causes complaints.
+ CS_COMPILER_IGNORE_LONG_DOUBLE([C++], [cs_cv_prog_cxx_ignore_long_double],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS.MANDATORY],
+-	[$cs_cv_prog_cxx_ignore_long_double], [+])])
++    [CS_APPEND_TRIMMED([cs_cflags_mandatory],
++      [$cs_cv_prog_cxx_ignore_long_double])])
+ 
+ CS_COMPILER_IGNORE_NON_VIRTUAL_DTOR([C++],
+     [cs_cv_prog_cxx_ignore_non_virtual_dtor],
+@@ -429,15 +439,14 @@
+ CS_EMIT_BUILD_FLAGS([how to disable C++ exceptions],
+     [cs_cv_prog_cxx_disable_exceptions], [CS_CREATE_TUPLE([-fno-exceptions])],
+     [C++], [COMPILER.C++FLAGS.EXCEPTIONS.DISABLE], [],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.C++FLAGS],
+-	[$cs_cv_prog_cxx_disable_exceptions], [+])])
++    [CS_APPEND_TRIMMED([cs_cppflags], [$cs_cv_prog_cxx_disable_exceptions])])
+ 
+ 
+ 
+ #------------------------------------------------------------------------------
+ # Check how to make compiler comply strongly with the official C++ language
+ # specification. Crystal Space itself can not abide 100% by the standard (for
+-# instance, we employ `long long', which is not part of the present
++# instance, we employ 'long long', which is not part of the present
+ # specification), however, some external projects do so (by using gcc's -ansi
+ # and -pedantic options, for instance). Because such projects may utilize
+ # Crystal Space, we must ensure that our public headers likewise comply with
+@@ -452,7 +461,7 @@
+ #------------------------------------------------------------------------------
+ # Check if the linker recognizes "-force_cpusubtype_ALL".  This is required on
+ # MacOS/X since the Crystal Space's PowerPC implementation of csQsqrt() uses
+-# the `frsqrte' instruction which is only valid when the -force_cpusubtype_ALL
++# the 'frsqrte' instruction which is only valid when the -force_cpusubtype_ALL
+ # flag is present.  This flag is marked "mandatory" because it is required even
+ # for external projects if they use csQsqrt().
+ #------------------------------------------------------------------------------
+@@ -462,8 +471,8 @@
+ 	[CS_CREATE_TUPLE([], [-force_cpusubtype_ALL])])])
+     
+ CS_CHECK_FORCE_CPUSUBTYPE_ALL
+-CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS.MANDATORY],
+-    [$cs_cv_prog_cxx_force_cpusubtype_all], [+])
++CS_APPEND_TRIMMED([cs_cflags_mandatory],
++    [$cs_cv_prog_cxx_force_cpusubtype_all])
+ 
+ 
+ 
+@@ -478,10 +487,11 @@
+     [AC_REQUIRE([AC_CANONICAL_HOST])
+     case $host_os in
+ 	darwin*)
+-	    CS_EMIT_BUILD_FLAGS([if -fno-common is needed],
++	    CS_CHECK_BUILD_FLAGS([if -fno-common is needed],
+ 		[cs_cv_prog_cxx_no_common],
+ 		[CS_CREATE_TUPLE([], [-fno-common])], [C++],
+-		[COMPILER.CFLAGS.MANDATORY], [+])
++		[CS_APPEND_TRIMMED([cs_cflags_mandatory],
++			[$cs_cv_prog_cxx_no_common])])
+ 	    ;;
+     esac])
+ 
+@@ -592,12 +602,12 @@
+ # Check how to declare symbol visibility.
+ #------------------------------------------------------------------------------
+ CS_VISIBILITY_FLAG_INLINES_HIDDEN(
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.C++FLAGS],
+-	[$cs_prog_cxx_visibility_inlines_hidden], [+])])
++    [CS_APPEND_TRIMMED([cs_cxxflags],
++	[$cs_prog_cxx_visibility_inlines_hidden])])
+ 
+ CS_VISIBILITY_FLAG_HIDDEN([C], [],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS], 
+-	[$cs_cv_prog_c_visibility_hidden], [+])])
++    [CS_APPEND_TRIMMED([cs_cflags], 
++	[$cs_cv_prog_c_visibility_hidden])])
+ 
+ CS_VISIBILITY_FLAG_DEFAULT([C], [],
+     [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS.VISIBILITY_DEFAULT], 
+@@ -647,14 +657,14 @@
+ AC_MSG_CHECKING([whether to use CPU-specific optimizations])
+ AC_ARG_ENABLE([cpu-specific-optimizations],
+     [AC_HELP_STRING([--enable-cpu-specific-optimizations=level],
+-	[enable CPU-specific optimizations; this option is ignored in `custom'
+-	build mode. Recognized levels are `no', `minimum' or `min', `maximum'
+-	or `max', `native' (default MINIMUM); the `minimum' option selects
++	[enable CPU-specific optimizations; this option is ignored in 'custom'
++	build mode. Recognized levels are 'no', 'minimum' or 'min', 'maximum'
++	or 'max', 'native' (default MINIMUM); the 'minimum' option selects
+ 	optimizations which are likely to be supported by reasonably modern
+ 	hardware, thus making the resulting	executables fairly portable; use
+-	the `maximum' option with caution since code for one processor will not
++	the 'maximum' option with caution since code for one processor will not
+ 	work with earlier processors	(for example, Intel 686-specific code will
+-	not work with a 586). The	`native' option select optimizations specific
++	not work with a 586). The	'native' option select optimizations specific
+ 	for the compiling machine	(thus giving a fairly unportable executable).])],
+     [case $enable_cpu_specific_optimizations in
+ 	yes|min) enable_cpu_specific_optimizations=minimum ;;
+@@ -665,7 +675,7 @@
+ 
+ case $enable_cpu_specific_optimizations in
+     no|minimum|maximum|native) ;;
+-    *) CS_MSG_ERROR([unrecognized option; use `no', `minimum', `maximum' or `native'])
++    *) CS_MSG_ERROR([unrecognized option; use 'no', 'minimum', 'maximum' or 'native'])
+        ;;
+ esac
+ AS_IF([test $enable_cpu_specific_optimizations != no -a "$cs_build_mode$" = !"custom"],
+@@ -709,8 +719,7 @@
+ 	CS_CHECK_CODE_GEN_FLAG([alpha], [-mieee])])
+ 
+     AS_IF([test "$cs_cv_prog_cxx_code_gen" != no],
+-	[CS_EMIT_BUILD_PROPERTY(
+-	    [COMPILER.CFLAGS], [$cs_cv_prog_cxx_code_gen], [+])])])
++	[CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cxx_code_gen])])])
+ 
+ 
+ 
+@@ -728,8 +737,7 @@
+         [append])], [],	[$cs_cv_prog_cxx_code_gen])
+ CS_CHECK_BUILD_FLAGS([for -mfpmath=sse flag], [cs_cv_prog_cc_mfpmath_sse],
+     [CS_CREATE_TUPLE([-mfpmath=sse])], [],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS], [$cs_cv_prog_cc_mfpmath_sse],
+-        [append])], [],
++    [CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cc_mfpmath_sse])], [],
+ 	[$cs_cv_prog_cxx_code_gen $cs_cv_prog_cxx_enable_errors])
+ 
+ AS_IF([test -n "$cs_cv_prog_cc_mmmx"],
+@@ -807,13 +815,13 @@
+     [test "$enableval" = "yes" && cs_build_mode=custom])
+ 
+ AC_ARG_ENABLE([mode], [AC_HELP_STRING([--enable-mode=mode],
+-    [set build mode; recognized modes are `optimize', `debug', `profile', `custom'
++    [set build mode; recognized modes are 'optimize', 'debug', 'profile', 'custom'
+ 	(default OPTIMIZE)])],
+     [case $enableval in
+ 	optimize|debug|profile|custom) cs_build_mode=$enableval ;;
+ 	*) CS_MSG_ERROR([m4_text_wrap(
+ 	    [unrecognized mode --enable-mode=$enableval;
+-	    use `optimize', `debug', `profile' or `custom'], [    ], [[]], [60])]) ;;
++	    use 'optimize', 'debug', 'profile' or 'custom'], [    ], [[]], [60])]) ;;
+     esac])
+ 
+ AC_MSG_CHECKING([build mode])
+@@ -837,7 +845,7 @@
+ AS_IF([test -z "$enable_separate_debug_info"], 
+     [AS_IF([test "$cs_build_mode$" = "profile" -o "$cs_build_mode$" = "custom"],
+ 	[enable_separate_debug_info=no],
+-	[AS_IF([test -z `uname | grep -i CYGWIN`],
++	[AS_IF([test -z 'uname | grep -i CYGWIN'],
+ 	    [enable_separate_debug_info=$cs_cv_binutils_2_17],
+ 	    [enable_separate_debug_info=$cs_cv_binutils_true_2_17])])])
+ AC_MSG_RESULT([$enable_separate_debug_info])
+@@ -904,12 +912,12 @@
+ 
+ 
+ AS_IF([test -n "$cs_cv_prog_cpp_local_include"],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.CFLAGS],
+-        [$cs_cv_prog_cpp_local_include], [+])
++    [CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cpp_local_include])
++		CS_APPEND_TRIMMED([cs_cxxflags], [$cs_cv_prog_cpp_local_include])
+     CPPFLAGS="$CPPFLAGS $cs_cv_prog_cpp_local_include"])
+ 
+ AS_IF([test -d $libdir],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS], [-L$libdir], [+])
++    [CS_APPEND_TRIMMED([cs_ldflags], [-L$libdir])
+     LDFLAGS="$LDFLAGS -L$libdir"
+     AS_IF([test "x$libdir" != "x/usr/lib" -a "x$libdir" != "x/usr/lib32" -a "x$libdir" != "x/usr/lib64"],
+         [LD_LIBRARY_PATH="$LD_LIBRARY_PATH$PATH_SEPARATOR$libdir"

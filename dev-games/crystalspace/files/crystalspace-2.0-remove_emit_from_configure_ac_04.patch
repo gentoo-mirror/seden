@@ -1,0 +1,81 @@
+--- configure.ac	2012-04-27 21:15:01.336282799 +0200
++++ configure.ac	2012-04-27 21:26:45.032986227 +0200
+@@ -552,8 +552,8 @@
+ #------------------------------------------------------------------------------
+ CS_CHECK_BUILD_FLAGS([how to export all dynamic symbols],
+     [cs_cv_prog_link_export_dynamic], [CS_CREATE_TUPLE([-Wl,-E])],
+-    [C++], [CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS.debug],
+-        [$cs_cv_prog_link_export_dynamic], [+])],
++    [C++], [CS_APPEND_TRIMMED([cs_ldflags_debug],
++        [$cs_cv_prog_link_export_dynamic])],
+     [], [], [$cs_cv_prog_link_enable_errors])
+ 
+ 
+@@ -760,24 +760,25 @@
+ 
+     cs_optimize_flags=''
+ 
+-    CS_EMIT_BUILD_FLAGS([how to enable optimizations],
++    CS_CHECK_BUILD_FLAGS([how to enable optimizations],
+ 	[cs_cv_prog_cxx_optimize],
+ 	[CS_CREATE_TUPLE([-O3]) CS_CREATE_TUPLE([-O2]) CS_CREATE_TUPLE([-O])],
+-	[C++], [COMPILER.CFLAGS.optimize], [+],
+-	[cs_optimize_flags="$cs_optimize_flags $cs_cv_prog_cxx_optimize"])
++	[C++], [CS_APPEND_TRIMMED([cs_cflags_optimize], [$cs_cv_prog_cxx_optimize])
++	cs_optimize_flags="$cs_optimize_flags $cs_cv_prog_cxx_optimize"])
+ 
+-    CS_EMIT_BUILD_FLAGS([if -fomit-frame-pointer is accepted],
++    CS_CHECK_BUILD_FLAGS([if -fomit-frame-pointer is accepted],
+ 	[cs_cv_prog_cxx_omit_frame_pointer],
+ 	[CS_CREATE_TUPLE([-fomit-frame-pointer])],
+-	[C++], [COMPILER.CFLAGS.optimize], [+],
+-	[cs_optimize_flags="$cs_optimize_flags \
++	[C++],
++	[CS_APPEND_TRIMMED([cs_cflags_optimize], [$cs_cv_prog_cxx_omit_frame_pointer])
++	cs_optimize_flags="$cs_optimize_flags \
+ 	    $cs_cv_prog_cxx_omit_frame_pointer"])
+ 
+     CS_EMIT_BUILD_FLAGS([if -ffast-math is accepted],
+ 	[cs_cv_prog_cxx_fast_math],
+ 	[CS_CREATE_TUPLE([-ffast-math])], [C++],
+-	[COMPILER.CFLAGS.optimize], [+],
+-	[cs_optimize_flags="$cs_optimize_flags $cs_cv_prog_cxx_fast_math"])])
++	[CS_APPEND_TRIMMED([cs_cflags_optimize], [$cs_cv_prog_cxx_fast_math])
++	cs_optimize_flags="$cs_optimize_flags $cs_cv_prog_cxx_fast_math"])])
+ 
+ CS_CHECK_OPTIMIZE_FLAGS
+ 
+@@ -853,12 +854,12 @@
+ CS_EMIT_BUILD_PROPERTY([LINK.DEBUG.INFO.SEPARATE],
+     [$enable_separate_debug_info])
+ 
+-CS_EMIT_BUILD_FLAGS([how to enable debug mode debugging symbols],
++CS_CHECK_BUILD_FLAGS([how to enable debug mode debugging symbols],
+     [cs_cv_prog_cxx_debug_symbols_extra],
+     [CS_CREATE_TUPLE([-g3]) CS_CREATE_TUPLE([-g2]) CS_CREATE_TUPLE([-g])],
+-    [C++], [COMPILER.CFLAGS.debug], [+],
+-    [CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS.debug],
+-	[$cs_cv_prog_cxx_debug_symbols_extra], [+])])
++    [C++],
++    [CS_APPEND_TRIMMED([cs_cflags_debug], [$cs_cv_prog_cxx_debug_symbols_extra])
++    CS_APPEND_TRIMMED([cs_ldflags_debug], [$cs_cv_prog_cxx_debug_symbols_extra])])
+ 	
+ AC_MSG_CHECKING([whether to enable debug information in optimize mode])
+ AC_ARG_ENABLE([optimize-mode-debug-info], 
+@@ -871,12 +872,12 @@
+     [enable_optimize_mode_debug_info=$enable_separate_debug_info])
+ AC_MSG_RESULT([$enable_optimize_mode_debug_info])
+ AS_IF([test "$enable_optimize_mode_debug_info" != "no" -a "$cs_build_mode$" != "custom"],
+-    [CS_EMIT_BUILD_FLAGS([how to enable optimize mode debugging symbols],
++    [CS_CHECK_BUILD_FLAGS([how to enable optimize mode debugging symbols],
+ 	[cs_cv_prog_cxx_debug_symbols_normal],
+ 	[CS_CREATE_TUPLE([-g2]) CS_CREATE_TUPLE([-g])],
+-	[C++], [COMPILER.CFLAGS.optimize], [+],
+-	[CS_EMIT_BUILD_PROPERTY([COMPILER.LFLAGS.optimize],
+-	    [$cs_cv_prog_cxx_debug_symbols_normal], [+])])])
++	[C++],
++	[CS_APPEND_TRIMMED([cs_cflags_optimize], [$cs_cv_prog_cxx_debug_symbols_normal])
++	CS_APPEND_TRIMMED([cs_cflags_optimize], [$cs_cv_prog_cxx_debug_symbols_normal])])])
+ 
+ 
+ 

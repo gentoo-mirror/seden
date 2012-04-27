@@ -1,0 +1,40 @@
+--- configure.ac	2012-04-27 20:52:34.876212336 +0200
++++ configure.ac	2012-04-27 21:10:11.002934257 +0200
+@@ -33,6 +33,18 @@
+ 
+ 
+ #------------------------------------------------------------------------------
++# Save current CFLAGS, CXXFLAGS, CPPFLAGS and LDFLAGS for the custom mode.
++#------------------------------------------------------------------------------
++CS_APPEND_TRIMMED([cs_cflags_custom], [$CPPFLAGS $CFLAGS])
++CS_APPEND_TRIMMED([cs_cxxflags_custom], [$CPPFLAGS $CXXFLAGS])
++CS_APPEND_TRIMMED([cs_ldflags_custom], [$LDFLAGS])
++CS_ERASE_VAR(CFLAGS)
++CS_ERASE_VAR(CPPFLAGS)
++CS_ERASE_VAR(CXXFLAGS)
++CS_ERASE_VAR(LDFLAGS)
++
++
++#------------------------------------------------------------------------------
+ # Check for compilers and linker.
+ #------------------------------------------------------------------------------
+ CS_CHECK_MNO_CYGWIN
+@@ -134,18 +146,6 @@
+ 
+ 
+ #------------------------------------------------------------------------------
+-# Save current CFLAGS, CXXFLAGS, CPPFLAGS and LDFLAGS for th custom mode
+-#------------------------------------------------------------------------------
+-CS_APPEND_TRIMMED([cs_cflags_custom], [$CPPFLAGS $CFLAGS])
+-CS_APPEND_TRIMMED([cs_cxxflags_custom], [$CPPFLAGS $CXXFLAGS])
+-CS_APPEND_TRIMMED([cs_ldflags_custom], [$LDFLAGS])
+-CS_ERASE_VAR(CFLAGS)
+-CS_ERASE_VAR(CPPFLAGS)
+-CS_ERASE_VAR(CXXFLAGS)
+-CS_ERASE_VAR(LDFLAGS)
+-
+-
+-#------------------------------------------------------------------------------
+ # The cs-win32libs package is a convenience archive made available to Windows
+ # users of Crystal Space.  It contains common libraries, headers, and tools
+ # (such as zlib, libjpeg, cal3d, etc.) usable by MSVC, Mingw/MSYS, and Cygwin
