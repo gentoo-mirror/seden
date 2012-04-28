@@ -58,14 +58,14 @@ src_prepare() {
 	# configure.ac forces /usr/local/lib (and /usr/local/include if present) upon
 	# users, which is a bad thing to do. Patch in a check to not do this if the
 	# --prefix, --libdir and/or --includedir options lead to default paths.
-	epatch "${FILESDIR}"/${MY_P}-remove_hardcoded_libpath.patch
+	epatch "${FILESDIR}"/${MY_P}-01-remove_hardcoded_libpath.patch
 
 	# The maintainers enforce a mode of optimize, profile or debug upon users,
 	# enabling all sorts of C[XX]/LDFLAGS which might clash horribly with make.conf.
 	# Solution: Path a new mode "custom" in which is activated unless a user sets
 	#  the use flag "debug"
-	epatch "${FILESDIR}"/${MY_P}-add_custom_mode.patch
-	epatch "${FILESDIR}"/${MY_P}-add_custom_variant.patch
+	epatch "${FILESDIR}"/${MY_P}-02-add_custom_mode.patch
+	epatch "${FILESDIR}"/${MY_P}-03-add_custom_variant.patch
 
 	# Before the new custom mode can be put into action, two additional changes are
 	# needed:
@@ -74,26 +74,26 @@ src_prepare() {
 	# B) Change configure.ac to NOT dump Jam vars until everything is set.
 	# C) Change m4 functions to not dump Jam vars we save and use elsewhere.
 	# A:
-	epatch "${FILESDIR}"/${MY_P}-add_var_trimmer.patch
+	epatch "${FILESDIR}"/${MY_P}-04-add_var_trimmer.patch
 	# B:
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_01.patch
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_02.patch
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_03.patch
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_04.patch
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_configure_ac_05.patch
+	epatch "${FILESDIR}"/${MY_P}-05-remove_emit_from_configure_ac_01.patch
+	epatch "${FILESDIR}"/${MY_P}-06-remove_emit_from_configure_ac_02.patch
+	epatch "${FILESDIR}"/${MY_P}-07-remove_emit_from_configure_ac_03.patch
+	epatch "${FILESDIR}"/${MY_P}-08-remove_emit_from_configure_ac_04.patch
+	epatch "${FILESDIR}"/${MY_P}-09-remove_emit_from_configure_ac_05.patch
 	# C:
-	epatch "${FILESDIR}"/${MY_P}-remove_emit_from_compiler_funcs.patch
+	epatch "${FILESDIR}"/${MY_P}-10-remove_emit_from_compiler_funcs.patch
 
 	# data/[*/]Jamfile seem to miss some entries - not updated, yet?
-	epatch "${FILESDIR}"/${MY_P}-data_add_missing.patch
-	epatch "${FILESDIR}"/${MY_P}-data_sky_add_missing.patch
-	epatch "${FILESDIR}"/${MY_P}-maps_flarge_add_missing.patch
+	epatch "${FILESDIR}"/${MY_P}-11-data_add_missing.patch
+	epatch "${FILESDIR}"/${MY_P}-12-data_sky_add_missing.patch
+	epatch "${FILESDIR}"/${MY_P}-13-maps_flarge_add_missing.patch
 
 	# vfs.cfg lists an old zip, that doesn't seem to exist any more
-	epatch "${FILESDIR}"/${MY_P}-fix_vfs_template.patch
+	epatch "${FILESDIR}"/${MY_P}-14-fix_vfs_template.patch
 
 	# cs-config doesn't look into /usr/lib[32|64], yet, so patch it in:
-	epatch "${FILESDIR}"/${MY_P}-add_usr_lib_to_cs-config.patch
+	epatch "${FILESDIR}"/${MY_P}-15-add_usr_lib_to_cs-config.patch
 
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target

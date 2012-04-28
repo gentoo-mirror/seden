@@ -16,7 +16,7 @@
 -	    [CS_CREATE_TUPLE([-pipe])], [C], [COMPILER.CFLAGS], [append])
 +	CS_CHECK_BUILD_FLAGS([if $CC accepts -pipe], [cs_cv_prog_cc_pipe],
 +	    [CS_CREATE_TUPLE([-pipe])], [C],
-+			[CS_APPEND_TRIMMED([cs_cflags], [cs_cv_prog_cc_pipe])])
++			[CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cc_pipe])])
  
          # Check if compiler recognizes Sparc v9 CPU. Ugly to pollute
          # project-agnostic C compiler check, but it is needed by assembly code
@@ -30,7 +30,7 @@
 -            	    [CS_CREATE_TUPLE([-mcpu=v9])], [C], [COMPILER.CFLAGS],
 -		        [append])
 +            	    [CS_CREATE_TUPLE([-mcpu=v9])], [C],
-+            	    [CS_APPEND_TRIMMED([cs_cflags], [cs_cv_prog_cc_sparc_v9])])
++            	    [CS_APPEND_TRIMMED([cs_cflags], [$cs_cv_prog_cc_sparc_v9])])
  		;;
  	esac
  

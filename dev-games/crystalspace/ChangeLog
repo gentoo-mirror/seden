@@ -2,6 +2,39 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0_beta3-r5 (28 Apr 2012)
+
+  28 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0_beta3-r5.ebuild,
+  -crystalspace-2.0_beta3-r4.ebuild,
+  +files/crystalspace-2.0-01-remove_hardcoded_libpath.patch,
+  +files/crystalspace-2.0-02-add_custom_mode.patch,
+  +files/crystalspace-2.0-03-add_custom_variant.patch,
+  +files/crystalspace-2.0-04-add_var_trimmer.patch,
+  +files/crystalspace-2.0-05-remove_emit_from_configure_ac_01.patch,
+  +files/crystalspace-2.0-06-remove_emit_from_configure_ac_02.patch,
+  +files/crystalspace-2.0-07-remove_emit_from_configure_ac_03.patch,
+  +files/crystalspace-2.0-08-remove_emit_from_configure_ac_04.patch,
+  +files/crystalspace-2.0-09-remove_emit_from_configure_ac_05.patch,
+  +files/crystalspace-2.0-10-remove_emit_from_compiler_funcs.patch,
+  +files/crystalspace-2.0-11-data_add_missing.patch,
+  +files/crystalspace-2.0-12-data_sky_add_missing.patch,
+  +files/crystalspace-2.0-13-maps_flarge_add_missing.patch,
+  +files/crystalspace-2.0-14-fix_vfs_template.patch,
+  +files/crystalspace-2.0-15-add_usr_lib_to_cs-config.patch:
+  New ebuild using 15 Patches to sort various issues with the build system out.
+  Removed old ebuild.
+
+*crystalspace-2.0_beta3-r4 (27 Apr 2012)
+
+  27 Apr 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0_beta3-r4.ebuild,
+  -crystalspace-2.0_beta3-r3.ebuild,
+  -crystalspace-2.1_pre9999-r1.ebuild,
+  -crystalspace-1.4.0-r2.ebuild:
+  Some minor fixes on the 2.0 ebuild, removed obsolete 1.4 ebuild and gave up
+  on the live part. Let's concentrate on the next stable release.
+
 *crystalspace-2.0_beta3-r3 (20 Apr 2012)
 
   20 Apr 2012; Sven Eden <sven.eden@gmx.de>
