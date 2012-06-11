@@ -1,0 +1,22 @@
+--- COLLADAStreamWriter/COLLADASWAnnotation.h  (revision 44412)
++++ COLLADAStreamWriter/COLLADASWAnnotation.h  (working copy)
+@@ -219,7 +219,7 @@
+         void add ( 
+             const String &name, 
+             const ValueType::ColladaType &type, 
+-            const T val ) const
++            const T val )
+         {
+             openAnnotation ( name );
+             openValuesElement ( type );
+--- COLLADAStreamWriter/COLLADASWParamTemplate.h       (revision 44412)
++++ COLLADAStreamWriter/COLLADASWParamTemplate.h       (working copy)
+@@ -93,7 +93,7 @@
+     private:
+ 
+         /** Returns the modifier as string. */
+-        String& getModifierString ( const Modifier& modifier )
++        const String& getModifierString ( const Modifier& modifier )
+         {
+             switch ( modifier )
+             {
