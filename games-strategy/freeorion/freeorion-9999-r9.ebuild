@@ -43,10 +43,6 @@ src_prepare() {
 	sed -i -e \
 		"s:svn_revision_number ???:svn_revision_number ${ESVN_WC_REVISION}:" \
 		FreeOrion/CMakeLists.txt || die "sed FreeOrion/CMakeLists.txt failed"
-
-	# gcc-4.6.2 crashes with an internal segfault on EffectParser.cpp
-	# Solution: remove those includes, that are way too much.
-	epatch "${FILESDIR}/remove_cruft_EffectParser.cpp.patch"
 }
 
 src_configure() {
