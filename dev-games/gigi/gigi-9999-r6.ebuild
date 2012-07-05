@@ -61,8 +61,16 @@ src_prepare() {
 	# remove libtool
 	cd "${CMAKE_USE_DIR}"
 	rm -rf libltdl/ || die "Removing libltdl directory failed"
+
 	# remove cmake calls to libtool
 	epatch "${FILESDIR}/unbundle-ltdl.patch"
+
+	# fix adobe cmath test, gcc-4.7.1 has the demanded C99 cmath
+	epatch "${FILESDIR}/fix_adobe_cmath_gcc_test.patch"
+
+	# fix adobe vector, gcc-4.7+ no longer accepts fishy references
+	epatch "${FILESDIR}/fix_adobe_vector.patch"
+
 	# use system headers
 	sed -i \
 		-e "s:GG/ltdl.h:ltdl.h:" \

@@ -1,0 +1,11 @@
+--- GG/GG/adobe/vector.hpp	2012-07-04 19:04:56.000000000 +0200
++++ GG/GG/adobe/vector.hpp	2012-07-05 08:35:31.826303690 +0200
+@@ -454,7 +454,7 @@
+         
+         if (n < after) {
+             move_append(last - n, last);
+-            move_backward(p, last - n, last);
++            adobe::move_backward(p, last - n, last);
+             std::fill_n(p, n, x);
+         } else {
+             std::uninitialized_fill_n(last, n - after, x);
