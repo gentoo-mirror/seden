@@ -7,12 +7,11 @@ EAPI=4
 inherit autotools eutils flag-o-matic multilib java-pkg-opt-2 wxwidgets versionator
 
 MY_PV=$(get_version_component_range 1-2)
-MY_BETA="beta3"
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="Portable 3D Game Development Kit written in C++"
 HOMEPAGE="http://www.crystalspace3d.org/"
-SRC_URI="http://www.crystalspace3d.org/downloads/release/${PN}-src-${MY_PV}${MY_BETA}.tar.bz2"
+SRC_URI="http://www.crystalspace3d.org/downloads/release/${PN}-src-${MY_PV}.tar.bz2"
 RESTRICT="mirror"
 
 LICENSE="LGPL-2.1"
@@ -52,7 +51,7 @@ DEPEND="${COMMON_DEP}
 	dev-util/pkgconfig
   dev-util/ftjam"
 
-S=${WORKDIR}/${PN}-src-${MY_PV}${MY_BETA}
+S=${WORKDIR}/${PN}-src-${MY_PV}
 
 src_prepare() {
 	# configure.ac forces /usr/local/lib (and /usr/local/include if present) upon
@@ -83,17 +82,6 @@ src_prepare() {
 	epatch "${FILESDIR}"/${MY_P}-09-remove_emit_from_configure_ac_05.patch
 	# C:
 	epatch "${FILESDIR}"/${MY_P}-10-remove_emit_from_compiler_funcs.patch
-
-	# data/[*/]Jamfile seem to miss some entries - not updated, yet?
-	epatch "${FILESDIR}"/${MY_P}-11-data_add_missing.patch
-	epatch "${FILESDIR}"/${MY_P}-12-data_sky_add_missing.patch
-	epatch "${FILESDIR}"/${MY_P}-13-maps_flarge_add_missing.patch
-
-	# vfs.cfg lists an old zip, that doesn't seem to exist any more
-	epatch "${FILESDIR}"/${MY_P}-14-fix_vfs_template.patch
-
-	# cs-config doesn't look into /usr/lib[32|64], yet, so patch it in:
-	epatch "${FILESDIR}"/${MY_P}-15-add_usr_lib_to_cs-config.patch
 
 	# The new ode version no longer has the StepFast API, so patch this
 	# code (experimental anyway) out:

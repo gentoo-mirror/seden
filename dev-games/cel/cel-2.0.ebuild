@@ -1,17 +1,18 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
+EAPI=4
 
-inherit autotools eutils subversion versionator
+inherit autotools eutils versionator
 
 MY_PV=$(get_version_component_range 1-2)
 MY_P=${PN}-${MY_PV}
 
 DESCRIPTION="A game entity layer based on Crystal Space"
 HOMEPAGE="http://www.crystalspace3d.org/"
-ESVN_REPO_URI="https://cel.svn.sourceforge.net/svnroot/cel/cel/trunk"
+SRC_URI="http://www.crystalspace3d.org/downloads/release/${PN}-src-${MY_PV}.tar.bz2"
+RESTRICT="mirror"
 
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -25,7 +26,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/ftjam"
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${PN}-src-${MY_PV}
 
 src_prepare() {
 	# InstallDoc conflicts with dodoc
@@ -60,7 +61,7 @@ src_install() {
 	lighter2 --simpletui "${D}"/usr/share/${MY_P}/data
 	rm "${D}"/usr/share/${MY_P}/data/world
 
-	# As the target install_doc uses crystalspace-1.9 as target, but dodoc
+	# As the target install_doc uses cel-2.0 as target, but dodoc
 	# uses ${PF}, this said var has to be manipulated first.
 	local oldPF=${PF}
 	PF=${MY_P}

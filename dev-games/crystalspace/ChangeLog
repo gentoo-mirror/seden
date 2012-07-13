@@ -2,6 +2,20 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0 (13 Jul 2012)
+
+  13 Jul 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0.ebuild,
+  -crystalspace-2.0_beta3-r5.ebuild,
+  -files/crystalspace-2.0-11-data_add_missing.patch,
+  -files/crystalspace-2.0-12-data_sky_add_missing.patch,
+  -files/crystalspace-2.0-13-maps_flarge_add_missing.patch,
+  -files/crystalspace-2.0-14-fix_vfs_template.patch,
+  -files/crystalspace-2.0-15-add_usr_lib_to_cs-config.patch:
+	Version bump to latest stable.
+	Removed old ebuild and accepted patches.
+
+
 *crystalspace-2.0_beta3-r6 (13 Jul 2012)
 
   13 Jul 2012; Sven Eden <sven.eden@gmx.de>
