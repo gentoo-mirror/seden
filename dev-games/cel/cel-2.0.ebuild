@@ -33,6 +33,14 @@ src_prepare() {
 	sed -i -e "/^InstallDoc/d" docs/Jamfile \
 		|| die "sed on docs/Jamfile failed"
 
+	# remove old references to StepFast, an experimental system in ode <0.12
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_01.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_02.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_03.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_04.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_05.patch
+	epatch "${FILESDIR}"/${MY_P}-remove_ode_stepfast_06.patch
+
 	AT_M4DIR=mk/autoconf
 	eautoreconf
 }

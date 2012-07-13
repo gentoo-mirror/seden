@@ -6,8 +6,15 @@
 *cel-2.0 (13 Jul 2012)
 
 	13 Jul 2012; Sven Eden <sven.eden@gmx.de>
-	+cel-2.0.ebuild, -cel-1.4.0.ebuild, -cel-2.1_pre9999-r1.ebuild:
-	Version bump to Crystal Space 2.0, removed obsolete ebuilds.
+	+cel-2.0.ebuild, -cel-1.4.0.ebuild, -cel-2.1_pre9999-r1.ebuild,
+  +cel-2.0-remove_ode_stepfast_01.patch
+  +cel-2.0-remove_ode_stepfast_02.patch
+  +cel-2.0-remove_ode_stepfast_03.patch
+  +cel-2.0-remove_ode_stepfast_04.patch
+  +cel-2.0-remove_ode_stepfast_05.patch
+  +cel-2.0-remove_ode_stepfast_06.patch
+	Version bump to Crystal Space 2.0, removed obsolete ebuilds,
+	added patches to remove obsolete ode StepFast API.
 
 *cel-2.0_beta3 (16 Feb 2012)
 

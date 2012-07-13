@@ -1,0 +1,20 @@
+--- plugins/propclass/mechanics/mechanics.h~	2012-07-02 12:55:27.000000000 +0200
++++ plugins/propclass/mechanics/mechanics.h	2012-07-13 16:49:11.611734439 +0200
+@@ -80,8 +80,6 @@
+     action_setsystem = 0,
+     action_setgravity,
+     action_quickstep,
+-    action_enablestepfast,
+-    action_disablestepfast,
+     action_setsteptime,
+     action_setsimulationspeed
+   };
+@@ -150,8 +148,6 @@
+   virtual iJoint* CreateJoint (iRigidBody* body1, iRigidBody* body2);
+   virtual void RemoveJoint (iJoint* joint);
+ 
+-  virtual void DisableStepFast ();
+-  virtual void EnableStepFast ();
+   virtual void EnableQuickStep ();
+ 
+   virtual csPtr<iCelDataBuffer> Save ();
