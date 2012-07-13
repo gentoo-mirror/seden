@@ -2,6 +2,27 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0_beta3-r6 (13 Jul 2012)
+
+  13 Jul 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0_beta3-r6.ebuild,
+  -crystalspace-2.0_beta3-r5.ebuild,
+	+files/crystalspace-2.0-fix_ode_update_02.patch
+	+files/crystalspace-2.0-fix_ode_update_03.patch
+	+files/crystalspace-2.0-fix_ode_update_04.patch
+	+files/crystalspace-2.0-fix_ode_update_05.patch
+	+files/crystalspace-2.0-fix_ode_update_06.patch
+	+files/crystalspace-2.0-fix_ode_update_07.patch
+	+files/crystalspace-2.0-fix_ode_update_08.patch
+	+files/crystalspace-2.0-fix_ode_update_09.patch
+	+files/crystalspace-2.0-fix_ode_update_10.patch
+	+files/crystalspace-2.0-fix_ode_update_11.patch
+	+files/crystalspace-2.0-fix_ode_update_12.patch
+	+files/crystalspace-2.0-fix_ode_update_13.patch
+	New ebuild using 13 patches for the new stable ode-0.12 engine.
+	Removed old ebuild.
+
+
 *crystalspace-2.0_beta3-r5 (28 Apr 2012)
 
   28 Apr 2012; Sven Eden <sven.eden@gmx.de>

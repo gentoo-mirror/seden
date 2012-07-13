@@ -27,7 +27,7 @@ COMMON_DEP="virtual/opengl
 	x11-libs/libXt
 	x11-libs/libXxf86vm
 	cg? ( media-gfx/nvidia-cg-toolkit )
-	ode? ( dev-games/ode )
+	ode? ( >=dev-games/ode-0.12 )
 	cal3d? ( >=media-libs/cal3d-0.11 )
 	jpeg? ( media-libs/jpeg )
 	bullet? ( sci-physics/bullet )
@@ -94,6 +94,22 @@ src_prepare() {
 
 	# cs-config doesn't look into /usr/lib[32|64], yet, so patch it in:
 	epatch "${FILESDIR}"/${MY_P}-15-add_usr_lib_to_cs-config.patch
+
+	# The new ode version no longer has the StepFast API, so patch this
+	# code (experimental anyway) out:
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_01.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_02.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_03.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_04.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_05.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_06.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_07.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_08.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_09.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_10.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_11.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_12.patch
+	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_13.patch
 
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target

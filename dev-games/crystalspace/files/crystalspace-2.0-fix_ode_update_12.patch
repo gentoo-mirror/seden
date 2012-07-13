@@ -1,0 +1,24 @@
+--- plugins/cscript/pyivaria/cs_ivaria.cpp	2012-07-13 10:09:06.000000000 +0200
++++ plugins/cscript/pyivaria/cs_ivaria.cpp	2012-07-13 10:10:54.418053299 +0200
+@@ -40980,10 +40980,6 @@
+ 	 { (char *)"iODEDynamicState_GlobalERP", _wrap_iODEDynamicState_GlobalERP, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicState_SetGlobalCFM", _wrap_iODEDynamicState_SetGlobalCFM, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicState_GlobalCFM", _wrap_iODEDynamicState_GlobalCFM, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicState_EnableStepFast", _wrap_iODEDynamicState_EnableStepFast, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicState_StepFastEnabled", _wrap_iODEDynamicState_StepFastEnabled, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicState_SetStepFastIterations", _wrap_iODEDynamicState_SetStepFastIterations, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicState_StepFastIterations", _wrap_iODEDynamicState_StepFastIterations, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicState_EnableQuickStep", _wrap_iODEDynamicState_EnableQuickStep, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicState_QuickStepEnabled", _wrap_iODEDynamicState_QuickStepEnabled, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicState_SetQuickStepIterations", _wrap_iODEDynamicState_SetQuickStepIterations, METH_VARARGS, NULL},
+@@ -41007,10 +41003,6 @@
+ 	 { (char *)"iODEDynamicSystemState_ERP", _wrap_iODEDynamicSystemState_ERP, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicSystemState_SetCFM", _wrap_iODEDynamicSystemState_SetCFM, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicSystemState_CFM", _wrap_iODEDynamicSystemState_CFM, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicSystemState_EnableStepFast", _wrap_iODEDynamicSystemState_EnableStepFast, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicSystemState_StepFastEnabled", _wrap_iODEDynamicSystemState_StepFastEnabled, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicSystemState_SetStepFastIterations", _wrap_iODEDynamicSystemState_SetStepFastIterations, METH_VARARGS, NULL},
+-	 { (char *)"iODEDynamicSystemState_StepFastIterations", _wrap_iODEDynamicSystemState_StepFastIterations, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicSystemState_EnableQuickStep", _wrap_iODEDynamicSystemState_EnableQuickStep, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicSystemState_QuickStepEnabled", _wrap_iODEDynamicSystemState_QuickStepEnabled, METH_VARARGS, NULL},
+ 	 { (char *)"iODEDynamicSystemState_SetQuickStepIterations", _wrap_iODEDynamicSystemState_SetQuickStepIterations, METH_VARARGS, NULL},

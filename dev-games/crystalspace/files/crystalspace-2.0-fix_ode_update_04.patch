@@ -1,0 +1,42 @@
+--- plugins/physics/odedynam/odedynam.h	2012-01-14 04:39:50.000000000 +0100
++++ plugins/physics/odedynam/odedynam.h	2012-07-13 09:54:04.331333777 +0200
+@@ -142,7 +142,6 @@
+ 
+   csRefArray<iDynamicsStepCallback> step_callbacks;
+ 
+-  bool stepfast;
+   int sfiter;
+   bool quickstep;
+   int qsiter;
+@@ -189,10 +188,6 @@
+   void SetGlobalCFM (float cfm);
+   float GlobalCFM () { return cfm; }
+ 
+-  void EnableStepFast (bool enable);
+-  bool StepFastEnabled () { return stepfast; }
+-  void SetStepFastIterations (int iter);
+-  int StepFastIterations () { return sfiter; }
+   void EnableQuickStep (bool enable);
+   bool QuickStepEnabled () { return quickstep; };
+   void SetQuickStepIterations (int iter);
+@@ -275,7 +270,6 @@
+   float total_elapsed;
+   csRefArrayObject<iODEFrameUpdateCallback> updates;
+ 
+-  bool stepfast;
+   int sfiter;
+   bool quickstep;
+   int qsiter;
+@@ -291,11 +285,7 @@
+   float ERP () { return dWorldGetERP (worldID); }
+   void SetCFM (float cfm) { dWorldSetCFM (worldID, cfm); }
+   float CFM () { return dWorldGetCFM (worldID); }
+-  void EnableStepFast (bool enable) { stepfast = enable; quickstep = false; };
+-  bool StepFastEnabled () { return stepfast; }
+-  void SetStepFastIterations (int iter) { sfiter = iter; }
+-  int StepFastIterations () { return sfiter; }
+-  void EnableQuickStep (bool enable) { quickstep = enable; stepfast = false; };
++  void EnableQuickStep (bool enable) { quickstep = enable; };
+   bool QuickStepEnabled () { return quickstep; };
+   void SetQuickStepIterations (int iter) { qsiter = iter; };
+   int QuickStepIterations () { return qsiter; }

@@ -1,0 +1,11 @@
+--- plugins/physics/loader/physldr.cpp	2012-01-14 04:39:50.000000000 +0100
++++ plugins/physics/loader/physldr.cpp	2012-07-13 09:52:14.424661375 +0200
+@@ -341,7 +341,7 @@
+ 		osys->EnableStepFast(false);
+ 		break;
+ 	    case XMLTOKEN_STEPFAST:
+-		osys->EnableStepFast(true);
++		osys->EnableQuickStep(true);
+ 		break;
+ 	    case XMLTOKEN_QUICKSTEP:
+ 		osys->EnableQuickStep(true);
