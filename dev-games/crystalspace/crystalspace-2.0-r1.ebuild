@@ -54,35 +54,6 @@ DEPEND="${COMMON_DEP}
 S=${WORKDIR}/${PN}-src-${MY_PV}
 
 src_prepare() {
-	# configure.ac forces /usr/local/lib (and /usr/local/include if present) upon
-	# users, which is a bad thing to do. Patch in a check to not do this if the
-	# --prefix, --libdir and/or --includedir options lead to default paths.
-	epatch "${FILESDIR}"/${MY_P}-01-remove_hardcoded_libpath.patch
-
-	# The maintainers enforce a mode of optimize, profile or debug upon users,
-	# enabling all sorts of C[XX]/LDFLAGS which might clash horribly with make.conf.
-	# Solution: Path a new mode "custom" in which is activated unless a user sets
-	#  the use flag "debug"
-	epatch "${FILESDIR}"/${MY_P}-02-add_custom_mode.patch
-	epatch "${FILESDIR}"/${MY_P}-03-add_custom_variant.patch
-
-	# Before the new custom mode can be put into action, two additional changes are
-	# needed:
-	# A) Add two functions to add only content to shell variables that is not present
-	#    yet (used on all tries to modify C[XX]/LFLAGS.*), and
-	# B) Change configure.ac to NOT dump Jam vars until everything is set.
-	# C) Change m4 functions to not dump Jam vars we save and use elsewhere.
-	# A:
-	epatch "${FILESDIR}"/${MY_P}-04-add_var_trimmer.patch
-	# B:
-	epatch "${FILESDIR}"/${MY_P}-05-remove_emit_from_configure_ac_01.patch
-	epatch "${FILESDIR}"/${MY_P}-06-remove_emit_from_configure_ac_02.patch
-	epatch "${FILESDIR}"/${MY_P}-07-remove_emit_from_configure_ac_03.patch
-	epatch "${FILESDIR}"/${MY_P}-08-remove_emit_from_configure_ac_04.patch
-	epatch "${FILESDIR}"/${MY_P}-09-remove_emit_from_configure_ac_05.patch
-	# C:
-	epatch "${FILESDIR}"/${MY_P}-10-remove_emit_from_compiler_funcs.patch
-
 	# The new ode version no longer has the StepFast API, so patch this
 	# code (experimental anyway) out:
 	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_01.patch
@@ -123,10 +94,10 @@ src_configure() {
 	if use debug ; then
 		myconf="--enable-debug"
 	else
-		myconf="--enable-custom"
+		myconf="--enable-optimize --enable-cpu-specific-optimizations=native"
 	fi
 
-	myconf="${myconf} --without-jackasyn \
+	myconf="${myconf} --without-jackasyn --disable-make-emulation \
 		$(use_with truetype freetype2) \
 		$(use_with wxwidgets wx) \
 		$(use_with wxwidgets GTK) \
@@ -176,8 +147,8 @@ src_install() {
 	dodoc README docs/history*
 	PF=${oldPF}
 
-	echo "CRYSTAL=/usr/share/${MY_P}" >> 90crystalspace
-	echo "CRYSTAL_PLUGIN=/usr/$(get_libdir)/${MY_P}" > 90crystalspace
+	echo "CRYSTAL=/usr/share/${MY_P}" > 90crystalspace
+	echo "CRYSTAL_PLUGIN=/usr/$(get_libdir)/${MY_P}" >> 90crystalspace
 	echo "CRYSTAL_CONFIG=/etc/${MY_P}" >> 90crystalspace
 	doenvd 90crystalspace
 
