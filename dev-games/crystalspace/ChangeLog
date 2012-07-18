@@ -2,6 +2,19 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0-r2 (19 Jul 2012)
+
+  19 Jul 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0-r2.ebuild,
+  -crystalspace-2.0-r1.ebuild,
+  +files/crystalspace-2.0-fix_unqualified_calls_01.patch,
+  +files/crystalspace-2.0-fix_unqualified_calls_02.patch,
+  +files/crystalspace-2.0-fix_unqualified_calls_03.patch,
+  +files/crystalspace-2.0-fix_unqualified_calls_04.patch,
+  +files/crystalspace-2.0-fix_unqualified_calls_05.patch:
+  Eventually found time to fix unqualified calls to class methods
+  that require -fpermissive flag with gcc-4.7+.
+
 *crystalspace-2.0-r1 (18 Jul 2012)
 
   18 Jul 2012; Sven Eden <sven.eden@gmx.de>

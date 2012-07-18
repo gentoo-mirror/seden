@@ -70,6 +70,15 @@ src_prepare() {
 	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_12.patch
 	epatch "${FILESDIR}"/${MY_P}-fix_ode_update_13.patch
 
+	# Some calls to class methods are unqualified from their
+	# scope. gcc-4.7+ would need -fpermissive flag to allow
+	# this, so repair the calls:
+	epatch "${FILESDIR}"/-fix_unqualified_calls_01.patch
+	epatch "${FILESDIR}"/-fix_unqualified_calls_02.patch
+	epatch "${FILESDIR}"/-fix_unqualified_calls_03.patch
+	epatch "${FILESDIR}"/-fix_unqualified_calls_04.patch
+	epatch "${FILESDIR}"/-fix_unqualified_calls_05.patch
+
 	# Installing doc conflict with dodoc on src_install
 	# Removing conflicting target
 	sed -i \
