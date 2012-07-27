@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*crystalspace-2.0-r3 (27 Jul 2012)
+
+  27 Jul 2012; Sven Eden <sven.eden@gmx.de>
+  +crystalspace-2.0-r3.ebuild,
+  -crystalspace-2.0-r2.ebuild:
+  Fixed a type that caused patches to be invisible aborting prepare
+  stage.
+
 *crystalspace-2.0-r2 (19 Jul 2012)
 
   19 Jul 2012; Sven Eden <sven.eden@gmx.de>
