@@ -1,8 +1,0 @@
-# ChangeLog for media-libs/leptonica
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*leptonica-1.67 (27 Mar 2011)
-
-  27 Mar 2011; Sven Eden <sven.eden@gmx.de> +leptonica-1.67.ebuild : Initial
-  commit of the ebuild.
