@@ -5,7 +5,7 @@
 EAPI="3"
 inherit eutils
 
-MY_REV="2016"
+MY_REV="2042"
 MY_PN="davmail"
 MY_P="${MY_PN}-linux-x86"
 SRC_URI="x86? (
