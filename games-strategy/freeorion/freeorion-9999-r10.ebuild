@@ -8,7 +8,7 @@ inherit  cmake-utils games subversion
 
 DESCRIPTION="FreeOrion is a free and open source clone of Master Of Orion"
 HOMEPAGE="http://www.freeorion.org"
-ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
+ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}"
 ESVN_PROJECT="${PN}"
 
 LICENSE="GPL-2 CCPL-Attribution-ShareAlike-3.0"
