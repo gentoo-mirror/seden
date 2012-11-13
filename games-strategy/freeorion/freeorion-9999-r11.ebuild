@@ -19,20 +19,21 @@ SLOT="0"
 
 RDEPEND="
 	dev-games/gigi[ogre,threads=]
-	>=dev-games/ogre-1.7.4[threads=]
+	>=dev-games/ogre-1.8.0[threads=]
 	<dev-lang/python-3
-	>=dev-libs/boost-1.47
+	>=dev-libs/boost-1.50
 	media-gfx/graphviz
-	media-libs/freealut
-	>=media-libs/libogg-1.1.3
-	>=media-libs/libsdl-1.2
-	>=media-libs/libvorbis-1.1.2
-	media-libs/openal
-	sci-physics/bullet
-	sys-devel/libtool
-	sys-libs/zlib"
+	>=media-libs/freealut-1.1.0
+	>=media-libs/libogg-1.3.0
+	>=media-libs/libvorbis-1.3.2
+	>=media-libs/openal-1.14
+	>=sci-physics/bullet-2.77
+	media-libs/libpng:1.2
+	media-libs/freetype:2
+	>=sys-libs/zlib-1.2.5"
 
 DEPEND="${RDEPEND}
+	sys-devel/libtool
 	dev-util/pkgconfig"
 
 CMAKE_USE_DIR="${S}/FreeOrion"
