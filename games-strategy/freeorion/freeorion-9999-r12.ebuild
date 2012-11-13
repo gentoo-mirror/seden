@@ -18,7 +18,7 @@ IUSE="cg debug threads"
 SLOT="0"
 
 RDEPEND="
-	dev-games/gigi[ogre,threads=]
+	!dev-games/gigi
 	>=dev-games/ogre-1.8.0[threads=]
 	<dev-lang/python-3
 	>=dev-libs/boost-1.50
