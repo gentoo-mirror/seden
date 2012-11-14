@@ -51,10 +51,6 @@ src_prepare() {
 		"s:svn_revision_number ???:svn_revision_number ${ESVN_WC_REVISION}:" \
 		CMakeLists.txt || die "sed FreeOrion/CMakeLists.txt failed"
 
-	# remove GiGi, use dev-games/gigi-fo instead
-	cd "${CMAKE_USE_DIR}"
-	rm -rf GG || die "Removing GG directory failed"
-
 	# remove cmake calls to GG
 	epatch "${FILESDIR}/unbundle_gigi.patch"
 
@@ -75,12 +71,9 @@ src_configure() {
 	# and this thing is full of those
 	append-flags -fno-strict-aliasing
 
-	local mycmakeargs+=(
+	local mycmakeargs=(
 		$(cmake-utils_use_enable debug DEBUG)
 		$(cmake-utils_use_build debug DEBUG)
-	)
-
-	mycmakeargs+=(
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}/${PN}"
 		"-DCMAKE_INSTALL_ICONDIR=${GAMES_DATADIR_BASE}/pixmaps/"
 		"-DCMAKE_INSTALL_DESKTOPDIR=${GAMES_DATADIR_BASE}/applications/"

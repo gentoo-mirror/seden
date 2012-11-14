@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*freeorion-9999-r14 (14 Nov 2012)
+
+  14 Nov 2012; Sven Eden <sven.eden@gmx.de>
+  +freeorion-9999-r14.ebuild,
+  -freeorion-9999-r13.ebuild:
+  Fixed some issues with freeOrion using cmake macros from GG.
+
+
 *freeorion-9999-r13 (14 Nov 2012)
 
   14 Nov 2012; Sven Eden <sven.eden@gmx.de>

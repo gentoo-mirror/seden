@@ -1,5 +1,5 @@
---- CMakeLists.txt~	2012-11-14 09:53:20.000000000 +0100
-+++ CMakeLists.txt	2012-11-14 10:07:07.823249858 +0100
+--- CMakeLists.txt~	2012-11-14 11:10:38.000000000 +0100
++++ CMakeLists.txt	2012-11-14 11:11:23.786785847 +0100
 @@ -120,7 +120,7 @@
  ########################################
  # Build common code library            #
@@ -9,7 +9,7 @@
  
  add_definitions(-DADOBE_STD_SERIALIZATION)
  
-@@ -196,30 +196,13 @@
+@@ -196,30 +196,11 @@
      util/binreloc.c
      util/Directories.cpp
      util/XMLDoc.cpp
@@ -35,9 +35,8 @@
  
  if (WIN32)
      list(APPEND THIS_LIB_SOURCES log4cpp/src/MSThreads.cpp)
- else ()
+-else ()
 -    list(APPEND THIS_LIB_SOURCES log4cpp/src/PThreads.cpp)
-+    list(APPEND THIS_LIB_SOURCES)
  endif ()
  
- library_all_variants(core)
+ set(BUILD_DEBUG_TMP ${BUILD_DEBUG})
