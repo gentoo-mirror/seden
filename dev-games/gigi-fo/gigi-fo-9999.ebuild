@@ -6,10 +6,10 @@ EAPI=3
 
 inherit cmake-utils subversion
 
-DESCRIPTION="GiGi is an OpenGL interface library"
-HOMEPAGE="http://gigi.sourceforge.net"
-ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
-ESVN_PROJECT="${PN}"
+DESCRIPTION="FreeOrion fork of the GiGi OpenGL interface library"
+HOMEPAGE="http://www.freeorion.org"
+ESVN_REPO_URI="https://freeorion.svn.sourceforge.net/svnroot/freeorion/trunk/FreeOrion/GG"
+ESVN_PROJECT="GG"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
@@ -18,40 +18,29 @@ IUSE="debug devil doc ogre ois +sdl static-libs +threads"
 SLOT="0"
 
 RDEPEND="
-	>=dev-libs/boost-1.47
-	media-libs/freetype
+	!dev-games/gigi
+	>=dev-libs/boost-1.50[threads=]
+	media-libs/freetype:2
 	x11-libs/libX11
 	virtual/opengl
 	devil? ( >=media-libs/devil-1.6.1 )
 	!devil? (
-		media-libs/jpeg
+		virtual/jpeg
 		media-libs/tiff
-		media-libs/libpng
+		media-libs/libpng:1.2
 	)
-	ogre?	(
-		||	(	>=dev-games/ogre-1.4.7[threads=]
-					||	(	threads?	(
-									||	(	>=dev-games/ogre-1.7.1[boost-threads]
-												>=dev-games/ogre-1.7.1[poco-threads]
-												>=dev-games/ogre-1.7.1[tbb-threads]
-											)
-									)
-							 	!threads?	(
-												>=dev-games/ogre-1.7.1[-boost-threads,-poco-threads,-tbb-threads]
-									)
-							)
-				)
-		)
+	ogre?	( >=dev-games/ogre-1.8.0[threads=] )
 	ois? ( dev-games/ois )
 	sdl? ( >=media-libs/libsdl-1.2 )
 "
+
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/libtool:2
 	doc? ( app-doc/doxygen )
 "
 
-CMAKE_USE_DIR="${S}/GG"
+CMAKE_USE_DIR="${S}"
 
 src_unpack() {
 	subversion_src_unpack
@@ -60,21 +49,16 @@ src_unpack() {
 src_prepare() {
 	# remove libtool
 	cd "${CMAKE_USE_DIR}"
-	rm -rf libltdl/ || die "Removing libltdl directory failed"
+	rm -rf libltdl || die "Removing libltdl directory failed"
 
 	# remove cmake calls to libtool
 	epatch "${FILESDIR}/unbundle-ltdl.patch"
-
-	# fix adobe cmath test, gcc-4.7.1 has the demanded C99 cmath
-	epatch "${FILESDIR}/fix_adobe_cmath_gcc_test.patch"
-
-	# fix adobe vector, gcc-4.7+ no longer accepts fishy references
-	epatch "${FILESDIR}/fix_adobe_vector.patch"
 
 	# use system headers
 	sed -i \
 		-e "s:GG/ltdl.h:ltdl.h:" \
 		GG/PluginInterface.h || die "switching to system ltdl.h in GG/PluginInterface.h failed"
+
 	# Change deprecated /usr/doc/GG to /usr/share/doc/${P}
 	sed -i \
 		-e "s:doc/GG:doc/${P}:" \
@@ -101,4 +85,12 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
+}
+
+src_install() {
+	cmake-utils_src_install
 }

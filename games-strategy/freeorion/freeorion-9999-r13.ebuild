@@ -8,7 +8,7 @@ inherit  cmake-utils games subversion
 
 DESCRIPTION="FreeOrion is a free and open source clone of Master Of Orion"
 HOMEPAGE="http://www.freeorion.org"
-ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk"
+ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk/FreeOrion"
 ESVN_PROJECT="${PN}"
 
 LICENSE="GPL-2 CCPL-Attribution-ShareAlike-3.0"
@@ -18,16 +18,18 @@ IUSE="cg debug threads"
 SLOT="0"
 
 RDEPEND="
-	dev-games/gigi[ogre,threads=]
+	!dev-games/gigi
+	dev-games/gigi-fo[threads=,ogre,ois]
 	>=dev-games/ogre-1.8.0[threads=]
 	<dev-lang/python-3
-	>=dev-libs/boost-1.50
+	>=dev-libs/boost-1.50[threads=]
 	media-gfx/graphviz
 	>=media-libs/freealut-1.1.0
 	>=media-libs/libogg-1.3.0
 	>=media-libs/libvorbis-1.3.2
 	>=media-libs/openal-1.14
 	>=sci-physics/bullet-2.77
+	dev-libs/log4cpp
 	media-libs/libpng:1.2
 	media-libs/freetype:2
 	>=sys-libs/zlib-1.2.5"
@@ -36,14 +38,32 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 	dev-util/pkgconfig"
 
-CMAKE_USE_DIR="${S}/FreeOrion"
+CMAKE_USE_DIR="${S}"
+
+src_unpack() {
+	subversion_src_unpack
+}
 
 src_prepare() {
 	# Let's make the autorevision work.
 	subversion_wc_info
 	sed -i -e \
 		"s:svn_revision_number ???:svn_revision_number ${ESVN_WC_REVISION}:" \
-		FreeOrion/CMakeLists.txt || die "sed FreeOrion/CMakeLists.txt failed"
+		CMakeLists.txt || die "sed FreeOrion/CMakeLists.txt failed"
+
+	# remove GiGi, use dev-games/gigi-fo instead
+	cd "${CMAKE_USE_DIR}"
+	rm -rf GG || die "Removing GG directory failed"
+
+	# remove cmake calls to GG
+	epatch "${FILESDIR}/unbundle_gigi.patch"
+
+	# remove log4cpp. it's in the tree
+	cd "${CMAKE_USE_DIR}"
+	rm -rf log4cpp || die "Removing log4cpp directory failed"
+
+	# remove cmake calls to log4cpp
+	epatch "${FILESDIR}/unbundle_log4cpp.patch"
 }
 
 src_configure() {
@@ -71,6 +91,10 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
 }
 
 src_install() {
