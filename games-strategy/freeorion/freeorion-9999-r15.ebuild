@@ -29,7 +29,6 @@ RDEPEND="
 	>=media-libs/libvorbis-1.3.2
 	>=media-libs/openal-1.14
 	>=sci-physics/bullet-2.77
-	dev-libs/log4cpp
 	media-libs/libpng:1.2
 	media-libs/freetype:2
 	>=sys-libs/zlib-1.2.5"
@@ -53,13 +52,6 @@ src_prepare() {
 
 	# remove cmake calls to GG
 	epatch "${FILESDIR}/unbundle_gigi.patch"
-
-	# remove log4cpp. it's in the tree
-	cd "${CMAKE_USE_DIR}"
-	rm -rf log4cpp || die "Removing log4cpp directory failed"
-
-	# remove cmake calls to log4cpp
-	epatch "${FILESDIR}/unbundle_log4cpp.patch"
 }
 
 src_configure() {
