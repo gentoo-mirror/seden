@@ -79,7 +79,9 @@ DEPEND="${CDEPEND}
 	>=dev-java/ant-junit4-${ANT}
 	>=dev-java/ant-swing-${ANT}
 	>=dev-java/ant-testutil-${ANT}
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+  !dev-java/icedtea
+  !dev-java/icedtea-bin"
 
 OSGI_DEPENDENCIES=(
 	'com.ibm.icu - icu4j-4.4'

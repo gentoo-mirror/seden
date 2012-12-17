@@ -2,6 +2,14 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r8.ebuild (17 Dec 2012)
+
+  17 Dec 2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r8.ebuild,
+  -eclipse-sdk-3.7.1-r7.ebuild :
+  After the umptiest time it has been complained about eclipse not
+  merging, and the user has icedtea installed, I have added a blocker
+  against icedtea. It won't be fixed to work with icedtea anyway.
+
 *eclipse-sdk-3.7.1-r7.ebuild (12 Mar 2012)
 
   12.Mar.2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r7.ebuild :
