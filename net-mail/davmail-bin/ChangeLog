@@ -2,6 +2,20 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*davmail-bin-4.1.0-r1 (03 Jan 2013)
+
+  03 Jan 2013; Sven Eden <sven.eden@gmx.de> +davmail-4.1.0-r1.ebuild,
+  +files/davmail.conf,
+  +files/davmail.properties,
+  +files/davmail.init:
+  Added changes from the davmail-3.9.8.ebuild created by Jiri Tyr and
+  posted in bug #351417.
+
+  03 Jan 2013; Sven Eden <sven.eden@gmx.de> -davmail-4.1.0.ebuild,
+  -files/initd,
+  -files/davmail.desktop:
+  Removed obsolete files.
+
 *davmail-bin-4.1.0 (28 Sep 2012)
 
   28 Sep 2012; Sven Eden <sven.eden@gmx.de> +davmail-4.1.0.ebuild,
