@@ -9,7 +9,7 @@ EAPI="4"
 # and push them upstream
 JAVA_PKG_BSFIX="off"
 
-inherit java-pkg-2 java-ant-2 check-reqs
+inherit java-pkg-2 java-ant-2 check-reqs multilib
 
 BUILD_VER="3.7.1"
 BUILD_ID="I20110909-1335"
@@ -31,8 +31,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc gnome source"
 
 ANT="1.8.2"
+SWT="3.7.2"
 
-CDEPEND="~dev-java/swt-${BUILD_VER}:${SLOT}
+# JDKs tested so far are:
+# =dev-java/sun-jdk-1.6.0*
+# =dev-java/icedtea-7*
+
+CDEPEND="~dev-java/swt-${SWT}:${SLOT}
 	>=dev-java/ant-${ANT}
 	>=dev-java/asm-3.3.1:3
 	>=dev-java/commons-codec-1.3
@@ -79,9 +84,10 @@ DEPEND="${CDEPEND}
 	>=dev-java/ant-junit4-${ANT}
 	>=dev-java/ant-swing-${ANT}
 	>=dev-java/ant-testutil-${ANT}
-	>=virtual/jdk-1.6
-  !dev-java/icedtea
-  !dev-java/icedtea-bin"
+	|| (
+		=dev-java/sun-jdk-1.6.0*
+		=dev-java/icedtea-7*
+	)"
 
 OSGI_DEPENDENCIES=(
 	'com.ibm.icu - icu4j-4.4'
@@ -273,6 +279,17 @@ src_install() {
 	shopt -u dotglob
 	chmod +x "${D}${destDir}"/eclipse
 	rm -f "${D}${destDir}"/libcairo-swt.so  # use the system-installed SWT libraries
+
+	# if swt-3.7.2 is installed, the swt libraries need symlinks or
+	# eclipse will not find them:
+	local xLibDir="/usr/$(get_libdir)"
+	ebegin "Symlinking swt libraries in ${xLibDir}"
+	for xLib in atk-gtk gtk pi-gtk ; do
+		local xSrc="${xLibDir}/libswt-${xLib}.so"
+		local xTgt="$(basename $(ls ${xLibDir}/libswt-${xLib}-*.so))"
+		dosym "${xTgt}" "${xSrc}" || die
+	done
+	eend
 
 	# redo symlinks
 	ebegin 'Relinking dependencies'

@@ -2,6 +2,17 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r9.ebuild (07 Jan 2013)
+
+  07 Jan 2013 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r9.ebuild,
+  -eclipse-sdk-3.7.1-r8.ebuild :
+  Happy new year 2013!
+  Eclipse now depends on either sun-jdk-1.6.0* or icedtea7 as it has
+  been reported (thank you very much, Milan Ševčík!) that Eclipse
+  works with icedtea7 without any issues.
+  Further updated the ebuild to use the stable swt-3.7.2 instead of
+  the keyworded swt-3.7.1.
+
 *eclipse-sdk-3.7.1-r8.ebuild (17 Dec 2012)
 
   17 Dec 2012 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r8.ebuild,
