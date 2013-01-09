@@ -2,6 +2,15 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r10.ebuild (09 Jan 2013)
+
+  09 Jan 2013 Sven Eden <sven.eden@gmx.de>
+  +eclise-sdk-3.7.1-r10.ebuild:
+  Changed the dependency to either sun-jdk-1.6.0* or virtual/jdk:1.7
+  because DominikBuerkle reported in bug #450254 that he had run
+  eclipse 3.7.1 without problems with several JDKs from the 1.7
+  range.
+
 *eclipse-sdk-3.7.1-r9.ebuild (07 Jan 2013)
 
   07 Jan 2013 Sven Eden <sven.eden@gmx.de> +eclise-sdk-3.7.1-r9.ebuild,
