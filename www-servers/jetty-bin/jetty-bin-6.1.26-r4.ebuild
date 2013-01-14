@@ -29,7 +29,9 @@ DEPEND="
 	!www-servers/jetty:${SLOT}
 	!www-servers/jetty-eclipse:${SLOT}
 	!www-servers/jetty-eclipse-bin:${SLOT}
-	>=virtual/jre-1.6"
+	|| ( virtual/jre:1.6
+	     virtual/jre:1.7
+     )"
 
 RDEPEND="${DEPEND}
 	anttasks? ( dev-java/ant )
