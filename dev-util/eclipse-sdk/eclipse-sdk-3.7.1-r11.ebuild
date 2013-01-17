@@ -28,7 +28,7 @@ LICENSE="EPL-1.0"
 RESTRICT="mirror"
 SLOT="3.7"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc gnome source"
+IUSE="android doc source"
 
 ANT="1.8.2"
 SWT="3.7.2"
@@ -37,7 +37,8 @@ SWT="3.7.2"
 # =dev-java/sun-jdk-1.6.0*
 # several 1.7 jdks
 
-CDEPEND="~dev-java/swt-${SWT}:${SLOT}
+CDEPEND="android? ( ~dev-java/swt-${SWT}:${SLOT}[cairo] )
+	!android? ( ~dev-java/swt-${SWT}:${SLOT} )
 	>=dev-java/ant-${ANT}
 	>=dev-java/asm-3.3.1:3
 	>=dev-java/commons-codec-1.3
@@ -55,10 +56,9 @@ CDEPEND="~dev-java/swt-${SWT}:${SLOT}
 	>=dev-java/sat4j-pseudo-2.3.0:2.3
 	dev-java/tomcat-servlet-api:2.5
 	>=www-servers/tomcat-7:7
-	java-virtuals/jetty-server:6
-	x86? ( gnome? ( gnome-base/gconf ) )"
+	>=java-virtuals/jetty-server-6"
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5
+	>=virtual/jre-1.6
 	media-libs/libpng:1.2"
 
 DEPEND="${CDEPEND}
@@ -84,10 +84,13 @@ DEPEND="${CDEPEND}
 	>=dev-java/ant-junit4-${ANT}
 	>=dev-java/ant-swing-${ANT}
 	>=dev-java/ant-testutil-${ANT}
-	|| (
-		=dev-java/sun-jdk-1.6.0*
-		=virtual/jdk:1.7
-	)"
+	|| (	=dev-java/sun-jdk-1.6.0*
+		=dev-java/icedtea-bin-7*
+		=dev-java/icedtea-7*
+		=dev-java/oracle-jdk-bin-1.7.0*
+		=dev-java/soylatte-jdk-bin-7*
+	)
+	android? ( >=dev-util/android-sdk-update-manager-21 )"
 
 OSGI_DEPENDENCIES=(
 	'com.ibm.icu - icu4j-4.4'
@@ -212,10 +215,8 @@ src_prepare() {
 	sed_xml_element 'target' -e 's/\(depends="[^"]\+\),[^",]*nestedJars/\1/' \
 			-i "${buildDir}"/plugins/*/build.xml || die
 
-	# disable building of libgnomeproxy on x86 if USE=-gnome
-	if ! use gnome ; then
-		sed_xml_element 'condition' -e '/property="build\.libgnomeproxy"/d' -i build.xml || die
-	fi
+	# disable building of libgnomeproxy, it never worked anyway
+	sed_xml_element 'condition' -e '/property="build\.libgnomeproxy"/d' -i build.xml || die
 
 	# skip compilation of SWT native libraries (we use the system-installed copies)
 	sed_xml_element 'ant' -e '/swt/d' -i build.xml || die
@@ -282,11 +283,17 @@ src_install() {
 
 	# if swt-3.7.2 is installed, the swt libraries need symlinks or
 	# eclipse will not find them:
+	local swtLibMajorMinor="$(echo ${SWT} | sed 's/\.//' | cut -c -2)"
 	local xLibDir="/usr/$(get_libdir)"
+	local xLibs="atk-gtk gtk pi-gtk"
+	if use android ; then
+		xLibs="${xLibs} cairo-gtk"
+	fi
 	ebegin "Symlinking swt libraries in ${xLibDir}"
-	for xLib in atk-gtk gtk pi-gtk ; do
+	for xLib in ${xLibs} ; do
 		local xSrc="${xLibDir}/libswt-${xLib}.so"
-		local xTgt="$(basename $(ls ${xLibDir}/libswt-${xLib}-*.so))"
+		local xLibVersions="$(ls -r ${xLibDir}/libswt-${xLib}-${swtLibMajorMinor}*.so)"
+		local xTgt="$(basename ${xLibVersions})"
 		dosym "${xTgt}" "${xSrc}" || die
 	done
 	eend

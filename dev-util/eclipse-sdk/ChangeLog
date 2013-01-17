@@ -2,6 +2,22 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*eclipse-sdk-3.7.1-r11.ebuild (17 Jan 2013)
+
+  17 Jan 2013 Sven Eden <sven.eden@gmx.de>
+  +eclise-sdk-3.7.1-r11.ebuild,
+  -eclise-sdk-3.7.1-r10.ebuild,
+  -eclise-sdk-3.7.1-r9.ebuild:
+  Removed gnome USE flag, it never enabled a successful build anyway.
+  Added android use flag to a) take care that SWT is compiled with
+  cairo support, the swt-gtk-cairo library is available and that
+  dev-util/android-sdk-update-manager is installed.
+  Fixed the linking of SWT libraries to use the correct versions
+  using the patch from bug #452578, written by Michael Seifert.
+  Allowed more 1.7 JDKs, as reported to work in bug #450254 by
+  Dominik Buerkle.
+  Removed obsolete ebuilds.
+
 *eclipse-sdk-3.7.1-r10.ebuild (09 Jan 2013)
 
   09 Jan 2013 Sven Eden <sven.eden@gmx.de>

@@ -28,17 +28,17 @@ DEPEND="
   !tomcat7? ( dev-java/tomcat-servlet-api:2.5 )
 	!www-servers/jetty:${SLOT}
 	!www-servers/jetty-eclipse:${SLOT}
-	!www-servers/jetty-eclipse-bin:${SLOT}
-	|| ( virtual/jre:1.6
-	     virtual/jre:1.7
-     )"
+	!www-servers/jetty-eclipse-bin:${SLOT}"
 
 RDEPEND="${DEPEND}
 	anttasks? ( dev-java/ant )
 	>=dev-java/slf4j-api-1.3.1
 	>=dev-java/sun-javamail-1.4
 	>=dev-java/jta-1.0.1
-	>=java-virtuals/jaf-1.1"
+	>=java-virtuals/jaf-1.1
+	|| ( virtual/jre:1.6
+	     virtual/jre:1.7
+     )"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -100,7 +100,7 @@ src_install() {
     dodir /etc/conf.d
     insinto /etc/conf.d
     newins ${FILESDIR}/conf.d/${MY_JETTY} ${MY_JETTY}
-    
+
     dodir /etc/init.d
     exeinto /etc/init.d
     newexe ${FILESDIR}/init.d/${MY_JETTY} ${MY_JETTY}
