@@ -12,7 +12,7 @@ rendering engine supporting OpenGL and advanced features such as shaders and
 lighting systems, physics, 3D sounds, animation blending, foliage, terrain,
 virtual file system, physical peripherals, and more.</longdescription>
 <use>
-  <flag name='python'>Add Python bindings/flag>
+  <flag name='python'>Add Python bindings</flag>
   <flag name='optimized'>Build optimized versions of the libraries (default)</flag>
   <flag name='debug'>Build debug versions of the libraries</flag>
   <flag name='profile'>Build profiling versions of the libraries (slow)</flag>

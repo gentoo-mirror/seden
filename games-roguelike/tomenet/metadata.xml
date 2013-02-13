@@ -8,7 +8,7 @@
 </maintainer>
 <longdescription>TomeNET is a multiplayer fantasy dungeon exploration game based on the works of J.R.R. Tolkien. It is a game that emphasizes intricate, challenging, and varied gameplay over graphics. Hundreds of different monsters in randomly-generated, unpredictable dungeons will strive to slay you by various means, and you counter - if you survive - by developing the skills of your choice and wielding mighty artifacts.</longdescription>
 <use>
-  <flag name='X'>Enable libX11 display/flag>
+  <flag name='X'>Enable libX11 display</flag>
   <flag name='Xaw3d'>Enable Xaw3d display</flag>
 </use>
 </pkgmetadata>

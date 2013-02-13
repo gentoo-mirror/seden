@@ -8,7 +8,7 @@
 </maintainer>
 <longdescription>Entity system supporting higher-level functionality, such as runtime package environment (CELstart), generic event system, avatar and camera management, artificial intelligence (behavior trees, path finding, neural networks and genetic algorithms), vehicles, and more. </longdescription>
 <use>
-  <flag name='python'>Add Python bindings/flag>
+  <flag name='python'>Add Python bindings</flag>
   <flag name='debug'>Build debug versions of the libraries</flag>
 </use>
 </pkgmetadata>
