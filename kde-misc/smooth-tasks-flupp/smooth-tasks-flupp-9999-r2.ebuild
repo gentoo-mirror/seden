@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -13,6 +13,10 @@ DESCRIPTION="Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork"
 HOMEPAGE="https://bitbucket.org/flupp/smooth-tasks-fork"
 EHG_REPO_URI="https://bitbucket.org/flupp/smooth-tasks-fork"
 EHG_PROJECT="smooth-tasks-fork"
+EHG_REVISION="kde-4.8"
+
+EGIT_BRANCH="master"
+EGIT_VERSION=""
 
 LICENSE="GPL-2"
 SLOT="4"
