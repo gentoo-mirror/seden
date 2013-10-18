@@ -1,8 +1,0 @@
-# ChangeLog for media-libs/jbig2enc
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*jbig2enc-0.26_pre9999 (27 Mar 2011)
-
-  27 Mar 2011; Sven Eden <sven.eden@gmx.de> +jbig2enc-0.26_pre9999.ebuild :
-  Initial commit of the ebuild.
