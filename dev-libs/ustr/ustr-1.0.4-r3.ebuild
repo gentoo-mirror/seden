@@ -20,7 +20,7 @@ RDEPEND=""
 
 src_compile() {
 	emake AR=$(tc-getAR) CC=$(tc-getCC) CFLAGS="${CFLAGS}" HIDE= \
-		SHRDIR="/usr/share/doc/${PF}" \
+		SHRDIR="/usr/share/${P}" \
 		all-shared
 }
 
@@ -32,7 +32,7 @@ src_install() {
 	emake install DESTDIR="${D}" HIDE= \
 		libdir="/usr/$(get_libdir)" \
 		mandir="/usr/share/man" \
-		SHRDIR="/usr/share/doc/${PF}" \
+		SHRDIR="/usr/share/${P}" \
 		DOCSHRDIR="/usr/share/doc/${PF}"
 
 	dodoc ChangeLog README README-DEVELOPERS AUTHORS NEWS TODO
