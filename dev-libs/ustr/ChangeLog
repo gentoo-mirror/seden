@@ -1,9 +1,0 @@
-# ChangeLog for dev-libs/ustr
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
-# $Header:  $
-
-*ustr-1.0.4-r3 (21 Oct 2013)
-
-  21 Oct 2013; Sven Eden <yamakuzure@gmx.net> +ustr-1.0.4-r3.ebuild:
-  SHRDIR must be set in compile phase, too, or ustr-import will
-  consequently fall back to /usr/share/ustr-1.0.4
