@@ -1,0 +1,10 @@
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*app-office/taskcoach-1.3.34 (29 Nov 2013)
+
+  29 Nov 2013; Sven Eden <yamakuzure@gmx.net>
+  +app-office/taskcoach-1.3.34.ebuild :
+  Initial import.
+
