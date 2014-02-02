@@ -4,6 +4,13 @@
 
 *davmail-bin-4.4.0 (22 Nov 2013)
 
+  02 Feb 2014; Sven Eden <sven.eden@gmx.de>
+  +davmail-4.4.1.ebuild,
+  -davmail-4.4.0.ebuild
+  Version bump
+
+*davmail-bin-4.4.0 (22 Nov 2013)
+
   22 Nov 2013; Sven Eden <sven.eden@gmx.de>
   +davmail-4.4.0.ebuild,
   -davmail-4.3.4.ebuild
