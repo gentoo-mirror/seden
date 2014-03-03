@@ -1,6 +1,13 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog for app-office/taskcoach
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*app-office/taskcoach-1.3.36 (03 Mar 2014
+
+  03 Mar 2014; Sven Eden <yamakuzure@gmx.net>
+  +app-office/taskcoach-1.3.36.ebuild,
+  -app-office/taskcoach-1.3.34.ebuild :
+  Version bump
 
 *app-office/taskcoach-1.3.34 (29 Nov 2013)
 
