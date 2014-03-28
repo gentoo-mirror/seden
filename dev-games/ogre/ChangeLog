@@ -1,0 +1,14 @@
+# ChangeLog for dev-games/ogre
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*ogre-1.9.0-r1 (27 Mar 2014)
+
+  27 Mar 2014; Sven Eden <yamakuzure@gmx.net> +ogre-1.9.0-r1.ebuild :
+  - Updated to install the configuration file with correct paths into
+  /usr/share/OGRE - the path where ogre searches for them.
+  - Test path is /usr/local/share/OGRE
+  - All paths linked into /etc/OGRE for backwards compatibility.
+  - Added USE flags 'gles3' and'gl3plus', to add experimental support for
+    OpenGL 3+ and OpenGL ES 3.0 support.
+
