@@ -90,7 +90,7 @@ src_configure() {
 		$(cmake-utils_use gl3plus OGRE_BUILD_RENDERSYSTEM_GLES3)
 		$(cmake-utils_use profile OGRE_PROFILING)
 		$(cmake-utils_use examples OGRE_BUILD_SAMPLES)
-		$(cmake-utils_use test OGRE_BUILD_TESTS)
+		-DOGRE_BUILD_TESTS=NO
 		$(usex threads "-DOGRE_CONFIG_THREADS=2" "-DOGRE_CONFIG_THREADS=0")
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
@@ -140,7 +140,7 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	
+
 	## No. Those are _not_ 'examples' but the real configuration of the
 	#  current system. They belong in /etc/OGRE, as those were always
 	#  there, and there they are config protected.
@@ -149,14 +149,14 @@ src_install() {
 	#  - Yamakuzure
 	# docinto examples
 	# dodoc "${CMAKE_BUILD_DIR}"/bin/*.cfg
-	
+
 	# plusgins and resources are the main configuration
 	insinto /etc/OGRE
 	doins "${CMAKE_BUILD_DIR}"/bin/plugins.cfg
 	doins "${CMAKE_BUILD_DIR}"/bin/resources.cfg
 	dosym /etc/OGRE/plugins.cfg ${SHAREDIR}/plugins.cfg
 	dosym /etc/OGRE/resources.cfg ${SHAREDIR}/resources.cfg
-	
+
 	# The testdir needs to be created
 	mkdir -p "${D}/${TESTDIR}"
 
@@ -170,6 +170,6 @@ src_install() {
 	insinto ${SHAREDIR}
 	doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
 	doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
-	
+
 	# tests.cfg is not needed
 }
