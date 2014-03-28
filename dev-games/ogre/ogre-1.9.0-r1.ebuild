@@ -48,9 +48,9 @@ RDEPEND="
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	freeimage? ( media-libs/freeimage )
 	gles1? ( >=media-libs/mesa-8.0.0[gles1] )
-	gles2? ( >=media-libs/mesa-8.0.0[gles2] )
+	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
 	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
-	gl3plus? ( >=media-libs/mesa-9.2.5[gles2] )
+	gl3plus? ( >=media-libs/mesa-9.2.5 )
 	ois? ( dev-games/ois )
 	threads? (
 		poco? ( dev-libs/poco )
@@ -87,10 +87,9 @@ src_configure() {
 		$(cmake-utils_use gles1 OGRE_BUILD_RENDERSYSTEM_GLES)
 		$(cmake-utils_use gles2 OGRE_BUILD_RENDERSYSTEM_GLES2)
 		$(cmake-utils_use gles3 OGRE_CONFIG_ENABLE_GLES3_SUPPORT)
-		$(cmake-utils_use gl3plus OGRE_BUILD_RENDERSYSTEM_GLES3)
 		$(cmake-utils_use profile OGRE_PROFILING)
 		$(cmake-utils_use examples OGRE_BUILD_SAMPLES)
-		-DOGRE_BUILD_TESTS=NO
+		-DOGRE_BUILD_TESTS=FALSE
 		$(usex threads "-DOGRE_CONFIG_THREADS=2" "-DOGRE_CONFIG_THREADS=0")
 		$(cmake-utils_use tools OGRE_BUILD_TOOLS)
 		$(cmake-utils_use zip OGRE_CONFIG_ENABLE_ZIP)
@@ -141,16 +140,16 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	## No. Those are _not_ 'examples' but the real configuration of the
+	## Those are no longer just examples but the real configuration of the
 	#  current system. They belong in /etc/OGRE, as those were always
 	#  there, and there they are config protected.
 	#  However, ogre looks in /usr/share/OGRE for them, so they must be
 	#  symlinked there as well.
-	#  - Yamakuzure
+	#  - Sven
 	# docinto examples
 	# dodoc "${CMAKE_BUILD_DIR}"/bin/*.cfg
 
-	# plusgins and resources are the main configuration
+	# plugins and resources are the main configuration
 	insinto /etc/OGRE
 	doins "${CMAKE_BUILD_DIR}"/bin/plugins.cfg
 	doins "${CMAKE_BUILD_DIR}"/bin/resources.cfg
@@ -161,8 +160,8 @@ src_install() {
 	mkdir -p "${D}/${TESTDIR}"
 
 	# Use video group, as OGRE is a rendering engine you need to be in the
-	# video group to use anyway. (_NOT_ games. OGRE is not a game engine,
-	# actually I think dev-games is the wrong category anyway.)
+	# video group to use anyway. (Ogre3D is not a game engine, actually I
+	# think dev-games is the wrong category anyway.)
 	chown :video "${D}/${TESTDIR}"
 	chmod g+rwX "${D}/${TESTDIR}"
 
