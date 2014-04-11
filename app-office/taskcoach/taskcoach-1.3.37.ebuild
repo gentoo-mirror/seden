@@ -30,7 +30,7 @@ DOCS=( CHANGES.txt README.txt )
 python_install_all() {
 	distutils-r1_python_install_all
 	doicon "icons.in/${PN}.png"
-	mv -f "${D}/usr/bin/${PN}.py" "${D}/usr/bin/${PN}"
+	dosym "${PN}.py" "/usr/bin/${PN}"
 	make_desktop_entry ${PN} "Task Coach" ${PN} Office
 }
 
