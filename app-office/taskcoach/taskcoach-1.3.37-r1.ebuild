@@ -19,7 +19,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libnotify"
-DEPEND=">=dev-python/wxpython-2.8.9.2:2.8[${PYTHON_USEDEP}]"
+DEPEND="
+	>=dev-python/wxpython-2.8.9.2:2.8[${PYTHON_USEDEP}]
+	dev-python/twisted-core"
 RDEPEND="${DEPEND}
 	libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )"
 
