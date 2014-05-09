@@ -24,25 +24,28 @@ src_prepare() {
 
 ustr_make() {
 	cd "${BUILD_DIR}" || die
-	rm ustr-conf.h
-	local makeopts=(
-		AR="$(tc-getAR)"
-		CC="$(tc-getCC)"
-		CFLAGS="${CFLAGS}"
-		LDFLAGS="${LDFLAGS}"
-		prefix="${EPREFIX}/usr"
-		HIDE="" 
-	)
-	emake "${makeopts[@]}" "$@"
+	[ -e ustr-conf.h ] && rm ustr-conf.h
+	emake "$@" \
+		AR="$(tc-getAR)" \
+		CC="$(tc-getCC)" \
+		CFLAGS="${CFLAGS}" \
+		LDFLAGS="${LDFLAGS}" \
+		prefix="${EPREFIX}/usr" \
+		SHRDIR="/usr/share/${P}" \
+		HIDE= || die
 }
 
 ustr_install() {
 	cd "${BUILD_DIR}" || die
 
-	emake \
-	    prefix="${EPREFIX}/usr" \
-	    libdir="${EPREFIX}/usr/$(get_libdir)" \
-	    HIDE="" "$@" || die
+	emake "$@" \
+		DESTDIR="${D}" \
+		prefix="${EPREFIX}/usr" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		mandir="/usr/share/man" \
+		SHRDIR="/usr/share/${P}" \
+		DOCSHRDIR="/usr/share/doc/${PF}" \
+		HIDE= || die
 }
 
 
@@ -55,6 +58,6 @@ multilib_src_test() {
 }
 
 src_install() {
-	multilib_foreach_abi ustr_install DESTDIR="${D}" install-multilib-linux
+	multilib_foreach_abi ustr_install install-multilib-linux
 	dodoc ChangeLog README README-DEVELOPERS AUTHORS NEWS TODO
 }
