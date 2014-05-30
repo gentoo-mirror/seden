@@ -1,0 +1,9 @@
+# ChangeLog for games-action/atanks
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*atanks_aiu-5.9-aiu1 (30 May 2014)
+
+  30 May 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9-aiu1.ebuild:
+  First ebuild for the Atanks AI Upgrade project
+
