@@ -2,8 +2,13 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-*atanks_aiu-5.9-aiu1 (30 May 2014)
+*atanks_aiu-5.9.2 (03 Jun 2014)
 
-  30 May 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9-aiu1.ebuild:
-  First ebuild for the Atanks AI Upgrade project
+  03 Jun 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9.2.ebuild:
+  Ebuild for atanks-5.9-aiu2.
+
+*atanks_aiu-5.9.1 (30 May 2014)
+
+  30 May 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9.1.ebuild:
+  First ebuild for the Atanks AI Upgrade project (atanks-5.9-aiu1)
 
