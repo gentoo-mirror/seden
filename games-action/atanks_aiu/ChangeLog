@@ -2,7 +2,14 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
-*atanks_aiu-6.0.1 (05 Jun 2014)
+*atanks_aiu-6.0.3 (11 Jun 2014)
+
+  11 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.3.ebuild:
+  -atanks_aiu-6.0.1.ebuild:
+  version bump to atanks-6.0-aiu3, removed old 6.0-aiu1 ebuild.
+
+*atanks_aiu-6.0.2 (05 Jun 2014)
 
   05 Jun 2014; Sven Eden <yamakuzure@gmx.net>
   +atanks_aiu-6.0.2.ebuild:
