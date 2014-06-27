@@ -4,7 +4,7 @@
 
 EAPI="3"
 
-inherit eutils java-pkg-2
+inherit eutils java-pkg-2 user
 
 MY_REV="2292"
 MY_PN="davmail"

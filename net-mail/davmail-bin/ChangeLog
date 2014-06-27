@@ -2,6 +2,15 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*davmail-bin-4.5.0-r1 (27 Jun 2014)
+
+  27 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +davmail-4.5.0-r1.ebuild,
+  -davmail-4.5.0.ebuild
+  Important fix: enewuser only works if user eclass is inherited.
+  Thanks to Karl-Johan Karlsson <creideiki+gentoo-bugzilla@lysator.liu.se>
+  who pointed this out in #351417 c53.
+
 *davmail-bin-4.5.0 (05 Jun 2014)
 
   05 Jun 2014; Sven Eden <yamakuzure@gmx.net>
