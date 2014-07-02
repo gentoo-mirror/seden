@@ -5,7 +5,7 @@
 *davmail-bin-4.4.1 (02 Feb 2014)
 
   02 Jul 2014; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.4.1.ebuild,
+  +davmail-bin-4.4.1.ebuild,
   Added again, as the 4.5.0 version has a nasty bug that makes
   davmail useless for connecting to exchange 2012+.
   See: http://sourceforge.net/p/davmail/bugs/569
@@ -13,8 +13,8 @@
 *davmail-bin-4.5.0-r1 (27 Jun 2014)
 
   27 Jun 2014; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.5.0-r1.ebuild,
-  -davmail-4.5.0.ebuild
+  +davmail-bin-4.5.0-r1.ebuild,
+  -davmail-bin-4.5.0.ebuild
   Important fix: enewuser only works if user eclass is inherited.
   Thanks to Karl-Johan Karlsson <creideiki+gentoo-bugzilla@lysator.liu.se>
   who pointed this out in #351417 c53.
@@ -22,108 +22,108 @@
 *davmail-bin-4.5.0 (05 Jun 2014)
 
   05 Jun 2014; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.5.0.ebuild,
-  -davmail-4.4.1.ebuild
+  +davmail-bin-4.5.0.ebuild,
+  -davmail-bin-4.4.1.ebuild
   Version bump
 
 *davmail-bin-4.4.1 (02 Feb 2014)
 
   02 Feb 2014; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.4.1.ebuild,
-  -davmail-4.4.0.ebuild
+  +davmail-bin-4.4.1.ebuild,
+  -davmail-bin-4.4.0.ebuild
   Version bump
 
 *davmail-bin-4.4.0 (22 Nov 2013)
 
   22 Nov 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.4.0.ebuild,
-  -davmail-4.3.4.ebuild
+  +davmail-bin-4.4.0.ebuild,
+  -davmail-bin-4.3.4.ebuild
   Version bump
 
 *davmail-bin-4.3.4 (10 Sep 2013)
 
   10 Sep 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.4.ebuild,
-  -davmail-4.3.3-r1.ebuild
+  +davmail-bin-4.3.4.ebuild,
+  -davmail-bin-4.3.3-r1.ebuild
   Version bump
 
 *davmail-bin-4.3.3-r1 (04 Jul 2013)
 
   19 Jun 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.3-r1.ebuild,
-  -davmail-4.3.3.ebuild
+  +davmail-bin-4.3.3-r1.ebuild,
+  -davmail-bin-4.3.3.ebuild
   Updated ebuild to accept jre/jdk slot 1.7
 
 *davmail-bin-4.3.3 (19 Jun 2013)
 
   19 Jun 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.3.ebuild,
-  -davmail-4.3.2.ebuild
+  +davmail-bin-4.3.3.ebuild,
+  -davmail-bin-4.3.2.ebuild
   Version bump
 
 *davmail-bin-4.3.2 (07 Jun 2013)
 
   07 Jun 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.2.ebuild,
-  -davmail-4.3.1.ebuild
+  +davmail-bin-4.3.2.ebuild,
+  -davmail-bin-4.3.1.ebuild
   Version bump
 
 *davmail-bin-4.3.1 (06 Jun 2013)
 
   06 Jun 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.1.ebuild,
-  -davmail-4.3.0.ebuild
+  +davmail-bin-4.3.1.ebuild,
+  -davmail-bin-4.3.0.ebuild
   Version bump
 
 *davmail-bin-4.3.0 (23 May 2013)
 
   23 May 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.3.0.ebuild,
-  -davmail-4.2.1.ebuild
+  +davmail-bin-4.3.0.ebuild,
+  -davmail-bin-4.2.1.ebuild
   Version bump
 
 *davmail-bin-4.2.1 (12 Apr 2013)
 
   12 Apr 2013; Sven Eden <yamakuzure@gmx.net>
-  +davmail-4.2.1.ebuild,
-  -davmail-4.2.0.ebuild
+  +davmail-bin-4.2.1.ebuild,
+  -davmail-bin-4.2.0.ebuild
   Version bump
 
 *davmail-bin-4.2.0 (28 Sep 2012)
 
-  11 Mar 2013; Sven Eden <yamakuzure@gmx.net> +davmail-4.2.0.ebuild,
+  11 Mar 2013; Sven Eden <yamakuzure@gmx.net> +davmail-bin-4.2.0.ebuild,
   Version bump
 
   11 Mar 2013; Sven Eden <yamakuzure@gmx.net>
-  -davmail-4.1.0-r1.ebuild
+  -davmail-bin-4.1.0-r1.ebuild
   remove obsolete ebuild
 
 *davmail-bin-4.1.0-r1 (03 Jan 2013)
 
-  03 Jan 2013; Sven Eden <yamakuzure@gmx.net> +davmail-4.1.0-r1.ebuild,
+  03 Jan 2013; Sven Eden <yamakuzure@gmx.net> +davmail-bin-4.1.0-r1.ebuild,
   +files/davmail.conf,
   +files/davmail.properties,
   +files/davmail.init:
   Added changes from the davmail-3.9.8.ebuild created by Jiri Tyr and
   posted in bug #351417.
 
-  03 Jan 2013; Sven Eden <yamakuzure@gmx.net> -davmail-4.1.0.ebuild,
+  03 Jan 2013; Sven Eden <yamakuzure@gmx.net> -davmail-bin-4.1.0.ebuild,
   -files/initd,
   -files/davmail.desktop:
   Removed obsolete files.
 
 *davmail-bin-4.1.0 (28 Sep 2012)
 
-  28 Sep 2012; Sven Eden <yamakuzure@gmx.net> +davmail-4.1.0.ebuild,
+  28 Sep 2012; Sven Eden <yamakuzure@gmx.net> +davmail-bin-4.1.0.ebuild,
   Version bump
 
   28 Sep 2012; Sven Eden <yamakuzure@gmx.net>
-  -davmail-4.0.0.ebuild
+  -davmail-bin-4.0.0.ebuild
   remove obsolete ebuild
 
 *davmail-bin-4.0.0 (14 Sep 2012)
 
-  14 Sep 2012; Sven Eden <yamakuzure@gmx.net> +davmail-4.0.0.ebuild,
+  14 Sep 2012; Sven Eden <yamakuzure@gmx.net> +davmail-bin-4.0.0.ebuild,
   Version bump
 
   14 Sep 2012; Sven Eden <yamakuzure@gmx.net>
