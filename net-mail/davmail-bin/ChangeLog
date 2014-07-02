@@ -2,6 +2,14 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*davmail-bin-4.4.1 (02 Feb 2014)
+
+  02 Jul 2014; Sven Eden <yamakuzure@gmx.net>
+  +davmail-4.4.1.ebuild,
+  Added again, as the 4.5.0 version has a nasty bug that makes
+  davmail useless for connecting to exchange 2012+.
+  See: http://sourceforge.net/p/davmail/bugs/569
+
 *davmail-bin-4.5.0-r1 (27 Jun 2014)
 
   27 Jun 2014; Sven Eden <yamakuzure@gmx.net>
