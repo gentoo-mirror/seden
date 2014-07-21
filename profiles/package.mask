@@ -9,8 +9,3 @@
 # Try it out, it works very well.
 =dev-util/eclipse-sdk-3.7.1-r11
 
-# Sven Eden <yamakuzure@gmx.net> (02 Jul 2014)
-# Masked due to a serious bug that makes davmail useless for connecting to
-# Exchange 2012 and above.
-# See: http://sourceforge.net/p/davmail/bugs/569
-=net-mail/davmail-bin-4.5.0-r1
