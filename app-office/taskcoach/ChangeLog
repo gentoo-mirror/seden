@@ -2,10 +2,17 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*app-office/taskcoach-1.4.0 (08 Aug 2014)
+
+  08 Aug 2014; Sven Eden <yamakuzure@gmx.net>
+  -app-office/taskcoach-1.3.40.ebuild,
+  +app-office/taskcoach-1.5.0.ebuild:
+  Version bump
+
 *app-office/taskcoach-1.3.41 (09 Jul 2014)
 
   09 Jul 2014; Sven Eden <yamakuzure@gmx.net>
-  -app-office/taskcoach-1.3.41.ebuild :
+  +app-office/taskcoach-1.3.41.ebuild :
   Version bump
 
   02 Jun 2014; Sven Eden <yamakuzure@gmx.net>
