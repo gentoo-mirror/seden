@@ -24,7 +24,7 @@ DEPEND="
 	dev-python/twisted-core"
 RDEPEND="${DEPEND}
 	libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )
-	>=x11-libs/libXScrnSaver-2.2"
+	>=x11-libs/libXScrnSaver-1.2.2"
 
 S="${WORKDIR}/${MY_P}"
 
