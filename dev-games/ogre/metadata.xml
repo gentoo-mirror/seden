@@ -18,6 +18,7 @@
     <flag name="ois">pull in Object-oriented Input System library for samples</flag>
     <flag name="poco">when USE=threads, use poco for threading</flag>
     <flag name="tbb">when USE=threads, use tbb for threading</flag>
+    <flag name="source">Install the examples sources</flag>
     <flag name="tools">build+install helper tools</flag>
     <flag name="zip">support zip archives</flag>
   </use>
