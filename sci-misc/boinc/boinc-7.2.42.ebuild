@@ -6,7 +6,7 @@ EAPI=5
 
 AUTOTOOLS_AUTORECONF=true
 
-inherit autotools-utils flag-o-matic eutils wxwidgets user versionator git-r3
+inherit autotools-utils flag-o-matic wxwidgets user versionator git-r3 systemd
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -22,7 +22,7 @@ EGIT_COMMIT="client_release/${MY_PV}/${PV}"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="X cuda static-libs"
+IUSE="X cuda static-libs systemd"
 
 RDEPEND="
 	!sci-misc/boinc-bin
