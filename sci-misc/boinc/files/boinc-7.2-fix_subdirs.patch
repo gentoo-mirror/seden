@@ -24,19 +24,6 @@ index 6322db1..45d8b67 100644
  ## once contained samples/example_app which breaks out-of-source-tree builds
  endif
  
-@@ -26,9 +26,9 @@ endif
- 
- if ENABLE_MANAGER
-    CLIENTGUI_SUBDIRS = clientgui locale
--if BUILD_X11_SCREENSAVER
--   CLIENTGUI_SUBDIRS += clientscr
--endif
-+#if BUILD_X11_SCREENSAVER
-+#   CLIENTGUI_SUBDIRS += clientscr
-+#endif
- endif
- 
- # ORDER MATTERS below.  One must build dependencies FIRST, then things
 diff --git a/configure.ac b/configure.ac
 index 2bef437..5a9e104 100644
 --- a/configure.ac
