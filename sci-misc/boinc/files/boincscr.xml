@@ -4,6 +4,8 @@
 
   <command arg="-root -boinc_dir /var/lib/boinc"/>
 
+  <xscreensaver-updater />
+
   <_description>
 This is a XScreenSaver compatible BOINC screensaver for Unix/X11.
 
