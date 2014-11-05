@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<screensaver name="boincscr" _label="Boinc">
+
+  <command arg="-root -boinc_dir /var/lib/boinc"/>
+
+  <_description>
+This is a XScreenSaver compatible BOINC screensaver for Unix/X11.
+
+This screensaver is part of BOINC.
+http://boinc.berkeley.edu
+Copyright (C) 2010 University of California
+  </_description>
+</screensaver>

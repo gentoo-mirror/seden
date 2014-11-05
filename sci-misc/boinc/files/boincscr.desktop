@@ -1,0 +1,20 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=boincscr
+Icon=preferences-desktop-screensaver
+X-KDE-ServiceTypes=ScreenSaver
+X-KDE-Category=OpenGL Screen Savers
+X-KDE-Type=OpenGL
+Type=Service
+Actions=InWindow;Root
+Name=BOINC
+
+[Desktop Action InWindow]
+Exec=kxsrun boincscr -- -window -window-id %w
+Name=Display in specified window
+NoDisplay=true
+ 
+[Desktop Action Root]
+Exec=kxsrun boincscr -- -root -boinc_dir /var/lib/boinc
+Name=Display in root window
+NoDisplay=true

@@ -2,6 +2,17 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  04 Nov 2014; Sven Eden <yamakuzure@gmx.net> +boinc-7.2.42.ebuild-r1,
+  +files/boinc-7.2-remove_boincscr.patch
+  +files/boincscr.desktop
+  +files/boincscr.xml:
+  Building of the boincscr screensaver depends now on the new
+  "xscreensaver" USE flag, and can be made setuid root using the new
+  "suid" USE flag. Further a desktop file is installed if the new
+  USE flag "kde" is enabled.
+  The systemd service file is no longer installed unless the "systemd"
+  USE flag is enabled.
+
 *boinc-7.2.42 (04 Nov 2014)
 
   04 Nov 2014; Sven Eden <yamakuzure@gmx.net> +boinc-7.2.42.ebuild,
