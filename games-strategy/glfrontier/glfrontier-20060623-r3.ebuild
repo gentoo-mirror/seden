@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
 
+src_prepare() {
+	epatch "${FILESDIR}/${MY_P}"-fix_missing_math_lib.patch
+}
+
 src_compile() {
 	cd ${S}/frontvm3-20060623
 	make -f Makefile-C || die "make install failed"
