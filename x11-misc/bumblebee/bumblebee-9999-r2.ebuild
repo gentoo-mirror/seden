@@ -42,6 +42,7 @@ PDEPEND="
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/nvidia-uvm-support.patch
 	base_src_prepare
 	eautoreconf
 }
