@@ -34,7 +34,7 @@ src_compile() {
 	if use debug; then
 	    xDebug="YES"
 	fi
-	
+
 	emake \
 		BINDIR="${GAMES_BINDIR}" \
 		INSTALLDIR="${GAMES_DATADIR}/${MY_PN}" \
