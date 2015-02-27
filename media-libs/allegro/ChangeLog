@@ -1,0 +1,8 @@
+# ChangeLog for media-libs/allegro
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header:  $
+
+*allegro-5.0.11 (27 Feb 2015)
+
+  27 Feb 2015; Sven Eden <yamakuzure@gmx.net> allegro-5.0.11.ebuild:
+  Version Bump
