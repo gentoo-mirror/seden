@@ -21,33 +21,30 @@ IUSE="-system-wine"
 RESTRICT="mirror"
 
 RDEPEND="
+	app-shells/bash
 	x11-misc/xdg-utils
 	!system-wine? (
-		amd64? (
-			app-emulation/emul-linux-x86-baselibs
-			app-emulation/emul-linux-x86-soundlibs
-			|| (
-				(
-					x11-libs/libSM[abi_x86_32]
-					x11-libs/libX11[abi_x86_32]
-					x11-libs/libXau[abi_x86_32]
-					x11-libs/libXdamage[abi_x86_32]
-					x11-libs/libXext[abi_x86_32]
-					x11-libs/libXfixes[abi_x86_32]
-					x11-libs/libXtst[abi_x86_32]
-				)
-				app-emulation/emul-linux-x86-xlibs
+		|| (
+			(
+				media-libs/alsa-lib[abi_x86_32(-)]
+				media-libs/freetype[abi_x86_32(-)]
+				sys-libs/zlib[abi_x86_32(-)]
+				x11-libs/libX11[abi_x86_32(-)]
+				x11-libs/libXau[abi_x86_32(-)]
+				x11-libs/libXdamage[abi_x86_32(-)]
+				x11-libs/libXext[abi_x86_32(-)]
+				x11-libs/libXfixes[abi_x86_32(-)]
+				x11-libs/libXrandr[abi_x86_32(-)]
+				x11-libs/libXrender[abi_x86_32(-)]
+				x11-libs/libSM[abi_x86_32(-)]
+				x11-libs/libXtst[abi_x86_32(-)]
 			)
-		)
-		x86? (
-			sys-libs/zlib
-			x11-libs/libSM
-			x11-libs/libX11
-			x11-libs/libXau
-			x11-libs/libXdamage
-			x11-libs/libXext
-			x11-libs/libXfixes
-			x11-libs/libXtst
+			(
+				app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
+				app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
+				app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)]
+			)
+
 		)
 	)
 	system-wine? ( app-emulation/wine )"
