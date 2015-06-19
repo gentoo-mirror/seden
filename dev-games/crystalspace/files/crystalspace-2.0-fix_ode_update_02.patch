@@ -1,0 +1,53 @@
+--- apps/tutorial/phystut/phystut.cpp	2012-01-14 04:39:47.000000000 +0100
++++ apps/tutorial/phystut/phystut.cpp	2012-07-13 09:50:04.941321137 +0200
+@@ -204,7 +204,7 @@
+     if (solver==0)
+       hudManager->GetStateDescriptions ()->Push (csString ("Solver: WorldStep"));
+     else if (solver==1)
+-      hudManager->GetStateDescriptions ()->Push (csString ("Solver: StepFast"));
++      hudManager->GetStateDescriptions ()->Push (csString ("Solver: QuickStep"));
+     else if (solver==2)
+       hudManager->GetStateDescriptions ()->Push (csString ("Solver: QuickStep"));
+   }
+@@ -471,27 +471,9 @@
+       return true;
+     }
+ 
+-    else if (csKeyEventHelper::GetCookedCode (&ev) == '1'
+-	     && phys_engine_id == ODE_ID)
+-    {
+-      // Toggle stepfast.
+-      csRef<iODEDynamicSystemState> osys = 
+-	scfQueryInterface<iODEDynamicSystemState> (dynamicSystem);
+-      osys->EnableStepFast (0);
+-      solver=0;
+-      return true;
+-    }
+-    else if (csKeyEventHelper::GetCookedCode (&ev) == '2'
+-	     && phys_engine_id == ODE_ID)
+-    {
+-      // Toggle stepfast.
+-      csRef<iODEDynamicSystemState> osys = 
+-	scfQueryInterface<iODEDynamicSystemState> (dynamicSystem);
+-      osys->EnableStepFast (1);
+-      solver=1;
+-      return true;
+-    }
+-    else if (csKeyEventHelper::GetCookedCode (&ev) == '3'
++    else if ( (  (csKeyEventHelper::GetCookedCode (&ev) == '1')
++              || (csKeyEventHelper::GetCookedCode (&ev) == '2')
++              || (csKeyEventHelper::GetCookedCode (&ev) == '3') )
+ 	     && phys_engine_id == ODE_ID)
+     {
+       // Toggle quickstep.
+@@ -992,8 +974,8 @@
+   hudManager->GetKeyDescriptions ()->Push ("I: toggle autodisable");
+   if (phys_engine_id == ODE_ID)
+   {
+-    hudManager->GetKeyDescriptions ()->Push ("1: enable StepFast solver");
+-    hudManager->GetKeyDescriptions ()->Push ("2: disable StepFast solver");
++    hudManager->GetKeyDescriptions ()->Push ("1: enable QuickStep solver");
++    hudManager->GetKeyDescriptions ()->Push ("2: enable QuickStep solver");
+     hudManager->GetKeyDescriptions ()->Push ("3: enable QuickStep solver");
+   }
+ #ifdef CS_HAVE_BULLET_SERIALIZER

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>yamakuzure@gmx.net</email>
+  <description>The creator of this ebuild, but not the official maintainer</description>
+</maintainer>
+<longdescription>Winetricks is an easy way to work around problems in Wine.
+
+It has a menu of supported games/apps for which it can do all the workarounds automatically. It also lets you install missing DLLs or tweak various Wine settings individually.
+
+It can be used via gui or commandline, whichever you prefer; the commandline mode is particularly useful as a building block in fancier wine frontends and in automated regression testing. </longdescription>
+<use>
+  <flag name='gnome'>Use gnome-extra/zenity to display the GUI</flag>
+  <flag name='kde'>Use kde-base/kdialog to display the GUI</flag>
+</use>
+</pkgmetadata>

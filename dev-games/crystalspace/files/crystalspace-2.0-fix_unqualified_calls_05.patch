@@ -1,0 +1,29 @@
+--- include/csplugincommon/rendermanager/render.h.ori	2012-07-18 17:26:53.654385262 +0200
++++ include/csplugincommon/rendermanager/render.h	2012-07-18 17:27:46.111054919 +0200
+@@ -194,7 +194,7 @@
+             || (mesh.preCopyNum != 0))
+         {
+           // Render the latest batch of meshes
+-          RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, m);
++          this->RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, m);
+           lastRenderedMesh = m;
+ 
+           lastShader = shader;
+@@ -208,7 +208,7 @@
+         }
+       }
+ 
+-      RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, node->meshes.GetSize ());
++      this->RenderMeshes (context, node->meshes, lastShader, lastTicket, lastRenderedMesh, node->meshes.GetSize ());
+     }
+   };
+ 
+@@ -242,7 +242,7 @@
+ 	  iShader* shader = context.shaderArray[mesh.contextLocalId+layerOffset];
+         
+ 	  size_t ticket = context.ticketArray[mesh.contextLocalId+layerOffset];
+-          RenderMeshes (context, node->meshes, shader, ticket, m, m+1);
++          this->RenderMeshes (context, node->meshes, shader, ticket, m, m+1);
+ 	}
+       }
+     }

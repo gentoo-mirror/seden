@@ -1,0 +1,66 @@
+--- plugins/physics/odedynam/odedynam.cpp	2012-07-13 09:38:15.000000000 +0200
++++ plugins/physics/odedynam/odedynam.cpp	2012-07-13 09:55:26.401338100 +0200
+@@ -206,8 +206,6 @@
+   limittime = 1.0f;
+   total_elapsed = 0.0f;
+ 
+-  stepfast = false;
+-  sfiter = 10;
+   quickstep = false;
+   qsiter = 10;
+   fastobjects = false;
+@@ -285,8 +283,7 @@
+   csRef<csODEDynamicSystem> system;
+   system.AttachNew (new csODEDynamicSystem (object_reg, erp, cfm));
+   systems.Push (system);
+-  if(stepfast) system->EnableStepFast(true);
+-  else if(quickstep) system->EnableQuickStep(true);
++  if(quickstep) system->EnableQuickStep(true);
+   return csPtr<iDynamicSystem> (system);
+ }
+ 
+@@ -494,35 +491,9 @@
+   }
+ }
+ 
+-void csODEDynamics::EnableStepFast (bool enable)
+-{
+-  stepfast = enable;
+-  quickstep = false;
+-
+-  for (size_t i = 0; i < systems.GetSize (); i ++)
+-  {
+-    csRef<iODEDynamicSystemState> sys = 
+-      scfQueryInterface<iODEDynamicSystemState> (systems[i]);
+-    sys->EnableStepFast (enable);
+-  }
+-}
+-
+-void csODEDynamics::SetStepFastIterations (int iter)
+-{
+-  sfiter = iter;
+-
+-  for (size_t i = 0; i < systems.GetSize (); i ++)
+-  {
+-    csRef<iODEDynamicSystemState> sys = 
+-      scfQueryInterface<iODEDynamicSystemState> (systems[i]);
+-    sys->SetStepFastIterations (iter);
+-  }
+-}
+-
+ void csODEDynamics::EnableQuickStep (bool enable)
+ {
+   quickstep = enable;
+-  stepfast = false;
+ 
+   for (size_t i = 0; i < systems.GetSize (); i ++)
+   {
+@@ -621,8 +592,6 @@
+   steptime = 0.01f;
+   limittime = 1.0f;
+ 
+-  stepfast = false;
+-  sfiter = 10;
+   quickstep = false;
+   qsiter = 10;
+   fastobjects = false;

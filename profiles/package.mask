@@ -1,0 +1,17 @@
+# Sven Eden <yamakuzure@gmx.net> (06 Nov 2014)
+# No longer needed, the portage tree version 1.9.0-r1 has all the required
+# fixes. They are now in a reviewd, cleaned up and optimized state.
+# dev-games/ogre will be removed from my overlay december 2014.
+=dev-games/ogre-1.9.0-r2
+
+# Julian Ospald <hasufell@gentoo.org> (30 Dec 2013)
+# breaks every consumer
+# Sven Eden <yamakuzure@gmx.net> (28 Mar 2014)
+# Reason: Heavy API changes.
+=dev-games/ogre-1.9.0-r1
+
+# Sven Eden <yamakuzure@gmx.net> (28 Mar 2014)
+# Discontinued, I am using dev-util/eclipse-sdk-bin-4.2.1-r1 from java overlay.
+# Try it out, it works very well.
+# dev-util/eclipse will be removed from my overlay december 2014.
+=dev-util/eclipse-sdk-3.7.1-r11

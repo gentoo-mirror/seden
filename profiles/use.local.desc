@@ -1,0 +1,46 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
+# your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using egencache *
+
+app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
+app-emulation/winetricks:gnome - Use gnome-extra/zenity to display the GUI
+app-emulation/winetricks:kde - Use kde-base/kdialog to display the GUI
+app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
+app-mobilephone/gnokii:irda - Enable infrared support
+app-mobilephone/gnokii:sms - Enable SMS support (build smsd)
+dev-games/cel:debug - Build debug versions of the libraries
+dev-games/cel:python - Add Python bindings
+dev-games/crystalspace:debug - Build debug versions of the libraries
+dev-games/crystalspace:optimized - Build optimized versions of the libraries (default)
+dev-games/crystalspace:profile - Build profiling versions of the libraries (slow)
+dev-games/crystalspace:python - Add Python bindings
+dev-games/gigi-fo:devil - Enable image loading via DevIL.
+dev-games/gigi-fo:ogre - Enable OGRE support.
+dev-games/gigi-fo:ois - Enable OIS support.
+dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+dev-util/eclipse-sdk:android - Use dev-util/android-sdk-update-manager for android based development
+dev-util/eclipse-sdk:doc - Build documentation
+dev-util/eclipse-sdk:source - Build source plugins
+games-roguelike/tomenet:X - Enable libX11 display
+games-roguelike/tomenet:Xaw3d - Enable Xaw3d display
+games-strategy/freeorion:xml - Do all serialization using xml archives. Otherwise, binary archives will be used.
+kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
+kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
+kde-base/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
+kde-base/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
+kde-base/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
+kde-base/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
+kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
+kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5.
+kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim.
+kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
+kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
+media-sound/amarok:daap - Enable the scripts for music sharing through DAAP. This flag adds dependencies on www-servers/mongrel to allow sharing of the Amarok music collection through DAAP protocol. Please note that turning this flag off has no effect on DAAP browsing.
+media-sound/amarok:embedded - Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server.
+media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
+media-sound/amarok:mp3tunes - Enable mp3tunes integration
+media-sound/amarok:mtp - Enable support for libMTP (Plays4Sure) devices access through libmtp
+media-sound/amarok:ofa - Use media-libs/libofa to compute MusicDNS acoustic fingerprints (used by MusicBrainz)
+media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
+net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
+net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service

@@ -1,0 +1,95 @@
+# ChangeLog for games-action/atanks
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+
+*atanks_aiu-6.2.1 (10 Apr 2015)
+
+  09 Feb 2015; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.2.1.ebuild,
+  -atanks_aiu-6.1.2.ebuild:
+  Version bump, removed old ebuild.
+
+*atanks_aiu-6.1.3 (09 Feb 2015)
+
+  09 Feb 2015; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.1.3.ebuild,
+  -atanks_aiu-6.1.1.ebuild:
+  Version bump, removed old ebuild.
+
+*atanks_aiu-6.1.2 (25 Jan 2015)
+
+  25 Jan 2015; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.1.2.ebuild,
+  -atanks_aiu-6.0.8.ebuild:
+  Version bump, removed old ebuild.
+
+*atanks_aiu-6.0.8 (19 Dec 2014)
+*atanks_aiu-6.1.1 (19 Dec 2014)
+
+  19 Dec 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.8.ebuild:
+  +atanks_aiu-6.1.1.ebuild:
+  -atanks_aiu-6.0.6.ebuild:
+  -atanks_aiu-6.0.7.ebuild:
+  Removed old ebuilds, added missing version 6.0.8 and new 6.1.1.
+
+*atanks_aiu-6.0.7 (13 Aug 2014)
+
+  13 Aug 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.7.ebuild:
+  -atanks_aiu-6.0.5.ebuild:
+  version bump to atanks-6.0-aiu7, removed old 6.0-aiu5 ebuild.
+
+*atanks_aiu-6.0.6 (23 Jul 2014)
+
+  23 Jul 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.6.ebuild:
+  -atanks_aiu-6.0.4.ebuild:
+  version bump to atanks-6.0-aiu6, removed old 6.0-aiu4 ebuild.
+
+*atanks_aiu-6.0.5 (07 Jul 2014)
+
+  07 Jul 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.5.ebuild:
+  -atanks_aiu-6.0.3.ebuild:
+  version bump to atanks-6.0-aiu5, removed old 6.0-aiu3 ebuild.
+
+*atanks_aiu-6.0.4 (23 Jun 2014)
+
+  23 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.4.ebuild:
+  -atanks_aiu-6.0.2.ebuild:
+  version bump to atanks-6.0-aiu4, removed old 6.0-aiu2 ebuild.
+
+*atanks_aiu-6.0.3 (11 Jun 2014)
+
+  11 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.3.ebuild:
+  -atanks_aiu-6.0.1.ebuild:
+  version bump to atanks-6.0-aiu3, removed old 6.0-aiu1 ebuild.
+
+*atanks_aiu-6.0.2 (05 Jun 2014)
+
+  05 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.2.ebuild:
+  -atanks_aiu-5.9.2.ebuild:
+  version bump to atanks-6.0-aiu2, removed old 5.9-aiu2 ebuild.
+
+*atanks_aiu-6.0.1 (04 Jun 2014)
+
+  04 Jun 2014; Sven Eden <yamakuzure@gmx.net>
+  +atanks_aiu-6.0.1.ebuild:
+  -atanks_aiu-5.9.1.ebuild:
+  version bump to atanks-6.0-aiu1, removed old 5.9-aiu1 ebuild.
+
+*atanks_aiu-5.9.2 (03 Jun 2014)
+
+  03 Jun 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9.2.ebuild:
+  Version bum to atanks-5.9-aiu2.
+
+*atanks_aiu-5.9.1 (30 May 2014)
+
+  30 May 2014; Sven Eden <yamakuzure@gmx.net> +atanks_aiu-5.9.1.ebuild:
+  First ebuild for the Atanks AI Upgrade project (atanks-5.9-aiu1)
+

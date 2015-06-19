@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pkgmetadata>
+<herd />
+<maintainer>
+  <email>yamakuzure@gmx.net</email>
+  <description>Only through my private overlay - STRICTLY EXPERIMENTAL!</description>
+</maintainer>
+<use>
+	<flag name='android'>Use dev-util/android-sdk-update-manager for android based development</flag>
+	<flag name='doc'>Build documentation</flag>
+	<flag name='source'>Build source plugins</flag>
+</use>
+</pkgmetadata>

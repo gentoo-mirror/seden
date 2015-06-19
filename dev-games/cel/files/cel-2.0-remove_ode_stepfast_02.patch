@@ -1,0 +1,28 @@
+--- include/propclass/mechsys.h~	2012-07-02 12:55:26.000000000 +0200
++++ include/propclass/mechsys.h	2012-07-13 16:44:03.228384979 +0200
+@@ -46,8 +46,6 @@
+  * - SetGravity: parameters 'gravity' (float).
+  * - SetStepTime: parameters 'time' (float).
+  * - QuickStep: no parameters.
+- * - EnableStepFast: no parameters.
+- * - DisableStepFast: no parameters.
+  */
+ struct iPcMechanicsSystem : public virtual iBase
+ {
+@@ -212,16 +210,6 @@
+   virtual void RemoveJoint (iJoint* joint) = 0;
+ 
+   /**
+-   * Disable fast stepping. This is very accurate but can quickly
+-   * break with lots of objects.
+-   */
+-  virtual void DisableStepFast () = 0;
+-  /**
+-   * Enable fast stepping. This is a lot faster then DisableStepFast().
+-   * Default.
+-   */
+-  virtual void EnableStepFast () = 0;
+-  /**
+    * Very fast but not accurate.
+    */
+   virtual void EnableQuickStep () = 0;

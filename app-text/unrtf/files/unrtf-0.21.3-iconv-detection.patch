@@ -1,0 +1,10 @@
+--- a/configure.ac	2013-01-01 02:05:20.000000000 +0100
++++ b/configure.ac	2013-06-17 13:08:34.686437316 +0200
+@@ -46,6 +46,7 @@
+     *-*-cygwin*)	AC_SUBST(LIBS, ["-liconv"]);;
+     *aix*)		AC_SUBST(LIBS, ["-liconv"]);;
+     *-*-darwin*)	AC_SUBST(LIBS, ["-liconv"]);;
++    *-*-solaris*)	AC_SUBST(LIBS, ["-liconv"]);;
+ esac
+ 
+ AC_CONFIG_FILES([Makefile

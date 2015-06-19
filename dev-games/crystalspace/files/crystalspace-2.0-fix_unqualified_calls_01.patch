@@ -1,0 +1,11 @@
+--- include/csutil/refarr.h.ori	2012-07-18 16:17:45.460834864 +0200
++++ include/csutil/refarr.h	2012-07-18 16:18:11.580836231 +0200
+@@ -111,7 +111,7 @@
+   {
+     CS_ASSERT (this->GetSize () > 0);
+     csRef<T> ret = this->Get (this->GetSize () - 1); // see *1*
+-    SetSize (this->GetSize () - 1);
++    this->SetSize (this->GetSize () - 1);
+     return ret;
+   }
+ };

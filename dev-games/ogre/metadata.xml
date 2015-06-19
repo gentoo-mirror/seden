@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd />
+<maintainer>
+  <email>yamakuzure@gmx.net</email>
+  <description>Only through my private overlay - STRICTLY EXPERIMENTAL!</description>
+</maintainer>
+  <use>
+    <flag name="boost">enable boost support</flag>
+    <flag name="cg">NVIDIA toolkit plugin</flag>
+    <flag name="double-precision">more precise calculations at the expense of speed</flag>
+    <flag name="freeimage">support images via freeimage</flag>
+    <flag name="gl3plus">build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
+    <flag name="gles1">build OpenGL ES 1.x RenderSystem</flag>
+    <flag name="gles2">build OpenGL ES 2.x RenderSystem</flag>
+    <flag name="gles3">add ES 3.0 support in the OpenGL ES 2.x RenderSystem (EXPERIMENTAL)</flag>
+    <flag name="ois">pull in Object-oriented Input System library for samples</flag>
+    <flag name="poco">when USE=threads, use poco for threading</flag>
+    <flag name="tbb">when USE=threads, use tbb for threading</flag>
+    <flag name="source">Install the examples sources</flag>
+    <flag name="tools">build+install helper tools</flag>
+    <flag name="zip">support zip archives</flag>
+  </use>
+</pkgmetadata>

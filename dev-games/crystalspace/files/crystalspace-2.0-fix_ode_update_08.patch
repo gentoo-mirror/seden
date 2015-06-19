@@ -1,0 +1,298 @@
+--- scripts/perl5/cswigpl5.inc	2012-01-14 04:39:44.000000000 +0100
++++ scripts/perl5/cswigpl5.inc	2012-07-13 10:01:29.328023720 +0200
+@@ -151643,136 +151643,6 @@
+ }
+ 
+ 
+-XS(_wrap_iODEDynamicState_EnableStepFast) {
+-  {
+-    iODEDynamicState *arg1 = (iODEDynamicState *) 0 ;
+-    bool arg2 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    bool val2 ;
+-    int ecode2 = 0 ;
+-    int argvi = 0;
+-    dXSARGS;
+-    
+-    if ((items < 2) || (items > 2)) {
+-      SWIG_croak("Usage: iODEDynamicState_EnableStepFast(self,enable);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicState_EnableStepFast" "', argument " "1"" of type '" "iODEDynamicState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicState * >(argp1);
+-    ecode2 = SWIG_AsVal_bool SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+-    if (!SWIG_IsOK(ecode2)) {
+-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "iODEDynamicState_EnableStepFast" "', argument " "2"" of type '" "bool""'");
+-    } 
+-    arg2 = static_cast< bool >(val2);
+-    (arg1)->EnableStepFast(arg2);
+-    
+-    
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicState_StepFastEnabled) {
+-  {
+-    iODEDynamicState *arg1 = (iODEDynamicState *) 0 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int argvi = 0;
+-    bool result;
+-    dXSARGS;
+-    
+-    if ((items < 1) || (items > 1)) {
+-      SWIG_croak("Usage: iODEDynamicState_StepFastEnabled(self);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicState_StepFastEnabled" "', argument " "1"" of type '" "iODEDynamicState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicState * >(argp1);
+-    result = (bool)(arg1)->StepFastEnabled();
+-    ST(argvi) = SWIG_From_bool  SWIG_PERL_CALL_ARGS_1(static_cast< bool >(result)); argvi++ ;
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicState_SetStepFastIterations) {
+-  {
+-    iODEDynamicState *arg1 = (iODEDynamicState *) 0 ;
+-    int arg2 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int val2 ;
+-    int ecode2 = 0 ;
+-    int argvi = 0;
+-    dXSARGS;
+-    
+-    if ((items < 2) || (items > 2)) {
+-      SWIG_croak("Usage: iODEDynamicState_SetStepFastIterations(self,iter);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicState_SetStepFastIterations" "', argument " "1"" of type '" "iODEDynamicState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicState * >(argp1);
+-    ecode2 = SWIG_AsVal_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+-    if (!SWIG_IsOK(ecode2)) {
+-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "iODEDynamicState_SetStepFastIterations" "', argument " "2"" of type '" "int""'");
+-    } 
+-    arg2 = static_cast< int >(val2);
+-    (arg1)->SetStepFastIterations(arg2);
+-    
+-    
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicState_StepFastIterations) {
+-  {
+-    iODEDynamicState *arg1 = (iODEDynamicState *) 0 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int argvi = 0;
+-    int result;
+-    dXSARGS;
+-    
+-    if ((items < 1) || (items > 1)) {
+-      SWIG_croak("Usage: iODEDynamicState_StepFastIterations(self);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicState_StepFastIterations" "', argument " "1"" of type '" "iODEDynamicState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicState * >(argp1);
+-    result = (int)(arg1)->StepFastIterations();
+-    ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1(static_cast< int >(result)); argvi++ ;
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+ XS(_wrap_iODEDynamicState_EnableQuickStep) {
+   {
+     iODEDynamicState *arg1 = (iODEDynamicState *) 0 ;
+@@ -152477,136 +152347,6 @@
+ }
+ 
+ 
+-XS(_wrap_iODEDynamicSystemState_EnableStepFast) {
+-  {
+-    iODEDynamicSystemState *arg1 = (iODEDynamicSystemState *) 0 ;
+-    bool arg2 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    bool val2 ;
+-    int ecode2 = 0 ;
+-    int argvi = 0;
+-    dXSARGS;
+-    
+-    if ((items < 2) || (items > 2)) {
+-      SWIG_croak("Usage: iODEDynamicSystemState_EnableStepFast(self,enable);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicSystemState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicSystemState_EnableStepFast" "', argument " "1"" of type '" "iODEDynamicSystemState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicSystemState * >(argp1);
+-    ecode2 = SWIG_AsVal_bool SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+-    if (!SWIG_IsOK(ecode2)) {
+-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "iODEDynamicSystemState_EnableStepFast" "', argument " "2"" of type '" "bool""'");
+-    } 
+-    arg2 = static_cast< bool >(val2);
+-    (arg1)->EnableStepFast(arg2);
+-    
+-    
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicSystemState_StepFastEnabled) {
+-  {
+-    iODEDynamicSystemState *arg1 = (iODEDynamicSystemState *) 0 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int argvi = 0;
+-    bool result;
+-    dXSARGS;
+-    
+-    if ((items < 1) || (items > 1)) {
+-      SWIG_croak("Usage: iODEDynamicSystemState_StepFastEnabled(self);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicSystemState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicSystemState_StepFastEnabled" "', argument " "1"" of type '" "iODEDynamicSystemState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicSystemState * >(argp1);
+-    result = (bool)(arg1)->StepFastEnabled();
+-    ST(argvi) = SWIG_From_bool  SWIG_PERL_CALL_ARGS_1(static_cast< bool >(result)); argvi++ ;
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicSystemState_SetStepFastIterations) {
+-  {
+-    iODEDynamicSystemState *arg1 = (iODEDynamicSystemState *) 0 ;
+-    int arg2 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int val2 ;
+-    int ecode2 = 0 ;
+-    int argvi = 0;
+-    dXSARGS;
+-    
+-    if ((items < 2) || (items > 2)) {
+-      SWIG_croak("Usage: iODEDynamicSystemState_SetStepFastIterations(self,iter);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicSystemState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicSystemState_SetStepFastIterations" "', argument " "1"" of type '" "iODEDynamicSystemState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicSystemState * >(argp1);
+-    ecode2 = SWIG_AsVal_int SWIG_PERL_CALL_ARGS_2(ST(1), &val2);
+-    if (!SWIG_IsOK(ecode2)) {
+-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "iODEDynamicSystemState_SetStepFastIterations" "', argument " "2"" of type '" "int""'");
+-    } 
+-    arg2 = static_cast< int >(val2);
+-    (arg1)->SetStepFastIterations(arg2);
+-    
+-    
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+-XS(_wrap_iODEDynamicSystemState_StepFastIterations) {
+-  {
+-    iODEDynamicSystemState *arg1 = (iODEDynamicSystemState *) 0 ;
+-    void *argp1 = 0 ;
+-    int res1 = 0 ;
+-    int argvi = 0;
+-    int result;
+-    dXSARGS;
+-    
+-    if ((items < 1) || (items > 1)) {
+-      SWIG_croak("Usage: iODEDynamicSystemState_StepFastIterations(self);");
+-    }
+-    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_iODEDynamicSystemState, 0 |  0 );
+-    if (!SWIG_IsOK(res1)) {
+-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iODEDynamicSystemState_StepFastIterations" "', argument " "1"" of type '" "iODEDynamicSystemState *""'"); 
+-    }
+-    arg1 = reinterpret_cast< iODEDynamicSystemState * >(argp1);
+-    result = (int)(arg1)->StepFastIterations();
+-    ST(argvi) = SWIG_From_int  SWIG_PERL_CALL_ARGS_1(static_cast< int >(result)); argvi++ ;
+-    
+-    XSRETURN(argvi);
+-  fail:
+-    
+-    SWIG_croak_null();
+-  }
+-}
+-
+-
+ XS(_wrap_iODEDynamicSystemState_EnableQuickStep) {
+   {
+     iODEDynamicSystemState *arg1 = (iODEDynamicSystemState *) 0 ;
+@@ -399406,10 +399146,6 @@
+ {"cspacec::iODEDynamicState_GlobalERP", _wrap_iODEDynamicState_GlobalERP},
+ {"cspacec::iODEDynamicState_SetGlobalCFM", _wrap_iODEDynamicState_SetGlobalCFM},
+ {"cspacec::iODEDynamicState_GlobalCFM", _wrap_iODEDynamicState_GlobalCFM},
+-{"cspacec::iODEDynamicState_EnableStepFast", _wrap_iODEDynamicState_EnableStepFast},
+-{"cspacec::iODEDynamicState_StepFastEnabled", _wrap_iODEDynamicState_StepFastEnabled},
+-{"cspacec::iODEDynamicState_SetStepFastIterations", _wrap_iODEDynamicState_SetStepFastIterations},
+-{"cspacec::iODEDynamicState_StepFastIterations", _wrap_iODEDynamicState_StepFastIterations},
+ {"cspacec::iODEDynamicState_EnableQuickStep", _wrap_iODEDynamicState_EnableQuickStep},
+ {"cspacec::iODEDynamicState_QuickStepEnabled", _wrap_iODEDynamicState_QuickStepEnabled},
+ {"cspacec::iODEDynamicState_SetQuickStepIterations", _wrap_iODEDynamicState_SetQuickStepIterations},
+@@ -399432,10 +399168,6 @@
+ {"cspacec::iODEDynamicSystemState_ERP", _wrap_iODEDynamicSystemState_ERP},
+ {"cspacec::iODEDynamicSystemState_SetCFM", _wrap_iODEDynamicSystemState_SetCFM},
+ {"cspacec::iODEDynamicSystemState_CFM", _wrap_iODEDynamicSystemState_CFM},
+-{"cspacec::iODEDynamicSystemState_EnableStepFast", _wrap_iODEDynamicSystemState_EnableStepFast},
+-{"cspacec::iODEDynamicSystemState_StepFastEnabled", _wrap_iODEDynamicSystemState_StepFastEnabled},
+-{"cspacec::iODEDynamicSystemState_SetStepFastIterations", _wrap_iODEDynamicSystemState_SetStepFastIterations},
+-{"cspacec::iODEDynamicSystemState_StepFastIterations", _wrap_iODEDynamicSystemState_StepFastIterations},
+ {"cspacec::iODEDynamicSystemState_EnableQuickStep", _wrap_iODEDynamicSystemState_EnableQuickStep},
+ {"cspacec::iODEDynamicSystemState_QuickStepEnabled", _wrap_iODEDynamicSystemState_QuickStepEnabled},
+ {"cspacec::iODEDynamicSystemState_SetQuickStepIterations", _wrap_iODEDynamicSystemState_SetQuickStepIterations},

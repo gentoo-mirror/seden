@@ -1,0 +1,60 @@
+--- plugins/behaviourlayer/python/blcel.cpp.ori	2012-07-02 12:55:26.000000000 +0200
++++ plugins/behaviourlayer/python/blcel.cpp	2012-07-13 16:45:54.491724132 +0200
+@@ -34883,48 +34883,6 @@
+ }
+ 
+ 
+-SWIGINTERN PyObject *_wrap_iPcMechanicsSystem_DisableStepFast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+-  PyObject *resultobj = 0;
+-  iPcMechanicsSystem *arg1 = (iPcMechanicsSystem *) 0 ;
+-  void *argp1 = 0 ;
+-  int res1 = 0 ;
+-  PyObject * obj0 = 0 ;
+-  
+-  if(!PyArg_UnpackTuple(args,(char *)"iPcMechanicsSystem_DisableStepFast",1,1,&obj0)) SWIG_fail;
+-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_iPcMechanicsSystem, 0 |  0 );
+-  if (!SWIG_IsOK(res1)) {
+-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iPcMechanicsSystem_DisableStepFast" "', argument " "1"" of type '" "iPcMechanicsSystem *""'"); 
+-  }
+-  arg1 = reinterpret_cast< iPcMechanicsSystem * >(argp1);
+-  (arg1)->DisableStepFast();
+-  resultobj = SWIG_Py_Void();
+-  return resultobj;
+-fail:
+-  return NULL;
+-}
+-
+-
+-SWIGINTERN PyObject *_wrap_iPcMechanicsSystem_EnableStepFast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+-  PyObject *resultobj = 0;
+-  iPcMechanicsSystem *arg1 = (iPcMechanicsSystem *) 0 ;
+-  void *argp1 = 0 ;
+-  int res1 = 0 ;
+-  PyObject * obj0 = 0 ;
+-  
+-  if(!PyArg_UnpackTuple(args,(char *)"iPcMechanicsSystem_EnableStepFast",1,1,&obj0)) SWIG_fail;
+-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_iPcMechanicsSystem, 0 |  0 );
+-  if (!SWIG_IsOK(res1)) {
+-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "iPcMechanicsSystem_EnableStepFast" "', argument " "1"" of type '" "iPcMechanicsSystem *""'"); 
+-  }
+-  arg1 = reinterpret_cast< iPcMechanicsSystem * >(argp1);
+-  (arg1)->EnableStepFast();
+-  resultobj = SWIG_Py_Void();
+-  return resultobj;
+-fail:
+-  return NULL;
+-}
+-
+-
+ SWIGINTERN PyObject *_wrap_iPcMechanicsSystem_EnableQuickStep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+   PyObject *resultobj = 0;
+   iPcMechanicsSystem *arg1 = (iPcMechanicsSystem *) 0 ;
+@@ -118380,8 +118338,6 @@
+ 	 { (char *)"iPcMechanicsSystem_RemoveBodyFromGroup", _wrap_iPcMechanicsSystem_RemoveBodyFromGroup, METH_VARARGS, NULL},
+ 	 { (char *)"iPcMechanicsSystem_CreateJoint", _wrap_iPcMechanicsSystem_CreateJoint, METH_VARARGS, NULL},
+ 	 { (char *)"iPcMechanicsSystem_RemoveJoint", _wrap_iPcMechanicsSystem_RemoveJoint, METH_VARARGS, NULL},
+-	 { (char *)"iPcMechanicsSystem_DisableStepFast", _wrap_iPcMechanicsSystem_DisableStepFast, METH_VARARGS, NULL},
+-	 { (char *)"iPcMechanicsSystem_EnableStepFast", _wrap_iPcMechanicsSystem_EnableStepFast, METH_VARARGS, NULL},
+ 	 { (char *)"iPcMechanicsSystem_EnableQuickStep", _wrap_iPcMechanicsSystem_EnableQuickStep, METH_VARARGS, NULL},
+ 	 { (char *)"iPcMechanicsSystem_StepTime_set", _wrap_iPcMechanicsSystem_StepTime_set, METH_VARARGS, NULL},
+ 	 { (char *)"iPcMechanicsSystem_StepTime_get", _wrap_iPcMechanicsSystem_StepTime_get, METH_VARARGS, NULL},

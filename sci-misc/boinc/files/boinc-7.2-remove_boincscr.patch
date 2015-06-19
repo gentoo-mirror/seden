@@ -1,0 +1,15 @@
+--- a/Makefile.am	2014-11-05 13:23:17.000000000 +0100
++++ b/Makefile.am	2014-11-05 13:25:43.558205864 +0100
+@@ -26,9 +26,9 @@
+ 
+ if ENABLE_MANAGER
+    CLIENTGUI_SUBDIRS = clientgui locale
+-if BUILD_X11_SCREENSAVER
+-   CLIENTGUI_SUBDIRS += clientscr
+-endif
++#if BUILD_X11_SCREENSAVER
++#   CLIENTGUI_SUBDIRS += clientscr
++#endif
+ endif
+ 
+ # ORDER MATTERS below.  One must build dependencies FIRST, then things
