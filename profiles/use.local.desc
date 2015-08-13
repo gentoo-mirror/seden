@@ -1,6 +1,6 @@
 # This file is deprecated as per GLEP 56 in favor of metadata.xml. Please add
 # your descriptions to your package's metadata.xml ONLY.
-# * generated automatically using egencache *
+# * generated automatically using pmaint *
 
 app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
 app-emulation/winetricks:gnome - Use gnome-extra/zenity to display the GUI
@@ -17,10 +17,27 @@ dev-games/crystalspace:python - Add Python bindings
 dev-games/gigi-fo:devil - Enable image loading via DevIL.
 dev-games/gigi-fo:ogre - Enable OGRE support.
 dev-games/gigi-fo:ois - Enable OIS support.
+dev-games/ogre:boost - enable boost support
+dev-games/ogre:cg - NVIDIA toolkit plugin
+dev-games/ogre:double-precision - more precise calculations at the expense of speed
+dev-games/ogre:freeimage - support images via freeimage
+dev-games/ogre:gl3plus - build OpenGL 3+ RenderSystem (EXPERIMENTAL)
+dev-games/ogre:gles1 - build OpenGL ES 1.x RenderSystem
+dev-games/ogre:gles2 - build OpenGL ES 2.x RenderSystem
+dev-games/ogre:gles3 - add ES 3.0 support in the OpenGL ES 2.x RenderSystem (EXPERIMENTAL)
+dev-games/ogre:ois - pull in Object-oriented Input System library for samples
+dev-games/ogre:poco - when USE=threads, use poco for threading
+dev-games/ogre:source - Install the examples sources
+dev-games/ogre:tbb - when USE=threads, use tbb for threading
+dev-games/ogre:tools - build+install helper tools
+dev-games/ogre:zip - support zip archives
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
 dev-util/eclipse-sdk:android - Use dev-util/android-sdk-update-manager for android based development
 dev-util/eclipse-sdk:doc - Build documentation
 dev-util/eclipse-sdk:source - Build source plugins
+dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger.
+dev-util/nvidia-cuda-toolkit:eclipse - Install the dev-util/eclipse-sdk plugins
+dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler.
 games-roguelike/tomenet:X - Enable libX11 display
 games-roguelike/tomenet:Xaw3d - Enable Xaw3d display
 games-strategy/freeorion:xml - Do all serialization using xml archives. Otherwise, binary archives will be used.
@@ -35,12 +52,13 @@ kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5.
 kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim.
 kde-base/plasma-workspace:json - Enable JSON support via dev-libs/qjson
 kde-base/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-media-sound/amarok:daap - Enable the scripts for music sharing through DAAP. This flag adds dependencies on www-servers/mongrel to allow sharing of the Amarok music collection through DAAP protocol. Please note that turning this flag off has no effect on DAAP browsing.
-media-sound/amarok:embedded - Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server.
-media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
-media-sound/amarok:mp3tunes - Enable mp3tunes integration
-media-sound/amarok:mtp - Enable support for libMTP (Plays4Sure) devices access through libmtp
-media-sound/amarok:ofa - Use media-libs/libofa to compute MusicDNS acoustic fingerprints (used by MusicBrainz)
-media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
+media-libs/allegro:dumb - Enable media-libs/dumb module library support
+media-libs/allegro:physfs - Enable physfs support
+media-libs/allegro:vga - Enables the VGA graphics driver
 net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
+net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
+sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it.
+sci-misc/boinc:suid - setuid root /usr/bin/boincscr
+sci-misc/boinc:xscreensaver - Install boincscr
+x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
