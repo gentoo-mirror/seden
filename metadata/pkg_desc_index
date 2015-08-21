@@ -25,7 +25,7 @@ kde-misc/smooth-tasks-flupp 9999-r3: Alternate taskbar KDE plasmoid, similar to 
 media-libs/allegro 5.0.11-r1 5.1.9: A game programming library
 media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
 media-libs/oyranos 0.9.4-r2: colour management system allowing to share various settings across applications and services
-net-mail/davmail-bin 4.6.0 4.6.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-mail/davmail-bin 4.6.1 4.6.2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
 sci-misc/boinc 7.2.42 7.2.42-r1: The Berkeley Open Infrastructure for Network Computing
 sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
