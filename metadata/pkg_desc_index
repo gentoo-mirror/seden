@@ -7,7 +7,7 @@ app-text/unrtf 0.21.3: Converts RTF files to various formats
 dev-games/cel 2.0: A game entity layer based on Crystal Space
 dev-games/crystalspace 2.0-r3: Portable 3D Game Development Kit written in C++
 dev-games/gigi-fo 9999: FreeOrion fork of the GiGi OpenGL interface library
-dev-games/ogre 1.9.0-r1 1.9.0-r2: Object-oriented Graphics Rendering Engine
+dev-games/ogre 1.9.0-r2 1.9.0-r3: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-libs/ustr 1.0.4-r4: Low-overhead managed string library for C
 dev-tex/rtf2latex2e 2.2.2: RTF to LaTeX converter
