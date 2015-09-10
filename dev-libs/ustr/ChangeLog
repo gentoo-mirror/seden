@@ -2,14 +2,16 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: /var/cvsroot/gentoo-x86/dev-libs/ustr/ChangeLog,v 1.13 2014/01/14 13:58:01 ago Exp $
 
-*ustr-1.0.4-r5 (10 Sep 2015)
+*ustr-1.0.4-r6 (10 Sep 2015)
 
-  10 Sep 2015; Sven Eden <yamakuzure@gmx.net> +ustr-1.0.4-r5.ebuild,
+  10 Sep 2015; Sven Eden <yamakuzure@gmx.net> +ustr-1.0.4-r6.ebuild,
   +files/fix_gcc_5_c99_inline.patch :
   Patch in a check whether gcc-5 is used with the C standard set to
   C99 or above, and change the behaviour of the inline keyword back
   to how it worked for C89.
   This fixes bug #556452
+
+  Note: ustr-1.0.4-r5 was already taken by the in-tree version.
 
 
 *ustr-1.0.4-r4 (09 May 2014)
