@@ -23,7 +23,6 @@ IUSE="cairo cuda debug gl +numa opencl +pci plugins svg static-libs xml X"
 RDEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
 	cairo? ( >=x11-libs/cairo-1.12.14-r4[X?,svg?,${MULTILIB_USEDEP}] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.19-r1 )
-	gl? ( media-video/nvidia-settings )
 	gl? ( ||
 			( media-video/nvidia-settings
 			  >=x11-drivers/nvidia-drivers-346.96[tools]
