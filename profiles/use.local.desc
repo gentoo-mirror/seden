@@ -95,4 +95,10 @@ net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it.
 sci-misc/boinc:suid - setuid root /usr/bin/boincscr
 sci-misc/boinc:xscreensaver - Install boincscr
+sys-apps/hwloc:cuda - Enable CUDA device discovery
+sys-apps/hwloc:gl - Enable GL display device discovery (NVCtrl)
+sys-apps/hwloc:numa - Add support for numa memory allocation
+sys-apps/hwloc:opencl - Enable OpenCL device discovery (AMD only)
+sys-apps/hwloc:pci - Enable PCI device discovery using libpci
+sys-apps/hwloc:plugins - Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
