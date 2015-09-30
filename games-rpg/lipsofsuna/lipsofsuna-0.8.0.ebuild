@@ -41,6 +41,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PV}-01_add_OgreOverlay_to_wscript.patch"
 	epatch "${FILESDIR}/${PV}-02-fix_material_manager_usage.patch"
 	epatch "${FILESDIR}/${PV}-03-fix_skeleton_manager_usage.patch"
+	epatch "${FILESDIR}/${PV}-04_add_overlay_system.patch"
 }
 
 src_configure() {

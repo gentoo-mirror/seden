@@ -1,0 +1,31 @@
+--- a/src/lipsofsuna/render/internal/render.hpp	2015-09-30 15:42:12.391479577 +0200
++++ b/src/lipsofsuna/render/internal/render.hpp	2015-09-30 15:46:48.277487860 +0200
+@@ -25,6 +25,7 @@
+ #include <OgreCamera.h>
+ #include <OgreMaterialManager.h>
+ #include <OgreOverlayManager.h>
++#include <OgreOverlaySystem.h>
+ #include <OgreRenderWindow.h>
+ #include <OgreRenderSystem.h>
+ #include <OgreSceneManager.h>
+@@ -173,6 +174,7 @@
+ 	Ogre::Root* root;
+ 	Ogre::Camera* camera;
+ 	Ogre::MaterialManager* material_manager;
++	Ogre::OverlaySystem* overlay_system;
+ 	LIRenOverlayManager* overlay_mgr;
+ 	Ogre::RenderWindow* render_window;
+ 	Ogre::RenderSystem* render_system;
+--- a/src/lipsofsuna/render/internal/render.cpp	2015-09-30 16:52:54.273606928 +0200
++++ b/src/lipsofsuna/render/internal/render.cpp	2015-09-30 16:56:21.080613137 +0200
+@@ -103,6 +103,10 @@
+ 	scene_manager->setShadowTextureSize (1024);
+ 	scene_root = scene_manager->getRootSceneNode ();
+ 
++	/* Initialize overlay system */
++	overlay_system = OGRE_NEW Ogre::OverlaySystem();
++	scene_manager->addRenderQueueListener(overlay_system);
++
+ 	/* Initialize the camera. */
+ 	camera = scene_manager->createCamera ("Camera");
+ 	camera->setNearClipDistance (1);
