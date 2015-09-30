@@ -1,0 +1,12 @@
+--- a/src/lipsofsuna/render/internal/render-mesh-builder.cpp	2015-09-30 14:46:13.785378744 +0200
++++ b/src/lipsofsuna/render/internal/render-mesh-builder.cpp	2015-09-30 14:50:43.608386845 +0200
+@@ -375,8 +375,7 @@
+ 
+ 	/* Create the skeleton. */
+ 	Ogre::String name (render->id.next ());
+-	Ogre::ResourcePtr resource = Ogre::SkeletonManager::getSingleton ().create (name, LIREN_RESOURCES_TEMPORARY, true);
+-	Ogre::SkeletonPtr skeleton (resource);
++	Ogre::SkeletonPtr skeleton = Ogre::SkeletonManager::getSingleton ().create (name, LIREN_RESOURCES_TEMPORARY, true);
+ 
+ 	/* Create the dummy bone. */
+ 	bone = skeleton->createBone (0);
