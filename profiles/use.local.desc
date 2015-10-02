@@ -2,23 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-admin/conky:apcupsd - enable support for sys-power/apcupsd
-app-admin/conky:audacious - enable monitoring of music played by media-sound/audacious
-app-admin/conky:eve - enable support for the eve-online skill monitor
-app-admin/conky:iostats - enable support for per-task I/O statistics
-app-admin/conky:lua - enable if you want Lua scripting support
-app-admin/conky:lua-cairo - enable if you want Lua Cairo bindings for Conky (also enables lua support)
-app-admin/conky:lua-imlib - enable if you want Lua Imlib2 bindings for Conky (also enables lua and imlib support)
-app-admin/conky:math - enable support for glibc's libm math library
-app-admin/conky:moc - enable monitoring of music played by media-sound/moc
-app-admin/conky:mpd - enable monitoring of music controlled by media-sound/mpd
-app-admin/conky:nano-syntax - enable syntax highlighting for app-editors/nano
-app-admin/conky:nvidia - enable reading of nvidia card temperature sensors via media-video/nvidia-settings
-app-admin/conky:portmon - enable support for tcp (ip4) port monitoring
-app-admin/conky:thinkpad - enable support for IBM/Lenovo notebooks
-app-admin/conky:weather-metar - enable support for metar weather service
-app-admin/conky:weather-xoap - enable support for metar and xoap weather service
-app-admin/conky:xmms2 - enable monitoring of music played by media-sound/xmms2
 app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
 app-emulation/wine:capi - Enable ISDN support via CAPI
 app-emulation/wine:custom-cflags - Bypass strip-flags; use at your own peril
@@ -95,10 +78,4 @@ net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it.
 sci-misc/boinc:suid - setuid root /usr/bin/boincscr
 sci-misc/boinc:xscreensaver - Install boincscr
-sys-apps/hwloc:cuda - Enable CUDA device discovery
-sys-apps/hwloc:gl - Enable GL display device discovery (NVCtrl)
-sys-apps/hwloc:numa - Add support for numa memory allocation
-sys-apps/hwloc:opencl - Enable OpenCL device discovery (AMD only)
-sys-apps/hwloc:pci - Enable PCI device discovery using libpci
-sys-apps/hwloc:plugins - Build hwloc components as plugins so that the hwloc core library does not directly depend on their dependencies (for instance the libpci library)
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature

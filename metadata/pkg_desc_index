@@ -1,4 +1,3 @@
-app-admin/conky 1.9.0-r4 1.10.0-r1: An advanced, highly configurable system monitor for X
 app-emulation/playonlinux 4.2.2: Set of scripts to easily install and use Windows games and software
 app-emulation/wine 1.7.50-r1 1.7.51-r1: Free implementation of Windows(tm) on Unix
 app-emulation/winetricks 9999-r1: easy way to install DLLs needed to work around problems in Wine
@@ -31,7 +30,6 @@ media-libs/oyranos 0.9.4-r2: colour management system allowing to share various 
 net-mail/davmail-bin 4.6.1 4.6.2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
 sci-misc/boinc 7.2.42 7.2.42-r1: The Berkeley Open Infrastructure for Network Computing
-sys-apps/hwloc 1.10.1-r2: displays the hardware topology in convenient formats
 sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
 www-apps/dotproject 2.1.5-r2 2.1.5-r3: dotProject is a PHP web-based project management framework
 www-servers/jetty-bin 6.1.26-r4: Jetty Web Server; Java Servlet container
