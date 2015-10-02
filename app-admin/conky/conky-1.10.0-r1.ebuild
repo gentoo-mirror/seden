@@ -30,7 +30,10 @@ DEPEND_COMMON="
 		lua-rsvg? (
 			>=dev-lua/toluapp-1.0.93
 			gnome-base/librsvg )
-		nvidia? ( media-video/nvidia-settings )
+		nvidia? ( ||
+			( media-video/nvidia-settings
+			  >=x11-drivers/nvidia-drivers-346.96[tools]
+		) )
 		truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 		x11-libs/libX11
 		x11-libs/libXdamage
@@ -94,7 +97,6 @@ src_configure() {
 		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build imlib IMLIB2)"
 		mycmakeargs="${mycmakeargs} -DBUILD_XSHAPE=ON"
 		mycmakeargs="${mycmakeargs} -DBUILD_ARGB=ON"
-		mycmakeargs="${mycmakeargs} -DBUILD_XDBE=ON"
 		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-cairo LUA_CAIRO)"
 		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-imlib LUA_IMLIB2)"
 		mycmakeargs="${mycmakeargs} $(cmake-utils_use_build lua-rsvg LUA_RSVG)"
