@@ -6,6 +6,7 @@ EAPI=5
 
 KDE_LINGUAS="cs de fr hu pl ru zh_CN"
 KDE_MINIMAL="4.8"
+KDE_SCM=""
 
 inherit kde4-base mercurial
 
@@ -14,9 +15,6 @@ HOMEPAGE="https://bitbucket.org/flupp/smooth-tasks-fork"
 EHG_REPO_URI="https://bitbucket.org/flupp/smooth-tasks-fork"
 EHG_PROJECT="smooth-tasks-fork"
 EHG_REVISION="kde-4.8"
-
-EGIT_BRANCH="master"
-EGIT_VERSION=""
 
 LICENSE="GPL-2"
 SLOT="4"
