@@ -23,7 +23,7 @@ kde-base/kdebase-runtime-meta 4.11.2-r1: Merge this to pull in all kdebase-runti
 kde-base/kdeplasma-addons 4.11.2-r1: Extra Plasma applets and engines
 kde-base/plasma-workspace 4.11.2-r1: Plasma: KDE desktop framework
 kde-base/systemsettings 4.11.2: System settings utility
-kde-misc/smooth-tasks-flupp 9999-r3: Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork
+kde-misc/smooth-tasks-flupp 9999-r4: Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork
 media-libs/allegro 5.0.11-r1 5.1.9: A game programming library
 media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
 media-libs/oyranos 0.9.4-r2: colour management system allowing to share various settings across applications and services
