@@ -79,7 +79,7 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/icu
 	dev-libs/expat
-	>=dev-libs/libgcrypt-1.5.0:11/11
+	>=dev-libs/libgcrypt-1.5.0:0/20
 	dev-libs/libsigc++:2
 	dev-libs/libxml2
 	dev-libs/openssl:0.9.8
