@@ -2,23 +2,30 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*davmail-bin-4.7.0 (09 Nov 2015)
+
+  09 Nov 2015; Sven Eden <yamakuzure@gmx.net>
+  +davmail-bin-4.7.0.ebuild,
+  -davmail-bin-4.6.1.ebuild
+  Version bump and removal of old version.
+
 *davmail-bin-4.6.2 (21 Aug 2015)
 
-  21 Aug 2014; Sven Eden <yamakuzure@gmx.net>
+  21 Aug 2015; Sven Eden <yamakuzure@gmx.net>
   +davmail-bin-4.6.2.ebuild,
   -davmail-bin-4.6.0.ebuild
   Version bump and removal of old version.
 
 *davmail-bin-4.6.1 (18 Feb 2015)
 
-  18 Feb 2014; Sven Eden <yamakuzure@gmx.net>
+  18 Feb 2015; Sven Eden <yamakuzure@gmx.net>
   +davmail-bin-4.6.1.ebuild,
   -davmail-bin-4.5.1.ebuild
   Version bump and removal of old version.
 
 *davmail-bin-4.6.0 (28 Jan 2015)
 
-  28 Jan 2014; Sven Eden <yamakuzure@gmx.net>
+  28 Jan 2015; Sven Eden <yamakuzure@gmx.net>
   +davmail-bin-4.6.0.ebuild,
   -davmail-bin-4.4.1.ebuild
   Version bump and removal of old version.
