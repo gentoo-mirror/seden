@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+DESCRIPTION=dotProject is a PHP web-based project management framework
+EAPI=2
+HOMEPAGE=http://www.dotproject.net/
+IUSE=sendmail unicode vhosts
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-text/poppler-0.12.3-r3[utils] >=www-servers/apache-2.0.49 unicode? ( >=dev-lang/php-5.0[gd,unicode,xml] ) !unicode? ( >=dev-lang/php-5.0[gd,xml] ) >=dev-db/mysql-5.1 >=dev-php5/jpgraph-2.3 sendmail? ( mail-mta/sendmail ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RESTRICT=mirror
+SLOT=2.1.5
+SRC_URI=mirror://sourceforge/dotproject/dotproject-2.1.5.tar.gz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=depend.php	c595f1a83ba4052bfe96c06daee20004	eutils	f20548a2f7b0128068388cd2ec26708a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=20c7d0a78f1432ae49862e8eb0dd7703
