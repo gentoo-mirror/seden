@@ -11,5 +11,5 @@ RESTRICT=mirror
 SLOT=3.7
 SRC_URI=http://download.eclipse.org/technology/linuxtools/eclipse-build/3.7.x_Indigo/eclipse-3.7.1-src.tar.bz2 http://git.eclipse.org/c/linuxtools/org.eclipse.linuxtools.eclipse-build.git/snapshot/org.eclipse.linuxtools.eclipse-build-9e028fbc74e844e96a6fd944d7d4f68909283a5d.tar.bz2 -> eclipse-build-9e028fbc74e844e96a6fd944d7d4f68909283a5d.tar.bz2
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-2 pkg_setup:- src_unpack:- src_prepare:- src_configure:java-ant-2 src_compile:- src_install:-
-_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	eutils	d9bd2ddd85a58e470b49ca997e255a4c	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	a96633177f44ee992b3fce360d1c4f16	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=check-reqs	4f43fb72bc73bd58d75ec601713fae20	eutils	d9bd2ddd85a58e470b49ca997e255a4c	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	5f1bd1f8baff3ee957cb72c75c3949f2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=288fb7da6cc0226237439b5eb6d581bc
