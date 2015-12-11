@@ -47,13 +47,13 @@ src_unpack() {
 src_prepare() {
 	local cuda_supported_gcc
 
-	cuda_supported_gcc="4.7 4.8 4.9 5.0 5.1 5.2"
+	cuda_supported_gcc="4.7 4.8 4.9 5.0 5.1 5.2 5.3"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
 		"${FILESDIR}"/cuda-config.in > "${T}"/cuda-config || die
 
-	epatch "${FILESDIR}/${MYD}-raise_gcc_supported_version_to_5_2.patch"
+	epatch "${FILESDIR}/${MYD}-raise_gcc_supported_version_to_5_3.patch"
 }
 
 src_install() {
