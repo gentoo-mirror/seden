@@ -2,6 +2,19 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*boinc-7.6 (14 Jan 2016)
+
+  14 Jan 2016; Sven Eden <yamakuzure@gmx.net>
+  +boinc-7.6.ebuild,
+  -boinc-7.2.0.ebuild
+  -boinc-7.2.0-r1.ebuild
+  -files/boinc-7.2-remove_boincscr.patch
+  -files/boinc-7.2-fix_subdirs.patch
+  -files/boincscr.desktop
+  -files/boincscr.xml
+  Version bump and removed obsolete versions and patches
+
+
   04 Nov 2014; Sven Eden <yamakuzure@gmx.net> +boinc-7.2.42.ebuild-r1,
   +files/boinc-7.2-remove_boincscr.patch
   +files/boincscr.desktop
