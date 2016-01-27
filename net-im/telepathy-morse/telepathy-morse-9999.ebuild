@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.8.12
 "
 
-DOCS=( LICENSE.LGPL README.md )
+DOCS=( README.md )
 
 src_configure() {
 	local mycmakeargs=(
