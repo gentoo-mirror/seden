@@ -10,7 +10,7 @@ AUTOTOOLS_AUTORECONF=true
 
 inherit autotools-utils eutils flag-o-matic systemd user versionator wxwidgets
 
-MY_PV=$(get_version_component_range 1)
+MY_PV=$(get_version_component_range 1-2)
 
 DESCRIPTION="The Berkeley Open Infrastructure for Network Computing"
 HOMEPAGE="http://boinc.ssl.berkeley.edu/"
