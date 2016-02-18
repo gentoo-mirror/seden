@@ -19,10 +19,6 @@ games-rpg/lipsofsuna 0.8.0: Tongue-in-cheek dungeon crawl game. Client and Serve
 games-strategy/freeorion 9999-r15: FreeOrion is a free and open source clone of Master Of Orion
 games-strategy/glfrontier 20060623-r3: Frontier: Elite 2 with OpenGL support
 java-virtuals/jetty-server 6-r4: Virtual for Jetty www server
-kde-base/kdebase-runtime-meta 4.11.2-r1: Merge this to pull in all kdebase-runtime-derived packages
-kde-base/kdeplasma-addons 4.11.2-r1: Extra Plasma applets and engines
-kde-base/plasma-workspace 4.11.2-r1: Plasma: KDE desktop framework
-kde-base/systemsettings 4.11.2: System settings utility
 kde-misc/smooth-tasks-flupp 9999-r4: Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork
 media-libs/allegro 5.0.11-r1 5.1.9: A game programming library
 media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
@@ -31,7 +27,7 @@ net-im/telepathy-morse 9999: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999: Telegram binding for Qt
 net-mail/davmail-bin 4.7.0 4.7.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
-sci-misc/boinc 7.6: The Berkeley Open Infrastructure for Network Computing
+sci-misc/boinc 7.6.25: The Berkeley Open Infrastructure for Network Computing
 sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
 www-apps/dotproject 2.1.5-r2 2.1.5-r3: dotProject is a PHP web-based project management framework
 www-servers/jetty-bin 6.1.26-r4: Jetty Web Server; Java Servlet container
