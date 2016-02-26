@@ -49,6 +49,7 @@ dev-games/ogre:tbb - when USE=threads, use tbb for threading
 dev-games/ogre:tools - build+install helper tools
 dev-games/ogre:zip - support zip archives
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+dev-util/codeblocks:contrib - Build additional contrib components
 dev-util/eclipse-sdk:android - Use dev-util/android-sdk-update-manager for android based development
 dev-util/eclipse-sdk:doc - Build documentation
 dev-util/eclipse-sdk:source - Build source plugins
