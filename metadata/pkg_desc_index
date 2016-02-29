@@ -11,7 +11,7 @@ dev-games/ogre 1.9.0-r2 1.9.0-r3: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-libs/ustr 1.0.4-r4 1.0.4-r6: Low-overhead managed string library for C
 dev-tex/rtf2latex2e 2.2.2: RTF to LaTeX converter
-dev-util/codeblocks 16.01 9999-r1: The open source, cross platform, free C++ IDE
+dev-util/codeblocks 16.01: The open source, cross platform, free C++ IDE
 dev-util/eclipse-sdk 3.7.1-r11: Eclipse SDK
 dev-util/nvidia-cuda-toolkit 7.0.28-r1 7.5.18-r2: NVIDIA CUDA Toolkit (compiler and friends)
 games-action/atanks_aiu 6.1.3 6.2.1: Worms and Scorched Earth-like game (AI Upgrade project)
