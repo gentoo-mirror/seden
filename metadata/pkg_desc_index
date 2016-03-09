@@ -28,7 +28,7 @@ net-im/telepathy-morse 9999: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999: Telegram binding for Qt
 net-mail/davmail-bin 4.7.0 4.7.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
-sci-misc/boinc 7.6.25: The Berkeley Open Infrastructure for Network Computing
+sci-misc/boinc 7.6.25 7.6.31: The Berkeley Open Infrastructure for Network Computing
 sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
 www-apps/dotproject 2.1.5-r2 2.1.5-r3: dotProject is a PHP web-based project management framework
 www-servers/jetty-bin 6.1.26-r4: Jetty Web Server; Java Servlet container
