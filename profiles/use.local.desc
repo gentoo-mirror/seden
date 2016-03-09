@@ -65,7 +65,5 @@ media-libs/allegro:vga - Enables the VGA graphics driver
 net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
-sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening bug about it.
-sci-misc/boinc:suid - setuid root /usr/bin/boincscr
-sci-misc/boinc:xscreensaver - Install boincscr
+sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
