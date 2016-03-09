@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*boinc-7.6.31 (09 Mar 2016)
+
+  09 Mar 2016; Sven Eden <yamakuzure@gmx.net> +boinc-7.6.31.ebuild :
+  New tagged version.
+
+
 *boinc-7.6.25 (18 Feb 2016)
 
   18 Feb 2016; Sven Eden <yamakuzure@gmx.net>
