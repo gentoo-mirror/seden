@@ -20,8 +20,6 @@ app-emulation/wine:run-exes - Use Wine to open and run .EXE and .MSI files
 app-emulation/wine:s3tc - Pull in media-libs/libtxc_dxtn for DXTn texture compression, needed for many games
 app-emulation/wine:samba - Add support for NTLM auth. see http://wiki.winehq.org/NtlmAuthSetupGuide and http://wiki.winehq.org/NtlmSigningAndSealing
 app-emulation/wine:staging - Apply unofficial Wine-Staging patches for advanced feature support that haven't made it into upstream Wine yet
-app-emulation/winetricks:gnome - Use gnome-extra/zenity to display the GUI
-app-emulation/winetricks:kde - Use kde-base/kdialog to display the GUI
 app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
 app-mobilephone/gnokii:irda - Enable infrared support
 app-mobilephone/gnokii:sms - Enable SMS support (build smsd)
