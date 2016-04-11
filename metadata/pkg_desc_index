@@ -24,7 +24,7 @@ media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
 media-libs/oyranos 0.9.4-r2: colour management system allowing to share various settings across applications and services
 net-im/telepathy-morse 9999: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999: Telegram binding for Qt
-net-mail/davmail-bin 4.7.0 4.7.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-mail/davmail-bin 4.7.1 4.7.2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
 sci-misc/boinc 7.6.25 7.6.31: The Berkeley Open Infrastructure for Network Computing
 sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
