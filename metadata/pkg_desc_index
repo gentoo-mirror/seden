@@ -21,6 +21,7 @@ java-virtuals/jetty-server 6-r4: Virtual for Jetty www server
 kde-misc/smooth-tasks-flupp 9999-r4: Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork
 media-libs/allegro 5.0.11-r1 5.1.9: A game programming library
 media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
+media-libs/mesa 9999: OpenGL-like graphic library for Linux
 media-libs/oyranos 0.9.4-r2: colour management system allowing to share various settings across applications and services
 net-im/telepathy-morse 9999: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999: Telegram binding for Qt
