@@ -10,7 +10,7 @@ inherit cmake-utils git-r3
 
 DESCRIPTION="Telegram binding for Qt"
 HOMEPAGE="https://github.com/Kaffeine/telegram-qt"
-EGIT_REPO_URI=( "git://github.com/Kaffeine/telegram-qt.git" )
+EGIT_REPO_URI=( "https://github.com/Kaffeine/telegram-qt.git" )
 
 LICENSE="LGPL-2.1"
 SLOT="0"
