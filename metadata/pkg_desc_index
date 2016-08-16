@@ -1,33 +1,15 @@
-app-emulation/playonlinux 4.2.2: Set of scripts to easily install and use Windows games and software
-app-emulation/wine 1.7.50-r1 1.7.51-r1: Free implementation of Windows(tm) on Unix
-app-mobilephone/gnokii 0.6.31: user space driver and tools for use with mobile phones
 app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
-app-text/unrtf 0.21.3: Converts RTF files to various formats
-dev-games/cel 2.0: A game entity layer based on Crystal Space
-dev-games/crystalspace 2.0-r3: Portable 3D Game Development Kit written in C++
-dev-games/gigi-fo 9999: FreeOrion fork of the GiGi OpenGL interface library
 dev-games/ogre 1.9.0-r3: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
-dev-libs/ustr 1.0.4-r4 1.0.4-r6: Low-overhead managed string library for C
 dev-tex/rtf2latex2e 2.2.2: RTF to LaTeX converter
-dev-util/codeblocks 16.01: The open source, cross platform, free C++ IDE
 dev-util/nvidia-cuda-toolkit 7.0.28-r1 7.5.18-r2: NVIDIA CUDA Toolkit (compiler and friends)
-games-action/atanks_aiu 6.1.3 6.2.1: Worms and Scorched Earth-like game (AI Upgrade project)
-games-roguelike/tomenet 100908: A MMORPG based on the works of J.R.R. Tolkien
 games-rpg/lipsofsuna 0.8.0: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/freeorion 9999-r15: FreeOrion is a free and open source clone of Master Of Orion
 games-strategy/glfrontier 20060623-r3: Frontier: Elite 2 with OpenGL support
-java-virtuals/jetty-server 6-r4: Virtual for Jetty www server
-kde-misc/smooth-tasks-flupp 9999-r4: Alternate taskbar KDE plasmoid, similar to Windows 7 - Flupp Fork
 media-libs/allegro 5.0.11-r1 5.1.9: A game programming library
-media-libs/libsfml 2.1: Simple and Fast Multimedia Library (SFML)
-media-libs/mesa 10.3.7-r2 11.0.6-r1 11.0.9-r1 11.1.2-r2 11.2.0-r1 9999-r1: OpenGL-like graphic library for Linux
-media-libs/oyranos 0.9.4-r2: colour management system allowing to share various settings across applications and services
 net-im/telepathy-morse 9999: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999: Telegram binding for Qt
 net-mail/davmail-bin 4.7.1 4.7.2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
 net-misc/teamviewer 8.0.20931-r1: All-In-One Solution for Remote Access and Support over the Internet
-sys-libs/libsemanage 2.2-r3: SELinux kernel and policy management library
-www-apps/dotproject 2.1.5-r2 2.1.5-r3: dotProject is a PHP web-based project management framework
-www-servers/jetty-bin 6.1.26-r4: Jetty Web Server; Java Servlet container
 x11-misc/bumblebee 9999-r2: Service providing elegant and stable means of managing Optimus graphics chipsets
