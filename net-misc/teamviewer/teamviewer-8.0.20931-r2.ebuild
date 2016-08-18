@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI=6
 
 inherit eutils gnome2-utils systemd unpacker
 
@@ -72,6 +72,8 @@ src_prepare() {
 	sed \
 		-e "s/@TVV@/${MV}/g" \
 		"${FILESDIR}"/${PN}d.init > "${T}"/${PN}d${MV} || die
+
+	eapply_user
 }
 
 src_install () {
