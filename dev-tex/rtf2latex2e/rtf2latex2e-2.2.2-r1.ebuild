@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
@@ -22,7 +22,7 @@ S="${WORKDIR}/${PN}-2-2-2"
 RDEPEND="virtual/latex-base
 	unoconv? ( app-office/unoconv )"
 DEPEND="${RDEPEND}
-	doc? ( 
+	doc? (
 		dev-tex/hevea
 		virtual/latex-base
 		virtual/man
@@ -31,13 +31,14 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/fix_man2html_call.patch
 	epatch "${FILESDIR}"/fix_hevea_call.patch
+	eapply_user
 }
-	
+
 src_compile() {
 	# Set DESTDIR here too so that compiled-in paths are correct.
 	emake prefix="${EPREFIX}/usr" DESTDIR="${EPREFIX}/usr" CC="$(tc-getCC)" || \
 		die "emake failed"
-	
+
 	if use doc; then
 		cd "${S}/doc"
 		emake realclean
@@ -45,7 +46,7 @@ src_compile() {
 		touch header.html footer.html
 		emake -j1 || die "emake doc failed"
 	fi
-	
+
 	if use test; then
 		cd "${S}/test"
 		emake realclean
@@ -62,7 +63,7 @@ src_test() {
 }
 
 src_install() {
-	dodoc README doc/ChangeLog doc/GPL_license 
+	dodoc README doc/ChangeLog doc/GPL_license
 	emake prefix="${EPREFIX}/usr" DESTDIR="${ED}" -j1 install
 	if use doc; then
 		dodoc doc/web/manpage.html doc/web/usage.html doc/rtf2latexDoc.pdf
