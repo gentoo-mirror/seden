@@ -28,8 +28,19 @@ DEPEND="|| (
   !net-mail/davmail"
 RDEPEND="${DEPEND}"
 
-S="amd64? ( ${WORKDIR}/${MY_P}_64-${PV}-${MY_REV} )
-	x86? ( ${WORKDIR}/${MY_P}-${PV}-${MY_REV} )"
+
+src_unpack() {
+	if use x86; then
+		S="${WORKDIR}/${MY_P}-${PV}-${MY_REV}"
+	else
+		S="${WORKDIR}/${MY_P}_64-${PV}-${MY_REV}"
+	fi
+	default
+}
+
+src_prepare() {
+	default
+}
 
 pkg_setup() {
   if use server ; then
