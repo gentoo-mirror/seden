@@ -6,7 +6,7 @@ dev-util/nvidia-cuda-toolkit 7.5.18-r2: NVIDIA CUDA Toolkit (compiler and friend
 games-rpg/lipsofsuna 0.8.0-r1: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
-net-im/telepathy-morse 9999-r1: Telegram connection manager for Telepathy.
+net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 4.7.2-r1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
