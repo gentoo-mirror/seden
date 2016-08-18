@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=2
-inherit games
+EAPI=6
+
+inherit eutils
 
 MY_PN=glfrontier
 MY_P=${MY_PN}-${PV}
@@ -29,6 +30,7 @@ S=${WORKDIR}
 
 src_prepare() {
 	epatch "${FILESDIR}/${MY_P}"-fix_missing_math_lib.patch
+	eapply_user
 }
 
 src_compile() {
@@ -39,14 +41,10 @@ src_compile() {
 src_install() {
 	mv ${S}/frontvm3-20060623/frontier ${S}/frontvm3-20060623/${MY_PN}
 
-	insinto /opt/${MY_PN}
-	doins ${S}/frontvm3-20060623/${MY_PN}
-	doins ${S}/frontvm3-20060623/fe2.s.bin
+	dobin ${S}/frontvm3-20060623/${MY_PN}
+	dobin ${S}/frontvm3-20060623/fe2.s.bin
+	insinto /usr/share/${MY_PN}
 	doins -r ${S}/frontvm-audio-20060222/*
 
-	chgrp -R games ${D}/opt/${MY_PN}
-	chmod g+x ${D}/opt/${MY_PN}/${MY_PN}
-
-	make_desktop_entry /opt/${MY_PN}/${MY_PN} GLFrontier ${MY_PN} Game Path=/opt/${MY_PN}
-	prepgamesdirs
+	make_desktop_entry /usr/share/${MY_PN}/${MY_PN} GLFrontier ${MY_PN} Game Path=/usr/share/${MY_PN}
 }
