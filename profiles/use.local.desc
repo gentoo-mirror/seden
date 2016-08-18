@@ -20,7 +20,6 @@ dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PI
 dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger.
 dev-util/nvidia-cuda-toolkit:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler.
-games-strategy/freeorion:xml - Do all serialization using xml archives. Otherwise, binary archives will be used.
 media-libs/allegro:dumb - Enable media-libs/dumb module library support
 media-libs/allegro:physfs - Enable physfs support
 media-libs/allegro:vga - Enables the VGA graphics driver

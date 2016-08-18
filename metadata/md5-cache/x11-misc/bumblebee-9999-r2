@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst preinst prepare unpack
 DEPEND=virtual/opengl x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?] bbswitch? ( sys-power/bbswitch:= ) dev-libs/glib:2 dev-libs/libbsd sys-apps/help2man virtual/pkgconfig x11-libs/libX11 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1 virtual/pkgconfig
 DESCRIPTION=Service providing elegant and stable means of managing Optimus graphics chipsets
-EAPI=5
+EAPI=6
 HOMEPAGE=http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee
 IUSE=+bbswitch video_cards_nouveau video_cards_nvidia
 LICENSE=GPL-3
@@ -9,6 +9,6 @@ PDEPEND=|| ( x11-misc/primus:= x11-misc/virtualgl:= )
 RDEPEND=virtual/opengl x11-base/xorg-drivers[video_cards_nvidia?,video_cards_nouveau?] bbswitch? ( sys-power/bbswitch:= )
 REQUIRED_USE=|| ( video_cards_nouveau video_cards_nvidia )
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:- pkg_postinst:readme.gentoo src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6
-_md5_=76f00c5430698ead0bbfad45ebcd04dc
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	6198c04daba0e1307bd844df7d37f423	user	c66cbe7502fe1161066eb947d15b79f6
+_md5_=f5ed91a82caf5fb9a5cc5867f33f4403
