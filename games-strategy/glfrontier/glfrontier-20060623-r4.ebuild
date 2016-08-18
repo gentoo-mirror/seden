@@ -42,8 +42,8 @@ src_install() {
 	mv ${S}/frontvm3-20060623/frontier ${S}/frontvm3-20060623/${MY_PN}
 
 	dobin ${S}/frontvm3-20060623/${MY_PN}
-	dobin ${S}/frontvm3-20060623/fe2.s.bin
 	insinto /usr/share/${MY_PN}
+	doins ${S}/frontvm3-20060623/fe2.s.bin
 	doins -r ${S}/frontvm-audio-20060222/*
 
 	make_desktop_entry /usr/share/${MY_PN}/${MY_PN} GLFrontier ${MY_PN} Game Path=/usr/share/${MY_PN}
