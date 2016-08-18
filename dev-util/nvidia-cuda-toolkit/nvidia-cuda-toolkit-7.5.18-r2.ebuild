@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit check-reqs cuda unpacker versionator
 
@@ -19,8 +19,8 @@ IUSE="debugger doc eclipse profiler"
 
 DEPEND=""
 RDEPEND="${DEPEND}
-	>=sys-devel/gcc-4.7[cxx]
-	>=x11-drivers/nvidia-drivers-352.39[uvm]
+	>=sys-devel/gcc-5.2[cxx]
+	>=x11-drivers/nvidia-drivers-355.11
 	debugger? (
 		sys-libs/libtermcap-compat
 		sys-libs/ncurses[tinfo]
@@ -45,15 +45,17 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-7.5.18-gcc54.patch
+
 	local cuda_supported_gcc
 
-	cuda_supported_gcc="4.7 4.8 4.9 5.0 5.1 5.2 5.3"
+	cuda_supported_gcc="4.7 4.8 4.9 5.0 5.1 5.2 5.3 5.4"
 
 	sed \
 		-e "s:CUDA_SUPPORTED_GCC:${cuda_supported_gcc}:g" \
 		"${FILESDIR}"/cuda-config.in > "${T}"/cuda-config || die
 
-	epatch "${FILESDIR}/${MYD}-raise_gcc_supported_version_to_5_3.patch"
+	eapply_user
 }
 
 src_install() {

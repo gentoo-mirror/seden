@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 inherit eutils multilib
 
 DESCRIPTION="The official QT-Based mega.co.nz client for sync your MEGA account"

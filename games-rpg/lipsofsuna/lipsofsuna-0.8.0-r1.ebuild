@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit eutils games python-any-r1 waf-utils
+inherit eutils python-any-r1 waf-utils
 
 DESCRIPTION="Tongue-in-cheek dungeon crawl game. Client and Server."
 HOMEPAGE="http://lipsofsuna.org/"
@@ -42,22 +42,20 @@ src_prepare() {
 	epatch "${FILESDIR}/${PV}-02-fix_material_manager_usage.patch"
 	epatch "${FILESDIR}/${PV}-03-fix_skeleton_manager_usage.patch"
 	epatch "${FILESDIR}/${PV}-04_add_overlay_system.patch"
+	eapply_user
 }
 
 src_configure() {
 	waf-utils_src_configure \
 		--ogre-plugindir=/usr/lib64/OGRE \
 		--disable-relpath \
-		--enable-optimization \
-		--bindir="${GAMES_BINDIR}" \
-		--datadir="${GAMES_DATADIR}"
+		--enable-optimization
 }
 
 src_install() {
-	dogamesbin .build/${PN} || die "Installation of gamesbinary failed"
-	insinto "${GAMES_DATADIR}"/${PN}/
+	dobin .build/${PN} || die "Installation of gamesbinary failed"
+	insinto /usr/share/${PN}/
 	doins -r data/* || die "Installation of game data failed"
 	doicon misc/${PN}.svg || die "Installation of Icon failed"
 	domenu misc/${PN}.desktop || die "Installation of desktop file failed"
-	prepgamesdirs
 }

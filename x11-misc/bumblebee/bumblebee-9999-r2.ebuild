@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
-inherit autotools base git-r3 multilib eutils readme.gentoo systemd user
+EAPI=6
+inherit autotools git-r3 multilib eutils readme.gentoo-r1 systemd user
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"
 HOMEPAGE="http://bumblebee-project.org https://github.com/Bumblebee-Project/Bumblebee"
@@ -43,7 +43,8 @@ REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
 
 src_prepare() {
 	epatch "${FILESDIR}"/nvidia-uvm-support.patch
-	base_src_prepare
+	eapply_user
+	default
 	eautoreconf
 }
 
@@ -58,14 +59,18 @@ src_configure() {
 
 		local nvpref="/usr/$(get_libdir)/opengl/nvidia"
 		local xorgpref="/usr/$(get_libdir)/xorg/modules"
-		ECONF_PARAMS="CONF_DRIVER=nvidia CONF_DRIVER_MODULE_NVIDIA=nvidia \
-			CONF_LDPATH_NVIDIA=${nvlib#:} \
-			CONF_MODPATH_NVIDIA=${nvpref}/lib,${nvpref}/extensions,${xorgpref}/drivers,${xorgpref}"
+		local myeconfargs=(
+			CONF_DRIVER=nvidia
+			CONF_DRIVER_MODULE_NVIDIA=nvidia
+			CONF_LDPATH_NVIDIA=${nvlib#:}
+			CONF_MODPATH_NVIDIA=${nvpref}/lib,${nvpref}/extensions,${xorgpref}/drivers,${xorgpref}
+		)
 	fi
 
 	econf \
 		--docdir=/usr/share/doc/"${PF}" \
-		${ECONF_PARAMS}
+		${ECONF_PARAMS} \
+		${myeconfargs[@]}
 }
 
 src_compile() {
@@ -89,4 +94,8 @@ pkg_preinst() {
 	use video_cards_nouveau || rm "${ED}"/etc/bumblebee/xorg.conf.nouveau
 
 	enewgroup bumblebee
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

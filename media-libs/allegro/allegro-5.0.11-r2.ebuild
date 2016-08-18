@@ -45,23 +45,23 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/allegro5/allegro_native_dialog.h )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_want alsa)
+		-DWANT_ALSA="$(usex alsa)"
 		-DWANT_DEMO=OFF
 		-DWANT_EXAMPLES=OFF
-		$(cmake-utils_use_want flac)
-		$(cmake-utils_use_want jpeg IMAGE_JPG)
-		$(cmake-utils_use_want png IMAGE_PNG)
-		$(cmake-utils_use_want dumb MODAUDIO)
-		$(cmake-utils_use_want openal)
-		$(cmake-utils_use_want oss)
-		$(cmake-utils_use_want physfs)
-		$(cmake-utils_use_want pulseaudio)
-		$(cmake-utils_use_want test TESTS)
-		$(cmake-utils_use_want truetype TTF)
-		$(cmake-utils_use_want vorbis)
-		$(cmake-utils_use_want gtk NATIVE_DIALOG)
-		$(cmake-utils_use_want X opengl)
-		$(cmake-utils_use_want xinerama X11_XINERAMA)
+		-DWANT_FLAC="$(usex flac)"
+		-DWANT_IMAGE_JPG="$(usex jpeg)"
+		-DWANT_IMAGE_PNG="$(usex png)"
+		-DWANT_MODAUDIO="$(usex dumb)"
+		-DWANT_OPANAL="$(usex openal)"
+		-DWANT_OSS="$(usex oss)"
+		-DWANT_PHYSFS="$(usex physfs)"
+		-DWANT_PULSEAUDIO="$(usex pulseaudio)"
+		-DWANT_TESTS="$(usex test)"
+		-DWANT_TTF="$(usex truetype)"
+		-DWANT_VORBIS="$(usex vorbis)"
+		-DWANT_NATIVE_DIALOG="$(usex gtk)"
+		-DWANT_OPENGL="$(usex X)"
+		-DWANT_X11_XINERAMA="$(usex xinerama)"
 	)
 
 	cmake-multilib_src_configure

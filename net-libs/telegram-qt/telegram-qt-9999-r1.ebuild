@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+PYTHON_COMPAT=( python2_7 )
+#inherit python-any-r1 cmake-utils virtualx multibuild git-r3
 inherit cmake-utils git-r3
 
-DESCRIPTION="Telegram connection manager for Telepathy."
-HOMEPAGE="https://projects.kde.org/projects/playground/network/telepathy/telepathy-morse"
-EGIT_REPO_URI=( "git://anongit.kde.org/telepathy-morse" )
+DESCRIPTION="Telegram binding for Qt"
+HOMEPAGE="https://github.com/Kaffeine/telegram-qt"
+EGIT_REPO_URI=( "https://github.com/Kaffeine/telegram-qt.git" )
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -16,14 +18,15 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
-	net-libs/telegram-qt
-	>=net-libs/telepathy-qt-0.9.6.0
+		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
+		dev-qt/qtnetwork:5
 "
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.8.12
 "
 
-DOCS=( README.md )
+DOCS=( LICENSE.LGPL README.md )
 
 src_configure() {
 	local mycmakeargs=(
