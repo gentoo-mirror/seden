@@ -2,20 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
+EAPI=6
 
 inherit eutils java-pkg-2 user
 
-MY_REV="2416"
+MY_REV="2427"
 MY_PN="davmail"
+MY_P="${MY_PN}-linux-x86"
 
-if use x86 ; then
-	MY_P="${MY_PN}-linux-x86"
-else
-	MY_P="${MY_PN}-linux-x86_64"
-fi
-
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}-${PV}-${MY_REV}.tgz"
+SRC_URI="amd64? ( mirror://sourceforge/${MY_PN}/${MY_P}_64-${PV}-${MY_REV}.tgz )
+	x86? ( mirror://sourceforge/${MY_PN}/${MY_P}-${PV}-${MY_REV}.tgz )"
 DESCRIPTION="POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
 RESTRICT="mirror"
@@ -32,7 +28,8 @@ DEPEND="|| (
   !net-mail/davmail"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}-${PV}-${MY_REV}"
+S="amd64? ( ${WORKDIR}/${MY_P}_64-${PV}-${MY_REV} )
+	x86? ( ${WORKDIR}/${MY_P}-${PV}-${MY_REV} )"
 
 pkg_setup() {
   if use server ; then
