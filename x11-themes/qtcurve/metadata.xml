@@ -10,8 +10,11 @@
     <name>Gentoo Qt Project</name>
   </maintainer>
   <use>
+    <flag name="gtk2">Add support for gtk+2</flag>
     <flag name="kde">Enable KDE4 support. This adds a QtCurve configuration
       module to KDE's SystemSettings</flag>
+    <flag name="plasma">Enable Plasma support. This adds a QtCurve
+      configuration module to Plasma's SystemSettings</flag>
     <flag name="windeco">Enable window decoration for KWin</flag>
   </use>
   <upstream>
