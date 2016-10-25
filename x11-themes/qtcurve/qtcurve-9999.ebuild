@@ -54,8 +54,7 @@ S="${WORKDIR}/${P/_/}"
 DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 
 PATCHES=(
-		"${FILESDIR}/${P}-gtk2_segfault.patch"
-		"${FILESDIR}/${P}-add_uitls_include.patch"
+		"${FILESDIR}/${P}-add_utils_include.patch"
 	)
 
 pkg_setup() {
