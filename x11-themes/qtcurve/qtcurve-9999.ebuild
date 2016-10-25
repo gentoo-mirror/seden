@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://anongit.kde.org/qtcurve"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="+X gtk2 kde nls plasma +qt4 qt5 test windeco"
+IUSE="+X gtk2 kde nls plasma qt4 +qt5 test windeco"
 KEYWORDS=""
 
 REQUIRED_USE="gtk2? ( X )
