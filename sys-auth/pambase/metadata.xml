@@ -11,6 +11,9 @@
       crackable. It requires the same USE flag to be enabled on
       <pkg>sys-libs/pam</pkg> or system login might be impossible.
     </flag>
+    <flag name="elogind">
+      Use pam_elogind module to register user sessions in the systemd
+      control group hierarchy.
     <flag name="consolekit">
       Enable pam_ck_connector module on local system logins. This
       allows for console logins to make use of ConsoleKit
