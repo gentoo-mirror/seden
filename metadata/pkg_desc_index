@@ -4,7 +4,7 @@ dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
 games-rpg/lipsofsuna 0.8.0-r1: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
-kde-plasma/powerdevil 5.8.2-r1: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 5.8.2-r2: Power management for KDE Plasma Shell
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
@@ -13,7 +13,7 @@ net-mail/davmail-bin 4.7.2-r2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gatewa
 net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
 net-misc/teamviewer 8.0.20931-r2: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
-sys-apps/accountsservice 0.6.42-r1: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.42-r1 0.6.42-r2: D-Bus interfaces for querying and manipulating user account information
 sys-auth/pambase 20150213-r1: PAM base configuration files
 sys-auth/polkit 0.113-r202: Policy framework for controlling privileges for system-wide services
 x11-misc/bumblebee 9999-r2: Service providing elegant and stable means of managing Optimus graphics chipsets
