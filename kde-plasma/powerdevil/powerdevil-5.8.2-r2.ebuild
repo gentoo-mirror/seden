@@ -11,7 +11,11 @@ inherit kde5
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/powerdevil"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="systemd +wireless"
+IUSE="elogind systemd +wireless"
+
+REQUIRED_USE="elogind? ( !systemd )
+	systemd? ( elogind )
+"
 
 DEPEND="
 	$(add_frameworks_dep kactivities)
@@ -54,11 +58,11 @@ RDEPEND="${DEPEND}
 	!systemd? (
 		sys-auth/polkit-pkla-compat
 		|| (
-			(
-				|| ( sys-auth/elogind
-					 >=sys-auth/consolekit-1.0.1
+			(	elogind?  ( sys-auth/elogind )
+				!elogind? (
+					>=sys-auth/consolekit-1.0.1
+					sys-power/pm-utils
 				)
-				sys-power/pm-utils
 				>=sys-power/upower-0.9.23
 			)
 			sys-power/upower-pm-utils
@@ -80,7 +84,7 @@ src_configure() {
 src_install() {
 	kde5_src_install
 
-	if ! use systemd ; then
+	if ! use systemd && ! use elogind ; then
 		insinto /etc/polkit-1/localauthority/10-vendor.d/
 		doins "${FILESDIR}"/10-org.freedesktop.upower.pkla
 		doins "${FILESDIR}"/20-org.freedesktop.consolekit.system.stop-multiple-users.pkla
@@ -93,7 +97,7 @@ src_install() {
 pkg_postinst() {
 	kde5_pkg_postinst
 
-	if has_version sys-power/upower-pm-utils && ! use systemd ; then
+	if has_version sys-power/upower-pm-utils && ! use systemd && ! use elogind ; then
 		ewarn "You have sys-power/upower-pm-utils installed, which was recommended in the past to"
 		ewarn "enable suspend and hibernate support. This workaround is no longer required, and it"
 		ewarn "is now recommended to use a recent version of upower and consolekit instead:"
