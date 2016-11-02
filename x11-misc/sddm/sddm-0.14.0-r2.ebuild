@@ -14,7 +14,7 @@ LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
 IUSE="consolekit elogind +pam systemd"
 
-REQUIRE_USE="elogind? ( !systemd )
+REQUIRED_USE="elogind? ( !systemd )
 	systemd? ( !elogind )
 "
 
