@@ -14,6 +14,7 @@
     <flag name="elogind">
       Use pam_elogind module to register user sessions in the systemd
       control group hierarchy.
+    </flag>
     <flag name="consolekit">
       Enable pam_ck_connector module on local system logins. This
       allows for console logins to make use of ConsoleKit
