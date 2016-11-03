@@ -1,0 +1,12 @@
+--- a/src/udisksdaemonutil.c	2016-02-29 17:18:12.000000000 +0100
++++ b/src/udisksdaemonutil.c	2016-11-03 15:56:33.451232564 +0100
+@@ -42,8 +42,7 @@
+ #include "udiskslinuxdriveobject.h"
+ 
+ #if defined(HAVE_LIBSYSTEMD_LOGIN)
+-#include <systemd/sd-daemon.h>
+-#include <systemd/sd-login.h>
++#include <elogind/sd-login.h>
+ 
+ #define LOGIND_AVAILABLE() (access("/run/systemd/seats/", F_OK) >= 0)
+ #endif
