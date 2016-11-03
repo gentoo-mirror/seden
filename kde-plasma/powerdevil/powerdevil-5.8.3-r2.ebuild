@@ -55,19 +55,18 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	systemd? ( >=sys-power/upower-0.9.23 )
-	!systemd? (
+	elogind? ( >=sys-power/upower-0.9.23 )
+	!systemd? ( !elogind? (
 		sys-auth/polkit-pkla-compat
 		|| (
-			(	elogind?  ( sys-auth/elogind )
-				!elogind? (
-					>=sys-auth/consolekit-1.0.1
-					sys-power/pm-utils
-				)
+			(
+				>=sys-auth/consolekit-1.0.1
+				sys-power/pm-utils
 				>=sys-power/upower-0.9.23
 			)
 			sys-power/upower-pm-utils
 		)
-	)
+	) )
 	!kde-base/powerdevil:4
 	!kde-base/systemsettings:4[handbook]
 "
