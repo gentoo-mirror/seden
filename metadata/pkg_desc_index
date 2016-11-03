@@ -18,6 +18,7 @@ sys-apps/dbus 1.10.12-r1: A message bus system, a simple way for applications to
 sys-auth/elogind 219.12-r3: The systemd project's logind, extracted to a standalone package
 sys-auth/pambase 20150213-r1: PAM base configuration files
 sys-auth/polkit 0.113-r202: Policy framework for controlling privileges for system-wide services
+sys-fs/udisks 2.1.7-r2: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r1: standard informational utilities and process-handling tools
 x11-base/xorg-server 1.18.4-r1: X.Org X servers
 x11-misc/bumblebee 9999-r2: Service providing elegant and stable means of managing Optimus graphics chipsets
