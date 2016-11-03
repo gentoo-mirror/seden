@@ -59,6 +59,9 @@ sys-auth/pambase:sha512 - Switch Linux-PAM's pam_unix module to use sha512 for p
 sys-auth/pambase:systemd - Use pam_systemd module to register user sessions in the systemd control group hierarchy.
 sys-auth/polkit:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-auth/polkit:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
+sys-process/procps:kill - Build the kill program
+sys-process/procps:modern-top - Enables new startup defaults of top. Keeps old defaults if disabled
+sys-process/procps:ncurses - Build programs that use ncurses: top, slabtop, watch
 x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
 x11-base/xorg-server:elogind - Use sys-auth/elogind instead of systemd-logind for session and fd handling.
 x11-base/xorg-server:glamor - Enable Glamor OpenGL 2D acceleration
