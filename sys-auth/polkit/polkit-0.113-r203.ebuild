@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit eutils multilib pam pax-utils systemd user xdg
+inherit autotools eutils multilib pam pax-utils systemd user xdg
 
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit"
@@ -13,6 +13,10 @@ LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="elogind examples gtk +introspection jit kde nls pam selinux systemd test"
+
+REQUIRED_USE="elogind? ( !systemd )
+	systemd? ( !elogind )
+"
 
 CDEPEND="
 	dev-lang/spidermonkey:0/mozjs185[-debug]
@@ -44,9 +48,9 @@ PDEPEND="
 		kde-plasma/polkit-kde-agent
 		sys-auth/polkit-kde-agent
 		) )
-	!systemd? ( || (
-		sys-auth/elogind
-		sys-auth/consolekit[policykit]
+
+	!systemd? ( !elogind? (
+			sys-auth/consolekit[policykit]
 		) )
 "
 
@@ -74,11 +78,15 @@ src_prepare() {
 		docs/polkit/Makefile.in || die
 
 	if use elogind; then
-		sed -i -e "s/libsystemd-login/libelogind/" -e "s|test ! -d /sys/fs/cgroup/systemd/|false|" configure || die
-		sed -i -e "s/systemd/elogind/" src/polkit/polkitunixsession-systemd.c src/polkitbackend/polkitbackendsessionmonitor-systemd.c src/polkitbackend/polkitbackendjsauthority.c || die
+		epatch "${FILESDIR}"/${PN}-enable-elogind.patch
 	fi
 
 	default
+
+	# The elogind patch changes configure.ac and two Makefile.am
+	if use elogind; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
@@ -90,7 +98,7 @@ src_configure() {
 		--enable-man-pages \
 		--disable-gtk-doc \
 		$(use_enable systemd libsystemd-login) \
-		$(use_enable elogind) \
+		$(use_enable elogind libelogind) \
 		$(use_enable introspection) \
 		--disable-examples \
 		$(use_enable nls) \
