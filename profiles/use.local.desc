@@ -17,6 +17,16 @@ dev-games/ogre:tbb - when USE=threads, use tbb for threading
 dev-games/ogre:tools - build+install helper tools
 dev-games/ogre:zip - support zip archives
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+gnome-base/gvfs:afp - Enables support for accessing AFP (Apple Filing Protocol) network shares
+gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
+gnome-base/gvfs:bluray - Enable playback of Blu-ray filesystems using media-libs/libbluray
+gnome-base/gvfs:elogind - Use app-auth/elogind instead of systemd-logind for session management
+gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
+gnome-base/gvfs:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
+gnome-base/gvfs:google - Enables support for accessing Google accounts via dev-libs/libgdata
+gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup
+gnome-base/gvfs:nfs - Enable NFS client support via net-fs/libnfs.
+gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
 kde-plasma/powerdevil:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
