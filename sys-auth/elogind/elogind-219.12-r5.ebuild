@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-docs.patch"
 	"${FILESDIR}/${PN}-lrt.patch"
 	"${FILESDIR}/${P}-session.patch"
+	"${FILESDIR}/${PN}-add_missing_login1_permissions.patch"
 )
 
 
