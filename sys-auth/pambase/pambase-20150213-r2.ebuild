@@ -16,6 +16,10 @@ IUSE="consolekit cracklib debug elogind gnome-keyring minimal mktemp +nullok pam
 
 RESTRICT=binchecks
 
+REQUIRED_USE="elogind? ( !systemd )
+	systemd? ( !elogind )
+"
+
 MIN_PAM_REQ=1.1.3
 
 RDEPEND="
