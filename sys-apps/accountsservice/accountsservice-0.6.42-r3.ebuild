@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit gnome2 systemd
+inherit autotools gnome2 systemd
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/"
@@ -15,19 +15,17 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 IUSE="doc elogind +introspection selinux systemd"
 
-REQUIRED_USE=" systemd? ( !elogind )
-	elogind? ( !systemd )
+REQUIRED_USE="elogind? ( !systemd )
+	systemd? ( !elogind )
 "
 
 CDEPEND="
 	>=dev-libs/glib-2.37.3:2
 	sys-auth/polkit
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
+	elogind? ( >=sys-auth/elogind-219:0= )
 	systemd? ( >=sys-apps/systemd-186:0= )
-	!systemd? (
-		elogind?  ( sys-auth/elogind    )
-		!elogind? ( sys-auth/consolekit )
-	)
+	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
 DEPEND="${CDEPEND}
 	dev-libs/libxslt
@@ -50,8 +48,8 @@ PATCHES=(
 
 src_prepare() {
 	if use elogind; then
-		sed -i -e 's|libsystemd|libelogind|' configure || die
-		epatch "${FILESDIR}/${P}-use-elogind.patch"
+		epatch "${FILESDIR}/${PN}-enable-elogind.patch" || die
+		eautoreconf
 	fi
 
 	default
@@ -59,12 +57,6 @@ src_prepare() {
 
 
 src_configure() {
-	local enable_systemd="--disable-systemd"
-
-	if use elogind || use systemd ; then
-		enable_systemd="--enable-systemd"
-	fi
-
 	gnome2_src_configure \
 		--disable-static \
 		--disable-more-warnings \
@@ -72,6 +64,7 @@ src_configure() {
 		--enable-admin-group="wheel" \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(use_enable doc docbook-docs) \
+		$(use_enable elogind) \
 		$(use_enable introspection) \
-		$enable_systemd
+		$(use_enable systemd)
 }
