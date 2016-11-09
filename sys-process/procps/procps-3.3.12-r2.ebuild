@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
-KEYWORDS="alpha ~amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="elogind +kill +ncurses modern-top nls selinux static-libs systemd test unicode"
 
 REQUIRED_USE="elogind? ( !systemd )
@@ -22,7 +22,7 @@ REQUIRED_USE="elogind? ( !systemd )
 
 RDEPEND="ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
 	selinux? ( sys-libs/libselinux )
-	elogind? ( sys-auth/elogind )
+	elogind? ( >=sys-auth/elogind-219 )
 	systemd? ( >=sys-apps/systemd-209 )"
 DEPEND="${RDEPEND}
 	ncurses? ( virtual/pkgconfig )
@@ -44,17 +44,10 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	if use elogind; then
 		epatch "${FILESDIR}"/${PN}-enable-elogind.patch || die
-	fi
-
-	eapply_user
-
-	# If elogind shall be used, config.h.in and configure must
-	# be regenerated. In other cases eautoreconf is not needed.
-	if use elogind; then
 		eautoreconf
 	fi
 }
