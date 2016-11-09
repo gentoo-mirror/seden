@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit bash-completion-r1 eutils linux-info systemd udev
+inherit autotools bash-completion-r1 eutils linux-info systemd udev
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	virtual/udev
 	acl? ( virtual/acl )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
-	elogind? ( >=sys-auth/elogind-209 )
+	elogind? ( >=sys-auth/elogind-219 )
 	systemd? ( >=sys-apps/systemd-209 )
 "
 # gptfdisk -> src/udiskslinuxpartition.c -> sgdisk (see also #412801#c1)
@@ -69,16 +69,20 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	if use elogind; then
-		sed -i -e 's:libsystemd-login:libelogind:' -e 's:systemd-daemon:elogind:' configure || die
 		epatch "${FILESDIR}"/${PN}-enable-elogind.patch || die
+		eautoreconf
 	elif use !systemd; then
 		sed -i -e 's:libsystemd-login:&disable:' configure || die
 	fi
 
 	epatch "${FILESDIR}"/${PN}-2.1.7-sysmacros.patch #580230
 
-	eapply_user
+	if use elogind; then
+		eautoreconf
+	fi
 }
 
 src_configure() {
