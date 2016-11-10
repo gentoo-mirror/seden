@@ -1,0 +1,96 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+dev-games/ogre:boost - enable boost support
+dev-games/ogre:cg - NVIDIA toolkit plugin
+dev-games/ogre:double-precision - more precise calculations at the expense of speed
+dev-games/ogre:freeimage - support images via freeimage
+dev-games/ogre:gl3plus - build OpenGL 3+ RenderSystem (EXPERIMENTAL)
+dev-games/ogre:gles1 - build OpenGL ES 1.x RenderSystem
+dev-games/ogre:gles2 - build OpenGL ES 2.x RenderSystem
+dev-games/ogre:gles3 - add ES 3.0 support in the OpenGL ES 2.x RenderSystem (EXPERIMENTAL)
+dev-games/ogre:ois - pull in Object-oriented Input System library for samples
+dev-games/ogre:poco - when USE=threads, use poco for threading
+dev-games/ogre:source - Install the examples sources
+dev-games/ogre:tbb - when USE=threads, use tbb for threading
+dev-games/ogre:tools - build+install helper tools
+dev-games/ogre:zip - support zip archives
+dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+gnome-base/gvfs:afp - Enables support for accessing AFP (Apple Filing Protocol) network shares
+gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
+gnome-base/gvfs:bluray - Enable playback of Blu-ray filesystems using media-libs/libbluray
+gnome-base/gvfs:elogind - Use app-auth/elogind instead of systemd-logind for session management
+gnome-base/gvfs:fuse - Enables fuse mount points in $HOME/.gvfs for legacy application access
+gnome-base/gvfs:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
+gnome-base/gvfs:google - Enables support for accessing Google accounts via dev-libs/libgdata
+gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup
+gnome-base/gvfs:nfs - Enable NFS client support via net-fs/libnfs.
+gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
+kde-plasma/powerdevil:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
+kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
+lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
+lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
+lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qt file manager
+lxqt-base/lxqt-meta:icons - Install an icon theme
+lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdm display manager
+lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qt image viewer
+lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openbox window manager
+lxqt-base/lxqt-meta:oxygen - Prefer kde-frameworks/oxygen-icons (default)
+lxqt-base/lxqt-meta:powermanagement - Install lxqt-base/lxqt-powermanagement package
+lxqt-base/lxqt-meta:sddm - Install x11-misc/sddm display manager
+lxqt-base/lxqt-meta:ssh-askpass - Install lxqt-base/lxqt-openssh-askpass user password prompt tool
+lxqt-base/lxqt-meta:sudo - Install lxqt-base/lxqt-sudo
+media-libs/allegro:dumb - Enable media-libs/dumb module library support
+media-libs/allegro:physfs - Enable physfs support
+media-libs/allegro:vga - Enables the VGA graphics driver
+net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
+net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
+net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
+sys-apps/accountsservice:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
+sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
+sys-apps/dbus:elogind - Build with sys-auth/elogind user seat support
+sys-apps/dbus:systemd - Build with sys-apps/systemd at_console support
+sys-apps/dbus:user-session - Enable user-session semantics for session bus under systemd
+sys-auth/elogind:apparmor - Enable AppArmor support
+sys-auth/pambase:consolekit - Enable pam_ck_connector module on local system logins. This allows for console logins to make use of ConsoleKit authorization.
+sys-auth/pambase:cracklib - Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible.
+sys-auth/pambase:debug - Enable debug information logging on syslog(3) for all the modules supporting this in the system authentication and system login stacks.
+sys-auth/pambase:elogind - Use pam_elogind module to register user sessions in the systemd control group hierarchy.
+sys-auth/pambase:gnome-keyring - Enable pam_gnome_keyring module on system login stack. This enables proper Gnome Keyring access to logins, whether they are done with the login shell, a Desktop Manager or a remote login systems such as SSH.
+sys-auth/pambase:minimal - Disables the standard PAM modules that provide extra information to users on login; this includes pam_tally (and pam_tally2 for Linux PAM 1.1 and later), pam_lastlog, pam_motd and other similar modules. This might not be a good idea on a multi-user system but could reduce slightly the overhead on single-user non-networked systems.
+sys-auth/pambase:mktemp - Enable pam_mktemp module on system auth stack for session handling. This module creates a private temporary directory for the user, and sets TMP and TMPDIR accordingly.
+sys-auth/pambase:nullok - Enable the nullok option with the pam_unix module. This allows people to login with blank passwords.
+sys-auth/pambase:pam_krb5 - Enable pam_krb5 module on system auth stack, as an alternative to pam_unix. If Kerberos authentication succeed, only pam_unix will be ignore, and all the other modules will proceed as usual, including Gnome Keyring and other session modules. It requires sys-libs/pam as PAM implementation.
+sys-auth/pambase:pam_ssh - Enable pam_ssh module on system auth stack for authentication and session handling. This module will accept as password the passphrase of a private SSH key (one of ~/.ssh/id_rsa, ~/.ssh/id_dsa or ~/.ssh/identity), and will spawn an ssh-agent instance to cache the open key.
+sys-auth/pambase:passwdqc - Enable pam_passwdqc module on system auth stack for password quality validation. This is an alternative to pam_cracklib producing warnings, rejecting or providing example passwords when changing your system password. It is used by default by OpenWall GNU/*/Linux and by FreeBSD.
+sys-auth/pambase:securetty - Enable pam_securetty module in the login stack. Not generally relevant anymore as the login stack only refers to local logins and local terminals imply secure access in the first place.
+sys-auth/pambase:sha512 - Switch Linux-PAM's pam_unix module to use sha512 for passwords hashes rather than MD5. This option requires sys-libs/pam version 1.0.1 built against sys-libs/glibc version 2.7, if it's built against an earlier version, it will silently be ignored, and MD5 hashes will be used. All the passwords changed after this USE flag is enabled will be saved to the shadow file hashed using SHA512 function. The password previously saved will be left untouched. Please note that while SHA512-hashed passwords will still be recognised if the USE flag is removed, the shadow file will not be compatible with systems using an earlier glibc version.
+sys-auth/pambase:systemd - Use pam_systemd module to register user sessions in the systemd control group hierarchy.
+sys-auth/polkit:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
+sys-auth/polkit:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
+sys-fs/udisks:cryptsetup - Enable sys-fs/cryptsetup support
+sys-fs/udisks:elogind - Support sys-auth/elogind
+sys-fs/udisks:gptfdisk - Pull in sys-apps/gptfdisk for sgdisk command as used by partitioning functionality
+sys-fs/udisks:systemd - Support sys-apps/systemd's logind
+sys-process/procps:elogind - Support sys-auth/elogind sessions
+sys-process/procps:kill - Build the kill program
+sys-process/procps:modern-top - Enables new startup defaults of top. Keeps old defaults if disabled
+sys-process/procps:ncurses - Build programs that use ncurses: top, slabtop, watch
+x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
+x11-base/xorg-server:elogind - Use sys-auth/elogind instead of systemd-logind for session and fd handling.
+x11-base/xorg-server:glamor - Enable Glamor OpenGL 2D acceleration
+x11-base/xorg-server:kdrive - Build the kdrive X servers
+x11-base/xorg-server:tslib - Build with tslib support for touchscreen devices
+x11-base/xorg-server:unwind - Enable libunwind usage for backtraces
+x11-base/xorg-server:xephyr - Build the Xephyr server
+x11-base/xorg-server:xnest - Build the Xnest server
+x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
+x11-base/xorg-server:xvfb - Build the Xvfb server
+x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
+x11-misc/sddm:consolekit - Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)
+x11-misc/sddm:elogind - Use sys-auth/elogind for session tracking.
+x11-themes/qtcurve:gtk2 - Add support for gtk+2
+x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
+x11-themes/qtcurve:plasma - Enable Plasma support. This adds a QtCurve configuration module to Plasma's SystemSettings
+x11-themes/qtcurve:windeco - Enable window decoration for KWin
