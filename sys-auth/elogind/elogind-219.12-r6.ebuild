@@ -114,4 +114,7 @@ src_configure() {
 src_install() {
 	default
 	prune_libtool_files --modules
+
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
