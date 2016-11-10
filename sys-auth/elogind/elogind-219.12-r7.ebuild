@@ -53,7 +53,7 @@ pkg_setup() {
 		else
 			local missing_count=0
 			if linux_chkconfig_present AUDIT; then
-				ewarn "AUDIT is eabled. If you have problems with the auditing"
+				ewarn "AUDIT is enabled. If you have problems with the auditing"
 				ewarn "  system creating and closing sessions, then disable it."
 			fi
 			if ! linux_chkconfig_present CGROUPS; then
@@ -88,9 +88,9 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# launch elogind when called via dbus
-	sed -i -e "s|/bin/false|/usr/libexec/elogind/elogind|" src/login/org.freedesktop.login1.service || die
-
+	# Makefile.am is patched by
+	# - "${FILESDIR}/${PN}-docs.patch"
+	# - "${FILESDIR}/${PN}-lrt.patch"
 	eautoreconf
 }
 
