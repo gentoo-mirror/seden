@@ -12,7 +12,7 @@ SRC_URI="https://github.com/wingo/elogind/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="acl apparmor pam policykit selinux +seccomp"
 
 COMMON_DEPEND="
@@ -44,7 +44,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-session.patch"
 	"${FILESDIR}/${PN}-add_missing_login1_permissions.patch"
 )
-
 
 pkg_setup() {
 	if use kernel_linux; then

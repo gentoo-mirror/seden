@@ -38,6 +38,13 @@ DEPEND="${RDEPEND}
 	kde-frameworks/extra-cmake-modules
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.13.0-pam_kwallet.patch
+	# fix for flags handling and bug 563108
+	"${FILESDIR}"/${PN}-0.12.0-respect-user-flags.patch
+	"${FILESDIR}"/${PN}-enable-elogind.patch
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary  && $(tc-getCC) == *gcc* ]]; then
 		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 7 ]] ; then
@@ -47,11 +54,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-0.13.0-pam_kwallet.patch"
-	# fix for flags handling and bug 563108
-	eapply "${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch"
 	use consolekit && eapply "${FILESDIR}/${P}-consolekit.patch"
-	use elogind && eapply "${FILESDIR}/${P}-elogind.patch"
 
 	cmake-utils_src_prepare
 }
@@ -60,9 +63,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PAM=$(usex pam)
 		-DNO_SYSTEMD=$(usex '!systemd')
+		-DUSE_ELOGIND=$(usex 'elogind')
 		-DBUILD_MAN_PAGES=ON
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
-		)
+	)
 
 	cmake-utils_src_configure
 }
