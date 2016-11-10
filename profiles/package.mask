@@ -1,4 +1,0 @@
-# Sven Eden <yamakuzure@gmx.net> (15 Mar 2016)
-# No longer needed, the AI upgrade project has been merged into
-# the Atomic Tanks main tree.
-games-action/atanks_aiu
