@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="elogind systemd +wireless"
 
 REQUIRED_USE="elogind? ( !systemd )
-	systemd? ( elogind )
+	systemd? ( !elogind )
 "
 
 DEPEND="
