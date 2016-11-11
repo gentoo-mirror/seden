@@ -5,7 +5,7 @@ dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
 games-rpg/lipsofsuna 0.8.0-r1: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 gnome-base/gvfs 1.28.3-r2: Virtual filesystem implementation for gio
-kde-plasma/powerdevil 5.8.3-r2: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 5.8.3-r3: Power management for KDE Plasma Shell
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
@@ -21,6 +21,7 @@ sys-auth/pambase 20150213-r2: PAM base configuration files
 sys-auth/polkit 0.113-r203: Policy framework for controlling privileges for system-wide services
 sys-fs/udisks 2.1.7-r3: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
+x11-apps/xinit 1.3.4-r2: X Window System initializer
 x11-base/xorg-server 1.18.4-r1: X.Org X servers
 x11-misc/bumblebee 9999-r2: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/sddm 0.14.0-r3: Simple Desktop Display Manager
