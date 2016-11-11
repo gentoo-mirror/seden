@@ -15,7 +15,7 @@
    dbus_bool_t result = FALSE;
  
 -#ifdef HAVE_SYSTEMD
-+#if defined(HAVE_SYSTEMD) || defined(HAVI_ELOGIND)
++#if defined(HAVE_SYSTEMD) || defined(HAVE_ELOGIND)
    /* check if we have logind */
    if (access ("/run/systemd/seats/", F_OK) >= 0)
      {
