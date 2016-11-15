@@ -52,10 +52,6 @@ pkg_setup() {
 			ewarn "Can't check the linux kernel configuration."
 		else
 			local missing_count=0
-			if linux_chkconfig_present AUDIT; then
-				ewarn "AUDIT is enabled. If you have problems with the auditing"
-				ewarn "  system creating and closing sessions, then disable it."
-			fi
 			if ! linux_chkconfig_present CGROUPS; then
 				eerror "CGROUPS is not enabled but needed by elogind."
 				eerror " (it is OK to disable all controllers)"
@@ -103,6 +99,7 @@ src_configure() {
 	econf \
 		--with-pamlibdir=$(getpam_mod_dir) \
 		--with-udevrulesdir="$(get_udevdir)"/rules.d \
+		--libdir=/$(get_libdir) \
 		$(use_enable acl) \
 		$(use_enable apparmor) \
 		$(use_enable pam) \
