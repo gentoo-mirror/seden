@@ -115,3 +115,11 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
+
+pkg_postinst() {
+	if [ "$(rc-config list default | grep elogind)" = "" ]; then
+		ewarn "To enable the elogind daemon, elogind must be"
+		ewarn "added to the default runlevel:"
+		ewarn "# rc-update add elogind default"
+	fi
+}
