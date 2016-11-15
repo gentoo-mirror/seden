@@ -37,7 +37,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
-DOCS=( NEWS README TODO )
 PATCHES=(
 	"${FILESDIR}/${PN}-docs.patch"
 	"${FILESDIR}/${PN}-lrt.patch"
@@ -110,6 +109,11 @@ src_configure() {
 
 src_install() {
 	default
+
+	# Installation would fail with
+	# "static archives (*.a) and libtool library files
+	#  (*.la) belong in /usr/lib*, not /lib*"
+	# if we didn't prune them.
 	prune_libtool_files --modules
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
