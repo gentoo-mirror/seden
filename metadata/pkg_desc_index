@@ -8,6 +8,7 @@ gnome-base/gvfs 1.28.3-r2 1.30.2-r1: Virtual filesystem implementation for gio
 kde-plasma/powerdevil 5.8.3-r4: Power management for KDE Plasma Shell
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
+media-libs/mesa 12.0.3-r1 12.0.4: OpenGL-like graphic library for Linux
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 4.7.2-r2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
