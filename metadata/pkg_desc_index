@@ -11,7 +11,7 @@ media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
 media-libs/mesa 12.0.3-r1 12.0.4: OpenGL-like graphic library for Linux
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
-net-mail/davmail-bin 4.7.2-r2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-mail/davmail-bin 4.7.3: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
 net-misc/teamviewer 8.0.20931-r2: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
