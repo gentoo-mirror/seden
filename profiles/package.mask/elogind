@@ -3,6 +3,7 @@
 =gnome-base/gvfs-1.28.3-r2
 =gnome-base/gvfs-1.30.2-r1
 =kde-plasma/powerdevil-5.8.3-r4
+=kde-plasma/powerdevil-5.8.4-r1
 =sys-apps/accountsservice-0.6.42-r4
 =sys-apps/dbus-1.10.12-r1
 =sys-auth/elogind-219.12-r8
