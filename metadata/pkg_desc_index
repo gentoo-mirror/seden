@@ -20,7 +20,7 @@ sys-apps/dbus 1.10.12-r1: A message bus system, a simple way for applications to
 sys-auth/elogind 219.12-r9: The systemd project's logind, extracted to a standalone package
 sys-auth/pambase 20150213-r2: PAM base configuration files
 sys-auth/polkit 0.113-r203: Policy framework for controlling privileges for system-wide services
-sys-fs/udisks 2.1.7-r3: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 2.1.7-r4: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
 x11-apps/xinit 1.3.4-r2: X Window System initializer
 x11-base/xorg-server 1.18.4-r1: X.Org X servers
