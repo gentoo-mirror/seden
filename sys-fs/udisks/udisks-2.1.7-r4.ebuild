@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools bash-completion-r1 eutils linux-info systemd udev
+inherit autotools bash-completion-r1 eutils linux-info systemd udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -69,12 +69,14 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset
+
 	default
 
 	if use elogind; then
 		epatch "${FILESDIR}"/${PN}-enable-elogind.patch || die
 		eautoreconf
-	elif use !systemd; then
+	elif ! use systemd; then
 		sed -i -e 's:libsystemd-login:&disable:' configure || die
 	fi
 
