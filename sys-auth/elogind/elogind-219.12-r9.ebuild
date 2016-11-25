@@ -116,6 +116,11 @@ src_install() {
 	# if we didn't prune them.
 	prune_libtool_files --modules
 
+	# Unfortunately the build system puts the pkgconfig file(s)
+	# into $(libdir)/pkgconfig - Move it to /usr/$(libdir)/pkgconfig
+	mkdir -p "${ED}"usr/$(get_libdir) || die
+	mv "${ED}"$(get_libdir)/pkgconfig "${ED}"usr/$(get_libdir)/ || die
+
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
