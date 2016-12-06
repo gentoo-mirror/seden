@@ -5,6 +5,7 @@
 =kde-plasma/powerdevil-5.8.3-r4
 =kde-plasma/powerdevil-5.8.4-r1
 =sys-apps/accountsservice-0.6.42-r4
+=sys-apps/accountsservice-0.6.43-r1
 =sys-apps/dbus-1.10.12-r1
 =sys-apps/dbus-1.10.14-r1
 =sys-auth/elogind-219.12-r9
