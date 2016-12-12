@@ -31,7 +31,7 @@ else
 fi
 
 DEPEND="
-	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?]
+	~media-libs/avidemux-core-${PV}:${SLOT}[nls?,qt5?,sdl?,vaapi?,vdpau?,video_cards_fglrx?,xv?]
 	opengl? ( virtual/opengl:0 )
 	qt4? ( >=dev-qt/qtgui-4.8.3:4 )
 	qt5? ( dev-qt/qtgui:5 )
@@ -76,7 +76,6 @@ src_configure() {
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
-		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
 	if use qt5 ; then
@@ -87,6 +86,7 @@ src_configure() {
 	elif use qt4 ; then
 		export QT_SELECT=4
 		processes+=" buildQt4:avidemux/qt4"
+		# Needed for gcc-6
 		append-cxxflags $(test-flags-CXX -std=gnu++98)
 	fi
 
