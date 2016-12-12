@@ -44,6 +44,15 @@ lxqt-base/lxqt-meta:sudo - Install lxqt-base/lxqt-sudo
 media-libs/allegro:dumb - Enable media-libs/dumb module library support
 media-libs/allegro:physfs - Enable physfs support
 media-libs/allegro:vga - Enables the VGA graphics driver
+media-libs/avidemux-core:system-ffmpeg - Use the ffmpeg provided by the system.
+media-libs/avidemux-plugins:aften - Enable A/52 (AC-3) audio encoder support.
+media-libs/avidemux-plugins:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
+media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
+media-libs/avidemux-plugins:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+media-libs/avidemux-plugins:opus - Adds support for the Opus codec via media-libs/opus.
+media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
+media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
+media-libs/avidemux-plugins:x265 - Enables HEVC support with media-libs/x265.
 media-libs/mesa:bindist - Disable patent-encumbered ARB_texture_float, EXT_texture_shared_exponent, and EXT_packed_float extensions.
 media-libs/mesa:classic - Build drivers based on the classic architecture.
 media-libs/mesa:d3d9 - Enable Direct 3D9 API through Nine state tracker. Can be used together with patched wine.
