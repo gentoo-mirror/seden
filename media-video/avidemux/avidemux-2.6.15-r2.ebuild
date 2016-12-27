@@ -66,16 +66,22 @@ src_prepare() {
 
 	# Remove "Build Option" dialog because it doesn't reflect what the GUI can or has been built with. (Bug #463628)
 	sed -i -e '/Build Option/d' avidemux/common/ADM_commonUI/myOwnMenu.h || die "Couldn't remove \"Build Option\" dialog."
+
+	# Fix underlinking to work with gold linker
+	sed -i -e 's/\( ADM_core6\)/ Xext\1/' avidemux/common/ADM_render/CMakeLists.txt || die "Couldn't fix underlinking"
+
 	eapply_user
 }
 
 src_configure() {
 	local mycmakeargs
 	mycmakeargs=(
+		-DAVIDEMUX_SOURCE_DIR="'${S}'"
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
 		-DLIBVA="$(usex vaapi)"
 		-DVDPAU="$(usex vdpau)"
+		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
 	if use qt5 ; then
@@ -93,6 +99,9 @@ src_configure() {
 	if use debug ; then
 		mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
 	fi
+
+	# Filter problematic flags
+	filter-flags -fwhole-program -flto -ftracer
 
 	# Add lax vector typing for PowerPC.
 	if use ppc || use ppc64 ; then
