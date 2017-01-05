@@ -100,8 +100,16 @@ src_configure() {
 	processes="buildPluginsCommon:avidemux_plugins
 		buildPluginsCLI:avidemux_plugins"
 	if use qt4 || use qt5 ; then
-		export QT_SELECT
 		processes+=" buildPluginsQt4:avidemux_plugins"
+		if use qt5 ; then
+			mycmakeargs+=( -DENABLE_QT5=True )
+			export QT_SELECT=5
+			append-cxxflags $(test-flags-CXX -std=gnu++11)
+		else
+			export QT_SELECT=4
+			# Needed for gcc-6
+			append-cxxflags $(test-flags-CXX -std=gnu++98)
+		fi
 	fi
 
 	for process in ${processes} ; do
@@ -137,15 +145,6 @@ src_configure() {
 			-DLIBVORBIS="$(usex vorbis)"
 			-DVPXDEC="$(usex vpx)"
 		)
-		if use qt5 ; then
-			mycmakeargs+=( -DENABLE_QT5=True )
-			export QT_SELECT=5
-			append-cxxflags $(test-flags-CXX -std=gnu++11)
-		elif use qt4 ; then
-			export QT_SELECT=4
-			# Needed for gcc-6
-			append-cxxflags $(test-flags-CXX -std=gnu++98)
-		fi
 
 		if use debug ; then
 			mycmakeargs+=( -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1 )
