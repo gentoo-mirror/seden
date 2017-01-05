@@ -84,6 +84,7 @@ src_configure() {
 		-DXVBA="$(usex video_cards_fglrx)"
 		-DXVIDEO="$(usex xv)"
 	)
+	processes="buildCLI:avidemux/cli"
 	if use qt5 ; then
 		mycmakeargs+=( -DENABLE_QT5=True )
 		export QT_SELECT=5
