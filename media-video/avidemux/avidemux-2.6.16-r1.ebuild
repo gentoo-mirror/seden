@@ -1,4 +1,4 @@
-# Copyright 2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -101,7 +101,7 @@ src_configure() {
 	fi
 
 	# Filter problematic flags
-	filter-flags -fwhole-program -flto -ftracer
+	filter-flags -ftracer -flto
 
 	# Add lax vector typing for PowerPC.
 	if use ppc || use ppc64 ; then
