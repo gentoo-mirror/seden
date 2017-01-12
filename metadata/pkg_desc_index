@@ -31,4 +31,4 @@ x11-base/xorg-server 1.18.4-r1: X.Org X servers
 x11-misc/bumblebee 9999-r2: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/sddm 0.14.0-r3: Simple Desktop Display Manager
 x11-themes/qtcurve 9999: A set of widget styles for Qt and GTK2
-x11-wm/lumina 1.1.0: Lumina desktop environment
+x11-wm/lumina 1.1.0 1.2.0.1: Lumina desktop environment
