@@ -129,3 +129,5 @@ x11-themes/qtcurve:gtk2 - Add support for gtk+2
 x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
 x11-themes/qtcurve:plasma - Enable Plasma support. This adds a QtCurve configuration module to Plasma's SystemSettings
 x11-themes/qtcurve:windeco - Enable window decoration for KWin
+x11-wm/lumina:compton - Pulls in x11-misc/compton as a dependency.
+x11-wm/lumina:i18n - Enables internationalization support.
