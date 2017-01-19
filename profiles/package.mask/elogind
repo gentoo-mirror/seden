@@ -11,7 +11,6 @@
 =sys-apps/dbus-1.10.12-r1
 =sys-apps/dbus-1.10.14-r1
 =sys-auth/pambase-20150213-r2
-=sys-auth/polkit-0.113-r203
 =sys-fs/udisks-2.1.7-r4
 =sys-fs/udisks-2.1.8-r1
 =sys-process/procps-3.3.12-r2
