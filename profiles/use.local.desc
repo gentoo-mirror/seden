@@ -86,7 +86,6 @@ sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/cons
 sys-apps/dbus:elogind - Build with sys-auth/elogind user seat support
 sys-apps/dbus:systemd - Build with sys-apps/systemd at_console support
 sys-apps/dbus:user-session - Enable user-session semantics for session bus under systemd
-sys-auth/elogind:apparmor - Enable AppArmor support
 sys-auth/pambase:consolekit - Enable pam_ck_connector module on local system logins. This allows for console logins to make use of ConsoleKit authorization.
 sys-auth/pambase:cracklib - Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible.
 sys-auth/pambase:debug - Enable debug information logging on syslog(3) for all the modules supporting this in the system authentication and system login stacks.
@@ -101,8 +100,6 @@ sys-auth/pambase:passwdqc - Enable pam_passwdqc module on system auth stack for 
 sys-auth/pambase:securetty - Enable pam_securetty module in the login stack. Not generally relevant anymore as the login stack only refers to local logins and local terminals imply secure access in the first place.
 sys-auth/pambase:sha512 - Switch Linux-PAM's pam_unix module to use sha512 for passwords hashes rather than MD5. This option requires sys-libs/pam version 1.0.1 built against sys-libs/glibc version 2.7, if it's built against an earlier version, it will silently be ignored, and MD5 hashes will be used. All the passwords changed after this USE flag is enabled will be saved to the shadow file hashed using SHA512 function. The password previously saved will be left untouched. Please note that while SHA512-hashed passwords will still be recognised if the USE flag is removed, the shadow file will not be compatible with systems using an earlier glibc version.
 sys-auth/pambase:systemd - Use pam_systemd module to register user sessions in the systemd control group hierarchy.
-sys-auth/polkit:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
-sys-auth/polkit:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
 sys-fs/udisks:cryptsetup - Enable sys-fs/cryptsetup support
 sys-fs/udisks:elogind - Support sys-auth/elogind
 sys-fs/udisks:gptfdisk - Pull in sys-apps/gptfdisk for sgdisk command as used by partitioning functionality
