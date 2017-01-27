@@ -11,7 +11,7 @@ HOMEPAGE="http://milkytracker.org/"
 
 EGIT_MIN_CLONE_TYPE="shallow"
 EGIT_REPO_URI="https://github.com/${PN}/MilkyTracker.git"
-EGIT_BRANCH="pending"
+EGIT_BRANCH="master"
 SRC_URI=""
 
 LICENSE="|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
