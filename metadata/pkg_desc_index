@@ -5,7 +5,7 @@ dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
 games-rpg/lipsofsuna 0.8.0-r1: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 gnome-base/gvfs 1.28.3-r2 1.30.2-r1 1.30.3-r1: Virtual filesystem implementation for gio
-kde-plasma/powerdevil 5.8.3-r4 5.8.4-r1 5.8.5-r1: Power management for KDE Plasma Shell
+kde-plasma/powerdevil 5.8.5-r1: Power management for KDE Plasma Shell
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
 media-libs/avidemux-core 2.6.18-r1: Core libraries for media-video/avidemux
