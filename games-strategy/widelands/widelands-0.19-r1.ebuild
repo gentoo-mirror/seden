@@ -45,10 +45,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		'-DWL_VERSION_STANDARD=true'
-		"-DWL_INSTALL_PREFIX=/usr/games"
-		"-DWL_INSTALL_DATADIR=/usr/share/games/${PN}"
-		"-DWL_INSTALL_LOCALEDIR=/usr/share/games/${PN}/locale"
-		"-DWL_INSTALL_BINDIR=/usr/bin"
+		"-DWL_INSTALL_BASEDIR=${PREFIX}"
+		"-DWL_INSTALL_DATADIR=${PREFIX}"
 	)
 	cmake-utils_src_configure
 }
@@ -62,4 +60,8 @@ src_install() {
 	newicon data/images/logos/wl-ico-128.png ${PN}.png
 	make_desktop_entry ${PN} Widelands
 	dodoc ChangeLog CREDITS
+
+	# As everything is installed in /usr/share/games/${PN},
+	# a symlink is needed in /usr/games/bin
+	dosym ${PREFIX}/${PN} /usr/games/bin/${PN}
 }
