@@ -1,0 +1,185 @@
+--- a/config.h.in	2017-02-14 09:53:41.124245372 +0100
++++ b/config.h.in	2017-02-14 09:59:04.886255092 +0100
+@@ -207,6 +207,9 @@
+ /* Define to 1 if libsystemd-login is available */
+ #undef SESSION_TRACKING_SYSTEMD
+ 
++/* Define to 1 if libelogin is available */
++#undef SESSION_TRACKING_ELOGIND
++
+ /* The size of `dev_t', as computed by sizeof. */
+ #undef SIZEOF_DEV_T
+ 
+@@ -219,6 +222,9 @@
+ /* Define to 1 to use systemd suspend api */
+ #undef SUSPEND_RESUME_SYSTEMD
+ 
++/* Define to 1 to use elogind suspend api */
++#undef SUSPEND_RESUME_ELOGIND
++
+ /* Define to 1 to use UPower suspend api */
+ #undef SUSPEND_RESUME_UPOWER
+ 
+--- a/configure.ac	2017-02-14 09:28:51.529200651 +0100
++++ b/configure.ac	2017-02-14 09:48:25.376235892 +0100
+@@ -426,14 +426,15 @@
+ 	[Support systemd session tracking]))
+ AC_ARG_WITH(consolekit, AS_HELP_STRING([--with-consolekit=yes|no],
+ 	[Support consolekit session tracking]))
+-AC_ARG_WITH(session-tracking, AS_HELP_STRING([--with-session-tracking=systemd|consolekit|no],
++AC_ARG_WITH(session-tracking, AS_HELP_STRING([--with-session-tracking=systemd|elogind|consolekit|no],
+ 	[Compatibility option to choose one session tracking module]))
+ # backwards compatibility
+-AS_IF([test "$with_session_tracking" = "ck"], [use_consolekit="yes" use_systemd_logind="no"])
+-AS_IF([test "$with_session_tracking" = "consolekit"], [use_consolekit="yes" use_systemd_logind="no"])
+-AS_IF([test "$with_session_tracking" = "systemd"], [use_consolekit="no" use_systemd_logind="yes"])
+-AS_IF([test "$with_session_tracking" = "no"], [use_consolekit="no" use_systemd_logind="no"])
+-AS_IF([test "$with_session_tracking" = "none"], [use_consolekit="no" use_systemd_logind="no"])
++AS_IF([test "$with_session_tracking" = "ck"], [use_consolekit="yes" use_systemd_logind="no" use_elogind="no"])
++AS_IF([test "$with_session_tracking" = "consolekit"], [use_consolekit="yes" use_systemd_logind="no" use_elogind="no"])
++AS_IF([test "$with_session_tracking" = "systemd"], [use_consolekit="no" use_systemd_logind="yes" use_elogind="no"])
++AS_IF([test "$with_session_tracking" = "elogind"], [use_consolekit="no" use_systemd_logind="no" use_elogind="yes"])
++AS_IF([test "$with_session_tracking" = "no"], [use_consolekit="no" use_systemd_logind="no" use_elogind="no"])
++AS_IF([test "$with_session_tracking" = "none"], [use_consolekit="no" use_systemd_logind="no" use_elogind="no"])
+ # current options
+ AS_IF([test -n "$with_systemd_logind" ], [use_systemd_logind="$with_systemd_logind"])
+ AS_IF([test -n "$with_consolekit" ], [use_consolekit="$with_consolekit"])
+@@ -454,6 +455,20 @@
+ 	AC_DEFINE([SESSION_TRACKING_SYSTEMD], 1, [Define to 1 if libsystemd-login is available])
+ 	session_tracking="$session_tracking, systemd-logind"
+ fi
++
++if test "$use_elogind" = "yes" -o "$use_elogind" = "auto"; then
++    PKG_CHECK_MODULES(SYSTEMD_LOGIN, [libelogind], [have_elogind=yes], [PKG_CHECK_MODULES(SYSTEMD_LOGIN, [libelogind], [have_elogind=yes], [have_elogind=no])])
++else
++    have_elogind=no
++fi
++if test "$use_elogind" = "yes" -a "$have_elogind" = "no"; then
++    AC_MSG_ERROR([You must have libelogind installed to build with elogind support.])
++fi
++if test "$have_elogind" = "yes"; then
++    AC_DEFINE([SESSION_TRACKING_ELOGIND], 1, [Define to 1 if libelogin is available])
++    session_tracking="$session_tracking, elogind"
++fi
++
+ if test "$use_consolekit" = "yes"; then
+ 	AC_DEFINE([SESSION_TRACKING_CONSOLEKIT], 1, [Define to 1 if ConsoleKit is available])
+ 	AC_DEFINE([CKDB_PATH], "/var/run/ConsoleKit/database", [Path to ConsoleKit database])
+@@ -461,7 +476,7 @@
+ fi
+ session_tracking="$(printf '%s' "${session_tracking}" | sed 's/^, //')"
+ 
+-AC_ARG_WITH(suspend-resume, AS_HELP_STRING([--with-suspend-resume=upower|systemd|consolekit], [Build NetworkManager with specific suspend/resume support]))
++AC_ARG_WITH(suspend-resume, AS_HELP_STRING([--with-suspend-resume=upower|systemd|elogind|consolekit], [Build NetworkManager with specific suspend/resume support]))
+ if test "z$with_suspend_resume" = "z"; then
+     PKG_CHECK_EXISTS([libsystemd >= 209], [have_systemd_inhibit=yes],
+                      [PKG_CHECK_EXISTS([libsystemd-login >= 183], [have_systemd_inhibit=yes], [have_systemd_inhibit=no])])
+@@ -469,6 +484,12 @@
+         # Use systemd if it's new enough
+         with_suspend_resume="systemd"
+     else
++        PKG_CHECK_EXISTS([libelogind >= 219], [have_elogind_inhibit=yes],
++                        [PKG_CHECK_EXISTS([libelogind >= 219], [have_elogind_inhibit=yes], [have_elogind_inhibit=no])])
++        if test "z${have_elogind_inhibit}" = "zyes"; then
++            # Use elogind if it's new enough
++            with_suspend_resume="elogind"
++        else
+         if test "$use_consolekit" = "yes"; then
+                 # Use consolekit suspend if session tracking is consolekit
+                 with_suspend_resume="consolekit"
+@@ -478,6 +499,7 @@
+         fi
+     fi
+ fi
++fi
+ 
+ case $with_suspend_resume in
+     upower)
+@@ -488,11 +510,16 @@
+                           [PKG_CHECK_MODULES(SYSTEMD_INHIBIT, [libsystemd-login >= 183])])
+         AC_DEFINE([SUSPEND_RESUME_SYSTEMD], 1, [Define to 1 to use systemd suspend api])
+         ;;
++    elogind)
++        PKG_CHECK_MODULES(ELOGIND_INHIBIT, [libelogind >= 219],,
++                          [PKG_CHECK_MODULES(ELOGIND_INHIBIT, [libelogind >= 219])])
++        AC_DEFINE([SUSPEND_RESUME_ELOGIND], 1, [Define to 1 to use elogind suspend api])
++        ;;
+     consolekit)
+         AC_DEFINE([SUSPEND_RESUME_CONSOLEKIT], 1, [Define to 1 to use ConsoleKit2 suspend api])
+         ;;
+     *)
+-        AC_MSG_ERROR(--with-suspend-resume must be one of [upower, systemd, consolekit])
++        AC_MSG_ERROR(--with-suspend-resume must be one of [upower, systemd, elogind, consolekit])
+         ;;
+ esac
+ 
+--- a/src/nm-sleep-monitor.c	2017-02-14 09:57:16.963251852 +0100
++++ b/src/nm-sleep-monitor.c	2017-02-14 09:58:01.855253200 +0100
+@@ -38,7 +38,7 @@
+ #define USE_UPOWER                      1
+ #define _NMLOG_PREFIX_NAME              "sleep-monitor-up"
+ 
+-#elif defined (SUSPEND_RESUME_SYSTEMD)
++#elif defined (SUSPEND_RESUME_SYSTEMD) || defined (SUSPEND_RESUME_ELOGIND)
+ 
+ #define SUSPEND_DBUS_NAME               "org.freedesktop.login1"
+ #define SUSPEND_DBUS_PATH               "/org/freedesktop/login1"
+@@ -60,7 +60,7 @@
+ 
+ #else
+ 
+-#error define one of SUSPEND_RESUME_SYSTEMD, SUSPEND_RESUME_CONSOLEKIT, or SUSPEND_RESUME_UPOWER
++#error define one of SUSPEND_RESUME_SYSTEMD, SUSPEND_RESUME_ELOGIND, SUSPEND_RESUME_CONSOLEKIT, or SUSPEND_RESUME_UPOWER
+ 
+ #endif
+ 
+--- a/src/nm-session-monitor.c	2017-02-14 09:49:08.645237191 +0100
++++ b/src/nm-session-monitor.c	2017-02-14 09:56:48.680251003 +0100
+@@ -32,6 +32,11 @@
+ #ifdef SESSION_TRACKING_SYSTEMD
+ #include <systemd/sd-login.h>
+ #endif
++#ifdef SESSION_TRACKING_ELOGIND
++#include <elogind/sd-login.h>
++/* Re-Use SESSION_TRACKING_SYSTEMD as elogind substitutes systemd-login */
++#define SESSION_TRACKING_SYSTEMD 1
++#endif
+ 
+ /********************************************************************/
+ 
+@@ -103,7 +108,11 @@
+ 	status = sd_uid_get_sessions (uid, active, NULL);
+ 
+ 	if (status < 0)
++#ifdef SESSION_TRACKING_ELOGIND
++		_LOGE ("failed to get elogind sessions for uid %d: %d", uid, status);
++#else
+ 		_LOGE ("failed to get systemd sessions for uid %d: %d", uid, status);
++#endif /* SESSION_TRACKING_ELOGIND */
+ 
+ 	return status > 0;
+ }
+@@ -130,7 +139,11 @@
+ 		return;
+ 
+ 	if ((status = sd_login_monitor_new (NULL, &monitor->sd.monitor)) < 0) {
++#ifdef SESSION_TRACKING_ELOGIND
++		_LOGE ("failed to create elogind monitor: %d", status);
++#else
+ 		_LOGE ("failed to create systemd login monitor: %d", status);
++#endif /* SESSION_TRACKING_ELOGIND */
+ 		return;
+ 	}
+ 
+@@ -375,7 +388,11 @@
+ {
+ #ifdef SESSION_TRACKING_SYSTEMD
+ 	st_sd_init (monitor);
++#ifdef SESSION_TRACKING_ELOGIND
++	_LOGD ("using elogind session tracking");
++#else
+ 	_LOGD ("using systemd-logind session tracking");
++#endif /* SESSION_TRACKING_ELOGIND */
+ #endif
+ 
+ #ifdef SESSION_TRACKING_CONSOLEKIT
