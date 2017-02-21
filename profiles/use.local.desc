@@ -27,6 +27,7 @@ gnome-base/gvfs:google - Enables support for accessing Google accounts via dev-l
 gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup
 gnome-base/gvfs:nfs - Enable NFS client support via net-fs/libnfs.
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
+kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
 kde-plasma/powerdevil:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
@@ -80,6 +81,18 @@ media-libs/mesa:xa - Enable the XA (X Acceleration) API for Gallium3D.
 media-libs/mesa:xvmc - Enable the XvMC acceleration interface for the Gallium3D Video Layer.
 net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
+net-misc/networkmanager:connection-sharing - Use net-dns/dnsmasq and net-firewall/iptables for connection sharing
+net-misc/networkmanager:consolekit - Use sys-auth/consolekit for session tracking
+net-misc/networkmanager:dhclient - Use dhclient from net-misc/dhcp for getting ip
+net-misc/networkmanager:json - Enable JSON validation via dev-libs/jansson in libnm.
+net-misc/networkmanager:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
+net-misc/networkmanager:nss - Use dev-libs/nss for cryptography
+net-misc/networkmanager:ofono - Use net-misc/ofono for telephony support.
+net-misc/networkmanager:ppp - Enable support for mobile broadband and PPPoE connections using net-dialup/ppp
+net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS information
+net-misc/networkmanager:teamd - Enable Teamd control support
+net-misc/networkmanager:wext - Enable support for the deprecated Wext (Wireless Extensions) API; needed for some older drivers (e.g. ipw2200, ndiswrapper)
+net-misc/networkmanager:wifi - Enable support for wifi and 802.1x security using net-wireless/wpa_supplicant
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
 sys-apps/accountsservice:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
