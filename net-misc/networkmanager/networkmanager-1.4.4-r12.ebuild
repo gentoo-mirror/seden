@@ -58,6 +58,7 @@ COMMON_DEPEND="
 		net-firewall/iptables )
 	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dhclient? ( >=net-misc/dhcp-4[client] )
+	!dhclient? ( >=net-misc/dhcpcd-6.11.3 )
 	elogind? ( sys-auth/elogind )
 	gnutls? (
 		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
@@ -178,6 +179,7 @@ multilib_src_configure() {
 	# maintain and fix it
 	# Also disable dhcpcd support as it's also completely unmaintained
 	# and facing bugs like #563938 and many others
+	# Update: Said bug says, that it *should* work now, so re-enable dhcpcd.
 	#
 	# We need --with-libnm-glib (and dbus-glib dep) as reverse deps are
 	# still not ready for removing that lib
@@ -209,7 +211,7 @@ multilib_src_configure() {
 			$(multilib_native_use_enable json json-validation) \
 			$(multilib_native_use_enable ppp) \
 			$(use_with dhclient) \
-			--without-dhcpcd \
+			$(use_with !dhclient dhcpcd) \
 			$(multilib_native_use_with modemmanager modem-manager-1) \
 			$(multilib_native_use_with ncurses nmtui) \
 			$(multilib_native_use_with ofono) \
