@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.8.12
 "
 
+PATCHES=(
+        "${FILESDIR}"/${P}-fix-docs.patch
+)
+
 src_configure() {
 	local mycmakeargs=()
 	cmake-utils_src_configure
@@ -39,8 +43,8 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	dodoc AUTHORS ChangeLog.md docs/{readme_rtaudio,readme_unix,TiTAN.nfo}
-	dohtml docs/{FAQ,MilkyTracker,readme_PocketPC}.html
+	dodoc AUTHORS ChangeLog.md docs/{readme_unix,TiTAN.nfo}
+	dohtml docs/{FAQ,MilkyTracker}.html
 
 	newicon resources/pictures/carton.png ${PN}.png
 	make_desktop_entry ${PN} MilkyTracker ${PN} \
