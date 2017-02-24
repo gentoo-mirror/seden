@@ -39,8 +39,8 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	dodoc AUTHORS docs/{readme_unix,TiTAN.nfo}
-	dohtml docs/{ChangeLog,FAQ,MilkyTracker}.html
+	dodoc AUTHORS ChangeLog.md docs/{readme_rtaudio,readme_unix,TiTAN.nfo}
+	dohtml docs/{FAQ,MilkyTracker,readme_PocketPC}.html
 
 	newicon resources/pictures/carton.png ${PN}.png
 	make_desktop_entry ${PN} MilkyTracker ${PN} \
