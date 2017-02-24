@@ -96,7 +96,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
         # Patch in elogind support
         # Bug #607352
-        "${FILESDIR}"/${P}-enable-elogind.patch
+        "${FILESDIR}"/${P}-enable-elogind-r1.patch
 )
 
 python_check_deps() {
