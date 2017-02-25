@@ -19,7 +19,7 @@ net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 4.7.3: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
-net-misc/networkmanager 1.4.4-r13: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.4.4-r14: A set of co-operative tools that make networking simple and straightforward
 net-misc/teamviewer 8.0.20931-r2: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
 sys-apps/accountsservice 0.6.42-r5 0.6.43-r2: D-Bus interfaces for querying and manipulating user account information
