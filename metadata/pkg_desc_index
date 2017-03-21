@@ -25,7 +25,7 @@ net-misc/teamviewer 8.0.20931-r2: All-In-One Solution for Remote Access and Supp
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
 sys-apps/accountsservice 0.6.42-r5 0.6.43-r2: D-Bus interfaces for querying and manipulating user account information
 sys-apps/dbus 1.10.12-r1 1.10.14-r1 1.10.16-r1: A message bus system, a simple way for applications to talk to each other
-sys-auth/elogind 225.9999: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 226.4: The systemd project's logind, extracted to a standalone package
 sys-auth/pambase 20150213-r2: PAM base configuration files
 sys-fs/udisks 2.1.7-r4 2.1.8-r1: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
