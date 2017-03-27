@@ -1,0 +1,10 @@
+--- a/programs/winhlp32/Makefile.in	2017-03-17 21:17:48.000000000 +0100
++++ b/programs/winhlp32/Makefile.in	2017-03-24 23:01:32.580073105 +0100
+@@ -1,6 +1,6 @@
+ MODULE    = winhlp32.exe
+ APPMODE   = -mwindows
+-IMPORTS   = user32 gdi32
++IMPORTS   = user32 gdi32 fl
+ DELAYIMPORTS = shell32 comctl32 comdlg32
+ 
+ C_SRCS = \
