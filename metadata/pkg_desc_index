@@ -1,3 +1,4 @@
+app-emulation/wine 2.4: Free implementation of Windows(tm) on Unix
 app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
 dev-games/ogre 1.9.0-r3: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
