@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils java-pkg-2 user
 
-MY_REV="2438"
+MY_REV="2479"
 MY_PN="davmail"
 MY_P="${MY_PN}-linux-x86"
 
