@@ -39,7 +39,7 @@ DEPEND="${COMMON_DEPEND}
 PDEPEND="policykit? ( sys-auth/polkit )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-docs.patch"
+	"${FILESDIR}/${PN}-docs.patch"
 )
 
 pkg_setup() {
