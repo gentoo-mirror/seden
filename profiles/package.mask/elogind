@@ -12,7 +12,8 @@
 =sys-apps/dbus-1.10.12-r1
 =sys-apps/dbus-1.10.14-r1
 =sys-apps/dbus-1.10.16-r1
-=sys-auth/elogind-226.4
+=sys-auth/elogind-226.5
+=sys-auth/elogind-226.9999
 =sys-auth/pambase-20150213-r2
 =sys-fs/udisks-2.1.7-r4
 =sys-fs/udisks-2.1.8-r1
