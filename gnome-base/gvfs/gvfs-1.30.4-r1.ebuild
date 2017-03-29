@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
@@ -22,7 +21,7 @@ REQUIRED_USE="
 	udisks? ( udev )
 	systemd? ( !elogind udisks )
 "
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 RDEPEND="
 	app-crypt/gcr:=
@@ -32,13 +31,13 @@ RDEPEND="
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
-	bluray? ( media-libs/libbluray )
+	bluray? ( media-libs/libbluray:= )
 	elogind? ( >=sys-auth/elogind-219:0= )
 	fuse? ( >=sys-fs/fuse-2.8.0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1:= )
 	google? (
-		>=dev-libs/libgdata-0.17.3:=[crypt,gnome-online-accounts]
+		>=dev-libs/libgdata-0.17.7:=[crypt,gnome-online-accounts]
 		>=net-libs/gnome-online-accounts-3.17.1:= )
 	gphoto2? ( >=media-libs/libgphoto2-2.5.0:= )
 	gtk? ( >=x11-libs/gtk+-3.0:3 )
@@ -51,9 +50,7 @@ RDEPEND="
 	policykit? (
 		sys-auth/polkit
 		sys-libs/libcap )
-	samba? ( || (
-		( >=net-fs/samba-3.4.6[smbclient] <net-fs/samba-4[smbclient] )
-		>=net-fs/samba-4[client] ) )
+	samba? ( >=net-fs/samba-4[client] )
 	systemd? ( >=sys-apps/systemd-206:0= )
 	udev? (
 		cdda? ( dev-libs/libcdio-paranoia )
@@ -82,6 +79,10 @@ DEPEND="${RDEPEND}
 # Tests with multiple failures, this is being handled upstream at:
 # https://bugzilla.gnome.org/700162
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.30.2-sysmacros.patch #580234
+)
 
 src_prepare() {
 	if ! use udev; then
