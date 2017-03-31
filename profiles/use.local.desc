@@ -118,9 +118,6 @@ net-misc/networkmanager:wifi - Enable support for wifi and 802.1x security using
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
 sys-apps/accountsservice:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
-sys-apps/dbus:elogind - Build with sys-auth/elogind user seat support
-sys-apps/dbus:systemd - Build with sys-apps/systemd at_console support
-sys-apps/dbus:user-session - Enable user-session semantics for session bus under systemd
 sys-auth/elogind:apparmor - Enable AppArmor support
 sys-auth/pambase:consolekit - Enable pam_ck_connector module on local system logins. This allows for console logins to make use of ConsoleKit authorization.
 sys-auth/pambase:cracklib - Enable pam_cracklib module on system authentication stack. This produces warnings when changing password to something easily crackable. It requires the same USE flag to be enabled on sys-libs/pam or system login might be impossible.
