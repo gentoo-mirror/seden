@@ -156,8 +156,6 @@ x11-base/xorg-server:xnest - Build the Xnest server
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
 x11-base/xorg-server:xvfb - Build the Xvfb server
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
-x11-misc/sddm:consolekit - Use ck-launch-session from sys-auth/consolekit by default in Xsession (no native support)
-x11-misc/sddm:elogind - Use sys-auth/elogind for session tracking.
 x11-themes/qtcurve:gtk2 - Add support for gtk+2
 x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
 x11-themes/qtcurve:plasma - Enable Plasma support. This adds a QtCurve configuration module to Plasma's SystemSettings
