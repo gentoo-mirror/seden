@@ -13,7 +13,7 @@ EGIT_BRANCH="dev_v227"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS=""
 IUSE="acl debug pam policykit selinux"
 
 COMMON_DEPEND="
