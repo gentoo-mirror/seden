@@ -1,6 +1,5 @@
 # Sven Eden <yamakuzure@gmx.net> (10 Nov 2016)
 # Testing ebuilds for elogind integration
-=gnome-base/gvfs-1.28.3-r2
 =gnome-base/gvfs-1.30.3-r1
 =gnome-base/gvfs-1.30.4-r1
 =kde-frameworks/networkmanager-qt-5.29.0-r1
