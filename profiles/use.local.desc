@@ -49,8 +49,6 @@ gnome-base/gvfs:http - Enable the HTTP/DAV backend using net-libs/libsoup
 gnome-base/gvfs:nfs - Enable NFS client support via net-fs/libnfs.
 gnome-base/gvfs:udev - Enable udev base replacement code for cdda feature
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
-kde-plasma/powerdevil:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
-kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
 lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
 lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qt file manager
@@ -142,16 +140,6 @@ sys-process/procps:kill - Build the kill program
 sys-process/procps:modern-top - Enables new startup defaults of top. Keeps old defaults if disabled
 sys-process/procps:ncurses - Build programs that use ncurses: top, slabtop, watch
 x11-apps/xinit:minimal - Control dependencies on legacy apps (xterm, twm, ...). Safe to enable if you use a modern desktop environment.
-x11-base/xorg-server:dmx - Build the Distributed Multiheaded X server
-x11-base/xorg-server:elogind - Use sys-auth/elogind instead of systemd-logind for session and fd handling.
-x11-base/xorg-server:glamor - Enable Glamor OpenGL 2D acceleration
-x11-base/xorg-server:kdrive - Build the kdrive X servers
-x11-base/xorg-server:tslib - Build with tslib support for touchscreen devices
-x11-base/xorg-server:unwind - Enable libunwind usage for backtraces
-x11-base/xorg-server:xephyr - Build the Xephyr server
-x11-base/xorg-server:xnest - Build the Xnest server
-x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
-x11-base/xorg-server:xvfb - Build the Xvfb server
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
 x11-themes/qtcurve:gtk2 - Add support for gtk+2
 x11-themes/qtcurve:kde - Enable KDE4 support. This adds a QtCurve configuration module to KDE's SystemSettings
