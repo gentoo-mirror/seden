@@ -4,16 +4,15 @@
 
 EAPI=6
 
-inherit autotools git-r3 linux-info pam udev
+inherit autotools linux-info pam udev
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
-EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="dev_v227"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz" 
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl debug pam policykit selinux"
 
 COMMON_DEPEND="
