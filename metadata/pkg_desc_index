@@ -10,6 +10,7 @@ gnome-base/gvfs 1.30.3-r1 1.30.4-r1: Virtual filesystem implementation for gio
 kde-frameworks/networkmanager-qt 5.29.0-r1: NetworkManager bindings for Qt
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
+media-libs/aubio 0.4.5-r1: Library for audio labelling
 media-libs/avidemux-core 2.6.19-r1: Core libraries for media-video/avidemux
 media-libs/avidemux-plugins 2.6.19-r1: Plugins for media-video/avidemux
 media-libs/mesa 12.0.3-r1 12.0.4: OpenGL-like graphic library for Linux
@@ -24,7 +25,7 @@ net-misc/networkmanager 1.4.4-r14: A set of co-operative tools that make network
 net-misc/teamviewer 8.0.20931-r2: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
 sys-apps/accountsservice 0.6.43-r2: D-Bus interfaces for querying and manipulating user account information
-sys-auth/elogind 226.5 226.9999 227.9999: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 226.5 227.2 227.9999: The systemd project's logind, extracted to a standalone package
 sys-auth/pambase 20150213-r2: PAM base configuration files
 sys-fs/udisks 2.1.8-r1: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
