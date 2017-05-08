@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 inherit autotools bash-completion-r1 eutils linux-info systemd udev xdg-utils
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
-SRC_URI="https://udisks.freedesktop.org/releases/${P}.tar.bz2"
+SRC_URI="https://github.com/storaged-project/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="acl debug cryptsetup elogind +gptfdisk +introspection selinux systemd"
+IUSE="acl cryptsetup debug elogind +gptfdisk +introspection lvm nls selinux systemd"
 
 REQUIRED_USE="elogind? ( !systemd )
 	systemd? ( !elogind )
@@ -26,6 +25,7 @@ COMMON_DEPEND="
 	virtual/udev
 	acl? ( virtual/acl )
 	introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+	lvm? ( sys-fs/lvm2 )
 	elogind? ( >=sys-auth/elogind-219 )
 	systemd? ( >=sys-apps/systemd-209 )
 "
@@ -38,7 +38,7 @@ RDEPEND="${COMMON_DEPEND}
 	cryptsetup? (
 		sys-fs/cryptsetup[udev(+)]
 		sys-fs/lvm2[udev(+)]
-		)
+	)
 	gptfdisk? ( >=sys-apps/gptfdisk-0.8 )
 	selinux? ( sec-policy/selinux-devicekit )
 "
@@ -46,18 +46,23 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.32
-	>=dev-util/gtk-doc-am-1.3
-	dev-util/intltool
+	>=dev-util/gtk-doc-1.3
+	gnome-base/gnome-common:3
+	sys-devel/autoconf-archive
 	>=sys-kernel/linux-headers-3.1
 	virtual/pkgconfig
+	nls? ( dev-util/intltool )
 "
+
+S="${WORKDIR}/${PN}-${P}"
 
 QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
 
-DOCS="AUTHORS HACKING NEWS README"
+DOCS=( AUTHORS HACKING NEWS README.md )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.1-enable-elogind.patch
+	"${FILESDIR}/${P}-udisksdprivdir.patch"
+	"${FILESDIR}"/${PN}-2.6-enable-elogind.patch
 )
 
 pkg_setup() {
@@ -82,15 +87,18 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--localstatedir="${EPREFIX}"/var \
+		--disable-gtk-doc \
 		--disable-static \
+		--localstatedir="${EPREFIX}"/var \
+		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
+		--with-udevdir="$(get_udevdir)" \
 		$(use_enable acl) \
 		$(use_enable debug) \
-		--disable-gtk-doc \
 		$(use_enable introspection) \
-		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html \
-		--with-udevdir="$(get_udevdir)" \
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		$(use_enable lvm lvm2) \
+		$(use_enable lvm lvmcache) \
+		$(use_enable nls)
 }
 
 src_install() {
