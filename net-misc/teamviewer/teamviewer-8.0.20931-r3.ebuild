@@ -47,7 +47,7 @@ RDEPEND="
 
 		)
 	)
-	system-wine? ( app-emulation/wine )"
+	system-wine? ( virtual/wine )"
 
 QA_PREBUILT="opt/teamviewer${MV}/*"
 
