@@ -2,6 +2,7 @@ app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
 dev-games/ogre 1.9.0-r3: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
+dev-util/nvidia-cuda-toolkit 8.0.61-r1: NVIDIA CUDA Toolkit (compiler and friends)
 games-rpg/lipsofsuna 0.8.0-r1: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 games-strategy/widelands 0.19-r1: A game similar to Settlers 2

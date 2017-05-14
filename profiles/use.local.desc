@@ -17,6 +17,9 @@ dev-games/ogre:tbb - when USE=threads, use tbb for threading
 dev-games/ogre:tools - build+install helper tools
 dev-games/ogre:zip - support zip archives
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger.
+dev-util/nvidia-cuda-toolkit:eclipse - Install plugins for eclipse
+dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler.
 gnome-base/gvfs:afp - Enables support for accessing AFP (Apple Filing Protocol) network shares
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
 gnome-base/gvfs:bluray - Enable playback of Blu-ray filesystems using media-libs/libbluray
