@@ -25,7 +25,7 @@ net-misc/networkmanager 1.4.4-r14: A set of co-operative tools that make network
 net-misc/teamviewer 8.0.20931-r3: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
 sys-apps/accountsservice 0.6.43-r2: D-Bus interfaces for querying and manipulating user account information
-sys-auth/elogind 226.5 227.4 227.9999-r1: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 227.4 228.1 228.9999: The systemd project's logind, extracted to a standalone package
 sys-auth/pambase 20150213-r2: PAM base configuration files
 sys-fs/udisks 2.1.8-r1 2.6.4-r1: Daemon providing interfaces to work with storage devices
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
