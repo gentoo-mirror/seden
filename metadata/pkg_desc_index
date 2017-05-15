@@ -1,5 +1,5 @@
 app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
-dev-games/ogre 1.10.4: Object-oriented Graphics Rendering Engine
+dev-games/ogre 1.10.4-r1: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
 dev-util/nvidia-cuda-toolkit 8.0.61-r1: NVIDIA CUDA Toolkit (compiler and friends)
