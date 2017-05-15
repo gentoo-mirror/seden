@@ -10,7 +10,7 @@ MY_PV=$(get_version_component_range 1-3)
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
-SRC_URI="https://bitbucket.org/sinbad/ogre/get/v${PV//./-}.zip -> ${P}.zip"
+SRC_URI="https://bitbucket.org/sinbad/ogre/get/v${PV//./-}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT public-domain"
 SLOT="0/1.10.0"
@@ -21,11 +21,12 @@ IUSE="\
     gles3 ois +opengl poco profile source tbb threads tools +zip"
 
 REQUIRED_USE="
-	threads? 	( || ( boost poco tbb ) )
-	tbb?		( threads )
+	gl3plus?	( !gles2 !gles3 opengl )
 	gles2?		( !gl3plus )
-	gles3?		( ( !gl3plus ) ( gles2 ) )
-	gl3plus?	( ( opengl ) ( !gles2 ) ( !gles3 ) )
+	gles3?		( !gl3plus gles2 )
+	poco?		( !tbb threads )
+	tbb?		( !poco threads )
+	threads? 	( || ( boost poco tbb ) )
 "
 
 RESTRICT="test" #139905
@@ -39,16 +40,20 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
-	boost? ( dev-libs/boost )
-	cg? ( media-gfx/nvidia-cg-toolkit )
-	freeimage? ( media-libs/freeimage )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
-	gl3plus? ( >=media-libs/mesa-9.2.5 )
-	ois? ( dev-games/ois )
-	poco? ( dev-libs/poco )
-	tbb? ( dev-cpp/tbb )
-	zip? ( sys-libs/zlib dev-libs/zziplib )"
+	boost?		( dev-libs/boost )
+	cg?			( media-gfx/nvidia-cg-toolkit )
+	freeimage?	( media-libs/freeimage )
+	gles2?		( media-libs/mesa[gles2] )
+	gl3plus?	( || (
+					media-libs/mesa[dri3]
+					x11-drivers/nvidia-drivers
+					x11-drivers/xf86-video-amdgpu
+				) )
+	ois?		( dev-games/ois )
+	opengl?		( virtual/opengl )
+	poco?		( dev-libs/poco )
+	tbb?		( dev-cpp/tbb )
+	zip?		( sys-libs/zlib dev-libs/zziplib )"
 
 DEPEND="${RDEPEND}
 	x11-proto/xf86vidmodeproto
@@ -59,8 +64,6 @@ PATCHES=(
 	"${FILESDIR}"/1.10.4-01_remove_resource_path_to_bindir.patch
 	"${FILESDIR}"/1.10.4-02_remove_media_path_to_bindir.patch
 )
-
-S="${WORKDIR}/sinbad-ogre-1fc934daba1e"
 
 src_prepare() {
 
@@ -101,7 +104,7 @@ src_configure() {
 
 	if use threads ; then
 		local f
-		for f in tbb poco boost ; do
+		for f in poco tbb boost ; do
 			use ${f} || continue
 			mycmakeargs+=( -DOGRE_CONFIG_THREAD_PROVIDER=${f} )
 			break
