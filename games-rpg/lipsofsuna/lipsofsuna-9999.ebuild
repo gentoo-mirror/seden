@@ -1,15 +1,15 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit eutils python-any-r1 waf-utils
+inherit eutils git-r3 python-any-r1 waf-utils
 
 DESCRIPTION="Tongue-in-cheek dungeon crawl game. Client and Server."
-HOMEPAGE="http://lipsofsuna.org/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+HOMEPAGE="https://gitlab.com/xenodora/lipsofsuna"
+EGIT_REPO_URI="https://gitlab.com/xenodora/lipsofsuna.git"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -29,7 +29,7 @@ DEPEND="dev-db/sqlite:3
 	>=net-libs/enet-1.2.2
 	>=net-misc/curl-3
 	sci-physics/bullet
-	dev-games/ogre
+	>=dev-games/ogre-1.10.4
 	dev-games/ois
 	media-libs/freeimage
 	iconv? ( virtual/libiconv )
@@ -37,17 +37,17 @@ DEPEND="dev-db/sqlite:3
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PV}-01_add_OgreOverlay_to_wscript.patch"
-	epatch "${FILESDIR}/${PV}-02-fix_material_manager_usage.patch"
-	epatch "${FILESDIR}/${PV}-03-fix_skeleton_manager_usage.patch"
-	epatch "${FILESDIR}/${PV}-04_add_overlay_system.patch"
-	eapply_user
-}
+PATCHES=(
+	"${FILESDIR}"/01_add_OgreOverlay_to_wscript.patch
+	"${FILESDIR}"/02_add_ogre_h.patch
+	"${FILESDIR}"/03_fix_member_name_change.patch
+	"${FILESDIR}"/04_add_missing_includes.patch
+	"${FILESDIR}"/05_add_more_missing_includes.patch
+)
 
 src_configure() {
 	waf-utils_src_configure \
-		--ogre-plugindir=/usr/lib64/OGRE \
+		--ogre-plugindir=/usr/$(get_libdir)/OGRE \
 		--disable-relpath \
 		--enable-optimization
 }
