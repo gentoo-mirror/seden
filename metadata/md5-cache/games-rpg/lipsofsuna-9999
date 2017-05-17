@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install setup unpack
+DEPEND=dev-db/sqlite:3 >=dev-lang/lua-5.1.0 media-libs/flac >=media-libs/glew-1.5 >=media-libs/libsdl-1.2 media-libs/libvorbis media-libs/libogg media-libs/mesa media-libs/openal >=media-libs/sdl-ttf-2.0 >=net-libs/enet-1.2.2 >=net-misc/curl-3 sci-physics/bullet >=dev-games/ogre-1.10.4 dev-games/ois media-libs/freeimage iconv? ( virtual/libiconv ) inotify? ( sys-fs/inotify-tools ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Tongue-in-cheek dungeon crawl game. Client and Server.
+EAPI=6
+HOMEPAGE=https://gitlab.com/xenodora/lipsofsuna
+IUSE=iconv inotify
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=dev-db/sqlite:3 >=dev-lang/lua-5.1.0 media-libs/flac >=media-libs/glew-1.5 >=media-libs/libsdl-1.2 media-libs/libvorbis media-libs/libogg media-libs/mesa media-libs/openal >=media-libs/sdl-ttf-2.0 >=net-libs/enet-1.2.2 >=net-misc/curl-3 sci-physics/bullet >=dev-games/ogre-1.10.4 dev-games/ois media-libs/freeimage iconv? ( virtual/libiconv ) inotify? ( sys-fs/inotify-tools )
+SLOT=0
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_unpack:git-r3 src_configure:- src_compile:waf-utils src_install:-
+_eclasses_=epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	284a473719153462f3e974d86c8cb81c	python-any-r1	be89e882151ba4b847089b860d79729c	python-utils-r1	7aaf8e4bc5ba6cae58ff688b5a857866	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	waf-utils	d1ea2758053cbb7c5b38b8f88654468d
+_md5_=4c06b3e666689ecb3143d268b679daaf
