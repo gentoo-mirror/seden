@@ -11,7 +11,7 @@ SRC_URI="https://github.com/storaged-project/${PN}/archive/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
-IUSE="acl cryptsetup debug elogind +gptfdisk +introspection lvm nls selinux systemd"
+IUSE="acl cryptsetup elogind debug +gptfdisk +introspection lvm nls selinux systemd"
 
 REQUIRED_USE="elogind? ( !systemd )
 	systemd? ( !elogind )
@@ -60,11 +60,6 @@ QA_MULTILIB_PATHS="usr/lib/udisks2/udisksd"
 
 DOCS=( AUTHORS HACKING NEWS README.md )
 
-PATCHES=(
-	"${FILESDIR}/${P}-udisksdprivdir.patch"
-	"${FILESDIR}"/${PN}-2.6-enable-elogind.patch
-)
-
 pkg_setup() {
 	# Listing only major arch's here to avoid tracking kernel's defconfig
 	if use amd64 || use arm || use ppc || use ppc64 || use x86; then
@@ -83,6 +78,10 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	if ! use systemd ; then
+		sed -i -e 's:libsystemd-login:&disable:' configure || die
+	fi
 }
 
 src_configure() {
@@ -90,7 +89,7 @@ src_configure() {
 		--disable-gtk-doc \
 		--disable-static \
 		--localstatedir="${EPREFIX}"/var \
-		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html
+		--with-html-dir="${EPREFIX}"/usr/share/gtk-doc/html \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		--with-udevdir="$(get_udevdir)" \
 		$(use_enable acl) \
