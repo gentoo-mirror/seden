@@ -5,9 +5,8 @@
 =kde-frameworks/networkmanager-qt-5.29.0-r1
 =net-misc/networkmanager-1.4.4-r14
 =sys-apps/accountsservice-0.6.43-r2
-=sys-auth/elogind-227.4
-=sys-auth/elogind-228.3
-=sys-auth/elogind-228.9999
+=sys-auth/elogind-229.1
+=sys-auth/elogind-229.2
 =sys-auth/pambase-20150213-r2
 =sys-fs/udisks-2.1.8-r1
 =sys-fs/udisks-2.6.5-r1
