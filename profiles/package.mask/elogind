@@ -3,7 +3,6 @@
 =gnome-base/gvfs-1.30.3-r1
 =gnome-base/gvfs-1.30.4-r1
 =kde-frameworks/networkmanager-qt-5.29.0-r1
-=net-misc/networkmanager-1.4.4-r14
 =sys-apps/accountsservice-0.6.43-r2
 =sys-auth/elogind-229.1
 =sys-auth/elogind-229.3
