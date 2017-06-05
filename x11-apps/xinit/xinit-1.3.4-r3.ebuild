@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,12 +8,10 @@ inherit xorg-2
 DESCRIPTION="X Window System initializer"
 
 LICENSE="${LICENSE} GPL-2"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
 IUSE="elogind +minimal systemd"
 
-REQUIRED_USE="elogind? ( !systemd )
-	systemd? ( !elogind )
-"
+REQUIRED_USE="?? ( elogind systemd )"
 
 RDEPEND="
 	!<x11-base/xorg-server-1.8.0
@@ -37,7 +34,7 @@ PATCHES=(
 
 src_prepare() {
 	# this patch breaks startx on non-systemd systems, bug #526802
-	if use !systemd && use !elogind; then
+	if use !elogind && use !systemd; then
 		PATCHES+=( "${FILESDIR}"/${PN}-1.3.4-startx-current-vt.patch )
 	fi
 	xorg-2_src_prepare
