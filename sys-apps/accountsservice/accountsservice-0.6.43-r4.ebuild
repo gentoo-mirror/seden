@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
+
 inherit autotools gnome2 systemd
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
@@ -15,16 +15,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="doc elogind +introspection selinux systemd"
 
-REQUIRED_USE="elogind? ( !systemd )
-	systemd? ( !elogind )
-"
+REQUIRED_USE="?? ( elogind systemd )"
 
 CDEPEND="
 	>=dev-libs/glib-2.37.3:2
 	sys-auth/polkit
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
-	elogind? ( >=sys-auth/elogind-219:0= )
 	systemd? ( >=sys-apps/systemd-186:0= )
+	elogind? ( sys-auth/elogind )
 	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
 DEPEND="${CDEPEND}
@@ -44,17 +42,13 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6.35-gentoo-system-users.patch"
+	"${FILESDIR}/${P}-elogind.patch"
 )
 
 src_prepare() {
-	if use elogind; then
-		epatch "${FILESDIR}/${PN}-enable-elogind.patch" || die
-		eautoreconf
-	fi
-
 	default
+	eautoreconf
 }
-
 
 src_configure() {
 	gnome2_src_configure \
