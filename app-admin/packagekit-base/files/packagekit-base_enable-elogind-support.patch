@@ -28,7 +28,7 @@
 +AC_ARG_ENABLE(elogind, AS_HELP_STRING([--enable-elogind],[enable elogind session tracker]),
 +	      enable_elogind=$enableval,enable_elogind=no)
 +if test x$enable_elogind = xyes; then
-+	PKG_CHECK_MODULES(ELOGIND, libelogind, have_elogind=yes, have_elogind=no)
++	PKG_CHECK_MODULES(ELOGIND, [libelogind >= 229.4], [have_elogind=yes], [have_elogind=no])
 +fi
 +
 +dnl ---------------------------------------------------------------------------
