@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=sys-apps/dbus-1.3.0
 	${PYTHON_DEPS}
 	connman? ( net-misc/connman )
-	elogind? ( sys-auth/elogind )
+	elogind? ( >=sys-auth/elogind-229.4 )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.9:= )
 	networkmanager? ( >=net-misc/networkmanager-0.6.4:= )
 	systemd? ( >=sys-apps/systemd-204 )
