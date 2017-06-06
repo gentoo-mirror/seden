@@ -2,6 +2,9 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
+app-admin/packagekit-base:cron - Install cron script for auto-update
+app-admin/packagekit-base:entropy - Enable Entropy backend
 dev-games/ogre:boost - enable boost support
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:double-precision - more precise calculations at the expense of speed
