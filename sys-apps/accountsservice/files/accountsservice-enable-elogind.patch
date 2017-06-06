@@ -96,7 +96,7 @@
 -LIBACCOUNTSSERVICE_CFLAGS="$LIBACCOUNTSSERVICE_CFLAGS $SYSTEMD_CFLAGS"
  
 -if test "x$have_systemd" != "xno" ; then
-+if test "x$have_systemdx$have_elogind" != "xnoxno" ; then
++if test "x${have_systemd}x${have_elogind}" != "xnoxno" ; then
          AC_DEFINE(WITH_SYSTEMD, 1, [Define to enable systemd support])
  fi
  
