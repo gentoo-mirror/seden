@@ -1,5 +1,6 @@
 # Sven Eden <yamakuzure@gmx.net> (10 Nov 2016)
 # Testing ebuilds for elogind integration
+=app-admin/packagekit-base-1.1.5-r1
 =gnome-base/gvfs-1.30.4-r1
 =sys-apps/accountsservice-0.6.43-r4
 =sys-auth/elogind-229.4
