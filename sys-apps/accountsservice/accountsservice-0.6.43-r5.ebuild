@@ -22,7 +22,7 @@ CDEPEND="
 	sys-auth/polkit
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 	systemd? ( >=sys-apps/systemd-186:0= )
-	elogind? ( sys-auth/elogind )
+	elogind? ( >=sys-auth/elogind-229.4 )
 	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
 DEPEND="${CDEPEND}
