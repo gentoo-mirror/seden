@@ -1,10 +1,12 @@
---- a/config.h.in	2017-06-06 09:12:43.587371769 +0200
-+++ b/config.h.in	2017-06-06 09:47:09.744370003 +0200
-@@ -79,7 +79,7 @@
+--- a/config.h.in	2017-06-07 16:38:45.046910693 +0200
++++ b/config.h.in	2017-06-07 16:39:06.973911120 +0200
+@@ -78,8 +78,8 @@
+ /* Define to 1 if you have the <string.h> header file. */
  #undef HAVE_STRING_H
  
- /* Build systemd-login code */
+-/* Build systemd code */
 -#undef HAVE_SYSTEMD
++/* Build systemd-login code */
 +#undef HAVE_SYSTEMD_SD_LOGIN_H
  
  /* Define to 1 if you have the <sys/stat.h> header file. */
