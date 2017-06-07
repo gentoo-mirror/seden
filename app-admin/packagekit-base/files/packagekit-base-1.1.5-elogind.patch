@@ -1,16 +1,16 @@
---- ./config.h.in.bak	2017-06-06 09:12:43.587371769 +0200
-+++ ./config.h.in	2017-06-06 09:47:09.744370003 +0200
+--- a/config.h.in	2017-06-06 09:12:43.587371769 +0200
++++ b/config.h.in	2017-06-06 09:47:09.744370003 +0200
 @@ -79,7 +79,7 @@
  #undef HAVE_STRING_H
  
- /* Build systemd code */
+ /* Build systemd-login code */
 -#undef HAVE_SYSTEMD
-+#undef HAVE_SYSTEMD_LOGIN_H
++#undef HAVE_SYSTEMD_SD_LOGIN_H
  
  /* Define to 1 if you have the <sys/stat.h> header file. */
  #undef HAVE_SYS_STAT_H
---- ./configure.ac.bak	2017-06-06 09:03:57.171355965 +0200
-+++ ./configure.ac	2017-06-06 09:55:11.242384458 +0200
+--- a/configure.ac	2017-06-06 09:03:57.171355965 +0200
++++ b/configure.ac	2017-06-06 09:55:11.242384458 +0200
 @@ -254,7 +254,6 @@
  		    AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files]),
  		    [has_systemdsystemunitdir=$with_systemdsystemunitdir],
@@ -34,8 +34,8 @@
 +dnl ---------------------------------------------------------------------------
 +dnl --- Is systemd/sd-login.h, either from systemd or elogind, available?
 +dnl ---------------------------------------------------------------------------
-+if test "x${have_systemd}x${have_elogind}" != "xnoxno" ; then
-+		AC_DEFINE(HAVE_SYSTEMD_LOGIN_H,1,[Build systemd code])
++if test "x$have_systemd" != "xno" -o "x$have_elogind" != "xno" ; then
++		AC_DEFINE(HAVE_SYSTEMD_SD_LOGIN_H,1,[Build systemd-login code])
 +fi
 +
 +dnl ---------------------------------------------------------------------------
@@ -50,8 +50,8 @@
          Use systemd:               ${enable_systemd}
          Enable offline update:     ${enable_offline_update}
          Networking stacks:         ${networking_apis}
---- ./src/Makefile.am.bak	2017-06-06 10:02:19.902397328 +0200
-+++ ./src/Makefile.am	2017-06-06 10:04:05.013400483 +0200
+--- a/src/Makefile.am	2017-06-06 10:02:19.902397328 +0200
++++ b/src/Makefile.am	2017-06-06 10:04:05.013400483 +0200
 @@ -11,6 +11,7 @@
  	$(PYTHON_CFLAGS)				\
  	$(NETWORK_MANAGER_CFLAGS)			\
@@ -84,14 +84,14 @@
  	$(SYSTEMD_LIBS)
  
  pk_self_test_CPPFLAGS =					\
---- ./src/pk-engine.c.bak	2017-06-06 09:12:23.828371176 +0200
-+++ ./src/pk-engine.c	2017-06-06 09:55:47.426385545 +0200
+--- a/src/pk-engine.c	2017-06-06 09:12:23.828371176 +0200
++++ b/src/pk-engine.c	2017-06-06 09:55:47.426385545 +0200
 @@ -98,7 +98,7 @@
  	guint			 owner_id;
  	GDBusNodeInfo		*introspection;
  	GDBusConnection		*connection;
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	GDBusProxy		*logind_proxy;
  	gint			 logind_fd;
  #endif
@@ -100,7 +100,7 @@
  pk_engine_inhibit (PkEngine *engine)
  {
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	g_autoptr(GError) error = NULL;
  	g_autoptr(GUnixFDList) out_fd_list = NULL;
  	g_autoptr(GVariant) res = NULL;
@@ -109,7 +109,7 @@
  pk_engine_uninhibit (PkEngine *engine)
  {
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	if (engine->priv->logind_fd == 0)
  		return;
  	g_debug ("closed logind fd %i", engine->priv->logind_fd);
@@ -118,7 +118,7 @@
  }
  
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  /**
   * pk_engine_proxy_logind_cb:
   **/
@@ -127,7 +127,7 @@
  	engine->priv->connection = g_object_ref (connection);
  
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	/* connect to logind */
  	g_dbus_proxy_new (connection,
  			  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
@@ -136,18 +136,18 @@
  		g_object_unref (engine->priv->connection);
  
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	/* uninhibit */
  	if (engine->priv->logind_fd != 0)
  		close (engine->priv->logind_fd);
---- ./src/pk-dbus.c.bak	2017-06-06 09:12:13.254370858 +0200
-+++ ./src/pk-dbus.c	2017-06-06 10:09:17.249409857 +0200
+--- a/src/pk-dbus.c	2017-06-06 09:12:13.254370858 +0200
++++ b/src/pk-dbus.c	2017-06-06 10:09:17.249409857 +0200
 @@ -27,7 +27,7 @@
  #include <glib.h>
  #include <gio/gio.h>
  
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
   #include <systemd/sd-login.h>
  #endif
  
@@ -156,7 +156,7 @@
  }
  
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  /**
   * pk_dbus_get_session_systemd:
   **/
@@ -165,7 +165,7 @@
  {
  	gchar *session = NULL;
 -#ifndef HAVE_SYSTEMD
-+#ifndef HAVE_SYSTEMD_LOGIN_H
++#ifndef HAVE_SYSTEMD_SD_LOGIN_H
  	g_autoptr(GError) error = NULL;
  #endif
  	guint pid;
@@ -174,7 +174,7 @@
  
  	/* get session from systemd or ConsoleKit */
 -#ifdef HAVE_SYSTEMD
-+#ifdef HAVE_SYSTEMD_LOGIN_H
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
  	session = pk_dbus_get_session_systemd (pid);
  #else
  	/* get session from ConsoleKit */

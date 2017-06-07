@@ -61,15 +61,15 @@ RDEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/packagekit-base_enable-elogind-support.patch
-)
-
 src_prepare() {
 	# Fixes QA Notices:
 	# - https://github.com/gentoo/gentoo/pull/1760
 	# - https://github.com/hughsie/PackageKit/issues/143
 	eapply "${FILESDIR}"/${PN}-1.1.1-cache-qafix.patch
+
+	# Adds elogind support:
+	# - https://bugs.gentoo.org/show_bug.cgi?id=620948
+	eapply "${FILESDIR}"/${P}-elogind.patch
 
 	# Disable unittests not working with portage backend
 	# console: requires terminal input
@@ -88,6 +88,8 @@ src_prepare() {
 	eapply_user
 	use vala && vala_src_prepare
 	xdg_src_prepare
+
+	# Needed by elogind patch:
 	eautoreconf
 }
 
