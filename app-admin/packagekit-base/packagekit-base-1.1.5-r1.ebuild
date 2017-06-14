@@ -59,18 +59,20 @@ RDEPEND="${COMMON_DEPEND}
 	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
 
-S="${WORKDIR}/${MY_P}"
-
-src_prepare() {
+PATCHES=(
 	# Fixes QA Notices:
 	# - https://github.com/gentoo/gentoo/pull/1760
 	# - https://github.com/hughsie/PackageKit/issues/143
-	eapply "${FILESDIR}"/${PN}-1.1.1-cache-qafix.patch
+	"${FILESDIR}"/${PN}-1.1.1-cache-qafix.patch
 
 	# Adds elogind support:
 	# - https://bugs.gentoo.org/show_bug.cgi?id=620948
-	eapply "${FILESDIR}"/${P}-elogind.patch
+	"${FILESDIR}"/${P}-elogind.patch
+)
 
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
 	# Disable unittests not working with portage backend
 	# console: requires terminal input
 	sed -e 's:^\(.*/packagekit-glib2/control\)://\1:' \
