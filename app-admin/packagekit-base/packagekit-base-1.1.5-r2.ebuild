@@ -67,7 +67,7 @@ PATCHES=(
 
 	# Adds elogind support:
 	# - https://bugs.gentoo.org/show_bug.cgi?id=620948
-	"${FILESDIR}"/${P}-elogind.patch
+	"${FILESDIR}"/${PN}-elogind-support.patch
 )
 
 S="${WORKDIR}/${MY_P}"
