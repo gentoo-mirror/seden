@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -9,26 +8,23 @@ inherit autotools git-r3 linux-info pam udev
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="dev_v231"
+EGIT_BRANCH="v231-stable"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
 KEYWORDS=""
 IUSE="acl debug pam policykit selinux"
 
-COMMON_DEPEND="
+RDEPEND="
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	pam? ( virtual/pam )
 	selinux? ( sys-libs/libselinux )
-"
-RDEPEND="${COMMON_DEPEND}
-	sys-apps/dbus
 	!sys-apps/systemd
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -37,11 +33,12 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig
 "
-PDEPEND="policykit? ( sys-auth/polkit )"
+PDEPEND="
+	sys-apps/dbus
+	policykit? ( sys-auth/polkit )
+"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-docs.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-226.4-docs.patch" )
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SECURITY_SMACK
@@ -64,7 +61,7 @@ src_configure() {
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
 		--enable-smack \
-		--disable-kdbus \
+		--with-cgroup-controller=openrc \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
@@ -80,9 +77,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "$(rc-config list default | grep elogind)" = "" ]; then
+	if [ "$(rc-config list boot | grep elogind)" = "" ]; then
 		ewarn "To enable the elogind daemon, elogind must be"
-		ewarn "added to the default runlevel:"
-		ewarn "# rc-update add elogind default"
+		ewarn "added to the boot runlevel:"
+		ewarn "# rc-update add elogind boot"
 	fi
 }
