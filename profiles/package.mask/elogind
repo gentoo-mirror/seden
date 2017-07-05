@@ -4,7 +4,7 @@
 =gnome-base/gvfs-1.30.4-r1
 =sys-apps/accountsservice-0.6.43-r5
 =sys-auth/elogind-229.9999
-=sys-auth/elogind-231.3
 =sys-auth/elogind-231.9999
+=sys-auth/elogind-232.9999
 =sys-process/procps-3.3.12-r2
 =x11-apps/xinit-1.3.4-r3
