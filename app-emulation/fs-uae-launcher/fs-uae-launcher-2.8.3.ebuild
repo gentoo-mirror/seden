@@ -29,7 +29,8 @@ REQUIRED_USE="
 "
 
 PATCHES=(
-	"$FILESDIR"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-German-ROMs.patch
 )
 
 DOCS=( COPYING README )
