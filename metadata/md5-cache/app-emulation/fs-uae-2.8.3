@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure postinst prepare
+DEPEND=sys-devel/gettext glew? ( media-libs/glew:0 ) qt? ( dev-qt/qtgui:5 ) system-libmpeg2? ( media-libs/libmpeg2 ) media-libs/libpng:0 media-libs/libsdl2[opengl] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
+EAPI=6
+HOMEPAGE=https://fs-uae.net/
+IUSE=+a2065 +action-replay +aga +arcadia +bsdsocket +capsimage +cd32 +cdtv +codegen +dms drivers +drivesound +fdi2raw +gfxboard +glad glew +jit +jit-fpu +ncr9x +ncr +netplay +parallel-port +prowizard +qemu-cpu +qemu-slirp qt +savestate +scp +serial-port +slirp +softfloat +system-libmpeg2 +uaenative +uaenet +uaescsi +uaeserial +udis86 +vpar +xml-shader +zip
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=glew? ( media-libs/glew:0 ) qt? ( dev-qt/qtgui:5 ) system-libmpeg2? ( media-libs/libmpeg2 ) media-libs/libpng:0 media-libs/libsdl2[opengl] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11
+REQUIRED_USE=qemu-slirp? ( slirp )
+SLOT=0
+SRC_URI=https://fs-uae.net/stable/2.8.3/fs-uae-2.8.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	libtool	e32ea84bf82cf8987965b574672dba93	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	8fec6b1eb195836560e70b66d98fb163
+_md5_=427aeeb7847d493499451029a5e13c2b
