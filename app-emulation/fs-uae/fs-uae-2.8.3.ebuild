@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools
 
 DESCRIPTION="FS-UAE integrates the most accurate Amiga emulation code available from WinUAE."
 HOMEPAGE="https://fs-uae.net/"
