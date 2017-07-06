@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit eutils
+inherit eutils python-r1
 
 DESCRIPTION="PyQT5 based Launcher for FS-UAE."
 HOMEPAGE="https://fs-uae.net/"
@@ -28,9 +28,35 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 "
 
-src_prepare() {
-	sed -i -e "s,DESTDIR :=,DESTDIR := ${D}," Makefile || die 'sed DESTDIR failed'
-	sed -i -e "s,prefix := /usr/local,prefix := /usr," Makefile || die 'sed prefix failed'
-	sed -i -e "s,doc/fs-uae-launcher,doc/${P},g" Makefile || die 'sed doc failed'
-	default
+PATCHES=(
+	"$FILESDIR"/${P}-Makefile.patch
+)
+
+DOCS=( COPYING README )
+
+src_compile() {
+	emake PREFIX="${EPREFIX}/usr"
+}
+
+src_install() {
+	einstalldocs
+	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}"
+}
+
+pkg_postinst() {
+	einfo "Some important information:"
+	einfo
+	einfo " - Do not use QtCurve, it will crash PyQt5!"
+	einfo
+	einfo " - By default, FS-UAE creates its directories under"
+	einfo "   Documents/FS-UAE. If your Documents directory is not"
+	einfo "   configured according to the XDG user dir spec, ~/FS-UAE"
+	einfo "   will be used as a fallback."
+	einfo
+	einfo " - You can override this by putting the path to the desired base"
+	einfo "   directory in a special config file. The config file will be"
+	einfo "   read by both FS-UAE and FS-UAE Launcher if it exists:"
+	einfo "     ~/.config/fs-uae/base-dir"
+	einfo "   Alternatively, you can start FS-UAE and/or FS-UAE Launcher"
+	einfo "   with --base-dir=/path/to/desired/dir"
 }
