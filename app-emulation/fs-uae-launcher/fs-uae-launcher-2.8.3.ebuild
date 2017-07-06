@@ -3,6 +3,8 @@
 
 EAPI=6
 
+PYTHON_COMPAT=( python3_{4,5,6} )
+
 inherit eutils
 
 DESCRIPTION="PyQT5 based Launcher for FS-UAE."
@@ -14,12 +16,16 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-emulation/fs-uae
-	>=dev-lang/python-3.3:=
 	dev-python/PyQt5
 "
 
 DEPEND="${RDEPEND}
+"
+
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
 "
 
 src_prepare() {
