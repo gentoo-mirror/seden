@@ -15,45 +15,7 @@
     Amigas.
   </longdescription>
   <use>
-    <flag name="a2065">Add A2065 ethernet card support</flag>
-    <flag name="action-replay">Add Action Replay 1/2/3 support</flag>
-    <flag name="aga">Enable AGA chipset emulation</flag>
-    <flag name="arcadia">Enable Arcadia arcade system support</flag>
-    <flag name="bsdsocket">Enable built-in bsdsocket.library</flag>
-    <flag name="capsimage">Enable IPF support via libcapsimage</flag>
-    <flag name="cd32">Enable CD32 emulation</flag>
-    <flag name="cdtv">Enable CDTV emulation</flag>
-    <flag name="codegen">Enable Code generation (disable for cross-compilation)</flag>
-    <flag name="dms">Enable DMS support</flag>
     <flag name="drivers">Enable multiple driver backends (experimental)</flag>
-    <flag name="drivesound">Enable drive sound emulation</flag>
-    <flag name="fdi2raw">Enable FDI 1.0 and 2.x image support</flag>
-    <flag name="gfxboard">Enable GFX hardware boards</flag>
-    <flag name="glad">Use GLAD OpenGL loader</flag>
     <flag name="glew">Use GLEW library</flag>
-    <flag name="jit">Enable JIT compiler</flag>
-    <flag name="jit-fpu">Enable JIT compilation of FPU instructions</flag>
-    <flag name="ncr9x">Enable 53C9X SCSI</flag>
-    <flag name="ncr">Enable A4000T/A4091, 53C710/53C770 SCSI</flag>
-    <flag name="netplay">Enable netplay support</flag>
-    <flag name="parallel-port">Enable parallell port (printer) emulation</flag>
-    <flag name="prowizard">Enable prowizard</flag>
-    <flag name="qemu-cpu">Use QEMU plugin for PPC emulation</flag>
-    <flag name="qemu-slirp">Use QEMU plugin for SLIRP implementation</flag>
-    <flag name="qt">Use QT</flag>
-    <flag name="savestate">Enable save state support</flag>
-    <flag name="scp">Enable SuperCardPro floppy image support</flag>
-    <flag name="serial-port">Enable serial port emulation</flag>
-    <flag name="slirp">Enable SLIRP (user mode NAT)</flag>
-    <flag name="softfloat">Enable use softfloat library</flag>
-    <flag name="system-libmpeg2">Use system libmpeg2 instead of builtin version</flag>
-    <flag name="uaenative">Enable uaenative.library</flag>
-    <flag name="uaenet">Enable uaenet.device</flag>
-    <flag name="uaescsi">Enable uaescsi.device</flag>
-    <flag name="uaeserial">Enable uaeserial.device</flag>
-    <flag name="udis86">Support UDIS86 x86/x86-64 disassembler</flag>
-    <flag name="vpar">Enable vpar virtual parallel port</flag>
-    <flag name="xml-shader">Enable XML shader support</flag>
-    <flag name="zip">Enable ZIP archive support</flag>
   </use>
 </pkgmetadata>
