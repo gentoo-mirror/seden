@@ -5,46 +5,8 @@
 app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
 app-admin/packagekit-base:cron - Install cron script for auto-update
 app-admin/packagekit-base:entropy - Enable Entropy backend
-app-emulation/fs-uae:a2065 - Add A2065 ethernet card support
-app-emulation/fs-uae:action-replay - Add Action Replay 1/2/3 support
-app-emulation/fs-uae:aga - Enable AGA chipset emulation
-app-emulation/fs-uae:arcadia - Enable Arcadia arcade system support
-app-emulation/fs-uae:bsdsocket - Enable built-in bsdsocket.library
-app-emulation/fs-uae:capsimage - Enable IPF support via libcapsimage
-app-emulation/fs-uae:cd32 - Enable CD32 emulation
-app-emulation/fs-uae:cdtv - Enable CDTV emulation
-app-emulation/fs-uae:codegen - Enable Code generation (disable for cross-compilation)
-app-emulation/fs-uae:dms - Enable DMS support
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
-app-emulation/fs-uae:drivesound - Enable drive sound emulation
-app-emulation/fs-uae:fdi2raw - Enable FDI 1.0 and 2.x image support
-app-emulation/fs-uae:gfxboard - Enable GFX hardware boards
-app-emulation/fs-uae:glad - Use GLAD OpenGL loader
 app-emulation/fs-uae:glew - Use GLEW library
-app-emulation/fs-uae:jit - Enable JIT compiler
-app-emulation/fs-uae:jit-fpu - Enable JIT compilation of FPU instructions
-app-emulation/fs-uae:ncr - Enable A4000T/A4091, 53C710/53C770 SCSI
-app-emulation/fs-uae:ncr9x - Enable 53C9X SCSI
-app-emulation/fs-uae:netplay - Enable netplay support
-app-emulation/fs-uae:parallel-port - Enable parallell port (printer) emulation
-app-emulation/fs-uae:prowizard - Enable prowizard
-app-emulation/fs-uae:qemu-cpu - Use QEMU plugin for PPC emulation
-app-emulation/fs-uae:qemu-slirp - Use QEMU plugin for SLIRP implementation
-app-emulation/fs-uae:qt - Use QT
-app-emulation/fs-uae:savestate - Enable save state support
-app-emulation/fs-uae:scp - Enable SuperCardPro floppy image support
-app-emulation/fs-uae:serial-port - Enable serial port emulation
-app-emulation/fs-uae:slirp - Enable SLIRP (user mode NAT)
-app-emulation/fs-uae:softfloat - Enable use softfloat library
-app-emulation/fs-uae:system-libmpeg2 - Use system libmpeg2 instead of builtin version
-app-emulation/fs-uae:uaenative - Enable uaenative.library
-app-emulation/fs-uae:uaenet - Enable uaenet.device
-app-emulation/fs-uae:uaescsi - Enable uaescsi.device
-app-emulation/fs-uae:uaeserial - Enable uaeserial.device
-app-emulation/fs-uae:udis86 - Support UDIS86 x86/x86-64 disassembler
-app-emulation/fs-uae:vpar - Enable vpar virtual parallel port
-app-emulation/fs-uae:xml-shader - Enable XML shader support
-app-emulation/fs-uae:zip - Enable ZIP archive support
 dev-games/ogre:boost - enable boost support
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:double-precision - more precise calculations at the expense of speed
