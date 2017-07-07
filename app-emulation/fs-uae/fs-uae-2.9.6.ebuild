@@ -7,9 +7,9 @@ inherit autotools
 
 DESCRIPTION="FS-UAE integrates the most accurate Amiga emulation code available from WinUAE."
 HOMEPAGE="https://fs-uae.net/"
-SRC_URI="https://fs-uae.net/stable/${PV}/${P}.tar.gz"
+SRC_URI="https://fs-uae.net/devel/${PV}dev/${P}dev.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 SLOT="0"
 IUSE="drivers glew qt5"
 
@@ -32,6 +32,8 @@ DEPEND="sys-devel/gettext
 PATCHES=(
 	"${FILESDIR}"/${P}_libmpeg2.patch
 )
+
+S="${S}dev"
 
 src_prepare() {
 	default
