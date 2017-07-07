@@ -47,19 +47,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Some important information:"
-	einfo
-	einfo " - Do not use QtCurve, it will crash PyQt5!"
-	einfo
-	einfo " - By default, FS-UAE creates its directories under"
-	einfo "   Documents/FS-UAE. If your Documents directory is not"
-	einfo "   configured according to the XDG user dir spec, ~/FS-UAE"
-	einfo "   will be used as a fallback."
-	einfo
-	einfo " - You can override this by putting the path to the desired base"
-	einfo "   directory in a special config file. The config file will be"
-	einfo "   read by both FS-UAE and FS-UAE Launcher if it exists:"
-	einfo "     ~/.config/fs-uae/base-dir"
-	einfo "   Alternatively, you can start FS-UAE and/or FS-UAE Launcher"
-	einfo "   with --base-dir=/path/to/desired/dir"
+	elog "Some important information:"
+	elog
+	ewarn " - Do not use QtCurve, it will crash PyQt5!"
+	elog
+	elog " - By default, FS-UAE creates its directories under"
+	elog "   Documents/FS-UAE. If your Documents directory is not"
+	elog "   configured according to the XDG user dir spec, ~/FS-UAE"
+	elog "   will be used as a fallback."
+	elog
+	elog " - You can override this by putting the path to the desired base"
+	elog "   directory in a special config file. The config file will be"
+	elog "   read by both FS-UAE and FS-UAE Launcher if it exists:"
+	elog "     ~/.config/fs-uae/base-dir"
+	elog "   Alternatively, you can start FS-UAE and/or FS-UAE Launcher"
+	elog "   with --base-dir=/path/to/desired/dir"
 }
