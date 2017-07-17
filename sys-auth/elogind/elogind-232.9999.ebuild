@@ -8,7 +8,7 @@ inherit autotools git-r3 linux-info pam udev
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="dev_v232"
+EGIT_BRANCH="v232-stable"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
