@@ -61,6 +61,7 @@ src_configure() {
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
 		--enable-smack \
+		--disable-lto \
 		--with-cgroup-controller=openrc \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \

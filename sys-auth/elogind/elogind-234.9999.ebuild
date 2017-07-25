@@ -8,7 +8,7 @@ inherit autotools git-r3 linux-info pam udev
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v229-stable"
+EGIT_BRANCH="dev_v234"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
@@ -62,7 +62,7 @@ src_configure() {
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
 		--enable-smack \
 		--disable-lto \
-		--disable-kdbus \
+		--with-cgroup-controller=openrc \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
