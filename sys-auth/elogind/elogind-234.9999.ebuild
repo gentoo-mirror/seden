@@ -75,7 +75,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}-234.conf ${PN}
 }
 
 pkg_postinst() {
