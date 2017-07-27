@@ -8,7 +8,7 @@ inherit autotools git-r3 linux-info pam udev
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="dev_v234"
+EGIT_BRANCH="v234-stable"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
@@ -60,10 +60,11 @@ src_configure() {
 		--with-udevrulesdir="$(get_udevdir)"/rules.d \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
+		--with-rootlibexecdir="${EPREFIX}"/$(get_libdir)/libexec \
 		--with-rootprefix="/" \
 		--enable-smack \
-		--disable-lto \
 		--with-cgroup-controller=openrc \
+		--disable-lto \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
@@ -75,7 +76,9 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
-	newconfd "${FILESDIR}"/${PN}-234.conf ${PN}
+
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
+	newconfd ${PN}.conf ${PN}
 }
 
 pkg_postinst() {
