@@ -60,9 +60,10 @@ src_configure() {
 		--with-udevrulesdir="$(get_udevdir)"/rules.d \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
+		--with-rootlibexecdir="${EPREFIX}"/$(get_libdir)/libexec \
 		--enable-smack \
-		--disable-lto \
 		--with-cgroup-controller=openrc \
+		--disable-lto \
 		$(use_enable debug debug elogind) \
 		$(use_enable acl) \
 		$(use_enable pam) \
@@ -74,7 +75,9 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
+	newconfd ${PN}.conf ${PN}
 }
 
 pkg_postinst() {
