@@ -60,6 +60,7 @@ src_configure() {
 		--with-udevrulesdir="$(get_udevdir)"/rules.d \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
+		--with-rootprefix="/" \
 		--enable-smack \
 		--disable-lto \
 		--with-cgroup-controller=openrc \
@@ -74,7 +75,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
-	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}-234.conf ${PN}
 }
 
 pkg_postinst() {
