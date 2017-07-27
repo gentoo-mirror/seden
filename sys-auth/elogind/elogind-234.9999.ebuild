@@ -60,6 +60,7 @@ src_configure() {
 		--with-udevrulesdir="$(get_udevdir)"/rules.d \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
 		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
+		--with-rootprefix="/" \
 		--enable-smack \
 		--disable-lto \
 		--with-cgroup-controller=openrc \
