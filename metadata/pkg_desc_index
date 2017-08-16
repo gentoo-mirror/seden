@@ -2,6 +2,7 @@ app-admin/packagekit-base 1.1.5-r2: Manage packages in a secure way using a cros
 app-emulation/fs-uae 2.8.3 2.9.6: FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
 app-emulation/fs-uae-launcher 2.8.3 2.9.6: PyQT5 based Launcher for FS-UAE.
 app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
+app-office/texstudio 2.12.6: Free cross-platform LaTeX editor (fork from texmakerX)
 dev-games/ogre 1.10.4-r1: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter

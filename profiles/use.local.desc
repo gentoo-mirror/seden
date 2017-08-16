@@ -7,6 +7,7 @@ app-admin/packagekit-base:cron - Install cron script for auto-update
 app-admin/packagekit-base:entropy - Enable Entropy backend
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
 app-emulation/fs-uae:glew - Use GLEW library
+app-office/texstudio:video - Use phonon for video embedding
 dev-games/ogre:boost - enable boost support
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:double-precision - more precise calculations at the expense of speed
