@@ -23,7 +23,7 @@ net-mail/davmail-bin 4.8.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
 net-misc/teamviewer 8.0.20931-r3: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
-sys-apps/accountsservice 0.6.43-r5: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.45-r1: D-Bus interfaces for querying and manipulating user account information
 sys-auth/elogind 229.9999 231.9999 232.9999 233.9999 234.9999: The systemd project's logind, extracted to a standalone package
 sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
 x11-apps/xinit 1.3.4-r3: X Window System initializer
