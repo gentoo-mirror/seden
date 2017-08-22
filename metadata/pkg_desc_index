@@ -14,12 +14,9 @@ gnome-base/gvfs 1.30.4-r1: Virtual filesystem implementation for gio
 lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
 media-libs/aubio 0.4.5-r1: Library for audio labelling
-media-libs/avidemux-core 2.6.20-r1: Core libraries for media-video/avidemux
-media-libs/avidemux-plugins 2.6.20-r1: Plugins for media-video/avidemux
 media-libs/mesa 12.0.3-r1 12.0.4: OpenGL-like graphic library for Linux
 media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
-media-video/avidemux 2.6.20-r1: Video editor designed for simple cutting, filtering and encoding tasks
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 4.8.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
