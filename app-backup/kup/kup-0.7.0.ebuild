@@ -11,8 +11,8 @@ HOMEPAGE="https://www.linux-apps.com/p/1127689"
 SRC_URI="https://github.com/spersson/${PN^}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
+IUSE="libressl +system-libgit2"
 
 CDEPEND="
 	$(add_frameworks_dep kcoreaddons)
@@ -26,12 +26,27 @@ CDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kinit)
 	$(add_frameworks_dep kjobwidgets)
-	$(add_qt_dep qtgui)
+	$(add_frameworks_dep plasma)
 	$(add_qt_dep qtwidgets)
-	app-backup/bup
-	net-misc/rsync
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl:0 )
+	system-libgit2? ( dev-libs/libgit2 )
+	!system-libgit2? ( net-libs/http-parser )
 "
 DEPEND="${CDEPEND}
 	x11-misc/shared-mime-info
 "
-RDEPEND="${CDEPEND}"
+RDEPEND="${CDEPEND}
+	app-backup/bup
+	net-misc/rsync
+"
+
+S="${WORKDIR}/${PN^}-${P}" # No joke...
+
+src_configure() {
+	local mycmakeargs=(
+		-DUSE_SYSTEM_LIBGIT2="$(usex system-libgit2)"
+	)
+
+	kde5_src_configure
+}
