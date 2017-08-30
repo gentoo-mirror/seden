@@ -5,6 +5,7 @@
 app-admin/packagekit-base:command-not-found - Enable packagekit support on shell "command not found"
 app-admin/packagekit-base:cron - Install cron script for auto-update
 app-admin/packagekit-base:entropy - Enable Entropy backend
+app-backup/kup:system-libgit2 - Use dev-libs/libgit2 instead of the bundled one.
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
 app-emulation/fs-uae:glew - Use GLEW library
 app-office/texstudio:video - Use phonon for video embedding
