@@ -12,7 +12,7 @@ SRC_URI="https://github.com/spersson/${PN^}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl system-libgit2"
+IUSE="libressl +system-libgit2"
 
 CDEPEND="
 	$(add_frameworks_dep kcoreaddons)
