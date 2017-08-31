@@ -78,9 +78,9 @@ src_configure() {
 src_install() {
 	meson_src_install
 	
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}-235.init ${PN}
 
-	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}-235.conf.in > ${PN}.conf || die
 	newconfd ${PN}.conf ${PN}
 }
 
