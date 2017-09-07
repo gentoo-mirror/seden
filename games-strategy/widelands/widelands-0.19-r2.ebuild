@@ -36,6 +36,10 @@ CMAKE_BUILD_TYPE=Release
 # Game is NOT happy being moved from /usr/share/games
 PREFIX="/usr/share/games/${PN}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_maybe_uninitialized.patch
+)
+
 src_prepare() {
 	default
 
