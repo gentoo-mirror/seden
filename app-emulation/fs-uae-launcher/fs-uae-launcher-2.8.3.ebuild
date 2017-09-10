@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit eutils python-r1
+inherit eutils python-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="PyQT5 based Launcher for FS-UAE."
 HOMEPAGE="https://fs-uae.net/"
@@ -44,7 +44,14 @@ src_install() {
 	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}"
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+
 	elog "Some important information:"
 	elog
 	ewarn " - Do not use QtCurve, it will crash PyQt5!"
@@ -60,4 +67,9 @@ pkg_postinst() {
 	elog "     ~/.config/fs-uae/base-dir"
 	elog "   Alternatively, you can start FS-UAE and/or FS-UAE Launcher"
 	elog "   with --base-dir=/path/to/desired/dir"
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
