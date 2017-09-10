@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="FS-UAE integrates the most accurate Amiga emulation code available from WinUAE."
 HOMEPAGE="https://fs-uae.net/"
@@ -81,8 +81,20 @@ src_configure() {
 		$(use_with qt5 qt)
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
+
 	elog
 	elog "Install app-emulation/fs-uae-launcher for a graphical interface."
 	elog
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
