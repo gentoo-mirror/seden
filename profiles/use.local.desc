@@ -83,7 +83,6 @@ net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to 
 net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
 sys-apps/accountsservice:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
-sys-auth/elogind:apparmor - Enable AppArmor support
 sys-process/procps:elogind - Support sys-auth/elogind sessions
 sys-process/procps:kill - Build the kill program
 sys-process/procps:modern-top - Enables new startup defaults of top. Keeps old defaults if disabled
