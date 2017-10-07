@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit autotools bash-completion-r1 gnome2 systemd
+inherit autotools gnome2 systemd
 
 DESCRIPTION="Virtual filesystem implementation for gio"
 HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
@@ -25,15 +25,14 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd
 
 RDEPEND="
 	app-crypt/gcr:=
-	>=dev-libs/glib-2.49.3:2
-	sys-apps/dbus
+	>=dev-libs/glib-2.51:2
 	dev-libs/libxml2:2
 	net-misc/openssh
 	afp? ( >=dev-libs/libgcrypt-1.2.2:0= )
 	archive? ( app-arch/libarchive:= )
 	bluray? ( media-libs/libbluray:= )
 	elogind? ( >=sys-auth/elogind-219:0= )
-	fuse? ( >=sys-fs/fuse-2.8.0 )
+	fuse? ( >=sys-fs/fuse-2.8.0:0 )
 	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1:= )
 	google? (
@@ -45,8 +44,10 @@ RDEPEND="
 	ios? (
 		>=app-pda/libimobiledevice-1.2:=
 		>=app-pda/libplist-1:= )
-	mtp? ( >=media-libs/libmtp-1.1.12 )
-	nfs? ( >=net-fs/libnfs-1.9.7 )
+	mtp? (
+		>=dev-libs/libusb-1.0.21
+		>=media-libs/libmtp-1.1.12 )
+	nfs? ( >=net-fs/libnfs-1.9.8 )
 	policykit? (
 		sys-auth/polkit
 		sys-libs/libcap )
@@ -54,7 +55,7 @@ RDEPEND="
 	systemd? ( >=sys-apps/systemd-206:0= )
 	udev? (
 		cdda? ( dev-libs/libcdio-paranoia )
-		virtual/libgudev:=
+		>=virtual/libgudev-147:=
 		virtual/libudev:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
 	zeroconf? ( >=net-dns/avahi-0.6 )
@@ -93,7 +94,7 @@ src_prepare() {
 	fi
 
 	if use elogind; then
-		epatch "${FILESDIR}"/${PN}-1.30.2-enable-elogind.patch || die
+		epatch "${FILESDIR}"/${PN}-1.32.1-enable-elogind.patch || die
 	fi
 
 	if ! use udev || use elogind; then
@@ -109,11 +110,8 @@ src_configure() {
 	# --disable-obexftp, upstream bug #729945
 	gnome2_src_configure \
 		--disable-gdu \
-		--disable-hal \
-		--enable-bash-completion \
 		--enable-documentation \
 		--enable-gcr \
-		--with-bash-completion-dir="$(get_bashcompdir)" \
 		--with-dbus-service-dir="${EPREFIX}"/usr/share/dbus-1/services \
 		--with-systemduserunitdir="$(systemd_get_userunitdir)" \
 		$(use_enable afp) \
@@ -130,6 +128,7 @@ src_configure() {
 		$(use_enable http) \
 		$(use_enable ios afc) \
 		$(use_enable mtp libmtp) \
+		$(use_enable mtp libusb) \
 		$(use_enable nfs) \
 		$(use_enable policykit admin) \
 		$(use_enable samba) \
