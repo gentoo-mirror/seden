@@ -1,34 +1,3 @@
-app-admin/packagekit-base 1.1.5-r2: Manage packages in a secure way using a cross-distro and cross-architecture API
-app-backup/kup 0.7.0: A backup scheduler for KDE's Plasma desktop
-app-emulation/fs-uae 2.8.3 2.9.6: FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
-app-emulation/fs-uae-launcher 2.8.3 2.9.6: PyQT5 based Launcher for FS-UAE.
-app-office/taskcoach 1.4.2 1.4.3: Simple personal tasks and todo lists manager
-app-office/texstudio 2.12.6: Free cross-platform LaTeX editor (fork from texmakerX)
-dev-games/ogre 1.10.4-r1: Object-oriented Graphics Rendering Engine
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
-dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
-dev-util/nvidia-cuda-toolkit 8.0.61-r1: NVIDIA CUDA Toolkit (compiler and friends)
-games-rpg/lipsofsuna 9999: Tongue-in-cheek dungeon crawl game. Client and Server.
-games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
-games-strategy/widelands 0.19-r2: A game similar to Settlers 2
-gnome-base/gvfs 1.30.4-r1 1.32.1-r1: Virtual filesystem implementation for gio
-lxqt-base/lxqt-meta 0.10.0-r1 0.11.0-r1: Meta ebuild for LXQt, the Lightweight Desktop Environment
 media-libs/allegro 5.0.11-r2 5.1.11: A game programming library
-media-libs/aubio 0.4.5-r1: Library for audio labelling
-media-libs/mesa 12.0.3-r1 12.0.4: OpenGL-like graphic library for Linux
 media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a human voice sound synthetic
-media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
-net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
-net-libs/telegram-qt 9999-r1: Telegram binding for Qt
-net-mail/davmail-bin 4.8.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
-net-misc/megasync 15.10-r1 16.04-r1: The official QT-Based mega.co.nz client for sync your MEGA account
-net-misc/teamviewer 8.0.20931-r3: All-In-One Solution for Remote Access and Support over the Internet
-perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
-sys-apps/accountsservice 0.6.45-r1: D-Bus interfaces for querying and manipulating user account information
-sys-auth/elogind 229.8 229.9999 231.6 231.9999 232.5 232.9999 233.6 233.9999 234.3 234.9999 9999: The systemd project's logind, extracted to a standalone package
-sys-process/procps 3.3.12-r2: standard informational utilities and process-handling tools
-x11-apps/xinit 1.3.4-r3: X Window System initializer
-x11-misc/bumblebee 9999-r3: Service providing elegant and stable means of managing Optimus graphics chipsets
-x11-misc/primus 9999-r1: Faster OpenGL offloading for Bumblebee
-x11-themes/qtcurve 9999: A set of widget styles for Qt and GTK2
-x11-wm/lumina 1.2.0.1 1.2.0.1-r1: Lumina desktop environment
