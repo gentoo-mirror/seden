@@ -33,6 +33,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd
+	<sys-libs/glibc-2.26
 "
 PDEPEND="
 	sys-apps/dbus
