@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools linux-info pam udev
+inherit linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -12,18 +12,17 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="acl debug pam policykit selinux"
+IUSE="+acl debug doc +pam +policykit selinux"
 
-RDEPEND="
+COMMON_DEPEND="
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	pam? ( virtual/pam )
 	selinux? ( sys-libs/libselinux )
-	!sys-apps/systemd
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
@@ -32,16 +31,18 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig
 "
+RDEPEND="${COMMON_DEPEND}
+	!sys-apps/systemd
+"
 PDEPEND="
 	sys-apps/dbus
 	policykit? ( sys-auth/polkit )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-226.4-docs.patch" )
+PATCHES=( "${FILESDIR}/${PN}-235.1-docs.patch" )
 
 pkg_setup() {
-	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SECURITY_SMACK
-		~SIGNALFD ~TIMERFD"
+	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
@@ -50,29 +51,48 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf # Makefile.am patched by "${FILESDIR}/${P}-docs.patch"
+	xdg_environment_reset
 }
 
 src_configure() {
-	econf \
-		--with-pamlibdir=$(getpam_mod_dir) \
-		--with-udevrulesdir="$(get_udevdir)"/rules.d \
+	local emesonargs cgroupmode rccgroupmode
+
+	rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
+	cgroupmode="legacy"
+
+	if [ "xhybrid" = "x${rccgroupmode}" ] ; then
+		cgroupmode="hybrid"
+	elif [ "xunified" = "x${rccgroupmode}" ] ; then
+		cgroupmode="unified"
+	fi
+
+	emesonargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${P}" \
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html" \
+		-Dpamlibdir=$(getpam_mod_dir) \
+		-Dudevrulesdir="$(get_udevdir)"/rules.d \
 		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
-		--with-rootprefix="${EPREFIX}/" \
-		--with-rootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind \
-		--enable-smack \
-		--disable-kdbus \
-		--disable-lto \
-		$(use_enable debug debug elogind) \
-		$(use_enable acl) \
-		$(use_enable pam) \
-		$(use_enable selinux)
+		-Drootlibdir="${EPREFIX}"/$(get_libdir) \
+		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind \
+		-Drootprefix="${EPREFIX}/" \
+		-Dsmack=true \
+		-Dman=auto \
+		-Dhtml=$(usex doc auto false) \
+		-Dcgroup-controller=openrc \
+		-Ddefault-hierarchy=${cgroupmode} \
+		-Ddebug=$(usex debug elogind false) \
+		--buildtype $(usex debug debug release) \
+		-Dacl=$(usex acl true false) \
+		-Dpam=$(usex pam true false) \
+		-Dselinux=$(usex selinux true false)
+		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions" \
+		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions" \
+	)
+	meson_src_configure
 }
 
 src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
+	meson_src_install
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 

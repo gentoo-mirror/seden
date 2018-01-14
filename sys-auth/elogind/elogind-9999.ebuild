@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit git-r3 linux-info meson pam udev
+inherit git-r3 linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -15,14 +15,13 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+acl debug doc +pam +policykit selinux"
 
-RDEPEND="
+COMMON_DEPEND="
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
 	acl? ( sys-apps/acl )
 	pam? ( virtual/pam )
 	selinux? ( sys-libs/libselinux )
-	!sys-apps/systemd
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
@@ -34,10 +33,15 @@ DEPEND="${RDEPEND}
 	>=dev-util/ninja-1.7.2
 	virtual/pkgconfig
 "
+RDEPEND="${COMMON_DEPEND}
+	!sys-apps/systemd
+"
 PDEPEND="
 	sys-apps/dbus
 	policykit? ( sys-auth/polkit )
 "
+
+PATCHES=( "${FILESDIR}/${PN}-235.1-docs.patch" )
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SECURITY_SMACK
@@ -48,8 +52,23 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	default
+	xdg_environment_reset
+}
+
 src_configure() {
-	local emesonargs
+	local emesonargs cgroupmode rccgroupmode
+
+	rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
+	cgroupmode="legacy"
+
+	if [ "xhybrid" = "x${rccgroupmode}" ] ; then
+		cgroupmode="hybrid"
+	elif [ "xunified" = "x${rccgroupmode}" ] ; then
+		cgroupmode="unified"
+	fi
+
 	emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${P}" \
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${P}/html" \
@@ -63,7 +82,7 @@ src_configure() {
 		-Dman=auto \
 		-Dhtml=$(usex doc auto false) \
 		-Dcgroup-controller=openrc \
-		-Ddefault-hierarchy=legacy \
+		-Ddefault-hierarchy=${cgroupmode} \
 		-Ddebug=$(usex debug elogind false) \
 		--buildtype $(usex debug debug release) \
 		-Dacl=$(usex acl true false) \
