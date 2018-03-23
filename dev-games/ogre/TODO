@@ -11,3 +11,7 @@ Things to do to bring Ogre3D forward on Gentoo Linux
   - This needs MojoShader (http://icculus.org/mojoshader/) [optional?]
   - This needs a live ebuild.
   - After that a USE flag can be added
+
+- Add Remotery support (https://github.com/Celtoys/Remotery)
+  - Realtime CPU/D3D/OpenGL/CUDA/Metal Profiler in a single C file with web
+    browser viewer
