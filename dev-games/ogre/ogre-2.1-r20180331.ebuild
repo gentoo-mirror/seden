@@ -76,8 +76,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=NO
-		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=NO
 		-DOGRE_BUILD_COMPONENT_JAVA=NO
 		-DOGRE_BUILD_COMPONENT_PYTHON=NO
 		-DOGRE_BUILD_DEPENDENCIES=NO
@@ -95,9 +93,8 @@ src_configure() {
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
-		-DOGRE_PROFILING_PROVIDER=$(usex profile none internal)
+		-DOGRE_PROFILING=$(usex profile)
 		-DOGRE_RESOURCEMANAGER_STRICT=2
-		-DOGRE_USE_BOOST=NO
 	)
 	# USE flags for features that do not work, yet
 	# These components are off by default, as they might not be ported, yet.
@@ -105,7 +102,6 @@ src_configure() {
 	# components can be activated now.
 	mycmakeargs+=(
 		-DOGRE_BUILD_COMPONENT_PAGING=YES
-		-DOGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=YES
 		-DOGRE_BUILD_COMPONENT_PROPERTY=YES
 		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=YES
 		-DOGRE_BUILD_COMPONENT_TERRAIN=YES
