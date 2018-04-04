@@ -3,25 +3,24 @@
 
 EAPI=6
 
-inherit eutils git-r3 cmake-utils vcs-snapshot
+inherit eutils cmake-utils mercurial
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
 
-EGIT_MIN_CLONE_TYPE="shallow"
-EGIT_REPO_URI="https://github.com/OGRECave/ogre"
-EGIT_BRANCH="v2-1"
-EGIT_COMMIT="55327534fbc65808328ac0216ecad535052616c3"
+EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
+EHG_REVISION="18d9b9e87ae6"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
 SLOT="0/2.1"
 KEYWORDS=""
 
-IUSE="doc examples +freeimage gl3plus gles2 gles3 json ois +opengl profile tools"
+IUSE="cg debug doc double-precision examples +freeimage gl3plus gles2 gles3 \
+json ois openexr +opengl pch profile tools"
 
 # USE flags for features that do not work, yet
-# cg double-precision
+# 
 
 REQUIRED_USE="examples? ( ois )
 	gles3? ( gles2 )
@@ -38,6 +37,7 @@ RDEPEND="
 	json? ( dev-libs/rapidjson )
 	media-libs/freetype:2
 	ois? ( dev-games/ois )
+	openexr? ( media-libs/openexr )
 	tools? ( dev-libs/tinyxml[stl] )
 	virtual/glu
 	virtual/opengl
@@ -57,12 +57,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-media_path.patch"
 )
 
-src_fetch() {
-	git-r3_src_fetch
-}
-
 src_unpack() {
-	git-r3_src_unpack
+	mercurial_src_unpack
 }
 
 src_prepare() {
@@ -80,34 +76,36 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=NO
-		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=NO
+		-DOGRE_BUILD_COMPONENT_JAVA=NO
+		-DOGRE_BUILD_COMPONENT_PYTHON=NO
+		-DOGRE_BUILD_DEPENDENCIES=NO
+		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
+		-DOGRE_BUILD_PLUGIN_FREEIMAGE=$(usex freeimage)
+		-DOGRE_BUILD_PLUGIN_EXRCODEC=$(usex openexr)
 		-DOGRE_BUILD_SAMPLES2=$(usex examples)
 		-DOGRE_BUILD_TESTS=NO
 		-DOGRE_BUILD_TOOLS=$(usex tools)
-		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
+		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_THREADS=2
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
+		-DOGRE_ENABLE_PRECOMPILED_HEADERS=$(usex pch)
 		-DOGRE_FULL_RPATH=NO
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
-		-DOGRE_PROFILING_PROVIDER=$(usex profile none internal)
-		-DOGRE_USE_BOOST=NO
+		-DOGRE_PROFILING=$(usex profile)
+		-DOGRE_RESOURCEMANAGER_STRICT=2
 	)
 	# USE flags for features that do not work, yet
-	#	-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
-	#	-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 	# These components are off by default, as they might not be ported, yet.
 	# When advancing to a newer commit, try whether any of the disabled
 	# components can be activated now.
 	mycmakeargs+=(
-		-DOGRE_BUILD_COMPONENT_PAGING=NO
-		-DOGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=YES
-		-DOGRE_BUILD_COMPONENT_PROPERTY=NO
-		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=NO
-		-DOGRE_BUILD_COMPONENT_TERRAIN=NO
-		-DOGRE_BUILD_COMPONENT_VOLUME=NO
+		-DOGRE_BUILD_COMPONENT_PAGING=YES
+		-DOGRE_BUILD_COMPONENT_PROPERTY=YES
+		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=YES
+		-DOGRE_BUILD_COMPONENT_TERRAIN=YES
+		-DOGRE_BUILD_COMPONENT_VOLUME=YES
 	)
 
 	cmake-utils_src_configure
@@ -122,16 +120,16 @@ src_install() {
 	# plugins and resources are the main configuration
 	insinto "${CONFIGDIR}"
 	doins "${CMAKE_BUILD_DIR}"/bin/plugins.cfg
-	doins "${CMAKE_BUILD_DIR}"/bin/plugins_tools.cfg
 	doins "${CMAKE_BUILD_DIR}"/bin/resources.cfg
-	doins "${CMAKE_BUILD_DIR}"/bin/resources2.cfg
 	dosym "${CONFIGDIR}"/plugins.cfg "${SHAREDIR}"/plugins.cfg
-	dosym "${CONFIGDIR}"/plugins_tools.cfg "${SHAREDIR}"/plugins_tools.cfg
 	dosym "${CONFIGDIR}"/resources.cfg "${SHAREDIR}"/resources.cfg
-	dosym "${CONFIGDIR}"/resources2.cfg "${SHAREDIR}"/resources2.cfg
 
-	# These are only for the sample browser
-	insinto "${SHAREDIR}"
-#	doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
-	doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
+	# Unfortunately make install forgets the samples.
+	if use examples ; then
+		# These are only for the sample browser
+		insinto "${SHAREDIR}"
+		doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
+		doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
+		# insinto "/usr/$(get-libdir)/OGRE/Samples"
+	fi
 }
