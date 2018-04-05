@@ -52,9 +52,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-proto/xf86vidmodeproto"
 PATCHES=(
-	"${FILESDIR}/${P}-samples.patch"
-	"${FILESDIR}/${P}-resource_path.patch"
 	"${FILESDIR}/${P}-media_path.patch"
+	"${FILESDIR}/${P}-OgreBites.patch"
+	"${FILESDIR}/${P}-resource_path.patch"
+	"${FILESDIR}/${P}-samples.patch"
 )
 
 src_unpack() {
@@ -77,16 +78,21 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DOGRE_BUILD_COMPONENT_JAVA=NO
+		-DOGRE_BUILD_COMPONENT_PAGING=YES
+		-DOGRE_BUILD_COMPONENT_PROPERTY=YES
 		-DOGRE_BUILD_COMPONENT_PYTHON=NO
+		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=YES
+		-DOGRE_BUILD_COMPONENT_TERRAIN=YES
+		-DOGRE_BUILD_COMPONENT_VOLUME=YES
 		-DOGRE_BUILD_DEPENDENCIES=NO
 		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
 		-DOGRE_BUILD_PLUGIN_FREEIMAGE=$(usex freeimage)
 		-DOGRE_BUILD_PLUGIN_EXRCODEC=$(usex openexr)
-		-DOGRE_BUILD_SAMPLES2=$(usex examples)
+		-DOGRE_BUILD_SAMPLES=$(usex examples)
 		-DOGRE_BUILD_TESTS=NO
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
-		-DOGRE_CONFIG_THREADS=2
+		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_ENABLE_PRECOMPILED_HEADERS=$(usex pch)
 		-DOGRE_FULL_RPATH=NO
@@ -101,11 +107,6 @@ src_configure() {
 	# When advancing to a newer commit, try whether any of the disabled
 	# components can be activated now.
 	mycmakeargs+=(
-		-DOGRE_BUILD_COMPONENT_PAGING=YES
-		-DOGRE_BUILD_COMPONENT_PROPERTY=YES
-		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=YES
-		-DOGRE_BUILD_COMPONENT_TERRAIN=YES
-		-DOGRE_BUILD_COMPONENT_VOLUME=YES
 	)
 
 	cmake-utils_src_configure
