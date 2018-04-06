@@ -5,7 +5,7 @@
  
  # Setup samples
 -add_subdirectory(Samples)
-+if (OGRE_BUILD_SAMPLES)
++if (OGRE_BUILD_SAMPLES2)
 +    add_subdirectory(Samples)
 +endif ()
  
