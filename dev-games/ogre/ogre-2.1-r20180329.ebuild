@@ -3,15 +3,13 @@
 
 EAPI=6
 
-inherit eutils git-r3 cmake-utils vcs-snapshot
+inherit eutils cmake-utils mercurial
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
 
-EGIT_MIN_CLONE_TYPE="shallow"
-EGIT_REPO_URI="https://github.com/OGRECave/ogre"
-EGIT_BRANCH="v2-1"
-EGIT_COMMIT="55327534fbc65808328ac0216ecad535052616c3"
+EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
+EHG_REVISION="8863ddf20dedc5f23806b004067f82a03224bee1"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
@@ -57,12 +55,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-media_path.patch"
 )
 
-src_fetch() {
-	git-r3_src_fetch
-}
-
 src_unpack() {
-	git-r3_src_unpack
+	mercurial_src_unpack
 }
 
 src_prepare() {

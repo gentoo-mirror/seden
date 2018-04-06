@@ -131,6 +131,5 @@ src_install() {
 		insinto "${SHAREDIR}"
 		doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
 		doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
-		# insinto "/usr/$(get-libdir)/OGRE/Samples"
 	fi
 }
