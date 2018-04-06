@@ -13,7 +13,7 @@ EHG_REVISION="18d9b9e87ae6"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
-SLOT="0/2.1"
+SLOT="0/1.11"
 KEYWORDS=""
 
 IUSE="cg debug doc double-precision examples +freeimage gl3plus gles2 gles3 \
