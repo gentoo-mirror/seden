@@ -124,8 +124,11 @@ src_install() {
 	dosym "${CONFIGDIR}"/resources.cfg "${SHAREDIR}"/resources.cfg
 	dosym "${CONFIGDIR}"/resources2.cfg "${SHAREDIR}"/resources2.cfg
 
-	# These are only for the sample browser
-	insinto "${SHAREDIR}"
-#	doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
-	doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
+	# These are only for the Samples
+	if use examples ; then
+		insinto "${SHAREDIR}"
+		doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
+		# The build system currently "forgets" to install these
+		doins -r "${CMAKE_BUILD_DIR}"/Samples
+	fi
 }
