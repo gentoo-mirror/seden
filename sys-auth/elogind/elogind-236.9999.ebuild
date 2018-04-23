@@ -3,16 +3,18 @@
 
 EAPI=6
 
-inherit autotools linux-info pam udev xdg-utils
+inherit git-r3 linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/elogind/elogind.git"
+EGIT_BRANCH="v236-stable"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="acl debug pam policykit selinux"
+KEYWORDS="amd64 ~arm x86"
+IUSE="+acl debug doc +pam +policykit selinux"
 
 COMMON_DEPEND="
 	sys-apps/util-linux
@@ -33,14 +35,15 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd
-	<sys-libs/glibc-2.26
 "
 PDEPEND="
 	sys-apps/dbus
 	policykit? ( sys-auth/polkit )
 "
 
-PATCHES=( "${FILESDIR}/${PN}-226.4-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-236.1-docs.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
@@ -52,31 +55,50 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	eautoreconf # Makefile.am patched by "${FILESDIR}/${P}-docs.patch"
 	xdg_environment_reset
 }
 
 src_configure() {
-	econf \
-		--with-pamlibdir=$(getpam_mod_dir) \
-		--with-udevrulesdir="$(get_udevdir)"/rules.d \
-		--libdir="${EPREFIX}"/usr/$(get_libdir) \
-		--with-rootlibdir="${EPREFIX}"/$(get_libdir) \
-		--with-rootprefix="${EPREFIX}/" \
-		--with-rootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind \
-		--enable-smack \
-		--with-cgroup-controller=openrc \
-		--disable-lto \
-		--without-kill-user-processes \
-		$(use_enable debug debug elogind) \
-		$(use_enable acl) \
-		$(use_enable pam) \
-		$(use_enable selinux)
+	local rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
+	local cgroupmode="legacy"
+
+	if [[ "xhybrid" = "x${rccgroupmode}" ]] ; then
+		cgroupmode="hybrid"
+	elif [[ "xunified" = "x${rccgroupmode}" ]] ; then
+		cgroupmode="unified"
+	fi
+
+	local emesonargs=(
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		-Dpamlibdir=$(getpam_mod_dir)
+		-Dudevrulesdir="$(get_udevdir)"/rules.d
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		-Drootlibdir="${EPREFIX}"/$(get_libdir)
+		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
+		-Drootprefix="${EPREFIX}/"
+		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
+		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
+		-Dman=auto
+		-Dsmack=true
+		-Dcgroup-controller=openrc
+		-Ddefault-hierarchy=${cgroupmode}
+		-Ddefault-kill-user-processes=false
+		-Dacl=$(usex acl true false)
+		-Ddebug=$(usex debug elogind false)
+		--buildtype $(usex debug debug release)
+		-Dhtml=$(usex doc auto false)
+		-Dpam=$(usex pam true false)
+		-Dselinux=$(usex selinux true false)
+	)
+
+	meson_src_configure
 }
 
 src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
+	DOCS+=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
+
+	meson_src_install
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 
@@ -85,9 +107,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "$(rc-config list boot | grep elogind)" != "" ]; then
-		ewarn "elogind is currently started from boot runlevel."
-	elif [ "$(rc-config list default | grep elogind)" != "" ]; then
+	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
+		elog "elogind is currently started from boot runlevel."
+	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from default runlevel."
 		ewarn "Please remove elogind from the default runlevel and"
 		ewarn "add it to the boot runlevel by:"
@@ -97,13 +119,5 @@ pkg_postinst() {
 		ewarn "elogind is currently not started from any runlevel."
 		ewarn "You may add it to the boot runlevel by:"
 		ewarn "# rc-update add elogind boot"
-	fi
-	ewarn "Alternatively you can leave elogind out of any"
-	ewarn "runlevel. It will then be started automatically"
-	if use pam; then
-		ewarn "when the first service calls it via dbus, or the"
-		ewarn "first user logs into the system."
-	else
-		ewarn "when the first service calls it via dbus."
 	fi
 }
