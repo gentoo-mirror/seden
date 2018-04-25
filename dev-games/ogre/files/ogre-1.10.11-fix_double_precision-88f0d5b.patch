@@ -1,21 +1,18 @@
-From e1a54c79137d30b332abb645f05759900844b68a Mon Sep 17 00:00:00 2001
-From: niparx <koliap@gmail.com>
-Date: Fri, 5 Jan 2018 15:48:31 +0200
-Subject: [PATCH] [OGRE-592] RTShaderSystem compile error when using double
- precision (#622)
+# HG changeset patch
+# User niparx <koliap@gmail.com>
+# Date 1515160111 -7200
+# Node ID 88f0d5be23c521e7504e3f6cb2a153428efcf159
+# Parent  bc4fb04c1de686c23c6207eee69ae0ca9fddcb7c
+[OGRE-592] RTShaderSystem compile error when using double precision (#622)
 
 RTShaderSystem: compile error when using double precision
 
 https://ogre3d.atlassian.net/browse/OGRE-592
----
- Components/RTShaderSystem/src/OgreShaderFFPTexturing.cpp | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/Components/RTShaderSystem/src/OgreShaderFFPTexturing.cpp b/Components/RTShaderSystem/src/OgreShaderFFPTexturing.cpp
-index 2093b4da38..558be4ceea 100644
 --- a/Components/RTShaderSystem/src/OgreShaderFFPTexturing.cpp
 +++ b/Components/RTShaderSystem/src/OgreShaderFFPTexturing.cpp
-@@ -654,8 +654,12 @@ void FFPTexturing::addPSArgumentInvocations(Function* psMain,
+@@ -654,8 +654,12 @@
              curFuncInvocation->pushOperand(ParameterFactory::createConstParam(Vector4(alphaValue)), Operand::OPS_IN);
          }
          else

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-samples.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
 	"${FILESDIR}/${P}-media_path.patch"
-	"${FILESDIR}/e1a54c79137d30b332abb645f05759900844b68a.patch"
+	"${FILESDIR}/${P}-fix_double_precision-88f0d5b.patch"
 )
 
 src_prepare() {
