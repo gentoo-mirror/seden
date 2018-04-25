@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
 
 EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
-EHG_REVISION="18d9b9e87ae6"
+EHG_REVISION="a321ca311c7d87e664b37590a9c8f0b102475dc5"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
@@ -18,9 +18,6 @@ KEYWORDS=""
 
 IUSE="cg debug doc double-precision examples +freeimage gl3plus gles2 gles3 \
 json ois openexr +opengl pch profile tools"
-
-# USE flags for features that do not work, yet
-# 
 
 REQUIRED_USE="examples? ( ois )
 	gles3? ( gles2 )
@@ -56,6 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-OgreBites.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
 	"${FILESDIR}/${P}-samples.patch"
+	"${FILESDIR}/${P}-fix_sample_source_install.patch"
 )
 
 src_unpack() {

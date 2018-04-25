@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
 
 EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
-EHG_REVISION="8863ddf20dedc5f23806b004067f82a03224bee1"
+EHG_REVISION="2610e3b582ac2486ce2792e2ce5e37ff2dd78808"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
