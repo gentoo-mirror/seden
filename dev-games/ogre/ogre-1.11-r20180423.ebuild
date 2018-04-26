@@ -100,12 +100,11 @@ src_configure() {
 		-DOGRE_PROFILING=$(usex profile)
 		-DOGRE_RESOURCEMANAGER_STRICT=2
 	)
-	# USE flags for features that do not work, yet
-	# These components are off by default, as they might not be ported, yet.
-	# When advancing to a newer commit, try whether any of the disabled
-	# components can be activated now.
-	mycmakeargs+=(
-	)
+
+	# Ogre3D is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..." and
+	# sets it to BUILD_TYPE. Only RelWithDebInfo, MinSizeRel and Debug
+	# are supported.
+	CMAKE_BUILD_TYPE="$(usex debug Debug RelWithDebInfo)"
 
 	cmake-utils_src_configure
 }

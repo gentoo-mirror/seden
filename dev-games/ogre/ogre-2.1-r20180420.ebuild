@@ -16,7 +16,7 @@ LICENSE="MIT public-domain"
 SLOT="0/2.1"
 KEYWORDS=""
 
-IUSE="doc examples +freeimage gl3plus gles2 gles3 json ois +opengl profile tools"
+IUSE="doc debug examples +freeimage gl3plus gles2 gles3 json ois +opengl profile tools"
 
 # USE flags for features that do not work, yet
 # cg double-precision
@@ -104,6 +104,11 @@ src_configure() {
 		-DOGRE_BUILD_COMPONENT_VOLUME=NO
 	)
 
+	# Ogre3D is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..." and
+	# sets it to BUILD_TYPE. Only RelWithDebInfo, MinSizeRel and Debug
+	# are supported.
+	CMAKE_BUILD_TYPE="$(usex debug Debug RelWithDebInfo)"
+
 	cmake-utils_src_configure
 }
 
@@ -128,7 +133,5 @@ src_install() {
 	if use examples ; then
 		insinto "${SHAREDIR}"
 		doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
-		# The build system currently "forgets" to install these
-		doins -r "${CMAKE_BUILD_DIR}"/Samples
 	fi
 }
