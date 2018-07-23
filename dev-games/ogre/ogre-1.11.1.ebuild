@@ -3,18 +3,15 @@
 
 EAPI=6
 
-inherit eutils cmake-utils mercurial
+inherit cmake-utils
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
-HOMEPAGE="http://www.ogre3d.org/"
-
-EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
-EHG_REVISION="a321ca311c7d87e664b37590a9c8f0b102475dc5"
-SRC_URI=""
+HOMEPAGE="https://www.ogre3d.org/"
+SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT public-domain"
 SLOT="0/1.11"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="cg debug doc double-precision examples +freeimage gl3plus gles2 gles3 \
 json ois openexr +opengl pch profile tools"
