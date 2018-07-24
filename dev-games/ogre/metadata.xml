@@ -77,15 +77,19 @@ Exporters
     * Maya (meshes)
   </longdescription>
   <use>
+    <flag name="beta-components">Build BETA components 'Bites' and 'HLMS'</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
-    <flag name="double-precision">more precise calculations at the expense of speed</flag>
-    <flag name="freeimage">support images via freeimage</flag>
+    <flag name="double-precision">More precise calculations at the expense of speed</flag>
+    <flag name="freeimage">Support images via freeimage</flag>
     <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
-    <flag name="gles2">build OpenGL ES 2.x RenderSystem</flag>
+    <flag name="gles2">Build OpenGL ES 2.x RenderSystem</flag>
     <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
     <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
-    <flag name="ois">pull in Object-oriented Input System library for samples</flag>
-    <flag name="tools">build+install helper tools</flag>
+    <flag name="ois">Pull in Object-oriented Input System library for samples</flag>
+    <flag name="resman-legacy">Resource Manager LEGACY : search in all groups twice - for case sensitive and insensitive lookup.</flag>
+    <flag name="resman-pedantic">Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup.</flag>
+    <flag name="resman-strict">Resource Manager STRICT : search in default group if not specified otherwise. Case sensitive lookup.</flag>
+    <flag name="tools">Build and install helper tools</flag>
   </use>
   <upstream>
     <remote-id type="bitbucket">sinbad/ogre</remote-id>
