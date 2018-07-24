@@ -13,11 +13,15 @@ LICENSE="MIT public-domain"
 SLOT="0/1.10.0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl profile tools"
+IUSE="beta-components cg doc double-precision egl examples +freeimage gles2 ois +opengl profile resman-legacy resman-pedantic resman-strict tools"
 
-REQUIRED_USE="examples? ( ois )
-	gles3? ( gles2 )
-	gl3plus? ( opengl )"
+REQUIRED_USE="
+	|| ( gles2 opengl )
+	^^ ( resman-legacy resman-pedantic resman-strict )
+	examples? (
+		beta-components
+		ois
+	)"
 
 RESTRICT="test" #139905
 
@@ -26,28 +30,25 @@ RDEPEND="
 	dev-libs/zziplib
 	media-libs/freetype:2
 	virtual/glu
-	virtual/opengl
+	opengl? ( virtual/opengl )
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
 	x11-libs/libXt
 	cg? ( media-gfx/nvidia-cg-toolkit )
+	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
-	gl3plus? ( >=media-libs/mesa-9.2.5 )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
-	ois? ( dev-games/ois )
-	tools? ( dev-libs/tinyxml[stl] )"
+	gles2? ( media-libs/mesa[gles2] )
+	ois? ( dev-games/ois )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-samples.patch"
-	"${FILESDIR}/${P}-resource_path.patch"
-	"${FILESDIR}/${P}-media_path.patch"
-	"${FILESDIR}/${P}-fix_double_precision-88f0d5b.patch"
+	"${FILESDIR}/${PN}-1.10.11-samples.patch"
+	"${FILESDIR}/${PN}-1.10.11-resource_path.patch"
+	"${FILESDIR}/${PN}-1.10.11-media_path.patch"
 )
 
 src_prepare() {
@@ -72,25 +73,33 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_JAVA=NO
-		-DOGRE_BUILD_COMPONENT_PYTHON=NO
-		-DOGRE_BUILD_DEPENDENCIES=NO
+		-DOGRE_BUILD_COMPONENT_BITES=$(usex beta-components)
+		-DOGRE_BUILD_COMPONENT_HLMS=$(usex beta-components)
+		-DOGRE_BUILD_COMPONENT_JAVA=no
+		-DOGRE_BUILD_COMPONENT_PYTHON=no
+		-DOGRE_BUILD_DEPENDENCIES=no
 		-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
+		-DOGRE_BUILD_RENDERSYSTEM_GL=$(usex opengl)
+		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
 		-DOGRE_BUILD_SAMPLES=$(usex examples)
-		-DOGRE_BUILD_TESTS=FALSE
+		-DOGRE_BUILD_TESTS=no
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
-		-DOGRE_FULL_RPATH=NO
+		-DOGRE_FULL_RPATH=no
+		-DOGRE_GLSUPPORT_USE_EGL=$(usex egl)
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
-		-DOGRE_NODE_STORAGE_LEGACY=NO
+		-DOGRE_NODE_STORAGE_LEGACY=no
 		-DOGRE_PROFILING=$(usex profile)
-		-DOGRE_RESOURCEMANAGER_STRICT=strict
-		-DOGRE_USE_STD11=YES
+		-DOGRE_RESOURCEMANAGER_STRICT=$(\
+			usex resman-pedantic 1 $(\
+			usex resman-strict 2 0))
+		-DOGRE_USE_STD11=yes
 	)
 
 	cmake-utils_src_configure
