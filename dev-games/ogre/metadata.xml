@@ -77,7 +77,15 @@ Exporters
     * Maya (meshes)
   </longdescription>
   <use>
-    <flag name="beta-components">Build BETA components 'Bites' and 'HLMS'</flag>
+    <flag name="beta-components" restrict="&lt;dev-games/ogre-1.11">
+        Build BETA components 'Bites' and 'HLMS'
+    </flag>
+    <flag name="beta-components" restrict="&lt;dev-games/ogre-1.12">
+        Build BETA component 'HLMS'
+    </flag>
+    <flag name="beta-components">
+        Build BETA components (if any)
+    </flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
     <flag name="freeimage">Support images via freeimage</flag>
