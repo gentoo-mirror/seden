@@ -13,7 +13,9 @@ LICENSE="MIT public-domain"
 SLOT="0/1.10.0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-IUSE="beta-components cg doc double-precision egl examples +freeimage gles2 ois +opengl profile resman-legacy resman-pedantic resman-strict tools"
+IUSE="beta-components +cache cg doc double-precision egl examples +freeimage
+	gles2 ois +opengl profile resman-legacy resman-pedantic resman-strict
+	tools"
 
 REQUIRED_USE="
 	|| ( gles2 opengl )
@@ -87,6 +89,7 @@ src_configure() {
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
 		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
+		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
 		-DOGRE_CONFIG_THREADS=3
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
 		-DOGRE_FULL_RPATH=no
