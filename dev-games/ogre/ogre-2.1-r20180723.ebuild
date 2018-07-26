@@ -16,33 +16,35 @@ LICENSE="MIT public-domain"
 SLOT="0/2.1"
 KEYWORDS=""
 
-IUSE="doc debug examples +freeimage gl3plus gles2 gles3 json ois +opengl profile tools"
+IUSE="+cache debug doc egl examples +freeimage gles2 json +legacy-animations
+	mobile ois +opengl profile tools"
 
-# USE flags for features that do not work, yet
-# cg double-precision
+# USE flags that do not work, as their options aren't ported, yet.
+#	cg
+#	double-precision
 
-REQUIRED_USE="examples? ( ois )
-	gles3? ( gles2 )
-	gl3plus? ( opengl )"
+
+REQUIRED_USE="
+	|| ( gles2 opengl )
+	examples? ( ois )
+	mobile? ( egl gles2 !opengl )"
 
 RESTRICT="test" #139905
 
 RDEPEND="
 	dev-libs/zziplib
-	freeimage? ( media-libs/freeimage )
-	gl3plus? ( >=media-libs/mesa-9.2.5 )
-	gles2? ( >=media-libs/mesa-9.0.0[gles2] )
-	gles3? ( >=media-libs/mesa-10.0.0[gles2] )
-	json? ( dev-libs/rapidjson )
 	media-libs/freetype:2
-	ois? ( dev-games/ois )
-	tools? ( dev-libs/tinyxml[stl] )
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
-	x11-libs/libXt"
+	x11-libs/libXt
+	egl? ( media-libs/mesa[egl] )
+	freeimage? ( media-libs/freeimage )
+	gles2? ( media-libs/mesa[gles2] )
+	json? ( dev-libs/rapidjson )
+	ois? ( dev-games/ois )"
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
 DEPEND="${RDEPEND}
@@ -74,34 +76,49 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=NO
-		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=NO
+		-DOGRE_BUILD_COMPONENT_HLMS_PBS=$(         usex mobile no yes)
+		-DOGRE_BUILD_COMPONENT_HLMS_PBS_MOBILE=$(  usex mobile)
+		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT=$(       usex mobile no yes)
+		-DOGRE_BUILD_COMPONENT_HLMS_UNLIT_MOBILE=$(usex mobile)
+		-DOGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=yes
+		-DOGRE_BUILD_COMPONENT_SCENE_FORMAT=yes
+		-DOGRE_BUILD_RENDERSYSTEM_GL3PLUS=$(usex opengl)
+		-DOGRE_BUILD_RENDERSYSTEM_GLES=no
+		-DOGRE_BUILD_RENDERSYSTEM_GLES2=$(usex gles2)
 		-DOGRE_BUILD_SAMPLES2=$(usex examples)
-		-DOGRE_BUILD_TESTS=NO
+		-DOGRE_BUILD_TESTS=no
 		-DOGRE_BUILD_TOOLS=$(usex tools)
 		-DOGRE_CONFIG_ENABLE_FREEIMAGE=$(usex freeimage)
+		-DOGRE_CONFIG_ENABLE_GL_STATE_CACHE_SUPPORT=$(usex cache)
+		-DOGRE_CONFIG_ENABLE_GLES3_SUPPORT=$(\
+			usex gles2 $(\
+			usex mobile no yes) no)
+		-DOGRE_CONFIG_ENABLE_JSON=$(usex json)
 		-DOGRE_CONFIG_THREADS=2
 		-DOGRE_CONFIG_THREAD_PROVIDER=std
-		-DOGRE_FULL_RPATH=NO
+		-DOGRE_FULL_RPATH=no
 		-DOGRE_INSTALL_DOCS=$(usex doc)
 		-DOGRE_INSTALL_SAMPLES=$(usex examples)
 		-DOGRE_INSTALL_SAMPLES_SOURCE=$(usex examples)
+		-DOGRE_LEGACY_ANIMATIONS=$(usex legacy-animations)
 		-DOGRE_PROFILING_PROVIDER=$(usex profile none internal)
-		-DOGRE_USE_BOOST=NO
+		-DOGRE_USE_BOOST=no
 	)
-	# USE flags for features that do not work, yet
+	# Options that aren't ported, yet:
 	#	-DOGRE_BUILD_PLUGIN_CG=$(usex cg)
 	#	-DOGRE_CONFIG_DOUBLE=$(usex double-precision)
+
 	# These components are off by default, as they might not be ported, yet.
 	# When advancing to a newer commit, try whether any of the disabled
 	# components can be activated now.
 	mycmakeargs+=(
-		-DOGRE_BUILD_COMPONENT_PAGING=NO
-		-DOGRE_BUILD_COMPONENT_PLANAR_REFLECTIONS=YES
-		-DOGRE_BUILD_COMPONENT_PROPERTY=NO
-		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=NO
-		-DOGRE_BUILD_COMPONENT_TERRAIN=NO
-		-DOGRE_BUILD_COMPONENT_VOLUME=NO
+		-DOGRE_BUILD_COMPONENT_PAGING=no
+		-DOGRE_BUILD_COMPONENT_PROPERTY=no
+		-DOGRE_BUILD_COMPONENT_RTSHADERSYSTEM=no
+		-DOGRE_BUILD_RTSHADERSYSTEM_CORE_SHADERS=no
+		-DOGRE_BUILD_RTSHADERSYSTEM_EXT_SHADERS=no
+		-DOGRE_BUILD_COMPONENT_TERRAIN=no
+		-DOGRE_BUILD_COMPONENT_VOLUME=no
 	)
 
 	# Ogre3D is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..." and
