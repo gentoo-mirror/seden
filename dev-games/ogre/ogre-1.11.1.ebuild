@@ -34,12 +34,12 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXt
 	cg? ( media-gfx/nvidia-cg-toolkit )
+	egl? ( media-libs/mesa[egl] )
 	freeimage? ( media-libs/freeimage )
 	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
 	ois? ( dev-games/ois )
-	openexr? ( media-libs/openexr )
-	tools? ( dev-libs/tinyxml[stl] )"
+	openexr? ( media-libs/openexr )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig

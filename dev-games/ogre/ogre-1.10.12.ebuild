@@ -62,13 +62,6 @@ src_prepare() {
 		-e '/CONFIGURATIONS/s:CONFIGURATIONS Release.*::' \
 		CMake/Utils/OgreConfigTargets.cmake || die
 
-	# make sure we're not using the included tinyxml
-	# Update for 1.10.11: Unfortunately the build system does not
-	#   search for a system wide tinyxml at this moment. However,
-	#   TinyXML is meant to be built into and not linked to a using
-	#   project anyway.
-	# rm -f Tools/XMLConverter/{include,src}/tiny*.*
-
 	# Fix some path issues
 	cmake-utils_src_prepare
 }
