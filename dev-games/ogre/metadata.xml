@@ -80,18 +80,18 @@ Exporters
     <flag name="beta-components" restrict="&lt;dev-games/ogre-1.11">
         Build BETA components 'Bites' and 'HLMS'
     </flag>
-    <flag name="beta-components" restrict="&lt;dev-games/ogre-1.12">
+    <flag name="beta-components" restrict="&lt;dev-games/ogre-2.1">
         Build BETA component 'HLMS'
     </flag>
     <flag name="beta-components">
         Build BETA components (if any)
     </flag>
+    <flag name="cache">Enable GL state cache support</flag>
     <flag name="cg">NVIDIA toolkit plugin</flag>
     <flag name="double-precision">More precise calculations at the expense of speed</flag>
+    <flag name="egl">Use egl instead of glx</flag>
     <flag name="freeimage">Support images via freeimage</flag>
-    <flag name="gl3plus">Build OpenGL 3+ RenderSystem (EXPERIMENTAL)</flag>
-    <flag name="gles2">Build OpenGL ES 2.x RenderSystem</flag>
-    <flag name="gles3">Enable OpenGL ES 3.x Features</flag>
+    <flag name="gles2">Build OpenGL ES 2.x RenderSystem plus ES 3.x features if available.</flag>
     <flag name="json">Use dev-libs/rapidjson (needed by Hlms JSON materials)</flag>
     <flag name="legacy-animations" restrict="&gt;=dev-games/ogre-2.1">
         Use the skeletal animation from 1.x. It's much slower, but the new system
@@ -102,9 +102,19 @@ Exporters
         Build for OpenGL ES 2.0 only and use the mobile variants of the PBS and
         unlit material systems.
     </flag>
-    <flag name="resman-legacy">Resource Manager LEGACY : search in all groups twice - for case sensitive and insensitive lookup.</flag>
-    <flag name="resman-pedantic">Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup.</flag>
-    <flag name="resman-strict">Resource Manager STRICT : search in default group if not specified otherwise. Case sensitive lookup.</flag>
+    <flag name="resman-legacy" restrict="&lt;dev-games/ogre-2.1">
+        Resource Manager LEGACY : search in all groups twice - for case sensitive
+        and insensitive lookup. This is the default as some demos might not work
+        with more stricter settings.
+    </flag>
+    <flag name="resman-pedantic" restrict="&lt;dev-games/ogre-2.1">
+        Resource Manager PEDANTIC : require an explicit resource group. Case
+        sensitive lookup.
+    </flag>
+    <flag name="resman-strict" restrict="&lt;dev-games/ogre-2.1">
+        Resource Manager STRICT : search in default group if not specified otherwise.
+        Case sensitive lookup.
+    </flag>
     <flag name="tools">Build and install helper tools</flag>
   </use>
   <upstream>

@@ -23,7 +23,6 @@ IUSE="+cache debug doc egl examples +freeimage gles2 json +legacy-animations
 #	cg
 #	double-precision
 
-
 REQUIRED_USE="
 	|| ( gles2 opengl )
 	examples? ( ois )
@@ -48,9 +47,10 @@ RDEPEND="
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto
+	doc? ( app-doc/doxygen )"
+
 PATCHES=(
 	"${FILESDIR}/${P}-samples.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
