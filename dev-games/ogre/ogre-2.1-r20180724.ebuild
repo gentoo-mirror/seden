@@ -9,7 +9,7 @@ DESCRIPTION="Object-oriented Graphics Rendering Engine"
 HOMEPAGE="http://www.ogre3d.org/"
 
 EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
-EHG_REVISION="8a9730c9ae9a"
+EHG_REVISION="b9f5f58b4f84cbf5b8f4923de4061e1f78dd1f78"
 SRC_URI=""
 
 LICENSE="MIT public-domain"
@@ -55,6 +55,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-samples.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
 	"${FILESDIR}/${P}-media_path.patch"
+	"${FILESDIR}/${P}-enhance_config_loading.patch"
 )
 
 src_unpack() {
