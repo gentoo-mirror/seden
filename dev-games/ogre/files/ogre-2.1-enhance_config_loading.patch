@@ -11,12 +11,12 @@
 +        } catch (Exception &e) {
 +            // Try /etc/OGRE/<file> next
 +            try {
-+                loadDirect("/etc/OGHRE/" + filename, separators, trimWhitespace);
++                loadDirect("/etc/OGRE/" + filename, separators, trimWhitespace);
 +                return;
 +            } catch (...) { /* was just a test */ }
 +            // Try /usr/share/OGRE/<file> last
 +            try {
-+                loadDirect("/usr/share/OGHRE/" + filename, separators, trimWhitespace);
++                loadDirect("/usr/share/OGRE/" + filename, separators, trimWhitespace);
 +                return;
 +            } catch (...) { /* was just a test */ }
 +            /* dammit... */
