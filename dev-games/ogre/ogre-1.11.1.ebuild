@@ -11,10 +11,10 @@ SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT public-domain"
 SLOT="0/1.11"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="beta-components +cache cg debug doc double-precision egl examples
-	+freeimage gles2 json ois openexr +opengl pch profile resman-legacy
+	+freeimage gles2 json ois openexr +opengl pch profile +resman-legacy
 	resman-pedantic resman-strict tools"
 
 REQUIRED_USE="
@@ -41,9 +41,10 @@ RDEPEND="
 	ois? ( dev-games/ois )
 	openexr? ( media-libs/openexr )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto
+	doc? ( app-doc/doxygen )"
+
 PATCHES=(
 	"${FILESDIR}/${P}-media_path.patch"
 	"${FILESDIR}/${P}-resource_path.patch"
