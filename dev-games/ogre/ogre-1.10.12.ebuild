@@ -11,7 +11,7 @@ SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="MIT public-domain"
 SLOT="0/1.10.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="beta-components +cache cg doc double-precision egl examples +freeimage
 	gles2 ois +opengl profile +resman-legacy resman-pedantic resman-strict
