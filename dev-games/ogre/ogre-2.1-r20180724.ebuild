@@ -33,8 +33,6 @@ RESTRICT="test" #139905
 RDEPEND="
 	dev-libs/zziplib
 	media-libs/freetype:2
-	virtual/glu
-	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
@@ -43,7 +41,11 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
-	ois? ( dev-games/ois )"
+	ois? ( dev-games/ois )
+	opengl? (
+		virtual/glu
+		virtual/opengl
+	)"
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
 DEPEND="${RDEPEND}

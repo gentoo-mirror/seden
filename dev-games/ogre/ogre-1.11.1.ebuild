@@ -27,8 +27,6 @@ RESTRICT="test" #139905
 RDEPEND="
 	dev-libs/zziplib
 	media-libs/freetype:2
-	virtual/glu
-	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXrandr
@@ -39,7 +37,11 @@ RDEPEND="
 	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
 	ois? ( dev-games/ois )
-	openexr? ( media-libs/openexr )"
+	openexr? ( media-libs/openexr )
+	opengl? (
+		virtual/glu
+		virtual/opengl
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	x11-base/xorg-proto
@@ -104,8 +106,8 @@ src_configure() {
 			usex resman-strict 2 0))
 	)
 
-	# Ogre3D is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..." and
-	# sets it to BUILD_TYPE. Only RelWithDebInfo, MinSizeRel and Debug
+	# Ogre-1.11+ is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..."
+	# and sets it to BUILD_TYPE. Only RelWithDebInfo, MinSizeRel and Debug
 	# are supported.
 	CMAKE_BUILD_TYPE="$(usex debug Debug RelWithDebInfo)"
 
@@ -125,9 +127,8 @@ src_install() {
 	dosym "${CONFIGDIR}"/plugins.cfg "${SHAREDIR}"/plugins.cfg
 	dosym "${CONFIGDIR}"/resources.cfg "${SHAREDIR}"/resources.cfg
 
-	# Unfortunately make install forgets the samples.
+	# These are only for the sample browser
 	if use examples ; then
-		# These are only for the sample browser
 		insinto "${SHAREDIR}"
 		doins "${CMAKE_BUILD_DIR}"/bin/quakemap.cfg
 		doins "${CMAKE_BUILD_DIR}"/bin/samples.cfg
