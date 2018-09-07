@@ -3,21 +3,23 @@
 
 EAPI=6
 
-inherit eutils cmake-utils mercurial
+CMAKE_REMOVE_MODULES="yes"
+CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
+inherit cmake-utils
+
+MY_COMMIT="35b083cba64a"
+MY_P="sinbad-${PN}-${MY_COMMIT}"
 
 DESCRIPTION="Object-oriented Graphics Rendering Engine"
-HOMEPAGE="http://www.ogre3d.org/"
-
-EHG_REPO_URI="https://bitbucket.org/sinbad/ogre"
-EHG_REVISION="b9f5f58b4f84cbf5b8f4923de4061e1f78dd1f78"
-SRC_URI=""
+HOMEPAGE="https://www.ogre3d.org/"
+SRC_URI="https://bitbucket.org/sinbad/ogre/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT public-domain"
 SLOT="0/2.1"
 KEYWORDS=""
 
 IUSE="+cache debug doc egl examples +freeimage gles2 json +legacy-animations
-	mobile ois +opengl profile tools"
+	mobile +opengl profile tools"
 
 # USE flags that do not work, as their options aren't ported, yet.
 #	cg
@@ -25,12 +27,12 @@ IUSE="+cache debug doc egl examples +freeimage gles2 json +legacy-animations
 
 REQUIRED_USE="
 	|| ( gles2 opengl )
-	examples? ( ois )
 	mobile? ( egl gles2 !opengl )"
 
 RESTRICT="test" #139905
 
 RDEPEND="
+	dev-games/ois
 	dev-libs/zziplib
 	media-libs/freetype:2
 	x11-libs/libX11
@@ -41,11 +43,12 @@ RDEPEND="
 	freeimage? ( media-libs/freeimage )
 	gles2? ( media-libs/mesa[gles2] )
 	json? ( dev-libs/rapidjson )
-	ois? ( dev-games/ois )
 	opengl? (
 		virtual/glu
 		virtual/opengl
-	)"
+	)
+	tools? ( dev-libs/tinyxml[stl] )
+"
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
 DEPEND="${RDEPEND}
@@ -54,15 +57,13 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-samples.patch"
-	"${FILESDIR}/${P}-resource_path.patch"
-	"${FILESDIR}/${P}-media_path.patch"
-	"${FILESDIR}/${P}-enhance_config_loading.patch"
+	"${FILESDIR}/${PN}-2.1-samples.patch"
+	"${FILESDIR}/${PN}-2.1-resource_path.patch"
+	"${FILESDIR}/${PN}-2.1-media_path.patch"
+	"${FILESDIR}/${PN}-2.1-enhance_config_loading.patch"
 )
 
-src_unpack() {
-	mercurial_src_unpack
-}
+S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	sed -i \
@@ -123,11 +124,6 @@ src_configure() {
 		-DOGRE_BUILD_COMPONENT_TERRAIN=no
 		-DOGRE_BUILD_COMPONENT_VOLUME=no
 	)
-
-	# Ogre3D is making use of "CMAKE_INSTALL_CONFIG_NAME MATCHES ..." and
-	# sets it to BUILD_TYPE. Only RelWithDebInfo, MinSizeRel and Debug
-	# are supported.
-	CMAKE_BUILD_TYPE="$(usex debug Debug RelWithDebInfo)"
 
 	cmake-utils_src_configure
 }
