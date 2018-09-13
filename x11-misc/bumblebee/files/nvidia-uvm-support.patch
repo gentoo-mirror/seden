@@ -1,6 +1,6 @@
 --- a/src/bbsecondary.c	2013-04-26 22:49:03.018174178 +0700
 +++ b/src/bbsecondary.c	2014-11-11 20:14:32.663347521 +0700
-@@ -119,6 +119,17 @@
+@@ -119,6 +119,23 @@
      if (!module_load(module_name, driver_name)) {
        set_bb_error("Could not load GPU driver");
        return false;
@@ -13,17 +13,25 @@
 +          char log_string[1024];
 +          sprintf(log_string, "Cannot load UVM module: %s\n", uvm_module_name);
 +          bb_log(LOG_ERR, log_string);
++          /* Let's try the new nvidia-modeset if they have no uvm module installed: */
++          sprintf(uvm_module_name, "%s-modeset", module_name);
++          if (!module_load(uvm_module_name, "nvidia_uvm")) {
++            sprintf(log_string, "Cannot load MODESET module either: %s\n", uvm_module_name);
++            bb_log(LOG_ERR, log_string);
++          }
 +        }
 +      }
      }
    }
    return true;
-@@ -232,6 +243,10 @@
+@@ -240,6 +257,12 @@
        }
        /* unload the driver loaded by the graphica card */
        if (pci_get_driver(driver, pci_bus_id_discrete, sizeof driver)) {
 +        /* XXX NVIDIA UVM support */
 +        if (strstr(driver, "nvidia")) {
++          module_unload("nvidia_drm");
++          module_unload("nvidia_modeset");
 +          module_unload("nvidia_uvm");
 +        }
          module_unload(driver);
