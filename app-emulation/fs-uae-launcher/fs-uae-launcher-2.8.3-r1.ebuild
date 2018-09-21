@@ -53,6 +53,8 @@ pkg_postinst() {
 
 	elog "Some important information:"
 	elog
+	ewarn " - Do not use QtCurve, it will crash PyQt5!"
+	elog
 	elog " - By default, FS-UAE creates its directories under"
 	elog "   Documents/FS-UAE. If your Documents directory is not"
 	elog "   configured according to the XDG user dir spec, ~/FS-UAE"
