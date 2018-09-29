@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt	2018-09-29 21:16:38.841066459 +0200
++++ b/CMakeLists.txt	2018-09-29 21:18:21.132064028 +0200
+@@ -242,13 +242,6 @@
+   DEPENDS wl_tests
+ )
+ 
+-install (
+-  FILES ${CMAKE_CURRENT_BINARY_DIR}/VERSION
+-  DESTINATION ${WL_INSTALL_BASEDIR}
+-  CONFIGURATIONS Debug;Release;Gentoo
+-  COMPONENT CoreVersionFile
+-)
+-
+ # Installation.
+ add_subdirectory(doc)
+ if(OPTION_BUILD_TRANSLATIONS)
+@@ -289,25 +282,6 @@
+   COMPONENT MusicFiles
+ )
+ 
+-install(
+-  FILES
+-    COPYING
+-    CREDITS
+-    ChangeLog
+-  DESTINATION ${WL_INSTALL_BASEDIR}
+-  CONFIGURATIONS Debug;Release;Gentoo
+-  COMPONENT CoreLicenseFiles
+-)
+-
+-install(
+-  DIRECTORY
+-    doc
+-  DESTINATION ${WL_INSTALL_BASEDIR}
+-  CONFIGURATIONS Debug
+-  COMPONENT DocFiles
+-  PATTERN "CMakeLists.txt" EXCLUDE
+-)
+-
+ set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${WL_INSTALL_DATADIR}/locale)
+ 
+ install(
