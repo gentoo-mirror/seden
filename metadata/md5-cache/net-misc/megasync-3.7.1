@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=dev-db/sqlite:3 dev-libs/crypto++ dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 dev-qt/qtcore:5 media-libs/freeimage media-libs/libpng:0 net-dns/c-ares x11-themes/hicolor-icon-theme sys-libs/readline:= curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) libmediainfo? ( media-libs/libmediainfo media-libs/libzen ) libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) libraw? ( media-libs/libraw:0 ) libsodium? ( dev-libs/libsodium:0 ) libuv? ( dev-libs/libuv:0 ) pcre? ( dev-libs/libpcre ) php? ( dev-lang/php:* ) tests? ( dev-cpp/gtest ) sys-devel/binutils doc? ( app-doc/doxygen[dot=] ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=Easy automated syncing between your computers and your MEGA cloud drive
+EAPI=6
+HOMEPAGE=http://mega.co.nz
+IUSE=+api chat +curl debug doc dot examples +ffmpeg +inotify java +libmediainfo libressl +libuv +libraw +libsodium pcre php python +sync tests +tools +threads
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 dev-libs/crypto++ dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 dev-qt/qtcore:5 media-libs/freeimage media-libs/libpng:0 net-dns/c-ares x11-themes/hicolor-icon-theme sys-libs/readline:= curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) libmediainfo? ( media-libs/libmediainfo media-libs/libzen ) libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) libraw? ( media-libs/libraw:0 ) libsodium? ( dev-libs/libsodium:0 ) libuv? ( dev-libs/libuv:0 ) pcre? ( dev-libs/libpcre ) php? ( dev-lang/php:* ) tests? ( dev-cpp/gtest )
+REQUIRED_USE=dot? ( doc ) libmediainfo? ( threads ) sync? ( !java !php !python )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://mega.nz/linux/MEGAsync/Fedora_29/src/megasync-3.7.1-1.src.rpm
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	c6060f4ab634aca444c4b2176b0f3877	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	rpm	f52cfa3a435468d86d3b49c357b9cb35	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	89bb9f083a2590d9b447fd0b78a96186
+_md5_=c70df97c2ea5a4ce726d1b791636f9d8
