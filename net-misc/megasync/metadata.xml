@@ -22,18 +22,27 @@ you hold the keys, and you decide who you grant or deny access to your files.
     <flag name="curl">Enable cURL checks</flag>
     <flag name="doc">Generate doxygen documentation</flag>
     <flag name="dot">Generate graphics for doxygen documentation</flag>
-    <flag name="examples">Build example applications</flag>
+    <flag name="examples">Build example applications like 'megacmd'.</flag>
     <flag name="inotify">Enable inotify support</flag>
     <flag name="java">Build Java language bindings</flag>
+    <flag name="libmediainfo">
+      Use media-libs/libmediainfo via media-libs/libzen to analyse media files
+      (video, audio) and set file attributes on them to assist the web interface
+      in playing them.
+    </flag>
+    <flag name="libraw">Use media-libs/libraw for reading RAW files</flag>
     <flag name="libressl">Use libressl instead of openssl</flag>
+    <flag name="libsodium">Use dev-libs/libsodium for cryptography</flag>
     <flag name="libuv">Enable asynchronous I/O using libuv</flag>
     <flag name="pcre">Enable support for libpcre</flag>
     <flag name="php">Build PHP language bindings</flag>
     <flag name="python">Build Python language bindings</flag>
-    <flag name="static-libs"></flag>
     <flag name="sync">Include sync subsystem</flag>
     <flag name="tests">Build test applications</flag>
-    <flag name="tools">Build tools like megacmd</flag>
+    <flag name="tools">
+      Build the optional tools MEGACli and MEGASimplesync.
+      Note: megacmd is now an 'example' application!
+    </flag>
     <flag name="threads">Enable multi-threading</flag>
   </use>
 </pkgmetadata>
