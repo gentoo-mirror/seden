@@ -4,6 +4,3 @@
 
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
 app-emulation/fs-uae:glew - Use GLEW library
-media-libs/allegro:dumb - Enable media-libs/dumb module library support
-media-libs/allegro:physfs - Enable physfs support
-media-libs/allegro:vga - Enables the VGA graphics driver
