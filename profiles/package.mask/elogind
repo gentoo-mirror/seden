@@ -1,7 +1,5 @@
 # Sven Eden <yamakuzure@gmx.net> (10 Nov 2016)
-# Testing ebuilds for elogind integration
-=sys-apps/accountsservice-0.6.45-r1
+# Testing ebuilds for elogind
 =sys-auth/elogind-236.9999
 =sys-auth/elogind-238.9999
 =sys-auth/elogind-239.9999
-=sys-process/procps-3.3.12-r2
