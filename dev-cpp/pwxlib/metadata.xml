@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>yamakuzure@gmx.net</email>
+		<name>Sven Eden</name>
+	</maintainer>
+	<use>
+		<flag name="annotations">
+			Annotate inter thread synchronization for debugging with
+			valgrind.
+		</flag>
+		<flag name="debug-thread">
+			Produce massive debugging output. Do not enable lightly!
+		</flag>
+		<flag name="graphite">Enable gcc graphite extensions.</flag>
+		<flag name="spinlocks">
+			Use spinlocks instead of mutexes. Improves performance.
+		</flag>
+		<flag name="test">Build and install test programs.</flag>
+		<flag name="torture">
+			Build and install torture, the multi-threaded container
+			burner.</flag>
+		<flag name="yielding">
+			Let spinlocks yield when they can not lock. Improves
+			performance.
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Yamakuzure/pwxlib</remote-id>
+	</upstream>
+</pkgmetadata>
