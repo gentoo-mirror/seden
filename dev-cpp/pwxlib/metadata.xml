@@ -13,7 +13,6 @@
 		<flag name="debug-thread">
 			Produce massive debugging output. Do not enable lightly!
 		</flag>
-		<flag name="graphite">Enable gcc graphite extensions.</flag>
 		<flag name="spinlocks">
 			Use spinlocks instead of mutexes. Improves performance.
 		</flag>

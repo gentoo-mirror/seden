@@ -12,10 +12,11 @@ SRC_URI="https://github.com/Yamakuzure/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="annotations debug debug-thread doc graphite profile +spinlocks test torture +yielding"
+IUSE="annotations debug debug-thread doc profile +spinlocks test torture +yielding"
 
 REQUIRED_USE="
 	?? ( annotations debug-thread )
+	annotations? ( !spinlocks !yielding )
 	profile? ( !debug !debug-thread )
 	yielding? ( spinlocks )
 "
@@ -24,7 +25,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
-	>=sys-devel/gcc-8.2.0[graphite?]
+	>=sys-devel/gcc-8.2.0
 	virtual/pkgconfig
 "
 RDEPEND="${COMMON_DEPEND}"
@@ -41,7 +42,6 @@ src_configure() {
 		-Dannotations=$(usex annotations true false)
 		-Ddebug-extra=$(usex debug true false)
 		-Ddebug-thread=$(usex debug-thread true false)
-		-Dgraphite=$(usex graphite true false)
 		-Dhtml=$(usex doc true false)
 		-Dinstall-tests=$(usex test true false)
 		-Dprofile=$(usex profile true false)
