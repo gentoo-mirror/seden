@@ -5,6 +5,11 @@
 		<email>yamakuzure@gmx.net</email>
 		<name>Sven Eden</name>
 	</maintainer>
+	<use>
+		<flag name="asan">Enable address sanitizer</flag>
+		<flag name="lsan">Enable leak sanitizer</flag>
+		<flag name="tsan">Enable thread sanitizer</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">Yamakuzure/getRandomName</remote-id>
 	</upstream>
