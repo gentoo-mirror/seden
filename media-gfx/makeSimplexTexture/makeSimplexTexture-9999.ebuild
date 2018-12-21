@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils git-r3 toolchain-funcs
 
 DESCRIPTION="Build textures with bumpmaps using simplex noise."
-HOMEPAGE="https://prydeworx.com/makeSimplexTextures"
-EGIT_REPO_URI="https://github.com/Yamakuzure/makeSimplexTextures.git"
+HOMEPAGE="https://prydeworx.com/makeSimplexTexture"
+EGIT_REPO_URI="https://github.com/Yamakuzure/makeSimplexTexture.git"
 EGIT_BRANCH="master"
 EGIT_SUBMODULES=()
 
