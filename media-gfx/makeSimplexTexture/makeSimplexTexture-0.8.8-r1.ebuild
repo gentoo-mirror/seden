@@ -22,7 +22,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	dev-cpp/pwxlib
+	>dev-cpp/pwxlib-0.8.9
 	>=media-libs/libsfml-2.5.1
 "
 DEPEND="${COMMON_DEPEND}"
