@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="asan debug lsan tsan"
 
 REQUIRED_USE="
+	?? ( asan lsan tsan )
 	asan? ( debug )
 	lsan? ( debug )
 	tsan? ( debug )
