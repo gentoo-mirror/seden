@@ -13,10 +13,11 @@ EGIT_SUBMODULES=()
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="asan debug lsan tsan"
 
 REQUIRED_USE="
+	?? ( asan lsan tsan )
 	asan? ( debug )
 	lsan? ( debug )
 	tsan? ( debug )

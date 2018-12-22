@@ -6,6 +6,7 @@
 		<name>Sven Eden</name>
 	</maintainer>
 	<use>
+		<flag name="asan">Enable address sanitizer</flag>
 		<flag name="annotations">
 			Annotate inter thread synchronization for debugging with
 			valgrind.
@@ -13,6 +14,7 @@
 		<flag name="debug-thread">
 			Produce massive debugging output. Do not enable lightly!
 		</flag>
+		<flag name="lsan">Enable leak sanitizer</flag>
 		<flag name="spinlocks">
 			Use spinlocks instead of mutexes. Improves performance.
 		</flag>
@@ -20,6 +22,7 @@
 		<flag name="torture">
 			Build and install torture, the multi-threaded container
 			burner.</flag>
+		<flag name="tsan">Enable thread sanitizer</flag>
 		<flag name="yielding">
 			Let spinlocks yield when they can not lock. Improves
 			performance.
