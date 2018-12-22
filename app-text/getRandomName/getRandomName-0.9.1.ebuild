@@ -22,7 +22,7 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
-	>dev-cpp/pwxlib-0.8.9
+	dev-cpp/pwxlib
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
