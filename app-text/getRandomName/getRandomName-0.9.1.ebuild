@@ -15,14 +15,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="asan debug lsan tsan"
 
 REQUIRED_USE="
-	?? ( asan lsan tsan )
 	asan? ( debug )
 	lsan? ( debug )
 	tsan? ( debug )
 "
 
 COMMON_DEPEND="
-	>dev-cpp/pwxlib-0.8.9
+	dev-cpp/pwxlib
 "
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
