@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install
-DEPEND=dev-cpp/pwxlib >=media-libs/libsfml-2.5.1
+DEPEND=>dev-cpp/pwxlib-0.8.9 >=media-libs/libsfml-2.5.1
 DESCRIPTION=Build textures with bumpmaps using simplex noise.
 EAPI=6
 HOMEPAGE=https://prydeworx.com/makeSimplexTextures
 IUSE=asan debug lsan tsan
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=dev-cpp/pwxlib >=media-libs/libsfml-2.5.1
+RDEPEND=>dev-cpp/pwxlib-0.8.9 >=media-libs/libsfml-2.5.1
 REQUIRED_USE=?? ( asan lsan tsan ) asan? ( debug ) lsan? ( debug ) tsan? ( debug )
 SLOT=0
 SRC_URI=https://github.com/Yamakuzure/makeSimplexTexture/archive/v0.8.8.tar.gz -> makeSimplexTexture-0.8.8.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=bc8eca20668e5d3642319da413eaf53f
+_md5_=2d046aff721eb8224efaa621ee6f90f6
