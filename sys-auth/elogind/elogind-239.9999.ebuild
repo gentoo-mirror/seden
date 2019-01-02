@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit flag-o-matic git-r3 linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
-EGIT_REPO_URI="https://github.com/elogind/elogind.git"
+EGIT_REPO_URI="file:///home/containers/vmdrives/Repos/elogind.git"
 EGIT_BRANCH="v239-stable"
 EGIT_SUBMODULES=()
 
