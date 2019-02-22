@@ -8,7 +8,7 @@ inherit flag-o-matic git-r3 linux-info meson pam udev xdg-utils
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v239-stable"
+EGIT_BRANCH="v241-stable"
 EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
