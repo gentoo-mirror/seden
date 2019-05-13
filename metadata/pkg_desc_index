@@ -1,3 +1,4 @@
 app-emulation/fs-uae 2.8.3-r1: FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
 app-emulation/fs-uae-launcher 2.8.3-r1: PyQT5 based Launcher for FS-UAE.
+dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a human voice sound synthetic
