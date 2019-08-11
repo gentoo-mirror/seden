@@ -2,5 +2,66 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-backup/kup:system-libgit2 - Use dev-libs/libgit2 instead of the bundled one.
+app-doc/doxygen:clang - support for sys-devel/clang assisted parsing
+app-doc/doxygen:dot - allow to create dot graphs using media-gfx/graphviz
+app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
 app-emulation/fs-uae:glew - Use GLEW library
+app-text/getRandomName:asan - Enable address sanitizer
+app-text/getRandomName:lsan - Enable leak sanitizer
+app-text/getRandomName:tsan - Enable thread sanitizer
+dev-cpp/pwxlib:annotations - Annotate inter thread synchronization for debugging with valgrind.
+dev-cpp/pwxlib:asan - Enable address sanitizer
+dev-cpp/pwxlib:debug-thread - Produce massive debugging output. Do not enable lightly!
+dev-cpp/pwxlib:lsan - Enable leak sanitizer
+dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
+dev-cpp/pwxlib:test - Build and install test programs.
+dev-cpp/pwxlib:torture - Build and install torture, the multi-threaded container burner.
+dev-cpp/pwxlib:tsan - Enable thread sanitizer
+dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
+dev-games/cegui:devil - Build the DevIL based ImageCodec module
+dev-games/cegui:freeimage - Build the FreeImage based ImageCodec module
+dev-games/cegui:irrlicht - Enable the Irrlicht renderer
+dev-games/cegui:ogre - Enable the OGRE renderer
+dev-games/cegui:tinyxml - Enable the Tiny XML parser module
+dev-games/cegui:xerces-c - Enable the Xerces-C++ XML parser module
+dev-games/cegui:zip - Enable the Minizip resource provider
+dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
+dev-util/codeblocks:contrib - Build additional contrib components
+media-gfx/makeSimplexTexture:asan - Enable address sanitizer
+media-gfx/makeSimplexTexture:lsan - Enable leak sanitizer
+media-gfx/makeSimplexTexture:tsan - Enable thread sanitizer
+media-libs/aubio:double-precision - Compile in double precision mode.
+net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
+net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
+net-misc/megasync:api - Enable MEGA API support
+net-misc/megasync:chat - Enable chat support
+net-misc/megasync:curl - Enable cURL checks
+net-misc/megasync:doc - Generate doxygen documentation
+net-misc/megasync:dot - Generate graphics for doxygen documentation
+net-misc/megasync:examples - Build example applications like 'megacmd'.
+net-misc/megasync:inotify - Enable inotify support
+net-misc/megasync:java - Build Java language bindings
+net-misc/megasync:libmediainfo - Use media-libs/libmediainfo via media-libs/libzen to analyse media files (video, audio) and set file attributes on them to assist the web interface in playing them.
+net-misc/megasync:libraw - Use media-libs/libraw for reading RAW files
+net-misc/megasync:libressl - Use libressl instead of openssl
+net-misc/megasync:libsodium - Use dev-libs/libsodium for cryptography
+net-misc/megasync:libuv - Enable asynchronous I/O using libuv
+net-misc/megasync:pcre - Enable support for libpcre
+net-misc/megasync:php - Build PHP language bindings
+net-misc/megasync:python - Build Python language bindings
+net-misc/megasync:sync - Include sync subsystem
+net-misc/megasync:tests - Build test applications
+net-misc/megasync:threads - Enable multi-threading
+net-misc/megasync:tools - Build the optional tools MEGACli and MEGASimplesync. Note: megacmd is now an 'example' application!
+net-misc/teamviewer:system-wine - Use app-emulation/wine instead of bundled one.
+sci-libs/ViSP:coin - Enables Coin3D support.
+sci-libs/ViSP:demos - Installs demo programs.
+sci-libs/ViSP:dmtx - Enables barcode data matrix support.
+sci-libs/ViSP:ogre - Enables dev-games/ogre support.
+sci-libs/ViSP:ois - Enables dev-games/ois support via ogre.
+sci-libs/ViSP:opencv - Enables media-libs/opencv support.
+sci-libs/ViSP:tutorials - Installs tutorials.
+sci-libs/ViSP:zbar - Enables barcodes reading.
+x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
