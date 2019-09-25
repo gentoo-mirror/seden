@@ -8,17 +8,7 @@ app-doc/doxygen:dot - allow to create dot graphs using media-gfx/graphviz
 app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
 app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
 app-emulation/fs-uae:glew - Use GLEW library
-app-text/getRandomName:asan - Enable address sanitizer
-app-text/getRandomName:lsan - Enable leak sanitizer
-app-text/getRandomName:tsan - Enable thread sanitizer
-dev-cpp/pwxlib:annotations - Annotate inter thread synchronization for debugging with valgrind.
-dev-cpp/pwxlib:asan - Enable address sanitizer
-dev-cpp/pwxlib:debug-thread - Produce massive debugging output. Do not enable lightly!
-dev-cpp/pwxlib:lsan - Enable leak sanitizer
 dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
-dev-cpp/pwxlib:test - Build and install test programs.
-dev-cpp/pwxlib:torture - Build and install torture, the multi-threaded container burner.
-dev-cpp/pwxlib:tsan - Enable thread sanitizer
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
 dev-games/cegui:devil - Build the DevIL based ImageCodec module
 dev-games/cegui:freeimage - Build the FreeImage based ImageCodec module
@@ -29,9 +19,6 @@ dev-games/cegui:xerces-c - Enable the Xerces-C++ XML parser module
 dev-games/cegui:zip - Enable the Minizip resource provider
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
 dev-util/codeblocks:contrib - Build additional contrib components
-media-gfx/makeSimplexTexture:asan - Enable address sanitizer
-media-gfx/makeSimplexTexture:lsan - Enable leak sanitizer
-media-gfx/makeSimplexTexture:tsan - Enable thread sanitizer
 media-libs/aubio:double-precision - Compile in double precision mode.
 net-mail/davmail-bin:menu - Add an entry to the menu of your dektop environment
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
