@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -12,17 +12,10 @@ SRC_URI="https://github.com/Yamakuzure/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="asan debug lsan tsan"
-
-REQUIRED_USE="
-	?? ( asan lsan tsan )
-	asan? ( debug )
-	lsan? ( debug )
-	tsan? ( debug )
-"
+IUSE="debug"
 
 COMMON_DEPEND="
-	>dev-cpp/pwxlib-0.8.9
+	>=dev-cpp/pwxlib-0.9.0
 	>=media-libs/libsfml-2.5.1
 "
 DEPEND="${COMMON_DEPEND}"
@@ -35,9 +28,6 @@ src_compile() {
 		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}" \
 		CXX="$(tc-getCXX)" LD="$(tc-getCC)" \
 		DEBUG="$(usex debug YES NO)" \
-		SANITIZE_ADDRESS="$(usex asan YES NO)" \
-		SANITIZE_LEAK="$(usex lsan YES NO)" \
-		SANITIZE_THREAD="$(usex tsan YES NO)" \
 		emake || die "emake failed"
 }
 
