@@ -26,7 +26,7 @@ RDEPEND="${COMMON_DEPEND}"
 DOCS=()
 
 src_compile() {
-	PREFIX="${EPREFIX}"usr CXXFLAGS="${CXXFLAGS}" \
+	PREFIX="${EPREFIX}"/usr CXXFLAGS="${CXXFLAGS}" \
 		CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}" \
 		CXX="$(tc-getCXX)" LD="$(tc-getCC)" \
 		DEBUG="$(usex debug YES NO)" \
@@ -34,7 +34,7 @@ src_compile() {
 }
 
 src_install() {
-	PREFIX="${EPREFIX}"usr DESTDIR="${D}" \
+	PREFIX="${EPREFIX}"/usr DESTDIR="${D}" \
 		DOCDIR="${EPREFIX}"usr/share/doc/${PF} \
 		emake install || die "install failed"
 }
