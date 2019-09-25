@@ -1,0 +1,11 @@
+--- a/meson.build	2019-09-25 18:01:52.444587215 +0200
++++ b/meson.build	2019-09-25 18:02:04.826587254 +0200
+@@ -30,7 +30,7 @@
+ pkgincludedir = join_paths(includedir, 'pwxlib')
+ pkgdatadir = join_paths(datadir, 'pwxlib')
+ 
+-docdir = '-'.join([join_paths(datadir, 'doc/pwxLib'),
++docdir = '-'.join([join_paths(datadir, 'doc/pwxlib'),
+ 			     meson.project_version()])
+ 
+ #####################################################################
