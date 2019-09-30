@@ -3,12 +3,12 @@
 
 EAPI=6
 
-inherit git-r3 linux-info meson pam udev xdg-utils
+inherit flag-o-matic git-r3 linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v236-stable"
+EGIT_BRANCH="v243-stable"
 EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
@@ -42,7 +42,7 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-236.1-docs.patch"
+	"${FILESDIR}/${PN}-241.1-docs.patch"
 )
 
 pkg_setup() {
@@ -61,12 +61,21 @@ src_prepare() {
 src_configure() {
 	local rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
 	local cgroupmode="legacy"
+	local debugmode=""
 
-	if [[ "xhybrid" = "x${rccgroupmode}" ]] ; then
+	if [[ "xhybrid" = "x${rccgroupmode}" ]]; then
 		cgroupmode="hybrid"
-	elif [[ "xunified" = "x${rccgroupmode}" ]] ; then
+	elif [[ "xunified" = "x${rccgroupmode}" ]]; then
 		cgroupmode="unified"
 	fi
+
+	if use debug; then
+		debugmode="-Ddebug-extra=elogind"
+	fi
+
+	# Duplicating C[XX]FLAGS in LDFLAGS is deprecated and will become
+	# a hard error in future meson versions:
+	filter-ldflags $CFLAGS $CXXFLAGS
 
 	local emesonargs=(
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
@@ -78,18 +87,18 @@ src_configure() {
 		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
 		-Drootprefix="${EPREFIX}/"
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
-		-Dzsh-completion="${EPREFIX}/usr/share/zsh/site-functions"
+		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		-Dman=auto
 		-Dsmack=true
 		-Dcgroup-controller=openrc
 		-Ddefault-hierarchy=${cgroupmode}
 		-Ddefault-kill-user-processes=false
 		-Dacl=$(usex acl true false)
-		-Ddebug=$(usex debug elogind false)
 		--buildtype $(usex debug debug release)
 		-Dhtml=$(usex doc auto false)
 		-Dpam=$(usex pam true false)
 		-Dselinux=$(usex selinux true false)
+		$debugmode
 	)
 
 	meson_src_configure
