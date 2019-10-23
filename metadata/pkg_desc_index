@@ -1,3 +1,4 @@
+app-backup/kup 0.7.3: A backup scheduler for KDE's Plasma desktop
 app-doc/doxygen 1.8.15: Documentation system for most programming languages
 app-emulation/fs-uae 2.8.3-r1 2.9.7: FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
 app-emulation/fs-uae-launcher 2.8.3-r1 2.9.7: PyQT5 based Launcher for FS-UAE.
