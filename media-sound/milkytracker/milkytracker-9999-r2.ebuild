@@ -1,6 +1,5 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=7
 
@@ -28,7 +27,7 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-        "${FILESDIR}"/${P}-fix-docs.patch
+	"${FILESDIR}"/${P}-fix-docs.patch
 )
 
 src_configure() {
@@ -44,7 +43,7 @@ src_install() {
 	cmake-utils_src_install
 
 	dodoc AUTHORS ChangeLog.md docs/{readme_unix,TiTAN.nfo}
-	dohtml docs/{FAQ,MilkyTracker}.html
+	dodoc docs/{FAQ,MilkyTracker}.html
 
 	newicon resources/pictures/carton.png ${PN}.png
 	make_desktop_entry ${PN} MilkyTracker ${PN} \
