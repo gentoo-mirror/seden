@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 inherit eutils git-r3 python-any-r1 waf-utils
