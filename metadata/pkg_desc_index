@@ -8,11 +8,8 @@ dev-games/cegui 0.8.9999-r20180721: Crazy Eddie's GUI System
 dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
 dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
 dev-util/codeblocks 9999-r1: The open source, cross platform, free C, C++ and Fortran IDE
-games-rpg/lipsofsuna 9999: Tongue-in-cheek dungeon crawl game. Client and Server.
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
-games-strategy/widelands 0.19-r3: A game similar to Settlers 2
 media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
-media-libs/aubio 0.4.5-r1: Library for audio labelling
 media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
