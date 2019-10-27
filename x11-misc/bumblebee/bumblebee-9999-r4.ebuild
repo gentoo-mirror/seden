@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI07
 inherit autotools git-r3 multilib readme.gentoo-r1 systemd user
 
 DESCRIPTION="Service providing elegant and stable means of managing Optimus graphics chipsets"

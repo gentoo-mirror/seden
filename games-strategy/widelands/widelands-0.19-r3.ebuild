@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI07
 inherit cmake-utils eapi7-ver gnome2-utils xdg-utils
 
 MY_PV=build$(ver_cut 2)

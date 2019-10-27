@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-java/lucene-analyzers/lucene-analyzers-2.3.2.ebuild,v 1.5 2010/02/13 16:41:40 grobian Exp $
 
