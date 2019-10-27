@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI07
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 #inherit python-any-r1 cmake-utils virtualx multibuild git-r3

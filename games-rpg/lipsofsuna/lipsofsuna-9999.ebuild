@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI07
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 inherit eutils git-r3 python-any-r1 waf-utils

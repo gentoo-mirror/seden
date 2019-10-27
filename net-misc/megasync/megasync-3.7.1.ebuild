@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI07
+EAPI=7
 inherit autotools eutils gnome2-utils qmake-utils rpm xdg-utils
 
 DESCRIPTION="Easy automated syncing between your computers and your MEGA cloud drive"

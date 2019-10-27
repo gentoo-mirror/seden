@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI07
+EAPI=7
 
 inherit eutils gnome2-utils systemd unpacker
 
