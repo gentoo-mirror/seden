@@ -1,8 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
-EAPI=7
+EAPI=6
 
 inherit eutils
 
@@ -11,8 +10,8 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Frontier: Elite 2 with OpenGL support"
 HOMEPAGE="http://tom.noflag.org.uk/glfrontier.html"
 
-SRC_URI="http://tom.noflag.org.uk/glfrontier/frontvm3-20060623.tar.bz2
-         http://tom.noflag.org.uk/misc/frontvm-audio-20060222.tar.bz2"
+SRC_URI="https://prydeworx.com/glfrontier/frontvm3-20060623.tar.bz2
+         https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2"
 
 
 LICENSE="GPL"
@@ -35,7 +34,7 @@ src_prepare() {
 
 src_compile() {
 	cd ${S}/frontvm3-20060623
-	make -f Makefile-C || die "make install failed"
+	emake -f Makefile-C || die "make install failed"
 }
 
 src_install() {
