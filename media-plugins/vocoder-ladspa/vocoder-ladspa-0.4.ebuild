@@ -1,6 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+
+EAPI=7
 
 inherit eutils
 
@@ -15,11 +16,13 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="media-libs/ladspa-sdk"
+RDEPEND="${DEPEND}"
+
 MY_P="${P/-ladspa/}"
 S=${WORKDIR}/${MY_P}
 
 src_unpack(){
-	unpack "${A}"
+	unpack ${A}
 	cd "${S}"
 }
 src_compile() {

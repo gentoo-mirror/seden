@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-  <email>yamakuzure@gmx.net</email>
-</maintainer>
-<use>
-  <flag name='unoconv'>Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files</flag>
-</use>
+	<maintainer type="person">
+		<name>Sven Eden</name>
+		<email>yamakuzure@gmx.net</email>
+	</maintainer>
+	<use>
+		<flag name='unoconv'>Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files</flag>
+	</use>
 </pkgmetadata>

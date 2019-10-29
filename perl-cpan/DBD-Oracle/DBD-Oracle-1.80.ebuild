@@ -5,9 +5,11 @@ EAPI=7
 
 MODULE_AUTHOR="MJEVANS"
 MODULE_VERSION="1.80"
+MODULE_DIRECTORY="${MODULE_AUTHOR:0:1}/${MODULE_AUTHOR:0:2}"
 
-inherit perl-module git-r3
+inherit perl-module
 
+SRC_URI="mirror://cpan/authors/id/${MODULE_DIRECTORY}/${MODULE_AUTHOR}/${P}.tar.gz"
 DESCRIPTION="Oracle database driver for the DBI module"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
@@ -19,9 +21,3 @@ DEPEND="dev-perl/DBI
 	dev-lang/perl
 	dev-db/oracle-instantclient"
 RDEPEND="$DEPEND"
-
-DESCRIPTION="Oracle database driver for the DBI module"
-
-HOMEPAGE="https://github.com/perl5-dbi/DBD-Oracle"
-EGIT_REPO_URI="https://github.com/perl5-dbi/${PN}.git"
-EGIT_BRANCH="master"

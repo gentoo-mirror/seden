@@ -1,9 +1,0 @@
-# ChangeLog for net-im/telepathy-morse
-# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
-# $Header: $
-
-*telepathy-morse-9999 (27 Jan 2016)
-
-  27 Jan 2016; Sven Eden <yamakuzure@gmx.net> +telepathy-morse-9999.ebuild :
-  Quick simple ebuild for a live ebuild.
-

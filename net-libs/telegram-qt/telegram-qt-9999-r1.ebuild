@@ -1,11 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-#inherit python-any-r1 cmake-utils virtualx multibuild git-r3
 inherit cmake-utils git-r3
 
 DESCRIPTION="Telegram binding for Qt"
@@ -18,9 +16,9 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
-		dev-qt/qtcore:5
-		dev-qt/qtdbus:5
-		dev-qt/qtnetwork:5
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtnetwork:5
 "
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.8.12
