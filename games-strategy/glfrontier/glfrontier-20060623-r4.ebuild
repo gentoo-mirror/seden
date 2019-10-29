@@ -11,18 +11,18 @@ DESCRIPTION="Frontier: Elite 2 with OpenGL support"
 HOMEPAGE="http://tom.noflag.org.uk/glfrontier.html"
 
 SRC_URI="https://prydeworx.com/glfrontier/frontvm3-20060623.tar.bz2
-         https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2"
+	https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2"
 
-
-LICENSE="GPL"
-KEYWORDS="~x86 ~amd64"
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 SLOT="0"
 
-RDEPEND=">=media-libs/freeglut-2.6
-         media-libs/libsdl
-         media-libs/libogg"
+RDEPEND="
+	>=media-libs/freeglut-2.6
+	media-libs/libsdl
+	media-libs/libogg"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}
@@ -33,17 +33,19 @@ src_prepare() {
 }
 
 src_compile() {
-	cd ${S}/frontvm3-20060623
-	emake -f Makefile-C || die "make install failed"
+	emake -C frontvm3-20060623 -f Makefile-C || die "make install failed"
 }
 
 src_install() {
-	mv ${S}/frontvm3-20060623/frontier ${S}/frontvm3-20060623/${MY_PN}
+	mv frontvm3-20060623/frontier frontvm3-20060623/${MY_PN}
 
-	dobin ${S}/frontvm3-20060623/${MY_PN}
+	exeinto /usr/bin
+	doexe frontvm3-20060623/${MY_PN}
+
 	insinto /usr/share/${MY_PN}
-	doins ${S}/frontvm3-20060623/fe2.s.bin
-	doins -r ${S}/frontvm-audio-20060222/*
+	doins frontvm3-20060623/fe2.s.bin
+	doins -r frontvm-audio-20060222/*
 
-	make_desktop_entry /usr/share/${MY_PN}/${MY_PN} GLFrontier ${MY_PN} Game Path=/usr/share/${MY_PN}
+	make_desktop_entry "${EPREFIX:-/}"usr/share/${MY_PN}/${MY_PN} GLFrontier \
+		${MY_PN} Game Path=/usr/share/${MY_PN}
 }
