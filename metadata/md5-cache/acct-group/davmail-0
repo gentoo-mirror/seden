@@ -1,0 +1,7 @@
+DEFINED_PHASES=preinst pretend
+DESCRIPTION=group for davmail server
+EAPI=7
+KEYWORDS=~amd64 ~x86
+SLOT=0
+_eclasses_=acct-group	7126fca4f6bf56620d1ce1fd317066fc	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=dfbafa914ed1419e0c3c6c1ece600e33

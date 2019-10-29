@@ -1,12 +1,12 @@
+acct-group/davmail 0: group for davmail server
+acct-user/davmail 0: user for davmail server
 app-backup/kup 0.7.3: A backup scheduler for KDE's Plasma desktop
-app-doc/doxygen 1.8.15: Documentation system for most programming languages
 app-emulation/fs-uae 2.8.3-r1 2.9.7: FS-UAE integrates the most accurate Amiga emulation code available from WinUAE.
 app-emulation/fs-uae-launcher 2.8.3-r1 2.9.7: PyQT5 based Launcher for FS-UAE.
 app-text/getRandomName 1.0.0 9999: Create random names using linguistic rules
 dev-cpp/pwxlib 0.9.0 9999: The PrydeWorX library of C++ workers, tools and utilities
 dev-games/cegui 0.8.9999-r20180721: Crazy Eddie's GUI System
-dev-java/lucene-analyzers 2.9.4: Lucene Analyzers additions
-dev-tex/rtf2latex2e 2.2.2-r1: RTF to LaTeX converter
+dev-tex/rtf2latex2e 2.2.3: RTF to LaTeX converter
 dev-util/codeblocks 9999-r1: The open source, cross platform, free C, C++ and Fortran IDE
 games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
@@ -14,10 +14,9 @@ media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a hu
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
-net-mail/davmail-bin 4.8.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-mail/davmail-bin 5.3.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
-net-misc/teamviewer 8.0.20931-r3: All-In-One Solution for Remote Access and Support over the Internet
-perl-cpan/DBD-Oracle 9999: Oracle database driver for the DBI module
+perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sci-libs/ViSP 3.0.1-r1 3.1.0-r1: Visual Servoing Platform: visual tracking and visual servoing library
 sys-auth/elogind 239.9999 241.9999 243.9999: The systemd project's logind, extracted to a standalone package
 x11-misc/bumblebee 9999-r4: Service providing elegant and stable means of managing Optimus graphics chipsets

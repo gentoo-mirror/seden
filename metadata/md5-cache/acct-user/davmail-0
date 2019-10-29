@@ -1,0 +1,8 @@
+DEFINED_PHASES=install postinst preinst prerm pretend
+DESCRIPTION=user for davmail server
+EAPI=7
+KEYWORDS=~amd64 ~x86
+RDEPEND=acct-group/davmail
+SLOT=0
+_eclasses_=acct-user	0a104863ecbb0c7d2e255d005bcf9578	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=ed39a35b03f71b7293af31e6257d03a9
