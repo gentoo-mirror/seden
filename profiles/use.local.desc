@@ -2,9 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-backup/kup:system-libgit2 - Use dev-libs/libgit2 instead of the bundled one.
-app-emulation/fs-uae:drivers - Enable multiple driver backends (experimental)
-app-emulation/fs-uae:glew - Use GLEW library
 dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
 dev-games/cegui:devil - Build the DevIL based ImageCodec module
@@ -37,12 +34,4 @@ net-misc/megasync:sync - Include sync subsystem
 net-misc/megasync:tests - Build test applications
 net-misc/megasync:threads - Enable multi-threading
 net-misc/megasync:tools - Build the optional tools MEGACli and MEGASimplesync. Note: megacmd is now an 'example' application!
-sci-libs/ViSP:coin - Enables Coin3D support.
-sci-libs/ViSP:demos - Installs demo programs.
-sci-libs/ViSP:dmtx - Enables barcode data matrix support.
-sci-libs/ViSP:ogre - Enables dev-games/ogre support.
-sci-libs/ViSP:ois - Enables dev-games/ois support via ogre.
-sci-libs/ViSP:opencv - Enables media-libs/opencv support.
-sci-libs/ViSP:tutorials - Installs tutorials.
-sci-libs/ViSP:zbar - Enables barcodes reading.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
