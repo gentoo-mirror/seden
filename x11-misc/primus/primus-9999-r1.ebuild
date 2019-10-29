@@ -1,6 +1,5 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
 
 EAPI=7
 
@@ -41,7 +40,7 @@ src_install() {
 	dobin primusrun
 	myinst() {
 		insinto /usr/$(get_libdir)/primus
-		doins ${S}/$(get_libdir)/libGL.so.1
+		doins $(get_libdir)/libGL.so.1
 	}
 	multilib_foreach_abi myinst
 }
