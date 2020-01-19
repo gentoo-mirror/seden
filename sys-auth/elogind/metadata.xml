@@ -4,5 +4,9 @@
 	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
-	<use />
+	<use>
+		<flag name="efi" restrict="&gt;sys-auth/elogind-243.0">
+			Support rebooting into EFI firmware
+		</flag>
+	</use>
 </pkgmetadata>
