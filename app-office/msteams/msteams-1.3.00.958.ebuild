@@ -9,7 +9,7 @@ IUSE="gnome"
 
 DESCRIPTION="Microsoft Teams Linux Client"
 HOMEPAGE="https://teams.microsoft.com/"
-SRC_URI="https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=rpm -> ${P}.rpm"
+SRC_URI="https://packages.microsoft.com/yumrepos/ms-teams/teams-${PV}-1.x86_64.rpm"
 LICENSE="GitHub"
 SLOT="0"
 KEYWORDS="amd64"
