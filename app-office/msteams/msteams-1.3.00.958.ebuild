@@ -8,7 +8,7 @@ inherit xdg-utils gnome2-utils rpm
 IUSE="gnome"
 
 DESCRIPTION="Microsoft Teams Linux Client"
-HOMEPAGE="https://www.openoffice.org/"
+HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://teams.microsoft.com/downloads/desktopurl?env=production&plat=linux&arch=x64&download=true&linuxArchiveType=rpm -> ${P}.rpm"
 LICENSE="GitHub"
 SLOT="0"
