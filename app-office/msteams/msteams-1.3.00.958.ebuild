@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit xdg-utils gnome2-utils rpm
 
-IUSE=""
+IUSE="gnome"
 
 DESCRIPTION="Microsoft Teams Linux Client"
 HOMEPAGE="https://www.openoffice.org/"
