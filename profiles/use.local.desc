@@ -4,6 +4,7 @@
 
 dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
+dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-games/cegui:devil - Build the DevIL based ImageCodec module
 dev-games/cegui:freeimage - Build the FreeImage based ImageCodec module
 dev-games/cegui:irrlicht - Enable the Irrlicht renderer
