@@ -10,5 +10,5 @@ RDEPEND=app-accessibility/at-spi2-atk app-crypt/libsecret dev-libs/atk dev-libs/
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.958-1.x86_64.rpm
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	rpm	c1d552831d4ee9c7bb82c35545c264c8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	rpm	c1d552831d4ee9c7bb82c35545c264c8	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=cdf1ddd178d9ddefe2d50f05553fe492
