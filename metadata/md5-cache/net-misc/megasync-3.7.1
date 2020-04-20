@@ -1,6 +1,6 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=app-arch/rpm2targz-9.0.0.3g
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
-DEPEND=dev-db/sqlite:3 dev-libs/crypto++ dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 dev-qt/qtcore:5 media-libs/freeimage media-libs/libpng:0 net-dns/c-ares x11-themes/hicolor-icon-theme sys-libs/readline:= curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) libmediainfo? ( media-libs/libmediainfo media-libs/libzen ) libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) libraw? ( media-libs/libraw:0 ) libsodium? ( dev-libs/libsodium:0 ) libuv? ( dev-libs/libuv:0 ) pcre? ( dev-libs/libpcre ) php? ( dev-lang/php:* ) tests? ( dev-cpp/gtest ) sys-devel/binutils doc? ( app-doc/doxygen[dot=] ) >=app-arch/rpm2targz-9.0.0.3g
+DEPEND=dev-db/sqlite:3 dev-libs/crypto++ dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtdbus:5 dev-qt/qtcore:5 media-libs/freeimage media-libs/libpng:0 net-dns/c-ares x11-themes/hicolor-icon-theme sys-libs/readline:= curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) libmediainfo? ( media-libs/libmediainfo media-libs/libzen ) libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) libraw? ( media-libs/libraw:0 ) libsodium? ( dev-libs/libsodium:0 ) libuv? ( dev-libs/libuv:0 ) pcre? ( dev-libs/libpcre ) php? ( dev-lang/php:* ) tests? ( dev-cpp/gtest ) sys-devel/binutils doc? ( app-doc/doxygen[dot=] )
 DESCRIPTION=Easy automated syncing between your computers and your MEGA cloud drive
 EAPI=7
 HOMEPAGE=http://mega.co.nz
@@ -12,5 +12,5 @@ REQUIRED_USE=dot? ( doc ) libmediainfo? ( threads ) sync? ( !java !php !python )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://mega.nz/linux/MEGAsync/Fedora_29/src/megasync-3.7.1-1.src.rpm
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	rpm	c1d552831d4ee9c7bb82c35545c264c8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	318e8ae683e57fd3ccd0d31a769d8ee8	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	rpm	760ff223c2c4299b68ea901e24c4cabd	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=141c95fb7b819612bce67a92c37e1af6
