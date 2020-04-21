@@ -1,7 +1,7 @@
 acct-group/davmail 0: group for davmail server
 acct-user/davmail 0: user for davmail server
 app-office/msteams 1.3.00.5153: Microsoft Teams Linux Client
-app-office/zoom 3.5.361976.0301: Zoom Meeting Linux Client
+app-office/zoom 3.5.385850.0413: Zoom Meeting Linux Client
 app-text/getRandomName 1.0.0 9999: Create random names using linguistic rules
 dev-cpp/pwxlib 0.9.0 9999: The PrydeWorX library of C++ workers, tools and utilities
 dev-db/sqldeveloper 19.4.0.354.1759: Oracle SQL Developer is a graphical tool for database development
