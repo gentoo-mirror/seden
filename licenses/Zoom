@@ -1,0 +1,255 @@
+Zoom API License and Terms of Use
+Updated: July 7, 2019
+
+This Zoom API License and Terms of Use (the “Agreement”) describes the terms and conditions under which Zoom Video Communications, Inc. (“Zoom”) gives you, or the company, organization or other legal entity that you represent (the “Licensee”) the right to access and use the materials that are made available at the Zoom App Marketplace located at https://marketplace.zoom.us.  IF YOU DO NOT AGREE TO THE TERMS OF THIS AGREEMENT, DO NOT DOWNLOAD, INSTALL, OR USE ANY OF THE MATERIALS AT THE ZOOM APP MARKETPLACE, INCLUDING THE ZOOM API, THE ZOOM SDK, OR ANY MATERIAL RELATING THERETO (collectively “MATERIALS”)
+
+BY DOWNLOADING, INSTALLING, ACCESSING OR USING THE MATERIALS, YOU REPRESENT THAT YOU (I) HAVE THE AUTHORITY TO BIND THE PARTY ACCESSING THE MATERIALS TO THIS AGREEMENT, (II) HAVE READ, UNDERSTAND AND AGREE TO THE TERMS OF THIS AGREEMENT AND (III) AGREE TO ABIDE BY AND COMPLY WITH THIS AGREEMENT.
+
+ZOOM MAY UPDATE THIS AGREEMENT FROM TIME TO TIME, WHICH WILL BE IDENTIFIED BY THE LAST UPDATED DATE. YOUR CONTINUED ACCESS TO AND USE OF ANY MATERIALS CONSTITUTES YOUR ACCEPTANCE OF THE THEN-CURRENT TERMS OF USE. IF YOU DO NOT AGREE WITH ANY MODIFICATIONS TO THESE TERMS OF USE, YOUR ONLY RECOURSE IS TO DISCONTINUE YOUR USE OF ANY MATERIALS.
+
+1. Definitions
+
+1.1. “Account Access” means the access, utilization, or modification of a Subscriber’s account, Account Data, or Service by a Zoom Application.
+
+1.2. “Account Data” means data relating to a Subscriber that is stored or obtained through the Service. Account Data includes, without limitation, account login credentials, account configurations, Service usage data, meeting recordings, webinar recordings, voice recordings, meeting transcriptions, devices, instant message and chat data, or other Subscriber data created by using Zoom products and services.
+
+1.3. “Affiliate” means, with respect to a subject entity, any other entity that, directly or indirectly, controls, is controlled by, or is under common control with the subject entity.
+
+1.4. “Components” means software, components, computers, hardware, networks, and other infrastructure.
+
+1.5. “Confidential Information” means all information disclosed by or on behalf Zoom to Licensee in tangible or intangible form and labeled “confidential” (or with a similar legend) or which a reasonable person would understand to be confidential given the nature of the information or the circumstances under which it was disclosed. Confidential Information may include, without limitation, proprietary information, technical data, trade secrets, know-how, source code, binary executables, documentation, research, product plans, and other business information. Account Data shall be deemed Confidential Information. Notwithstanding the foregoing, Confidential Information other than Account Data shall not include information that (i) was already known to Licensee at the time of disclosure by or on behalf of Zoom without an obligation of confidentiality; (ii) was or is obtained by Licensee from a third party not known by Licensee to be under an obligation of confidentiality with respect to such information; (iii) is or becomes generally available to the public other than by violation of this Agreement; or (iv) was or is independently developed by Licensee without use of Confidential Information.
+
+1.6. “Developer” means a Subscriber who has completed the registration process and has agreed to this Agreement in order to access the Materials to develop Zoom Applications.
+
+1.7 “End Users” are users of a Zoom Application.
+
+1.8. “EULA” means the Zoom Terms of Service, Master Subscription Agreement, EULA, or any other contracting document that describes and authorizes use of Zoom video conferencing and related services, as such may be updated or amended from time to time.
+
+1.9. “Intellectual Property Rights” means patents, inventions, copyrights, trademarks, domain names, trade secrets, know-how, and any other intellectual property and/or proprietary rights anywhere in the world.
+
+1.10. “Internal Use” means the use of the Zoom API in connection with Licensee’s subscription to the Service for Licensee’s internal business purposes in accordance with the Terms and not for use by any unaffiliated third party.
+
+1.11. “Privacy Notice” means the Zoom Privacy Notice, available at https://zoom.us/legal, as it may be updated from time to time.
+
+1.12. “Publishing” means making a Zoom Application available to any Subscriber  other than Licensee or for any purpose other than for use by Licensee for its Internal Use.
+
+1.13. “Services” has the meaning set forth in the EULA.
+
+1.14. “Spam” means bulk or unwanted communications.
+
+1.15. “Subscriber” means any individual or entity that subscribes to the Service.
+
+1.16. “Subscriber Components” means any Components in Subscriber’s possession, custody, or control.
+
+1.17. “Subscriber’s Access Consent” has the meaning set forth in Section 7.14
+
+1.18. “Zoom API” means the application programming interface and any accompanying or related documentation, source code, executable applications, and other materials made available by Zoom to Licensee.
+
+1.19. “Zoom Application” means a web or other software service or application developed by Licensee that utilizes or interacts with the Zoom API.
+
+1.20. “Zoom Marks” means Zoom® and Zoom’s other product and service names, trademarks, service marks, branding, and logos made available for use in connection with the Zoom API pursuant to this Agreement.
+
+1.21. “Zoom SDK” means the software development kit provided by Zoom to allow a Zoom Application to interoperate with Zoom and its services, including without limitation Zoom SDK Sample Code.
+
+1.22. “Zoom SDK Sample Code” means any sample computer source code (a) provided by Zoom to assist Licensee in developing and testing Zoom Applications and (b) that has been explicitly designated by Zoom in such source code as sample code that may be utilized by Licensee for the purposes set forth in (a). For the avoidance of doubt, Zoom SDK Sample Code does not include any source code provided by Zoom to interface with the Zoom API that has not been designated as set forth in (b).
+
+2. Authorization and License2.1. This Agreement, and the  governs, and sets the conditions for, Licensee’s rights to use and access the Materials for the purpose of developing, implementing, marketing, offering to sell, selling, supporting, maintaining, and operating Zoom Applications, including without limitation for using Zoom Applications for Internal Use and for Publishing Zoom Applications. Publishing apps to the Marketplace will be further governed by the .
+
+2.2. Subject to the terms and conditions of this Agreement, Zoom grants to Licensee a limited, non-exclusive, non-transferable, non-sublicensable, worldwide, revocable right and license during the Term to:
+
+2.2.1. Use and make calls to the Zoom API to develop, implement, and distribute Zoom Applications solely for use by Subscribers in connection with the Services;
+
+2.2.2. Use, reproduce, distribute, and transmit Account Data to the extent necessary for a Zoom Applications to interoperate with the Services in accordance with this Agreement; and
+
+2.2.3. Use and display the Zoom Marks only to identify that the Account Data originates from the Services and to show that the Zoom Application interoperates with the Services.
+
+2.3. Licensee’s and its End Users’ use of the Service in connection with the Materials shall be governed by the terms of the EULA and all policies found at www.zoom.us/legal.
+
+2.4. Licensee hereby grants to Zoom a royalty-free, fully paid-up, worldwide, transferable, sub-licensable, irrevocable, and perpetual license to incorporate into the Service or the Materials, or otherwise use any suggestions, enhancement requests, recommendations, or other feedback Zoom receives from Licensee.
+
+2.5. If Zoom believes, in its sole discretion, that Licensee has violated or attempted to violate any term, condition or the spirit of this Agreement or the EULA, the license afforded Licensee pursuant to this Agreement may be temporarily or permanently revoked, with or without notice to Licensee.
+
+3. Fees3.1. Zoom may charge fees for access to and use of the Materials as noticed at https://zoom.us, at the Marketplace, or in other contractual documents that give access to the Materials.  Zoom reserves the right to change fees, including to start charging fees, at its sole discretion.  Zoom will use commercially reasonable efforts to provide notice to Developers prior to changing fees.
+
+4. Zoom’s Rights of Control Over the Zoom API4.1. Zoom may limit or suspend Licensee’s usage of or access to the Zoom API if, in Zoom’s reasonable discretion, Licensee or Licensee’s Zoom Applications are adversely affecting the performance or operation of the Services. Zoom shall use commercially reasonable efforts to provide notice to Licensee of any such actions as soon as reasonably practical.
+
+4.2. API Modifications
+
+4.2.1. Zoom may modify, amend, change, or deprecate all or part of the Zoom API at its sole discretion at any time (an “API Modification”). Zoom shall use commercially reasonable efforts to provide prior notice to Licensee of any such actions as soon as reasonably practical. Licensee shall, within thirty (30) days from the date of first notice of any API Modification(s) (or such shorter period of time specified in the notice of the API Modification(s)) (the “Conformance Period”) comply with such modification(s) by (i) implementing and using the most current version of the Zoom API, (ii) making any changes to Zoom Applications that may be required as a result of such API Modification, (iii) using commercially reasonable efforts to stop distribution of all prior versions of the Zoom Applications, and (iv) using commercially reasonable efforts to upgrade all prior versions of the Zoom Applications then in use to the most recent version.
+
+4.2.2. Licensee acknowledges that an API Modification may have a material adverse effect on Zoom Applications, including but not limited to causing Zoom Applications not to operate as designed. Zoom shall have no liability of any kind to Licensee or any user of Licensee’s Zoom Applications with respect to such API Modifications or any adverse effects resulting from such API Modifications. Licensee’s continued access to or use of the Zoom API following the Conformance Period shall constitute binding acceptance of the API Modifications at issue.
+
+5. Zoom Software Development Kit
+
+5.1. Zoom licenses the Zoom SDK to you pursuant to the license document associated with each SDK.
+
+6. Zoom’s Review of Zoom Applications
+
+6.1. In its sole discretion at any time, Zoom may perform, at its sole cost, a security review of any of Licensee’s Zoom Applications to ensure that the Zoom Application complies with this Agreement, the App Marketplace Terms of Use, or any other agreement between Zoom and Licensee, and that the Zoom Application does not threaten the security, integrity, or performance of the Services or any Zoom Components (a “Security Review”). Zoom shall provide Licensee reasonable prior written notice of any Security Review. Licensee shall provide Zoom, at no charge, full user-level access to the Zoom Application and shall reasonably cooperate with Zoom in the Security Review. Zoom may perform the Security Review itself or through third parties on Zoom’s behalf (and such third parties shall treat all information obtained through the Security Review as Confidential Information under this Agreement).
+
+6.2. A Security Review may include, without limitation, any or all of the following steps:
+
+6.2.1. The Licensee’s completion of a questionnaire;
+
+6.2.2. Meetings or discussions at a reasonable time and place with Licensee’s developers;
+
+6.2.3. Technical security testing by Zoom of the Zoom Application; and
+
+6.2.4. To the extent the Zoom Application uses Components other than Zoom Components, Zoom may perform penetration testing, remote application-level security testing, network-level security testing, and vulnerability threat assessments on such Components.
+
+6.3. In performing the Security Review, Zoom shall use commercially reasonable efforts to ensure its review does not cause any material adverse effect on any of Licensee’s Components supporting the Zoom Application. Notwithstanding the foregoing, Zoom shall not be liable for any adverse effects on such Components that could not have been avoided or foreseen through commercially reasonable efforts.
+
+6.4. Zoom shall inform Licensee of any issues discovered during the Security Review in writing and in reasonable detail. Zoom may immediately revoke the license afforded Licensee pursuant to this Agreement if it discovers any such issues, and Licensee shall promptly cease distribution, support, and operation of the applicable Zoom Application.
+
+6.5. A Security Review by Zoom shall not be deemed a warranty or certification of the applicable Zoom Application, nor shall it limit Licensee’s liability for the breach of, or waive Licensee’s compliance with, any provision of this Agreement.
+
+6.6. Licensee shall treat the occurrence of, results of, and any communications in connection with a Security Review as Confidential Information. For the avoidance of doubt, Licensee shall not use such information in any marketing or advertising of its Zoom Applications.
+
+7. Licensee’s Responsibilities
+
+7.1. Licensee may not access or use the Materials for any purposes if it is a direct competitor of Zoom.
+
+7.2. End Users shall be Subscribers to Services. Licensee must use best efforts to ensure that Zoom Applications do not permit End Users who are not Subscribers to access or use the Services. In the event Licensee discovers that an End User is not a Subscriber, Licensee shall use best efforts to prevent that End User from using the Zoom Application.
+
+7.3. With respect to the Zoom Applications, Licensee acknowledges and agrees that Zoom has no obligations, responsibilities, or liabilities to End Users.
+
+7.4. Licensee must comply with the restrictions set forth in this Agreement and the App Marketplace Terms of Service in all uses of the Zoom API, Subscriber Account Data, and the Services. Licensee must also comply with the restrictions set forth in this Agreement and the Zoom’s then-current trademark and branding guidelines in all uses of the Zoom Marks.
+
+7.5. Licensee’s Zoom Application must not be intended to or designed to facilitate a violation of the Useor this Agreement by End Users, including without limitation the use policies set forth in the or . In the event Zoom reasonably believes Licensee’s Zoom Application violates this Section 7.5, Licensee shall, promptly upon written notice and at Licensee’s sole cost, modify and redistribute the Zoom Application and use its best efforts to disable or otherwise prevent End Users from using prior versions of the Zoom Application that violate this Section 7.5. In no event will Licensee encourage its End Users to violate, or instruct its End Users on how to violate, the EULA or this Agreement.
+
+7.6. In order to use and access the Zoom API, Licensee must obtain API credentials (“Token”) by becoming a Developer. Licensee may not share its Token, shall keep such Token and all login information secure, and shall use it as Licensee’s sole means of accessing the Zoom API.
+
+7.7. Licensee’s Zoom Applications shall not compete with or substantially replicate products or services offered by Zoom, including, without limitation, functions or clients on platforms (such as iOS or Android) where Zoom offers its own client or a substantially similar function. Licensee agrees that Zoom may develop and publish applications that are similar to or otherwise compete with Licensee’s applications, and in the event Zoom publishes a competing application, may require removal of Licensee’s application.
+
+7.8. Zoom Applications may not use or access the Materials or the Services in order to monitor the availability, performance, or functionality of the Materials or Services or for any similar benchmarking or competitive purposes.
+
+7.9. Zoom Applications shall not, in any manner, display any form of advertising that uses Account Data.
+
+7.10. Licensee shall not, under any circumstances, through a Zoom Application or otherwise, repackage, or resell the Services, the Materials, or Account Data.
+
+7.11. Licensee is not permitted to use the Materials, Services, or Account Data in any manner that does or could potentially undermine the security or performance of the Service, the Zoom API, Account Data, or the Services. In addition, Licensee shall not, and shall not attempt to, interfere with, modify or disable any features, functionality or security controls of the Services or the Materials; defeat, avoid, bypass, remove, deactivate or otherwise circumvent any protection mechanisms for the Services or the Materials; or reverse engineer, decompile, disassemble, or derive source code, underlying ideas, algorithms, structure, or organizational form from the Services or the Materials.
+
+7.12. Licensee acknowledges and agrees that Licensee is solely responsible, and that Zoom has no responsibility or liability of any kind, for (a) the content, development, operation, sale, support, or maintenance of Zoom Applications; or (b) Licensee’s inability to continue providing Zoom Applications (in whole or part) due to the termination or expiration of this Agreement. Without limiting the foregoing, Licensee will be solely responsible for (i) the installation, operation, maintenance, and support of its Zoom Applications; (ii) creating and displaying information and content on, through or within its Zoom Applications; (iii) ensuring that its Zoom Applications do not violate or infringe the Intellectual Property Rights of any third party; (iv) ensuring that Zoom Applications are not offensive, profane, obscene, libelous or otherwise illegal; (v) ensuring that its Zoom Applications do not contain or introduce Malicious Software into the Services, the Zoom API, any Account Data or other data stored or transmitted using the Service, or Subscriber Components; (vi) ensuring that its Zoom Applications are not designed to or utilized for the purpose of sending Spam to any Zoom Subscribers or others; and (vii) transitioning End Users off a Zoom Application when that Zoom application is no longer available for any reason.
+
+7.13. Licensee will respect and comply with the technical and policy-implemented limitations of the Materials and the restrictions of this Agreement in designing and implementing Zoom Applications.
+
+7.14. Prior to accessing any Subscriber’s account or Account Data or otherwise utilizing a Subscriber’s Services, Licensee shall disclose in writing and reasonable detail to the Subscriber (a) that the Zoom Application will have Account Access; (b) the nature of the Account Access, including without limitation how the Service will be used and what Account Data will be accessed or modified by the Zoom Application; and (c) where, if applicable, Account Data may be stored, transmitted, or accessed outside of Zoom Components. The Licensee must obtain, and Subscriber must provide express consent prior to any Account Access, and such consent shall be limited to the scope of what is disclosed in the previous sentence (the “Subscriber’s Access Consent”). Licensee shall promptly cease any Account Access upon the Subscriber’s withdrawal of the Subscriber’s Access Consent.  Licensee must post a legally sufficient privacy policy and reference its location at the time of obtaining Subscriber Access Consent.
+
+7.15. In no event shall Licensee or the Zoom Application engage in Account Access or transmit, store, or access Account Data outside the scope of the Subscriber’s Access Consent.
+
+7.16. Sections 7.14 to 7.15 shall not apply to the extent (and only to the extent) that Licensee uses a Zoom Application solely with its own subscription to the Services. Licensee’s consent to such Account Access shall be deemed given in such cases.
+
+8. Licensee’s Representations, Warranties, and Covenants
+
+8.1. Licensee represents and warrants that its Zoom Applications are not intended, designed, or marketed for use in environments requiring fail-safe performance (e.g., emergency medical care, hazardous activities) or in which the failure of the Zoom Applications, the Materials, or the Services could lead to death, personal injury, or severe physical or environmental damage. Licensee acknowledges and agrees that the Materials and the Services are designed and intended for general business use only and not for the foregoing purposes.
+
+8.2. Licensee represents and warrants that it has notified all users or its Zoom Applications that their Account Data will be received from Zoom and described in reasonable detail how Licensee will use this Account Data, and that Licensee will comply with this notice and its privacy policy at all times when processing data. Licensee further represents and warrants that it has notified users that Zoom is not responsible for the privacy, security or integrity of such data.
+
+8.3. Licensee further represents and warrants that to the extent Licensee’s Zoom Applications store, process, or transmit Account Data, neither Licensee nor Licensee’s Zoom Application will, without appropriate prior user consent or to the extent required by applicable law, (i) modify the content of Account Data in a manner that adversely affects the integrity of Account Data, (ii) discloses Account Data to any third party, or (iii) use Account Data for any purpose other than providing the Zoom Application functionality to users of such Zoom Application. Licensee shall maintain and handle all Account Data in accordance with privacy and security measures reasonably adequate to preserve its confidentiality and security and all applicable privacy laws and regulations, and in no event less protective than the measures and policies set forth in the Privacy Notice or other Zoom Legal Agreements available here https://zoom.us/legalLicensee represents and warrants that it will comply with all data protection and privacy laws, including the California Consumer Privacy Act (CCPA) and the EU General Data Protection Regulation (GDPR), and will cease accessing, using, processing or transferring data immediately upon the withdrawal of consent by Subscriber, and will comply with all requests to delete data, and will delete all data according to the terms of the Marketplace Developer Agreement.
+
+8.4. Licensee represents, warrants and covenants that:
+
+8.4.1. Its Zoom Applications and Licensee Marks, the use of such Zoom Applications by its users, and the activities with respect to such Zoom Applications and Licensee Marks undertaken by Zoom in accordance with the terms of this Agreement, do not and will not violate, misappropriate, or infringe the Intellectual Property Rights of any person or entity;
+
+8.4.2. Licensee and Licensee’s Zoom Application will comply with all applicable foreign and domestic laws and regulations, including, without limitation, all applicable export control laws, and maintain all licenses, permits and other permissions necessary to develop, implement and Publish its Zoom Applications;
+
+8.4.3. Its Zoom Applications do not and will not contain or introduce Malicious Software into the Services, the Materials, any Account Data or other data stored or transmitted using the Services, or any Subscriber Components, and Licensee shall promptly take all actions necessary to remove and remediate such Malicious Software;
+
+8.4.4. Licensee shall implement at least industry best practices to ensure the security of its Zoom Applications;
+
+8.4.5. Its Zoom Applications do not contain any security vulnerabilities, and Licensee shall promptly take all actions necessary to remediate any security vulnerabilities;
+
+8.4.6. Licensee shall use best efforts to protect the confidentiality and integrity of Account Data in Licensee’s possession, custody, or control, including without limitation implementing at least industry standard physical and technical security safeguards, policies, and procedures;
+
+8.4.7. Licensee shall not knowingly attempt to circumvent any security measures implemented by Zoom;
+
+8.4.8. Its Zoom Applications are not designed to facilitate the sending of Spam;
+
+8.4.9. Its Zoom Applications shall not degrade the performance of or materially adversely affect the operation of the Services or Subscribers’ use and enjoyment of the Services;
+
+8.4.10. The Zoom Application shall not be designed to violate, or intended to facilitate the violation of, the EULA or this Agreement, including without limitation the use policies set forth in the EULA; and
+
+8.4.11. It has all right, power, and authority to grant the licenses granted to Zoom herein.
+
+9. Ownership
+
+9.1. Subject to the limited licenses expressly provided in this Agreement, nothing in this Agreement transfers or assigns to Zoom any of Licensee’s Intellectual Property Rights in its Zoom Applications or Licensee’s Marks or other technology
+
+9.2. Nothing in this Agreement transfers or assigns to Licensee any of Zoom’s Intellectual Property Rights in the Services, the Materials, including the Zoom API and the Zoom SDK, the Zoom Marks, Zoom’s other technology, or Zoom’s or Subscribers’ respective Intellectual Property Rights in any Account Data.
+
+10. Support
+
+10.1. Zoom is not obligated to provide any support to Licensee for the Materials or Licensee’s Zoom Application (or its interoperation with the Materials).
+
+10.2. Licensee is solely responsible for providing all support and technical assistance to its End Users with respect to Licensee’s Zoom Application. Licensee agrees to use commercially reasonable efforts to provide support to its End Users.
+
+10.3. Licensee acknowledges and agrees that with respect to the Zoom Applications, Zoom will not provide support or technical assistance to Licensee’s End Users, and Licensee shall not represent to its End Users that Zoom is available to provide such support.
+
+11. No Service Level Agreement
+
+11.1. Zoom shall use commercially reasonable efforts to ensure the availability of the Materials to Licensee. Notwithstanding the foregoing, Zoom does not guarantee any uptime, availability, performance, or integrity of the Materials . Moreover, Zoom shall not be liable to Licensee or its End Users for the unavailability of the Materials or the failure of the Materials to perform in accordance with its specifications. Licensee shall not represent to its End Users any availability or performance levels with respect to the Materials or the Services.
+
+11.2. Zoom is not required to provide any prior notice to Licensee or its End Users of planned or unplanned downtime of the Zoom API.
+
+11.3. In the event of any failure of the Service for the Licensee or an End User, such failure will be governed by the terms of the EULA with the Licensee or End User (as applicable).
+
+12. Confidentiality
+
+12.1. Licensee may, from time to time, gain access to Confidential Information. Licensee may use Confidential Information only to the extent necessary to exercise its rights under this Agreement and for no other purpose. Licensee may not disclose Confidential Information to a third party without Zoom’s prior express written consent. Without limiting any other obligation of Licensee under this Agreement, Licensee agrees that it will protect Confidential Information from unauthorized use, access, or disclosure in the same manner that Licensee would use to protect its own confidential and proprietary information of a similar nature, but in no event less than a reasonable degree of care.
+
+12.2. In event Licensee receives a subpoena or other form of compulsory process requiring or purporting to require disclosure Confidential Information, Licensee shall first (a) promptly notify Zoom in writing, (b) reasonably cooperate with Zoom (at Zoom’s sole expense) in the event Zoom chooses to seek a protective order or other remedy to prevent or limit disclosure of Confidential Information (a “Protective Order”), and (c) not disclose any Confidential Information until Zoom has chosen in its sole discretion to waive compliance with this Section 12 as to such Confidential Information or has been granted or denied a Protective Order. In the event Licensee must disclose Confidential Information after complying with this Section 12.2, Licensee shall disclose such information only to the extent legally required.
+
+13. Disclaimer of Warranties
+
+13.1. THE MATERIALS ARE INTENDED FOR GENERAL BUSINESS USE ONLY. THEY ARE NOT DESIGNED, MANUFACTURED, INTENDED, OR RECOMMENDED FOR USE OR RESALE AS EQUIPMENT OR SERVICES IN ENVIRONMENTS REQUIRING FAIL-SAFE PERFORMANCE (E.G., EMERGENCY MEDICAL CARE, HAZARDOUS ACTIVITIES) OR IN WHICH THE FAILURE OF THE SERVICES COULD LEAD TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE. ZOOM SPECIFICALLY DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY OF FITNESS FOR HIGH RISK ACTIVITIES OR SERVICES.
+
+13.2. TO THE FULLEST EXTENT PERMITTED BY LAW, THE SERVICES, THE ZOOM API, THE ZOOM SDK, ALL SERVER AND NETWORK COMPONENTS, WEB SERVICES, SOFTWARE, AND DOCUMENTATION, ARE PROVIDED ON AN “AS-IS” AND “AS AVAILABLE” BASIS, WITHOUT ANY WARRANTIES OF ANY KIND. ZOOM EXPRESSLY DISCLAIMS ANY AND ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, TITLE, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. LICENSEE ACKNOWLEDGES THAT ZOOM DOES NOT WARRANT THAT THE SERVICE OR MATERIALS WILL BE UNINTERRUPTED, TIMELY, SECURE, ERROR-FREE, OR FREE FROM VIRUSES OR OTHER MALICIOUS SOFTWARE, OR THAT ANY DEFECT IN THE MATERIALS WILL BE CORRECTED. IN ADDITION, ZOOM MAKES NO WARRANTIES THAT THE MATERIALS SHALL NOT CAUSE DISRUPTIONS, ERRORS, LOSS OF DATA, LOSS OF USE, OR OTHER PROBLEMS WITH YOUR ZOOM APPLICATION OR ANY COMPUTER ON WHICH THE ZOOM APPLICATION IS INSTALLED OR USED. ZOOM IS NOT RESPONSIBLE FOR ANY DAMAGES OR HARM ARISING FROM YOUR USE OF THE ZOOM APPLICATION. NO INFORMATION OR ADVICE OBTAINED BY LICENSEE, ITS END USERS, OR OTHER THIRD PARTIES FROM ZOOM OR THROUGH THE SERVICE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THESE TERMS.
+
+14. Limitation of Liability
+
+14.1. UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY (WHETHER IN CONTRACT, TORT, NEGLIGENCE, OR OTHERWISE) WILL ZOOM, ITS AFFILIATES, OR THEIR RESPECTIVE OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, SUBCONTRACTORS, RESELLERS, OR SUPPLIERS BE LIABLE TO LICENSEE, ITS END USERS, OR ANY OTHER THIRD PARTIES FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST SALES OR BUSINESS, LOST DATA, BUSINESS INTERRUPTION, OR ANY OTHER LOSS INCURRED BY LICENSEE, ITS END USERS, OR ANY OTHER THIRD PARTY IN CONNECTION WITH THIS AGREEMENT, REGARDLESS OF WHETHER ZOOM HAS BEEN ADVISED OF THE POSSIBILITY OF OR COULD HAVE FORESEEN SUCH DAMAGES.
+
+14.2. NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS AGREEMENT, ZOOM’S AGGREGATE LIABILITY TO LICENSEE, ITS END USERS, OR ANY OTHER THIRD PARTY ARISING OUT OR RELATING TO THIS AGREEMENT SHALL IN NO EVENT EXCEED FIVE HUNDRED U.S. DOLLARS ($500.00). ANY CLAIM ARISING OUT OF OR RELATING TO THIS AGREEMENT MUST BE BROUGHT WITHIN ONE (1) YEAR OF THE EVENTS GIVING RISE TO THE CLAIM.
+
+14.3. Some jurisdictions do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply to Licensee. IN THESE JURISDICTIONS, ZOOM’S LIABILITY WILL BE LIMITED TO THE GREATEST EXTENT PERMITTED BY LAW. The limitations set forth in this Section 14 will survive termination or expiration of this Agreement and apply even if any limited remedy specified in this agreement is found to have failed of its essential purpose.
+
+15. Indemnification
+
+15.1. Licensee will indemnify and hold Zoom, its Affiliates, and their respective officers, directors, employees, agents, subcontractors, and resellers harmless against any claim brought by a third party (including, without limitation, Licensee’s End Users) against Zoom arising from or relating to (i) any breach of this Agreement by Licensee or those acting on its behalf, (ii) any violation of law or regulation by Licensee or the Zoom Application, (iii) Licensee’s gross negligence, recklessness, or willful misconduct, and (iv) any use of Licensee’s Zoom Application, the Zoom API (but, for the avoidance of doubt, not Subscribers’ use of the Services independent of Licensee’s Zoom Application).
+
+16. Publicity
+
+16.1. Zoom may publicly identify Licensee as a user of the Materials in any medium reasonably related to the Materials or Services. Licensee hereby grants Zoom, its Affiliates, and their respective agents an irrevocable, perpetual, worldwide, non-exclusive, fully paid-up, royalty-free license (with right to sublicense) to use, reproduce, publish, and display Licensee’s name, trademarks, service marks, designs, logos, and symbols in connection with such purposes.
+
+17. Term and Termination
+
+17.1. This Agreement shall commence upon acceptance of these terms and will remain in effect until terminated pursuant to this Section 17.
+
+17.2. Either party may terminate this Agreement according to the termination provisions of the Marketplace Developer Agreement, including the Effect of Termination provisions.
+
+17.3. Any termination or expiration of this Agreement shall also terminate the licenses granted hereunder.
+
+
+
+18. Miscellaneous
+
+18.1. Zoom may change the terms of this Agreement from time to time and will use commercially reasonable efforts to provide notice to Licensee. The modified terms shall replace and supersede all prior versions of this Agreement.
+
+18.2. Zoom may assign this Agreement and any of its rights and obligations hereunder at any time. Licensee may not transfer or assign this Agreement or any of its rights or obligations under this Agreement. Any purported transfer or assignment in violation of this section is void. Subject to the foregoing, this Agreement shall be binding on and inure to the benefit of the parties, their successors, permitted assigns, and legal representatives.
+
+18.3. A Party’s failure to enforce any provision of this Agreement does not constitute a waiver of that provision or of any other provisions of this Agreement.
+
+18.4. If any part of this Agreement is held invalid or unenforceable, that portion shall be construed to reflect the parties’ original intent, and the remaining portions shall remain in full force and effect.
+
+18.5. Nothing in this Agreement shall be deemed or construed to constitute or create employment, partnership, association, joint venture, agency, or fiduciary relationship between the parties.
+
+18.6. This Agreement shall be governed by the laws of the State of California and the United States without regard to conflict of laws principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply to this Agreement or Licensee’s use of the Materials.
+
+18.7. Any claim, question, or disagreement between Licensee and Zoom, its Affiliates, or their respective officers, directors, employees, agents, subcontractors, or resellers arising from or relating to this Agreement (a “Dispute”) shall be adjudicated exclusively in the Superior Court of California, County of San Mateo for state court cases or the United States District Court of the Northern District of California for federal court cases. Each Party agrees to submit to the exclusive jurisdiction of such courts with respect to any Disputes and agrees not to bring any Disputes in any other court or adjudicative body. Each Party hereby consents to venue and personal jurisdiction in such courts with respect to such Disputes and irrevocably waives any right that it may have to assert that such forum is not convenient or that any such court lacks jurisdiction.
+
+18.8. There are no third-party beneficiaries to this Agreement.
+
+18.9. The section titles in this Agreement are for convenience only and have no legal or contractual effect.
+
+18.10. This Agreement constitutes the entire agreement among the Parties with respect to the subject matter of this Agreement.
+
