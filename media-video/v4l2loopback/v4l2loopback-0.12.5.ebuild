@@ -12,23 +12,18 @@ case ${PV} in
 	EGIT_REPO_URI="git://github.com/umlaeute/v4l2loopback.git"
 	;;
 *)
-	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86"
-	SNAPSHOT_COMMIT="0b8feb80fdef9a415d8250bca1790b3ff23e8391"
-	SRC_URI="https://github.com/umlaeute/v4l2loopback/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/umlaeute/${PN}/archive/v${PV} -> ${P}.tar.gz"
 	;;
 esac
 
 DESCRIPTION="v4l2 loopback device which output is it's own input"
 HOMEPAGE="https://github.com/umlaeute/v4l2loopback"
+RESTRICT="mirror"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix_kernel_5.6.patch
-)
 
 CONFIG_CHECK="VIDEO_DEV"
 MODULE_NAMES="v4l2loopback(video:)"
