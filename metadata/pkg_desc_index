@@ -12,6 +12,7 @@ games-strategy/glfrontier 20060623-r4: Frontier: Elite 2 with OpenGL support
 media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
 media-plugins/vocoder-ladspa 0.4: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
+media-video/v4l2loopback 0.12.5: v4l2 loopback device which output is it's own input
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 5.3.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
