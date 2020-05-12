@@ -11,4 +11,4 @@ RESTRICT=mirror strip
 SLOT=0
 SRC_URI=https://packages.microsoft.com/yumrepos/ms-teams/teams-1.3.00.5153-1.x86_64.rpm
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	rpm	760ff223c2c4299b68ea901e24c4cabd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cdf1ddd178d9ddefe2d50f05553fe492
+_md5_=eb6d0ddf1e9f9549d3386ac465992f3d
