@@ -63,6 +63,9 @@ src_install() {
 
 	exeinto /usr/bin
 	doexe "${S}"/usr/bin/teams
+
+	exeinto /usr/share/teams
+	doexe "${S}"/usr/share/teams/teams
 }
 
 pkg_preinst() {
