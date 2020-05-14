@@ -10,4 +10,4 @@ RESTRICT=mirror strip
 SLOT=0
 SRC_URI=https://d11yldzmag5yn.cloudfront.net/prod/5.0.403652.0509/zoom_x86_64.tar.xz -> zoom-5.0.403652.0509.tar.xz
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=864be13098f061f90560623bdc58a65c
+_md5_=275268e7754790a0e32dc71f4f229281
