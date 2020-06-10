@@ -7,14 +7,15 @@ inherit xdg-utils gnome2-utils rpm
 
 IUSE="gnome"
 
-DESCRIPTION="Microsoft Teams Linux Client"
+DESCRIPTION="Microsoft Teams Linux Client (Insiders Build)"
 HOMEPAGE="https://teams.microsoft.com/"
-SRC_URI="https://packages.microsoft.com/yumrepos/ms-teams/teams-${PV}-1.x86_64.rpm"
+SRC_URI="https://packages.microsoft.com/yumrepos/ms-teams/${P}-1.x86_64.rpm"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="
+	!app-office/teams
 	app-accessibility/at-spi2-atk
 	app-crypt/libsecret
 	dev-libs/atk
@@ -22,6 +23,7 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/nspr
 	dev-libs/nss
+	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	net-print/cups
@@ -59,13 +61,13 @@ src_install() {
 	insinto /usr/share
 	doins -r "${S}"/usr/share/applications
 	doins -r "${S}"/usr/share/pixmaps
-	doins -r "${S}"/usr/share/teams
+	doins -r "${S}"/usr/share/${PN}
 
 	exeinto /usr/bin
-	doexe "${S}"/usr/bin/teams
+	doexe "${S}"/usr/bin/${PN}
 
-	exeinto /usr/share/teams
-	doexe "${S}"/usr/share/teams/teams
+	exeinto /usr/share/${PN}
+	doexe "${S}"/usr/share/${PN}/${PN}
 }
 
 pkg_preinst() {
