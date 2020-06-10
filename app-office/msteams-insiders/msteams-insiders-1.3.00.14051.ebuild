@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
+	!app-office/msteams
 	app-accessibility/at-spi2-atk
 	app-crypt/libsecret
 	dev-libs/atk
