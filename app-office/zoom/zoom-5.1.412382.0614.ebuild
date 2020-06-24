@@ -121,11 +121,8 @@ src_install() {
 	doins -r "${S}"/{json,sip,timezones,translations}
 	doins "${S}"/*.{dat,pcm,pem,properties,sh,txt}
 
-	# fix launcher path, no /opt stuff needed
-	sed -i -e 's,/opt/zoom,/usr/bin,' "${S}"/zoomlinux || die
-
 	exeinto /usr/bin
-	doexe "${S}"/{zoom,ZoomLauncher,zoomlinux,zopen}
+	doexe "${S}"/{zoom,ZoomLauncher,zoom.sh,zopen}
 
 	make_desktop_entry "${PN}linux" "Zoom" "${PN}" "AudioVideo;Network" \
 	    "Version=1.0\nTerminal=false\nStartupNotify=true\nStartupWMClass=Zoom\nMimeType=x-scheme-handler/zoom\nX-KDE-Protocols=zoom"
