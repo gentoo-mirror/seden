@@ -124,7 +124,7 @@ src_install() {
 	exeinto /usr/bin
 	doexe "${S}"/{zoom,ZoomLauncher,zoom.sh,zopen}
 
-	make_desktop_entry "${PN}linux" "Zoom" "${PN}" "AudioVideo;Network" \
+	make_desktop_entry "${PN}" "Zoom" "${PN}" "AudioVideo;Network" \
 	    "Version=1.0\nTerminal=false\nStartupNotify=true\nStartupWMClass=Zoom\nMimeType=x-scheme-handler/zoom\nX-KDE-Protocols=zoom"
 }
 
