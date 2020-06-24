@@ -38,4 +38,8 @@
  By downloading this app, you agree to the license and privacy terms (see aka.ms/privacy).
  .
  To learn more, please visit aka.ms/microsoftteams</longdescription>
+        <use>
+                <flag name="chromium">Use system-ffmpeg with Chromium support.</flag>
+                <flag name="mate">Support Mate Desktop</flag>
+        </use>
 </pkgmetadata>
