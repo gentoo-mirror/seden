@@ -2,8 +2,8 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-office/teams-insiders:chromium - Use system-ffmpeg with Chromium support.
-app-office/teams-insiders:mate - Support Mate Desktop
+app-office/teams-insiders:system-ffmpeg - Use media-video/ffmpeg instead of the bundled lib. Might crash MS Teams!
+app-office/teams-insiders:system-mesa - Use media-libs/mesa instead of the bundled EGL and GLESv2 libs. Might crash MS Teams!
 dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
 dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
