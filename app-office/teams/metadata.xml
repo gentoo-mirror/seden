@@ -38,4 +38,12 @@
  By downloading this app, you agree to the license and privacy terms (see aka.ms/privacy).
  .
  To learn more, please visit aka.ms/microsoftteams</longdescription>
+ <use>
+        <flag name="system-ffmpeg">
+                Use media-video/ffmpeg instead of the bundled lib. Might crash MS Teams!
+        </flag>
+        <flag name="system-mesa">
+                Use media-libs/mesa instead of the bundled EGL and GLESv2 libs. Might crash MS Teams!
+        </flag>
+</use>
 </pkgmetadata>

@@ -12,7 +12,7 @@ HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/yumrepos/ms-teams/${P}-1.x86_64.rpm"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	!app-office/teams-insiders
