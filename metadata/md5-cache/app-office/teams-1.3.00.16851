@@ -1,6 +1,6 @@
 BDEPEND=system-ffmpeg? ( media-video/ffmpeg[chromium] ) system-mesa? ( media-libs/mesa[egl,gles2] )
 DEFINED_PHASES=install postinst postrm unpack
-DESCRIPTION=Microsoft Teams Linux Client (Insiders Build)
+DESCRIPTION=Microsoft Teams Linux Client
 EAPI=7
 HOMEPAGE=https://teams.microsoft.com/
 IUSE=system-ffmpeg system-mesa
@@ -9,6 +9,6 @@ LICENSE=GitHub
 RDEPEND=!app-office/teams app-accessibility/at-spi2-atk app-crypt/libsecret dev-libs/atk dev-libs/expat dev-libs/glib dev-libs/nspr dev-libs/nss gnome-base/libgnome-keyring media-libs/alsa-lib media-libs/fontconfig net-print/cups sys-apps/dbus sys-apps/util-linux x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXrandr x11-libs/libXrender x11-libs/libXtst x11-libs/libxcb x11-libs/libxkbfile x11-libs/pango system-ffmpeg? ( media-video/ffmpeg[chromium] ) system-mesa? ( media-libs/mesa[egl,gles2] )
 RESTRICT=primaryuri mirror strip
 SLOT=0
-SRC_URI=https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.3.00.14051_amd64.deb
+SRC_URI=https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.3.00.16851_amd64.deb
 _eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb	unpacker	8ee8c1a2f31437d1766aac890d07a7f4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=e5f7eb9b19a3d3319078079d9ba1c2ce
+_md5_=3be4a329e42b001b5fd2fbbabd04bc4f
