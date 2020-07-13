@@ -7,7 +7,7 @@ inherit eutils desktop unpacker xdg-utils
 
 IUSE="system-ffmpeg system-mesa"
 
-DESCRIPTION="Microsoft Teams Linux Client (Insiders Build)"
+DESCRIPTION="Microsoft Teams Linux Client"
 HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
 LICENSE="GitHub"

@@ -12,7 +12,7 @@ HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 BDEPEND="
 	system-ffmpeg? ( media-video/ffmpeg[chromium] )
