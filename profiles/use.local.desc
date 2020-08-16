@@ -16,6 +16,7 @@ dev-games/cegui:ogre - Enable the OGRE renderer
 dev-games/cegui:tinyxml - Enable the Tiny XML parser module
 dev-games/cegui:xerces-c - Enable the Xerces-C++ XML parser module
 dev-games/cegui:zip - Enable the Minizip resource provider
+dev-games/ogre:boost - Enable boost support
 dev-games/ogre:cache - Enable GL state cache support
 dev-games/ogre:cg - NVIDIA toolkit plugin
 dev-games/ogre:deprecated - Build deprecated component 'HLMS' and nodeless positioning of Lights and Cameras.
@@ -23,10 +24,16 @@ dev-games/ogre:double-precision - More precise calculations at the expense of sp
 dev-games/ogre:egl - Use egl instead of glx
 dev-games/ogre:fine-granularity - Enable fine light mask granularity. This impacts on performance and should not be enabled unless an application really needs it.
 dev-games/ogre:freeimage - Support images via media-libs/freeimage
+dev-games/ogre:gl3plus - Build OpenGL 3+ RenderSystem (EXPERIMENTAL)
+dev-games/ogre:gles2 - Build OpenGL ES 2.x RenderSystem
+dev-games/ogre:gles3 - Enable OpenGL ES 3.x Features
 dev-games/ogre:json - Use dev-libs/rapidjson (needed by Hlms JSON materials)
 dev-games/ogre:legacy-animations - Use the skeletal animation from 1.x. It's much slower, but the new system is still experimental.
+dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois for samples
+dev-games/ogre:poco - When USE=threads, use poco for threading
 dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
-dev-games/ogre:tools - Build and install helper tools
+dev-games/ogre:tbb - When USE=threads, use tbb for threading
+dev-games/ogre:tools - Build and install MeshUpgrader, VRMLConverter and XMLConverter
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
 dev-util/codeblocks:contrib - Build additional contrib components
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
