@@ -75,20 +75,20 @@ PATCHES=(
 	"${FILESDIR}"/${P}-media_path.patch
 	"${FILESDIR}"/${P}-resource_path.patch
 	"${FILESDIR}"/${P}-fix_Simple_demo.patch
+	"${FILESDIR}"/${P}-upgrade_imgui.patch
 	"${FILESDIR}"/${PN}-1.10.12-use_system_tinyxml.patch
 )
 
 src_unpack() {
 	unpack ${P}.tar.gz || die "Unpacking ${P}.zip failed"
 
-	# Ogre 1.12.6 includes imgui, but as a submodule, it is not included
-	# in the release.
-	cd "${S}"/Components/Overlay/src || die "Unpack incomplete"
+	# Ogre 1.12.8 includes imgui, but as a submodule, it is not included
+	# in the release. The build system tries to download it, that may
+	# a) fail and
+	# b) uses an old release 1.73
+	# So we are doing it ourselves.
+	cd "${S}" || die "Unpack incomplete"
 	unpack ${IMGUI_P}.tar.gz || die "Unpacking ${IMGUI_P}.zip failed"
-
-	# Without this 'rm', mv puts ${IMGUI_P} *into* ${IMGUI_PN} instead of renaming.
-	rm -rf "${IMGUI_PN}" || die "Removing ${IMGUI_PN} failed"
-	mv "${IMGUI_P}" "${IMGUI_PN}" || die "Moving ${IMGUI_P} to ${IMGUI_PN} failed"
 }
 
 src_prepare() {
