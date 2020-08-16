@@ -75,7 +75,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-media_path.patch
 	"${FILESDIR}"/${P}-resource_path.patch
 	"${FILESDIR}"/${P}-fix_Simple_demo.patch
-	"${FILESDIR}"/${P}-secure_input_listener.patch
 	"${FILESDIR}"/${PN}-1.10.12-use_system_tinyxml.patch
 )
 
