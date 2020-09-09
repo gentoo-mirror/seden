@@ -34,7 +34,6 @@ RDEPEND="
 	>=kde-plasma/ksysguard-${PV}:${SLOT}
 	>=kde-plasma/kwayland-integration-${PV}:${SLOT}
 	>=kde-plasma/kwayland-server-${PV}:${SLOT}
-	>=kde-plasma/kwin-${PV}:${SLOT}
 	|| ( >=kde-plasma/kwin-${PV}:${SLOT}
 		>=gui-wm/kwinft-${PVCUT2}:5
 	)
