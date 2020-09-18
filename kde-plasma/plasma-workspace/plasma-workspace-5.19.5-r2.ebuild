@@ -129,6 +129,7 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
 	"${FILESDIR}/${PN}-5.19.2-use-PlasmaExtras.PlaceholderMessage.patch" # KDE-Bug #422684
+	"${FILESDIR}/${PN}-5.19.5-login-button-size.patch"
 )
 
 RESTRICT+=" test"
