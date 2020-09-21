@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop unpacker xdg-utils
 
 IUSE="system-ffmpeg system-mesa"
 
