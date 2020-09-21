@@ -3,16 +3,16 @@
 
 EAPI="7"
 
-inherit eutils desktop unpacker xdg-utils
+inherit desktop unpacker xdg-utils
 
 IUSE="system-ffmpeg system-mesa"
 
-DESCRIPTION="Microsoft Teams Linux Client (Insiders Build)"
+DESCRIPTION="Microsoft Teams Linux Client"
 HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 BDEPEND="
 	system-ffmpeg? ( media-video/ffmpeg[chromium] )
@@ -27,7 +27,6 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/nspr
 	dev-libs/nss
-	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	net-print/cups
@@ -60,6 +59,9 @@ S="${WORKDIR}"
 
 src_install() {
 	local dest=/usr
+
+	# Remove keytar3, it needs libgnome-keyring. keytar4 uses libsecret and is used instead
+	rm -rf "${WORKDIR}/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3" || die
 
 	insinto ${dest}/share
 	doins -r "${S}"${dest}/share/applications

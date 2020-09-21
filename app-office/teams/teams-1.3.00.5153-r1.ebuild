@@ -3,23 +3,19 @@
 
 EAPI="7"
 
-inherit eutils desktop unpacker xdg-utils
+inherit desktop eutils rpm xdg-utils
 
-IUSE="system-ffmpeg system-mesa"
+IUSE=""
 
 DESCRIPTION="Microsoft Teams Linux Client"
 HOMEPAGE="https://teams.microsoft.com/"
-SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
+SRC_URI="https://packages.microsoft.com/yumrepos/ms-teams/${P}-1.x86_64.rpm"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
-BDEPEND="
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
-	system-mesa? ( media-libs/mesa[egl,gles2] )
-"
 RDEPEND="
-	!app-office/teams
+	!app-office/teams-insiders
 	app-accessibility/at-spi2-atk
 	app-crypt/libsecret
 	dev-libs/atk
@@ -27,7 +23,6 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/nspr
 	dev-libs/nss
-	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	net-print/cups
@@ -50,7 +45,6 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/libxkbfile
 	x11-libs/pango
-	${BDEPEND}
 "
 DEPEND=""
 PDEPEND=""
@@ -58,8 +52,15 @@ RESTRICT="primaryuri mirror strip"
 
 S="${WORKDIR}"
 
+src_unpack() {
+	rpm_unpack ${A}
+}
+
 src_install() {
 	local dest=/usr
+
+	# Remove keytar3, it needs libgnome-keyring. keytar4 uses libsecret and is used instead
+	rm -rf "${WORKDIR}/usr/share/teams/resources/app.asar.unpacked/node_modules/keytar3" || die
 
 	insinto ${dest}/share
 	doins -r "${S}"${dest}/share/applications
@@ -71,30 +72,6 @@ src_install() {
 
 	exeinto ${dest}/share/${PN}
 	doexe "${S}"${dest}/share/${PN}/${PN}
-
-	# Use system ffmpeg, if wanted. Might crash MS Teams!
-	if use system-ffmpeg; then
-		rm -f "${D}"/${dest}/share/${PN}/libffmpeg.so
-		dosym "${dest}/$(get_libdir)/chromium/libffmpeg.so" "${dest}/share/${PN}/libffmpeg.so"
-	else
-		# Otherwise keep the executable bit on the bundled lib
-		doexe "${S}"${dest}/share/${PN}/libffmpeg.so
-	fi
-
-	# Use system mesa, if wanted. Might Crash MS Teams!
-	if use system-mesa; then
-		rm -f "${D}"/${dest}/share/${PN}/libEGL.so
-		rm -f "${D}"/${dest}/share/${PN}/libGLESv2.so
-	else
-		# Otherwise keep original executable flag
-		doexe "${S}"/${dest}/share/${PN}/libEGL.so
-		doexe "${S}"/${dest}/share/${PN}/libGLESv2.so
-	fi
-
-	# Keep swiftshader, used in GPU-/Head-less systems
-	exeinto ${dest}/share/${PN}/swiftshader
-	doexe "${S}"/${dest}/share/${PN}/swiftshader/libEGL.so
-	doexe "${S}"/${dest}/share/${PN}/swiftshader/libGLESv2.so
 
 	sed -i '/OnlyShowIn=/d' "${S}"${dest}/share/applications/${PN}.desktop
 	domenu "${S}"${dest}/share/applications/${PN}.desktop
