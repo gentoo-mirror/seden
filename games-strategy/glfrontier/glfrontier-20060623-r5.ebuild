@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils
+inherit desktop
 
 MY_PN=glfrontier
 MY_P=${MY_PN}-${PV}
 DESCRIPTION="Frontier: Elite 2 with OpenGL support"
-HOMEPAGE="http://tom.noflag.org.uk/glfrontier.html"
+HOMEPAGE="https://www.frontierastro.co.uk/Hires/hiresfe2.html"
 
 SRC_URI="https://prydeworx.com/glfrontier/frontvm3-20060623.tar.bz2
 	https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2"
@@ -25,12 +25,11 @@ RDEPEND="
 	media-libs/libogg"
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}
+PATCHES=(
+	"${FILESDIR}/${MY_P}"-fix_missing_math_lib.patch
+)
 
-src_prepare() {
-	epatch "${FILESDIR}/${MY_P}"-fix_missing_math_lib.patch
-	eapply_user
-}
+S=${WORKDIR}
 
 src_compile() {
 	emake -C frontvm3-20060623 -f Makefile-C || die "make install failed"
