@@ -6,14 +6,12 @@ EAPI=7
 DESCRIPTION="Merge this to pull in all Plasma 5 packages"
 HOMEPAGE="https://kde.org/plasma-desktop"
 
-PVCUT2=$(ver_cut 1-2)
-
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="bluetooth +browser-integration crypt +desktop-portal discover
-+display-manager +elogind grub gtk +handbook +kwallet +legacy-systray
-+networkmanager plymouth pulseaudio qrcode +sddm sdk systemd thunderbolt +wallpapers"
+KEYWORDS="~amd64"
+IUSE="bluetooth +browser-integration crypt +desktop-portal discover +display-manager
++elogind grub gtk +handbook +kwallet kwinft +legacy-systray +networkmanager
+plymouth pulseaudio qrcode +sddm sdk systemd thunderbolt +wallpapers"
 
 REQUIRED_USE="^^ ( elogind systemd )"
 
@@ -34,11 +32,10 @@ RDEPEND="
 	>=kde-plasma/ksysguard-${PV}:${SLOT}
 	>=kde-plasma/kwayland-integration-${PV}:${SLOT}
 	>=kde-plasma/kwayland-server-${PV}:${SLOT}
-	|| ( >=kde-plasma/kwin-${PV}:${SLOT}
-		>=gui-wm/kwinft-${PVCUT2}:5
-	)
+	!kwinft? ( >=kde-plasma/kwin-${PV}:${SLOT} )
+	kwinft? ( >=gui-wm/kwinft-$(ver_cut 1-2):${SLOT} )
 	>=kde-plasma/kwrited-${PV}:${SLOT}
-	>=kde-plasma/libkscreen-${PV}:${SLOT}
+	>=kde-plasma/libkscreen-${PV}:${SLOT}[kwinft?]
 	>=kde-plasma/libksysguard-${PV}:${SLOT}
 	>=kde-plasma/milou-${PV}:${SLOT}
 	>=kde-plasma/oxygen-${PV}:${SLOT}
