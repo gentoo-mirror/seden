@@ -6,11 +6,11 @@ app-office/teams-insiders:system-ffmpeg - Use media-video/ffmpeg instead of the 
 app-office/teams-insiders:system-mesa - Use media-libs/mesa instead of the bundled EGL and GLESv2 libs. Might crash MS Teams!
 dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performance.
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
-dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
 dev-util/codeblocks:contrib - Build additional contrib components
 gui-wm/kwinft:multimedia - Enable effect video button in desktop effects KCM
 gui-wm/kwinft:tools - Build internal tools for performance analysis at runtime.
+kde-plasma/libkscreen:kwinft - Enable support for gui-wm/kwinft via gui-libs/wrapland
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
@@ -22,6 +22,7 @@ kde-plasma/plasma-meta:elogind - Use sys-auth/elogind for session tracking
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and system settings module for GTK+
 kde-plasma/plasma-meta:kwallet - Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam
+kde-plasma/plasma-meta:kwinft - Pull in gui-wm/kwinft instead of kde-plasma/kwin
 kde-plasma/plasma-meta:legacy-systray - Add support for legacy applications using kde-plasma/xembed-sni-proxy
 kde-plasma/plasma-meta:plymouth - Pull in Breeze theme for sys-boot/plymouth
 kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume management
