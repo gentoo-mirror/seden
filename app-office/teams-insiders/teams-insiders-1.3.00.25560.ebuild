@@ -12,14 +12,14 @@ HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
 LICENSE="GitHub"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 BDEPEND="
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
-	system-mesa? ( media-libs/mesa[egl,gles2] )
+	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-mesa? ( <media-libs/mesa-20.2[egl,gles2] )
 "
 RDEPEND="
-	!app-office/teams
+	!net-im/teams
 	app-accessibility/at-spi2-atk
 	app-crypt/libsecret
 	dev-libs/atk
