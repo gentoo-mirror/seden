@@ -32,6 +32,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${WORKDIR}/${PN}-wrapland-support.patch"
+	"${FILESDIR}/${P}-fix_wrapland_support.patch"
 )
 
 # requires running session
