@@ -23,6 +23,6 @@ net-mail/davmail-bin 5.5.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
 net-misc/teamviewer 13.2.256470: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
-sys-auth/elogind 239.9999 241.9999 243.9999: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
 x11-misc/bumblebee 9999-r4: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/primus 9999-r1: Faster OpenGL offloading for Bumblebee
