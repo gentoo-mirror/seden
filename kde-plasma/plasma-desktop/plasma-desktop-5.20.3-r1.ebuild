@@ -74,6 +74,7 @@ COMMON_DEPEND="
 		>=gui-wm/kwinft-${PVCUT2}:5
 	)
 	>=kde-plasma/libksysguard-${PVCUT}:5
+	>=kde-plasma/libkworkspace-${PVCUT}:5
 	>=kde-plasma/plasma-workspace-${PVCUT}:5
 	>=media-libs/phonon-4.11.0
 	x11-libs/libX11
@@ -99,7 +100,6 @@ COMMON_DEPEND="
 	)
 	scim? ( app-i18n/scim )
 	semantic-desktop? ( >=kde-frameworks/baloo-${KFMIN}:5 )
-	policykit? ( sys-apps/accountsservice )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
@@ -118,6 +118,7 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/util-linux
 	x11-apps/setxkbmap
 	kaccounts? ( net-libs/signon-oauth2 )
+	policykit? ( sys-apps/accountsservice )
 "
 
 PATCHES=(
