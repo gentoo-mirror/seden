@@ -20,7 +20,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://gitlab.com/${PN}/${PN}/-/archive/${P/-/@}/${PN}-${P/-/@}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P/-/@}"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Wayland compositor and X11 window manager forked from KWin"
