@@ -98,6 +98,15 @@ src_install() {
 	doexe "${S}"/${dest}/share/${PN}/swiftshader/libEGL.so
 	doexe "${S}"/${dest}/share/${PN}/swiftshader/libGLESv2.so
 
+	# The overlay handler seems to need executable bits
+	# See: https://microsoftteams.uservoice.com/forums/908686-bug-reports/suggestions/40805257-screen-sharing-broken-on-linux-with-1-3-00-16851#comments
+	exeinto ${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin
+	doexe "${S}"/${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/platform.node
+	doexe "${S}"/${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/rect-overlay
+	doexe "${S}"/${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/sharing-indicator.node
+	doexe "${S}"/${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+	doexe "${S}"/${dest}/share/${PN}/resources/app.asar.unpacked/node_modules/slimcore/bin/trouter-client.node
+
 	sed -i '/OnlyShowIn=/d' "${S}"${dest}/share/applications/${PN}.desktop
 	domenu "${S}"${dest}/share/applications/${PN}.desktop
 }
