@@ -87,7 +87,7 @@ src_prepare() {
 		-e "s:\(WX_VERSION=\).*:\1${WXVERSION}:" \
 		-e "s:\(WX_RELEASE=\).*:\1${WXRELEASE}:" \
 		-e "s:\(WX_SUBVERSION=\).*:\1${WXSUBVERSION}:" \
-		-e '/WX_VERSION_TAG=/ s:${WX_RELEASE}:3.1:' \
+		-e '/WX_VERSION_TAG=/ s:${WX_RELEASE}:3.0:' \
 		configure || die
 }
 
