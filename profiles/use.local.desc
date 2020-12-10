@@ -31,4 +31,8 @@ net-misc/megasync:threads - Enable multi-threading
 net-misc/megasync:tools - Build the optional tools MEGACli and MEGASimplesync. Note: megacmd is now an 'example' application!
 sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 sys-auth/elogind:efi - Support rebooting into EFI firmware
+x11-libs/wxGTK:gstreamer - Enable the wxMediaCtrl class for playing audio and video through gstreamer.
+x11-libs/wxGTK:libmspack - Use dev-libs/libmspack) to acess Microsoft compression formats.
+x11-libs/wxGTK:sdl - Use Simple Directmedia Layer (media-libs/libsdl) for audio.
+x11-libs/wxGTK:stl - Default to use STL C++ classes.
 x11-misc/bumblebee:bbswitch - Add dependency on sys-kernel/bbswitch for PM feature
