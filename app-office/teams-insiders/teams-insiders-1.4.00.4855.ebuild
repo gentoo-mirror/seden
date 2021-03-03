@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 
 BDEPEND="
 	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
-	system-mesa? ( <media-libs/mesa-20.2[egl,gles2] )
+	system-mesa? ( <media-libs/mesa-21.0[egl,gles2] )
 "
 RDEPEND="
 	!net-im/teams
