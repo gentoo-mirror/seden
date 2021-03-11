@@ -85,10 +85,7 @@ src_install() {
 	# Use system ffmpeg, if wanted. Might crash MS Teams!
 	if use system-ffmpeg; then
 		rm -f "${D}"/${dest}/share/${PN}/libffmpeg.so
-		cat > 99teams <<-EOF
-		LDPATH=${EROOT}/usr/$(get_libdir)/chromium
-		EOF
-		doenvd 99teams
+		dosym "${dest}/$(get_libdir)/chromium/libffmpeg.so" "${dest}/share/${PN}/libffmpeg.so"
 		elog "Using system ffmpeg. This is experimental and may lead to crashes."
 	else
 		# Otherwise keep the executable bit on the bundled lib
