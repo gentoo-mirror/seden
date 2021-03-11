@@ -1,23 +1,22 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-inherit desktop unpacker xdg-utils
-
-IUSE="system-ffmpeg system-mesa"
+inherit chromium-2 desktop unpacker xdg-utils
 
 DESCRIPTION="Microsoft Teams Linux Client (Insiders Build)"
 HOMEPAGE="https://teams.microsoft.com/"
 SRC_URI="https://packages.microsoft.com/repos/ms-teams/pool/main/t/${PN}/${PN}_${PV}_amd64.deb"
-LICENSE="GitHub"
-SLOT="0"
-KEYWORDS="~amd64"
 
-BDEPEND="
-	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
-	system-mesa? ( <media-libs/mesa-21.0[egl,gles2] )
-"
+LICENSE="ms-teams-pre"
+SLOT="0"
+KEYWORDS="-* ~amd64"
+RESTRICT="bindist mirror splitdebug test"
+IUSE="system-ffmpeg system-mesa"
+
+QA_PREBUILT="*"
+
 RDEPEND="
 	!net-im/teams
 	app-accessibility/at-spi2-atk
@@ -49,13 +48,20 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/libxkbfile
 	x11-libs/pango
-	${BDEPEND}
+	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-mesa? ( media-libs/mesa[egl,gles2] )
 "
-DEPEND=""
-PDEPEND=""
-RESTRICT="primaryuri mirror strip"
 
 S="${WORKDIR}"
+
+pkg_pretend() {
+	chromium_suid_sandbox_check_kernel_config
+}
+
+src_configure() {
+	chromium_suid_sandbox_check_kernel_config
+	default
+}
 
 src_install() {
 	local dest=/usr
@@ -79,7 +85,11 @@ src_install() {
 	# Use system ffmpeg, if wanted. Might crash MS Teams!
 	if use system-ffmpeg; then
 		rm -f "${D}"/${dest}/share/${PN}/libffmpeg.so
-		dosym "${dest}/$(get_libdir)/chromium/libffmpeg.so" "${dest}/share/${PN}/libffmpeg.so"
+		cat > 99teams <<-EOF
+		LDPATH=${EROOT}/usr/$(get_libdir)/chromium
+		EOF
+		doenvd 99teams
+		elog "Using system ffmpeg. This is experimental and may lead to crashes."
 	else
 		# Otherwise keep the executable bit on the bundled lib
 		doexe "${S}"${dest}/share/${PN}/libffmpeg.so
@@ -89,6 +99,7 @@ src_install() {
 	if use system-mesa; then
 		rm -f "${D}"/${dest}/share/${PN}/libEGL.so
 		rm -f "${D}"/${dest}/share/${PN}/libGLESv2.so
+		elog "Using system mesa. This is experimental and may lead to crashes."
 	else
 		# Otherwise keep original executable flag
 		doexe "${S}"/${dest}/share/${PN}/libEGL.so
@@ -115,12 +126,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 }
