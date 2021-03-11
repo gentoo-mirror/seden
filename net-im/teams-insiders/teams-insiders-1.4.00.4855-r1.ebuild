@@ -13,13 +13,14 @@ LICENSE="ms-teams-pre"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror splitdebug test"
-IUSE="+gnome-keyring system-ffmpeg system-mesa"
+IUSE="system-ffmpeg system-mesa"
 
 QA_PREBUILT="*"
 
 RDEPEND="
 	!net-im/teams
 	app-accessibility/at-spi2-atk
+	app-crypt/libsecret
 	dev-libs/atk
 	dev-libs/expat
 	dev-libs/glib
@@ -47,7 +48,6 @@ RDEPEND="
 	x11-libs/libxcb
 	x11-libs/libxkbfile
 	x11-libs/pango
-	gnome-keyring? ( app-crypt/libsecret )
 	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
 	system-mesa? ( media-libs/mesa[egl,gles2] )
 "
@@ -69,11 +69,6 @@ src_install() {
 	# Remove keytar3, it needs libgnome-keyring. keytar4 uses libsecret and is used instead
 	rm -rf "${WORKDIR}/usr/share/teams-insiders/resources/app.asar.unpacked/node_modules/keytar3" || die
 
-	# If the user does not want any gnome packages, they can get rid of libsecret, too
-	if ! use gnome-keyring; then
-		rm -rf "${WORKDIR}/usr/share/teams-insiders/resources/app.asar.unpacked/node_modules/keytar4" || die
-	fi
-
 	insinto ${dest}/share
 	doins -r "${S}"${dest}/share/applications
 	doins -r "${S}"${dest}/share/pixmaps
@@ -90,10 +85,7 @@ src_install() {
 	# Use system ffmpeg, if wanted. Might crash MS Teams!
 	if use system-ffmpeg; then
 		rm -f "${D}"/${dest}/share/${PN}/libffmpeg.so
-		cat > 99teams <<-EOF
-		LDPATH=${EROOT}/usr/$(get_libdir)/chromium
-		EOF
-		doenvd 99teams
+		dosym "${dest}/$(get_libdir)/chromium/libffmpeg.so" "${dest}/share/${PN}/libffmpeg.so"
 		elog "Using system ffmpeg. This is experimental and may lead to crashes."
 	else
 		# Otherwise keep the executable bit on the bundled lib
