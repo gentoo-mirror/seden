@@ -3,6 +3,7 @@ DEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
 DESCRIPTION=Frontier: Elite 2 with OpenGL support
 EAPI=7
 HOMEPAGE=https://www.frontierastro.co.uk/Hires/hiresfe2.html
+INHERIT=desktop
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
