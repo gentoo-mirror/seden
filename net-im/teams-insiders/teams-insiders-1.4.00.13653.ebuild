@@ -54,10 +54,6 @@ RDEPEND="
 
 S="${WORKDIR}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-Fix_URL_opening.patch"
-)
-
 pkg_pretend() {
 	chromium_suid_sandbox_check_kernel_config
 }
@@ -84,7 +80,6 @@ src_install() {
 	exeinto ${dest}/share/${PN}
 	doexe "${S}"${dest}/share/${PN}/${PN}
 	doexe "${S}"${dest}/share/${PN}/chrome-sandbox
-	doexe "${S}"${dest}/share/${PN}/crashpad_handler
 
 	# Use system ffmpeg, if wanted. Might crash MS Teams!
 	if use system-ffmpeg; then
