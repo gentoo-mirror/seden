@@ -174,6 +174,14 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r demo
 
+	# link back pkgconfig files for backwards compatibility
+	dosym "mlt++-7.pc"         "/usr/$(get_libdir)/pkgconfig/mlt++.pc"
+	dosym "mlt-framework-7.pc" "/usr/$(get_libdir)/pkgconfig/mlt-framework.pc"
+
+	# Link back libraries for backwards compatibility
+	dosym "libmlt++-7.so" "/usr/$(get_libdir)/libmlt++.so"
+	dosym "libmlt-7.so"   "/usr/$(get_libdir)/libmlt.so"
+
 	#
 	# Install SWIG bindings
 	#
