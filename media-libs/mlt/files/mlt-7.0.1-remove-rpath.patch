@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2021-06-17 12:08:44.052017901 +0200
++++ b/CMakeLists.txt	2021-06-17 12:09:17.007019801 +0200
+@@ -69,6 +69,7 @@
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out/lib")
+ set(MLT_MODULE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out/lib/mlt")
+ set(MLT_DATA_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/out/share/mlt")
++SET(CMAKE_SKIP_RPATH YES CACHE BOOL "Remove RUNPATH from ELF dynamic sections" FORCE)
+ 
+ if(NOT EXISTS ${MLT_DATA_OUTPUT_DIRECTORY})
+   if(WIN32) # symlinks require admin rights on Windows
