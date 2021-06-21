@@ -10,5 +10,5 @@ RDEPEND=!net-im/teams app-accessibility/at-spi2-atk app-crypt/libsecret dev-libs
 RESTRICT=bindist mirror splitdebug test
 SLOT=0
 SRC_URI=https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams-insiders/teams-insiders_1.4.00.13653_amd64.deb
-_eclasses_=toolchain-funcs	2545dc6f0aaecb2dea61424911e82674	multilib	ba7da83f763a749a2870c28785c6dc0b	linux-info	7e8ed4c6a1d136fb291c52386f996c2c	chromium-2	d93dbbcc2be0a4d844cda32597c6ba63	desktop	c0d27bf73aa08ca05b663dbd31fbef28	unpacker	315fbc6afeddec885b965513572766c4	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=toolchain-funcs	7a9551c9a6680454019664620505375a	multilib	6f710a580aea2e8c7f5be70f8912ad43	linux-info	7e8ed4c6a1d136fb291c52386f996c2c	chromium-2	5c8f27044b5401cdbf32dbf6c6cdfbea	desktop	c0d27bf73aa08ca05b663dbd31fbef28	unpacker	2eeba54233fa41bdb15dcddcb63fba3a	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=d90382278fe28e205a7bb4a0245810d7
