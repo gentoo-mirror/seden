@@ -10,5 +10,5 @@ LICENSE=ISC
 PROPERTIES=live
 RDEPEND=x11-misc/bumblebee[video_cards_nvidia] x11-drivers/nvidia-drivers[compat]
 SLOT=0
-_eclasses_=multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	97566c1a256d07b00848aa767e38a352	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib-build	c311a933538fe97b72600926696ea66f	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_eclasses_=multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	97566c1a256d07b00848aa767e38a352	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib-build	effd4508d5e8209273d82d8f67ee93a0	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
 _md5_=3c5b2002721e9bebaf1c793557304476
