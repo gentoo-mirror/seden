@@ -5,7 +5,7 @@ EAPI=7
 
 inherit desktop eutils java-pkg-2
 
-MY_REV="3299"
+MY_REV="3375"
 MY_PN="davmail"
 MY_P="${MY_PN}-${PV}-${MY_REV}"
 
