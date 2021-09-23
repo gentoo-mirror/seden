@@ -8,6 +8,7 @@ games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
+media-video/shotcut 21.09.20: A free, open source, cross-platform video editor
 media-video/v4l2loopback 0.12.5: v4l2 loopback device which output is it's own input
 media-video/vlc 9999-r1: Media player and framework with support for most multimedia files and streaming
 net-im/teams-insiders 1.4.00.7556 1.4.00.13653: Microsoft Teams Linux Client (Insiders Build)
