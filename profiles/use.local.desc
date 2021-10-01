@@ -57,6 +57,7 @@ media-video/vlc:zeroconf - Enable support for zero-configuration networking via 
 media-video/vlc:zvbi - Enable support for teletext subtitles via the zvbi library
 net-im/teams-insiders:system-ffmpeg - Use media-video/ffmpeg instead of the bundled lib. Might crash MS Teams!
 net-im/teams-insiders:system-mesa - Use media-libs/mesa instead of the bundled EGL and GLESv2 libs. Might crash MS Teams!
+net-im/teams-insiders:system-vulkan - Use media-libs/vulkan-loader instead of the bundled vulkan lib. Might crash MS Teams!
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
 net-misc/megasync:api - Enable MEGA API support
 net-misc/megasync:chat - Enable chat support
