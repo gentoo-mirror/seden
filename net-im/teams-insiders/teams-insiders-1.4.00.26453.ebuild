@@ -13,7 +13,7 @@ LICENSE="ms-teams-pre"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror splitdebug test"
-IUSE="system-ffmpeg system-mesa"
+IUSE="system-ffmpeg system-mesa system-vulkan"
 
 QA_PREBUILT="*"
 
@@ -50,6 +50,7 @@ RDEPEND="
 	x11-libs/pango
 	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
 	system-mesa? ( media-libs/mesa[egl,gles2] )
+	system-vulkan? ( media-libs/vulkan-loader )
 "
 
 S="${WORKDIR}"
@@ -80,7 +81,6 @@ src_install() {
 	exeinto ${dest}/share/${PN}
 	doexe "${S}"${dest}/share/${PN}/${PN}
 	doexe "${S}"${dest}/share/${PN}/chrome-sandbox
-	doexe "${S}"${dest}/share/${PN}/crashpad_handler
 
 	# Use system ffmpeg, if wanted. Might crash MS Teams!
 	if use system-ffmpeg; then
@@ -92,15 +92,24 @@ src_install() {
 		doexe "${S}"${dest}/share/${PN}/libffmpeg.so
 	fi
 
-	# Use system mesa, if wanted. Might Crash MS Teams!
+	# Use system mesa, if wanted.
 	if use system-mesa; then
 		rm -f "${D}"/${dest}/share/${PN}/libEGL.so
 		rm -f "${D}"/${dest}/share/${PN}/libGLESv2.so
-		elog "Using system mesa. This is experimental and may lead to crashes."
+		elog "Using system mesa. This is experimental."
 	else
 		# Otherwise keep original executable flag
 		doexe "${S}"/${dest}/share/${PN}/libEGL.so
 		doexe "${S}"/${dest}/share/${PN}/libGLESv2.so
+	fi
+
+	# Use system vulkan, if wanted.
+	if use system-vulkan; then
+		rm -f "${D}"/${dest}/share/${PN}/libvulkan.so
+		elog "Using system vulkan. This is experimental."
+	else
+		# Otherwise keep original executable flag
+		doexe "${S}"/${dest}/share/${PN}/libvulkan.so
 	fi
 
 	# Keep swiftshader, used in GPU-/Head-less systems
