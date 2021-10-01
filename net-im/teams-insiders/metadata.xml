@@ -45,5 +45,8 @@
         <flag name="system-mesa">
                 Use media-libs/mesa instead of the bundled EGL and GLESv2 libs. Might crash MS Teams!
         </flag>
+        <flag name="system-vulkan" restrict="&gt;net-im/teams-insiders-1.4.0.26452">
+                Use media-libs/vulkan-loader instead of the bundled vulkan lib. Might crash MS Teams!
+        </flag>
 </use>
 </pkgmetadata>
