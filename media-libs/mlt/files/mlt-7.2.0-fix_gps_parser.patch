@@ -1,0 +1,15 @@
+--- a/src/modules/xml/gps_parser.h	2021-11-04 19:49:35.836358968 +0100
++++ b/src/modules/xml/gps_parser.h	2021-11-04 19:53:32.806366199 +0100
+@@ -19,6 +19,12 @@
+ #ifndef GPS_PARSER_H
+ #define GPS_PARSER_H
+ 
++#ifndef _XOPEN_SOURCE
++#define _XOPEN_SOURCE
++#endif
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
+ #include <framework/mlt.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
