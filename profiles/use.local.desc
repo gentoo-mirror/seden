@@ -6,6 +6,12 @@ dev-cpp/pwxlib:spinlocks - Use spinlocks instead of mutexes. Improves performanc
 dev-cpp/pwxlib:yielding - Let spinlocks yield when they can not lock. Improves performance.
 dev-tex/rtf2latex2e:unoconv - Use app-office/unoconv to convert EMF, WMF, and PICT images to PDF files
 dev-util/codeblocks:contrib - Build additional contrib components
+media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
+media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
+media-libs/mlt:python - Build SWIG bindings for Python
+media-libs/mlt:rtaudio - Builds rtaudio consumer for native audio support on multiple platforms
+media-libs/mlt:rubberband - Enable audio pitch-shifting using media-libs/rubberband
+media-libs/mlt:vidstab - Enabled video stabilization with media-libs/vidstab
 media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
 media-video/vlc:aom - Enable AV1 encoding/decoding support using media-libs/libaom
 media-video/vlc:archive - Enable support for libarchive stream extractor
