@@ -49,7 +49,7 @@ RDEPEND="
 	x11-libs/libxkbfile
 	x11-libs/pango
 	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
-	system-mesa? ( media-libs/mesa[egl,gles2] )
+	system-mesa? ( media-libs/mesa[gles2] )
 	system-vulkan? ( media-libs/vulkan-loader )
 "
 
