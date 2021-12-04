@@ -6,21 +6,16 @@ dev-tex/rtf2latex2e 2.2.3: RTF to LaTeX converter
 dev-util/codeblocks 9999-r1: The open source, cross platform, free C, C++ and Fortran IDE
 games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
-media-libs/mlt 7.2.0: Open source multimedia framework for television broadcasting
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
-media-video/shotcut 21.10.31: A free, open source, cross-platform video editor
-media-video/v4l2loopback 0.12.5: v4l2 loopback device which output is it's own input
 media-video/vlc 9999-r1: Media player and framework with support for most multimedia files and streaming
 net-im/teams-insiders 1.4.00.26453-r1: Microsoft Teams Linux Client (Insiders Build)
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 5.5.1 6.0.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
-net-misc/teamviewer 13.2.256470: All-In-One Solution for Remote Access and Support over the Internet
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
 sys-boot/unetbootin 702: UNetbootin installs Linux/BSD distributions to a partition or USB drive
-sys-cluster/mpich 3.3-r2: A high performance and portable MPI implementation
 x11-misc/bumblebee 9999-r4: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/primus 9999-r1: Faster OpenGL offloading for Bumblebee
