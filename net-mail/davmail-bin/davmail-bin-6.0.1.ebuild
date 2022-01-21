@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit desktop eutils java-pkg-2
 
-MY_REV="3299"
+MY_REV="3390"
 MY_PN="davmail"
 MY_P="${MY_PN}-${PV}-${MY_REV}"
 
@@ -20,9 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="server"
 
 DEPEND="
-	|| (	virtual/jre:1.8
-		virtual/jdk:1.8
-	)
+	|| ( >=virtual/jre-1.8:*
+	     >=virtual/jdk-1.8:* )
 	server? ( acct-user/davmail )
 "
 RDEPEND="${DEPEND}"
