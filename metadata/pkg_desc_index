@@ -12,7 +12,7 @@ media-video/vlc 9999-r1: Media player and framework with support for most multim
 net-im/teams-insiders 1.4.00.26453-r1: Microsoft Teams Linux Client (Insiders Build)
 net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
-net-mail/davmail-bin 5.5.1 6.0.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
