@@ -1,0 +1,19 @@
+--- a/src/modules/xml/gps_parser.c	2022-03-22 07:38:56.004413455 +0100
++++ b/src/modules/xml/gps_parser.c	2022-03-22 07:47:35.461429308 +0100
+@@ -17,8 +17,16 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+  */
+ 
++#ifndef __USE_XOPEN
++#define __USE_XOPEN
++#endif
++#ifndef _GNU_SOURCE
++#define _GNU_SOURCE
++#endif
++
+ #include "gps_parser.h"
+ #include <inttypes.h>
++#include <time.h>
+ 
+ #define _x (const xmlChar*)
+ #define _s (const char*)
