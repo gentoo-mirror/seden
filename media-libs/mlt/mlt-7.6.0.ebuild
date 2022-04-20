@@ -3,20 +3,17 @@
 
 EAPI=8
 
-PRE_COMMIT="e151556cda3d140509805a8ab2eb28feead9548c"
-
 PYTHON_COMPAT=( python3_{8,9,10} )
 inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
-SRC_URI="https://github.com/mltframework/${PN}/archive/${PRE_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mltframework/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/7"
-# Unkeyworded while not officially released
-# KEYWORDS="amd64 arm64 ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 rtaudio rubberband sdl sox test vdpau vidstab xine xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -65,6 +62,7 @@ DEPEND="
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
 	)
+	sox? ( media-sound/sox )
 	vidstab? ( media-libs/vidstab )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	xml? ( >=dev-libs/libxml2-2.5 )
@@ -73,7 +71,6 @@ DEPEND="
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
 #	ruby? ( ${RUBY_DEPS} )
-#	sox? ( media-sound/sox )
 #	tcl? ( dev-lang/tcl:0= )
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -89,8 +86,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
 	"${FILESDIR}"/${PN}-7.5.0-fix_strptime.patch
 )
-
-S="${WORKDIR}/${PN}-${PRE_COMMIT}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -129,7 +124,7 @@ src_configure() {
 		-DMOD_VIDSTAB=$(usex vidstab)
 		-DMOD_XINE=$(usex xine)
 		-DMOD_XML=$(usex xml)
-		-DMOD_SOX=OFF
+		-DMOD_SOX=$(usex sox)
 	)
 
 	# TODO: rework upstream CMake to allow controlling MMX/SSE/SSE2
