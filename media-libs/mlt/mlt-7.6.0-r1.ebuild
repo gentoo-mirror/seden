@@ -27,7 +27,7 @@ DEPEND="
 	>=media-libs/libebur128-1.2.2:=
 	sci-libs/fftw:3.0=
 	ffmpeg? ( media-video/ffmpeg:0=[vdpau?,-flite] )
-	frei0r? ( media-plugins/frei0r-plugins )
+	frei0r? ( >=media-plugins/frei0r-plugins-1.8.0 )
 	gtk? (
 		media-libs/libexif
 		x11-libs/pango
@@ -57,7 +57,7 @@ DEPEND="
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
 	)
-	rubberband? ( media-libs/rubberband )
+	rubberband? ( >=media-libs/rubberband-2.0.2 )
 	sdl? (
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
@@ -67,6 +67,9 @@ DEPEND="
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	xml? ( >=dev-libs/libxml2-2.5 )
 "
+# Once ffmepg-5 is stable, mlt/shotcut are already prepared for it:
+#	ffmpeg? ( >=media-video/ffmpeg-5.0[vdpau?,-flite] )
+#
 #	java? ( >=virtual/jre-1.8:* )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )

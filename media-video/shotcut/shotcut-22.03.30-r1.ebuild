@@ -9,7 +9,7 @@ DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
 if [[ ${PV} != 9999* ]] ; then
 	SRC_URI="https://github.com/mltframework/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mltframework/shotcut/"
@@ -36,8 +36,8 @@ COMMON_DEPEND="
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-7.4.9999[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
-	media-video/ffmpeg
+	>=media-libs/mlt-7.6.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
+	>=media-libs/libvmaf-2.3.0
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
