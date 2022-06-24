@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/libevent-2.1.12 daemon? ( acct-group/gridcoin acct-user/gridcoin[boinc=] ) dev-libs/boost dev-libs/openssl:0/1.1 dev-libs/libzip sys-libs/db:5.3[cxx] dbus? ( dev-qt/qtdbus:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5 dev-qt/qtcharts:5 ) qrcode? ( media-gfx/qrencode ) upnp? ( net-libs/miniupnpc ) boinc? ( sci-misc/boinc ) utils? ( net-p2p/bitcoin-cli dev-util/bitcoin-tx ) qt5? ( dev-qt/linguist-tools:5 )
+DESCRIPTION=Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
+EAPI=8
+HOMEPAGE=https://gridcoin.us/
+INHERIT=flag-o-matic systemd desktop
+IUSE=dbus qt5 daemon bench +boinc ccache debug +harden libraries pic qrcode static test upnp utils systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libevent-2.1.12 daemon? ( acct-group/gridcoin acct-user/gridcoin[boinc=] ) dev-libs/boost dev-libs/openssl:0/1.1 dev-libs/libzip sys-libs/db:5.3[cxx] dbus? ( dev-qt/qtdbus:5 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 dev-qt/qtconcurrent:5 dev-qt/qtcharts:5 ) qrcode? ( media-gfx/qrencode ) upnp? ( net-libs/miniupnpc ) boinc? ( sci-misc/boinc ) utils? ( net-p2p/bitcoin-cli dev-util/bitcoin-tx )
+REQUIRED_USE=^^ ( daemon qt5 ) dbus? ( qt5 ) qrcode? ( qt5 )
+SLOT=0
+SRC_URI=https://github.com/gridcoin-community/Gridcoin-Research/archive/refs/tags/5.3.3.0.tar.gz -> gridcoin-5.3.3.0.tar.gz
+_eclasses_=toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85	flag-o-matic	a500d7cc40da3de38c361e889153bdf7	systemd	2736b403a83f194b59b767f3b344c2c1	desktop	22952d8f27cac191d75529d4c38e6bfa
+_md5_=4011dea56e52b6520def165d118ec68f

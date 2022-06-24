@@ -20,7 +20,7 @@ net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
 net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
-net-p2p/gridcoin 5.3.3.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
+net-p2p/gridcoin 5.3.3.0-r1: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
 sys-boot/unetbootin 702: UNetbootin installs Linux/BSD distributions to a partition or USB drive
