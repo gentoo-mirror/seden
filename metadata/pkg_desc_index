@@ -1,7 +1,7 @@
 acct-group/davmail 0: group for davmail server
 acct-group/gridcoin 0: group for gridcoin daemon
 acct-user/davmail 0: user for davmail server
-acct-user/gridcoin 0: user for gridcoin daemon
+acct-user/gridcoin 0-r2: user for gridcoin daemon
 app-text/getRandomName 1.0.0 9999: Create random names using linguistic rules
 dev-cpp/pwxlib 0.9.0 9999: The PrydeWorX library of C++ workers, tools and utilities
 dev-tex/rtf2latex2e 2.2.3: RTF to LaTeX converter
