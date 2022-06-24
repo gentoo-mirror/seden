@@ -7,6 +7,8 @@ inherit acct-user
 
 ACCT_USER_ID=-1
 ACCT_USER_GROUPS=( gridcoin )
+ACCT_USER_HOME="/var/lib/${PN}"
+ACCT_USER_HOME_PERMS=0750
 
 DESCRIPTION="user for gridcoin daemon"
 IUSE="boinc"
