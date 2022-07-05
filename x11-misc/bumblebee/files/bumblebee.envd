@@ -1,9 +1,0 @@
-# Comment this out if you are using VirtualGL also for other purposes and this
-# slows down things for you.
-VGL_READBACK="pbo"
-
-# Workaround for Bumblebee no longer working with current mesa.
-# (See: https://github.com/amonakov/primus/issues/201
-#       https://bugs.archlinux.org/task/58933
-# ) But only if the TearFree thing does not work...
-PRIMUS_UPLOAD=1
