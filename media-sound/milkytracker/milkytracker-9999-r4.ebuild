@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-docs.patch
+	"${FILESDIR}"/${P}-raise_cpp_standard.patch
 )
 
 src_install() {
