@@ -5,4 +5,7 @@
 	<email>sound@gentoo.org</email>
 	<name>Gentoo Sound project</name>
 </maintainer>
+<use>
+	<flag name="midi">Use media-libs/rtmidi for MIDI support</flag>
+</use>
 </pkgmetadata>

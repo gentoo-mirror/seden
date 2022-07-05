@@ -1,2 +1,0 @@
-# Unmask Raspberry PI Video Driver
--video_cards_vc4
