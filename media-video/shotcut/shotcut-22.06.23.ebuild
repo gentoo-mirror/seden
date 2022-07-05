@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit qmake-utils xdg
+inherit cmake
 
 DESCRIPTION="A free, open source, cross-platform video editor"
 HOMEPAGE="https://www.shotcut.org/ https://github.com/mltframework/shotcut/"
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-7.6.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt5,sdl,xml]
+	>=media-libs/mlt-7.8.0[ffmpeg,frei0r,jack,opengl,qt5,sdl,xml]
 	>=media-libs/libvmaf-2.3.0
 "
 DEPEND="${COMMON_DEPEND}
@@ -49,18 +49,14 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/jack
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_CuteLogger_install_dir.patch
+)
+
 src_configure() {
-	local myqmakeargs=(
-		PREFIX="${EPREFIX}/usr"
-		SHOTCUT_VERSION="${PV}"
-		DEFINES+=SHOTCUT_NOUPGRADE
+	local mycmakeargs=(
+		-DCMAKE_SKIP_RPATH=ON
 	)
-	use debug || myqmakeargs+=(DEFINES+=NDEBUG)
 
-	eqmake5 "${myqmakeargs[@]}"
-}
-
-src_install() {
-	emake INSTALL_ROOT="${D}" install
-	einstalldocs
+	cmake_src_configure
 }

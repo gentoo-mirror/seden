@@ -1,0 +1,8 @@
+--- a/CuteLogger/CMakeLists.txt	2022-07-05 07:36:57.047248494 +0200
++++ b/CuteLogger/CMakeLists.txt	2022-07-05 07:37:18.280249141 +0200
+@@ -39,4 +39,4 @@
+ 
+ ADD_LIBRARY(${library_target} SHARED ${sources} ${includes})
+ TARGET_LINK_LIBRARIES(${library_target} Qt5::Core)
+-INSTALL(TARGETS ${library_target} DESTINATION lib)
++INSTALL(TARGETS ${library_target} DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})
