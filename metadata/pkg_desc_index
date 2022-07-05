@@ -6,7 +6,7 @@ app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs 
 games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-plugins/frei0r-plugins 1.8.0: A minimalistic plugin API for video effects
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
-media-sound/milkytracker 9999-r3: FastTracker 2 inspired music tracker
+media-sound/milkytracker 9999-r4: FastTracker 2 inspired music tracker
 media-video/shotcut 22.06.23: A free, open source, cross-platform video editor
 net-im/teams-insiders 1.5.00.10453: Microsoft Teams, an Office 365 multimedia collaboration client, Insiders Build
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
