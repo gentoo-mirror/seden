@@ -2,27 +2,14 @@ acct-group/davmail 0: group for davmail server
 acct-group/gridcoin 0: group for gridcoin daemon
 acct-user/davmail 0: user for davmail server
 acct-user/gridcoin 0-r2: user for gridcoin daemon
-app-text/getRandomName 1.0.0 9999: Create random names using linguistic rules
-dev-cpp/pwxlib 0.9.0 9999: The PrydeWorX library of C++ workers, tools and utilities
-dev-tex/rtf2latex2e 2.2.3: RTF to LaTeX converter
-dev-util/codeblocks 9999-r1: The open source, cross platform, free C, C++ and Fortran IDE
+app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs archives as possible.
 games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
-media-gfx/makeSimplexTexture 0.9.0 9999: Build textures with bumpmaps using simplex noise.
-media-libs/mlt 7.6.0-r1: Open source multimedia framework for television broadcasting
 media-plugins/frei0r-plugins 1.8.0: A minimalistic plugin API for video effects
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
-media-sound/milkytracker 9999-r2: FastTracker 2 inspired music tracker
+media-sound/milkytracker 9999-r3: FastTracker 2 inspired music tracker
 media-video/shotcut 22.06.23: A free, open source, cross-platform video editor
-media-video/vlc 9999-r1: Media player and framework with support for most multimedia files and streaming
-media-video/webcamoid 9.0.0: A full featured webcam capture application
 net-im/teams-insiders 1.5.00.10453: Microsoft Teams, an Office 365 multimedia collaboration client, Insiders Build
-net-im/telepathy-morse 9999-r2: Telegram connection manager for Telepathy.
-net-libs/telegram-qt 9999-r1: Telegram binding for Qt
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
-net-misc/megasync 3.7.1: Easy automated syncing between your computers and your MEGA cloud drive
 net-p2p/gridcoin 5.3.3.0-r1: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
-sys-boot/unetbootin 702: UNetbootin installs Linux/BSD distributions to a partition or USB drive
-x11-misc/bumblebee 9999-r4: Service providing elegant and stable means of managing Optimus graphics chipsets
-x11-misc/primus 9999-r1: Faster OpenGL offloading for Bumblebee
