@@ -22,4 +22,5 @@ net-p2p/gridcoin:qrcode - Enable generation of QR Codes for receiving payments w
 net-p2p/gridcoin:qt5 - Build the Qt GUI
 net-p2p/gridcoin:upnp - Enable Universal Plug and Play
 net-p2p/gridcoin:utils - Build bitcoin-cli and bitcoin-tx utilities
+sci-misc/boinc:cuda - Use nvidia cuda toolkit for speeding up computations. NOTE: works only for subset of nvidia graphic cards so make sure your card is supported before opening a bug about it.
 sys-auth/elogind:efi - Support rebooting into EFI firmware

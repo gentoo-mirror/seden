@@ -12,4 +12,5 @@ net-im/teams-insiders 1.5.00.10453: Microsoft Teams, an Office 365 multimedia co
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-p2p/gridcoin 5.3.3.0-r1: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
+sci-misc/boinc 7.20.2: The Berkeley Open Infrastructure for Network Computing
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
