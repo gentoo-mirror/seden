@@ -46,7 +46,7 @@ DEPEND="
 	app-misc/ca-certificates
 	cuda? (
 		dev-util/nvidia-cuda-toolkit
-		x11-drivers/nvidia-drivers[uvm]
+		x11-drivers/nvidia-drivers
 	)
 	opencl? (
 		video_cards_amdgpu?   ( amd64? ( dev-libs/rocm-opencl-runtime ) )
