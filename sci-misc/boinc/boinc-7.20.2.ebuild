@@ -51,7 +51,7 @@ DEPEND="
 	opencl? (
 		video_cards_amdgpu?   ( amd64? ( dev-libs/rocm-opencl-runtime ) )
 		video_cards_intel?    ( amd64? ( dev-libs/intel-compute-runtime ) )
-		video_cards_nvidia?   ( x11-drivers/nvidia-drivers[uvm] )
+		video_cards_nvidia?   ( x11-drivers/nvidia-drivers media-gfx/nvidia-cg-toolkit )
 		video_cards_radeonsi? ( media-libs/mesa[opencl] )
 	)
 	dev-libs/openssl:=
