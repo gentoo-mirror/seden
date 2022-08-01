@@ -10,6 +10,7 @@ media-sound/milkytracker 9999-r4: FastTracker 2 inspired music tracker
 media-video/shotcut 22.06.23: A free, open source, cross-platform video editor
 net-im/teams-insiders 1.5.00.10453: Microsoft Teams, an Office 365 multimedia collaboration client, Insiders Build
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-p2p/go-ethereum 1.10.21: Official golang implementation of the Ethereum protocol
 net-p2p/gridcoin 5.3.3.0-r1: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sci-misc/boinc 7.20.2-r1: The Berkeley Open Infrastructure for Network Computing
