@@ -17,7 +17,7 @@ KEYWORDS=""
 
 LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
-IUSE="apicore binkern cpu cuda dbus debug +opencl verbose-debug"
+IUSE="apicore binkern cpu cuda dbus debug +opencl verbose-debug +system-opencl"
 
 QA_PREBUILT="${KERNELS_DIR}/ethash_*"
 
@@ -42,7 +42,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	${FILESDIR}/${PV}-fix_compilation_issues.patch
+	"${FILESDIR}"/${PV}-fix_compilation_issues.patch
 )
 
 src_unpack() {
@@ -54,8 +54,8 @@ src_unpack() {
 		return
 	fi
 
-	rmdir ${S}/cmake/cable || die
-	mv cable-${CABLE_VER} ${S}/cmake/cable || die
+	rmdir "${S}"/cmake/cable || die
+	mv cable-${CABLE_VER} "${S}"/cmake/cable || die
 }
 
 src_prepare() {
@@ -145,6 +145,7 @@ src_configure() {
 		-DETHASHCPU=$(usex cpu)
 		-DETHASHCUDA=$(usex cuda)
 		-DETHDBUS=$(usex dbus)
+		-DUSE_SYS_OPENCL=$(usex system-opencl)
 	)
 
 	cmake_src_configure
