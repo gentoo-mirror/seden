@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">CLIUtils/CLI11</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>sven@eden-worx.com</email>
+		<name>Sven Eden</name>
+	</maintainer>
+	<use>
+		<flag name="apicore">Build with API server support</flag>
+		<flag name="binkern">Install AMD binary kernels</flag>
+		<flag name="cpu">Build with CPU mining (ONLY for development!)</flag>
+		<flag name="cuda">Build with CUDA mining</flag>
+		<flag name="opencl">Build with OpenCL mining</flag>
+		<flag name="system-opencl">Use system OpenCL</flag>
+		<flag name="verbose-debug">Log developer metrics</flag>
+	</use>
+</pkgmetadata>
