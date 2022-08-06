@@ -1,0 +1,254 @@
+--- a/libdevcore/CommonData.cpp	2022-08-06 11:36:39.164665153 +0200
++++ b/libdevcore/CommonData.cpp	2022-08-06 11:37:21.741666453 +0200
+@@ -58,7 +58,7 @@
+         int h = fromHex(_s[i], WhenError::DontThrow);
+         int l = fromHex(_s[i + 1], WhenError::DontThrow);
+         if (h != -1 && l != -1)
+-            ret.push_back((byte)(h * 16 + l));
++            ret.push_back((uint8_t)(h * 16 + l));
+         else if (_throw == WhenError::Throw)
+             BOOST_THROW_EXCEPTION(BadHexCharacter());
+         else
+--- a/libethcore/EthashAux.cpp	2022-08-06 11:39:12.405669830 +0200
++++ b/libethcore/EthashAux.cpp	2022-08-06 11:44:07.371678832 +0200
+@@ -18,6 +18,7 @@
+ #include "EthashAux.h"
+ 
+ #include <ethash/ethash.hpp>
++#include <ethash/global_context.hpp>
+ 
+ using namespace dev;
+ using namespace eth;
+--- a/libethcore/Farm.cpp	2022-08-06 12:20:33.334745542 +0200
++++ b/libethcore/Farm.cpp	2022-08-06 12:20:59.183746331 +0200
+@@ -16,6 +16,7 @@
+  */
+ 
+ 
++#include <ethash/global_context.hpp>
+ #include <libethcore/Farm.h>
+ 
+ #if ETH_ETHASHCL
+--- a/ethminer/main.cpp	2022-08-06 12:25:48.675755165 +0200
++++ b/ethminer/main.cpp	2022-08-06 12:43:23.219787347 +0200
+@@ -223,7 +223,7 @@
+         app.set_help_flag();
+         app.add_flag("-h,--help", bhelp, "Show help");
+ 
+-        app.add_set("-H,--help-ext", shelpExt,
++        app.add_option("-H,--help-ext", shelpExt)->check(CLI::IsMember(
+             {
+                 "con", "test",
+ #if ETH_ETHASHCL
+@@ -239,55 +239,48 @@
+                     "api",
+ #endif
+                     "misc", "env"
+-            },
+-            "", true);
++            }))->capture_default_str();
+ 
+         bool version = false;
+ 
+-        app.add_option("--ergodicity", m_FarmSettings.ergodicity, "", true)->check(CLI::Range(0, 2));
++        app.add_option("--ergodicity", m_FarmSettings.ergodicity)->check(CLI::Range(0, 2))->capture_default_str();
+ 
+         app.add_flag("-V,--version", version, "Show program version");
+ 
+-        app.add_option("-v,--verbosity", g_logOptions, "", true)->check(CLI::Range(LOG_NEXT - 1));
++        app.add_option("-v,--verbosity", g_logOptions)->check(CLI::Range(LOG_NEXT - 1))->capture_default_str();
+ 
+-        app.add_option("--farm-recheck", m_PoolSettings.getWorkPollInterval, "", true)->check(CLI::Range(1, 99999));
++        app.add_option("--farm-recheck", m_PoolSettings.getWorkPollInterval)->check(CLI::Range(1, 99999))->capture_default_str();
+ 
+-        app.add_option("--farm-retries", m_PoolSettings.connectionMaxRetries, "", true)->check(CLI::Range(0, 99999));
++        app.add_option("--farm-retries", m_PoolSettings.connectionMaxRetries)->check(CLI::Range(0, 99999))->capture_default_str();
+ 
+-        app.add_option("--retry-delay", m_PoolSettings.delayBeforeRetry, "", true)
+-            ->check(CLI::Range(1, 999));
++        app.add_option("--retry-delay", m_PoolSettings.delayBeforeRetry)->check(CLI::Range(1, 999))->capture_default_str();
+         
+-        app.add_option("--work-timeout", m_PoolSettings.noWorkTimeout, "", true)
+-            ->check(CLI::Range(180, 99999));
++        app.add_option("--work-timeout", m_PoolSettings.noWorkTimeout)->check(CLI::Range(180, 99999))->capture_default_str();
+ 
+-        app.add_option("--response-timeout", m_PoolSettings.noResponseTimeout, "", true)
+-            ->check(CLI::Range(2, 999));
++        app.add_option("--response-timeout", m_PoolSettings.noResponseTimeout)->check(CLI::Range(2, 999))->capture_default_str();
+ 
+-        app.add_flag("-R,--report-hashrate,--report-hr", m_PoolSettings.reportHashrate, "");
++        app.add_flag("-R,--report-hashrate,--report-hr", m_PoolSettings.reportHashrate);
+ 
+-        app.add_option("--display-interval", m_cliDisplayInterval, "", true)
+-            ->check(CLI::Range(1, 1800));
++        app.add_option("--display-interval", m_cliDisplayInterval)->check(CLI::Range(1, 1800))->capture_default_str();
+ 
+-        app.add_option("--HWMON", m_FarmSettings.hwMon, "", true)->check(CLI::Range(0, 2));
++        app.add_option("--HWMON", m_FarmSettings.hwMon)->check(CLI::Range(0, 2))->capture_default_str();
+ 
+-        app.add_flag("--exit", g_exitOnError, "");
++        app.add_flag("--exit", g_exitOnError);
+ 
+         vector<string> pools;
+-        app.add_option("-P,--pool", pools, "");
++        app.add_option("-P,--pool", pools);
+ 
+-        app.add_option("--failover-timeout", m_PoolSettings.poolFailoverTimeout, "", true)
+-            ->check(CLI::Range(0, 999));
++        app.add_option("--failover-timeout", m_PoolSettings.poolFailoverTimeout) ->check(CLI::Range(0, 999))->capture_default_str();
+ 
+-        app.add_flag("--nocolor", g_logNoColor, "");
++        app.add_flag("--nocolor", g_logNoColor);
+ 
+-        app.add_flag("--syslog", g_logSyslog, "");
++        app.add_flag("--syslog", g_logSyslog);
+ 
+-        app.add_flag("--stdout", g_logStdout, "");
++        app.add_flag("--stdout", g_logStdout);
+ 
+ #if API_CORE
+ 
+-        app.add_option("--api-bind", m_api_bind, "", true)
+-            ->check([this](const string& bind_arg) -> string {
++        app.add_option("--api-bind", m_api_bind)->check([this](const string& bind_arg)->string {
+                 try
+                 {
+                     MinerCLI::ParseBind(bind_arg, this->m_api_address, this->m_api_port, true);
+@@ -299,77 +292,81 @@
+                 // not sure what to return, and the documentation doesn't say either.
+                 // https://github.com/CLIUtils/CLI11/issues/144
+                 return string("");
+-            });
++            })->capture_default_str();
+ 
+-        app.add_option("--api-port", m_api_port, "", true)->check(CLI::Range(-65535, 65535));
++        app.add_option("--api-port", m_api_port)->check(CLI::Range(-65535, 65535))->capture_default_str();
+ 
+-        app.add_option("--api-password", m_api_password, "");
++        app.add_option("--api-password", m_api_password);
+ 
+ #endif
+ 
+ #if ETH_ETHASHCL || ETH_ETHASHCUDA || ETH_ETHASH_CPU
+ 
+-        app.add_flag("--list-devices", m_shouldListDevices, "");
++        app.add_flag("--list-devices", m_shouldListDevices);
+ 
+ #endif
+ 
+ #if ETH_ETHASHCL
+ 
+-        app.add_option("--opencl-device,--opencl-devices,--cl-devices", m_CLSettings.devices, "");
++        app.add_option("--opencl-device,--opencl-devices,--cl-devices", m_CLSettings.devices);
+ 
+-        app.add_option("--cl-global-work", m_CLSettings.globalWorkSize, "", true);
++        app.add_option("--cl-global-work", m_CLSettings.globalWorkSize)->capture_default_str();
+ 
+-        app.add_set("--cl-local-work", m_CLSettings.localWorkSize, {64, 128, 256}, "", true);
++        app.add_option("--cl-local-work", m_CLSettings.localWorkSize)->check(CLI::IsMember(
++            {64, 128, 256}
++        ))->capture_default_str();
+ 
+-        app.add_flag("--cl-nobin", m_CLSettings.noBinary, "");
++        app.add_flag("--cl-nobin", m_CLSettings.noBinary);
+ 
+-        app.add_flag("--cl-noexit", m_CLSettings.noExit, "");
++        app.add_flag("--cl-noexit", m_CLSettings.noExit);
+ 
+ #endif
+ 
+ #if ETH_ETHASHCUDA
+ 
+-        app.add_option("--cuda-devices,--cu-devices", m_CUSettings.devices, "");
++        app.add_option("--cuda-devices,--cu-devices", m_CUSettings.devices);
+ 
+-        app.add_option("--cuda-grid-size,--cu-grid-size", m_CUSettings.gridSize, "", true)
+-            ->check(CLI::Range(1, 131072));
++        app.add_option("--cuda-grid-size,--cu-grid-size", m_CUSettings.gridSize)->check(CLI::Range(1, 131072))->capture_default_str();
+ 
+-        app.add_set(
+-            "--cuda-block-size,--cu-block-size", m_CUSettings.blockSize, {32, 64, 128, 256}, "", true);
++        app.add_option(
++            "--cuda-block-size,--cu-block-size", m_CUSettings.blockSize)->check(CLI::IsMember( 
++            {32, 64, 128, 256}
++        ))->capture_default_str();
+ 
+         string sched = "sync";
+-        app.add_set(
+-            "--cuda-schedule,--cu-schedule", sched, {"auto", "spin", "yield", "sync"}, "", true);
++        app.add_option(
++            "--cuda-schedule,--cu-schedule", sched)->check(CLI::IsMember( 
++            {"auto", "spin", "yield", "sync"}
++        ))->capture_default_str();
+ 
+-        app.add_option("--cuda-streams,--cu-streams", m_CUSettings.streams, "", true)
+-            ->check(CLI::Range(1, 99));
++        app.add_option("--cuda-streams,--cu-streams", m_CUSettings.streams)->check(CLI::Range(1, 99))->capture_default_str();
+ 
+ #endif
+ 
+ #if ETH_ETHASHCPU
+ 
+-        app.add_option("--cpu-devices,--cp-devices", m_CPSettings.devices, "");
++        app.add_option("--cpu-devices,--cp-devices", m_CPSettings.devices);
+ 
+ #endif
+ 
+-        app.add_flag("--noeval", m_FarmSettings.noEval, "");
++        app.add_flag("--noeval", m_FarmSettings.noEval);
+ 
+-        app.add_option("-L,--dag-load-mode", m_FarmSettings.dagLoadMode, "", true)->check(CLI::Range(1));
++        app.add_option("-L,--dag-load-mode", m_FarmSettings.dagLoadMode)->check(CLI::Range(1))->capture_default_str();
+ 
+         bool cl_miner = false;
+-        app.add_flag("-G,--opencl", cl_miner, "");
++        app.add_flag("-G,--opencl", cl_miner);
+ 
+         bool cuda_miner = false;
+-        app.add_flag("-U,--cuda", cuda_miner, "");
++        app.add_flag("-U,--cuda", cuda_miner);
+ 
+         bool cpu_miner = false;
+ #if ETH_ETHASHCPU
+-        app.add_flag("--cpu", cpu_miner, "");
++        app.add_flag("--cpu", cpu_miner);
+ #endif
+-        auto sim_opt = app.add_option("-Z,--simulation,-M,--benchmark", m_PoolSettings.benchmarkBlock, "", true);
++        auto sim_opt = app.add_option("-Z,--simulation,-M,--benchmark", m_PoolSettings.benchmarkBlock)->capture_default_str();
+ 
+-        app.add_option("--tstop", m_FarmSettings.tempStop, "", true)->check(CLI::Range(30, 100));
+-        app.add_option("--tstart", m_FarmSettings.tempStart, "", true)->check(CLI::Range(30, 100));
++        app.add_option("--tstop", m_FarmSettings.tempStop)->check(CLI::Range(30, 100))->capture_default_str();
++        app.add_option("--tstart", m_FarmSettings.tempStart)->check(CLI::Range(30, 100))->capture_default_str();
+ 
+ 
+         // Exception handling is held at higher level
+--- a/libethash-cl/CMakeLists.txt	2022-08-06 13:04:47.033826526 +0200
++++ b/libethash-cl/CMakeLists.txt	2022-08-06 13:09:17.986834795 +0200
+@@ -31,6 +31,6 @@
+ include_directories(..)
+ 
+ add_library(ethash-cl ${SOURCES})
+-target_link_libraries(ethash-cl PUBLIC  ethash::ethash)
++target_link_libraries(ethash-cl PUBLIC  ethash::ethash ethash-global-context)
+ target_link_libraries(ethash-cl PRIVATE OpenCL::OpenCL)
+ target_link_libraries(ethash-cl PRIVATE Boost::filesystem Boost::thread)
+--- a/libethash-cpu/CMakeLists.txt	2022-08-06 13:04:52.272826686 +0200
++++ b/libethash-cpu/CMakeLists.txt	2022-08-06 13:09:19.680834847 +0200
+@@ -3,5 +3,5 @@
+ 
+ add_library(ethash-cpu ${sources} ${headers})
+ #target_link_libraries(ethash-cpu  ethash::ethash Boost::fiber Boost::thread)
+-target_link_libraries(ethash-cpu  ethash::ethash Boost::thread)
++target_link_libraries(ethash-cpu  ethash::ethash ethash-global-context Boost::thread)
+ target_include_directories(ethash-cpu PRIVATE .. ${CMAKE_CURRENT_BINARY_DIR})
+--- a/libethash-cuda/CMakeLists.txt	2022-08-06 13:04:57.532826847 +0200
++++ b/libethash-cuda/CMakeLists.txt	2022-08-06 13:09:20.601834875 +0200
+@@ -42,6 +42,6 @@
+ file(GLOB headers "*.h" "*.cuh")
+ 
+ cuda_add_library(ethash-cuda STATIC ${sources} ${headers})
+-target_link_libraries(ethash-cuda  ethash::ethash Boost::thread)
++target_link_libraries(ethash-cuda  ethash::ethash ethash-global-context Boost::thread)
+ target_include_directories(ethash-cuda PUBLIC ${CUDA_INCLUDE_DIRS})
+ target_include_directories(ethash-cuda PRIVATE .. ${CMAKE_CURRENT_BINARY_DIR})
