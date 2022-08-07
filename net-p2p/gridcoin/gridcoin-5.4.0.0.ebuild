@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE_GUI="dbus qt5"
 IUSE_DAEMON="daemon"
-IUSE_OPTIONAL="bench +boinc ccache debug +harden libraries pic qrcode static test upnp utils systemd"
+IUSE_OPTIONAL="+bench +boinc +ccache debug +harden +libraries pic +qrcode static test +upnp +utils systemd"
 IUSE="${IUSE_GUI} ${IUSE_DAEMON} ${IUSE_OPTIONAL}"
 
 # Note: The client *CAN* *NOT* connect to the daemon like the BOINc client does.
@@ -28,6 +28,8 @@ REQUIRED_USE="
 	dbus? ( qt5 )
 	qrcode? ( qt5 )
 "
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libevent-2.1.12
@@ -44,9 +46,12 @@ RDEPEND="
 	qrcode? ( media-gfx/qrencode )
 	upnp? ( net-libs/miniupnpc )
 	boinc? ( sci-misc/boinc )
-	utils? ( net-p2p/bitcoin-cli dev-util/bitcoin-tx )"
-DEPEND="${RDEPEND}
-	qt5? ( dev-qt/linguist-tools:5 )"
+	utils? ( net-p2p/bitcoin-cli dev-util/bitcoin-tx )
+"
+DEPEND="
+	${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )
+"
 
 S="${WORKDIR}/${PN^}-Research-${PV}"
 
@@ -70,19 +75,19 @@ src_prepare() {
 src_configure() {
 	use harden && append-flags -Wa,--noexecstack
 	econf \
-		$(use_enable bench) \
-		$(use_enable ccache ) \
-		$(use_enable debug) \
+		$(use_enable bench)            \
+		$(use_enable ccache )          \
+		$(use_enable debug)            \
 		$(use_enable harden hardening) \
-		$(use_enable static) \
-		$(use_enable test tests)
-		$(use_with daemon) \
-		$(use_with dbus qtdbus) \
-		$(use_with libraries libs) \
-		$(use_with pic) \
-		$(use_with qrcode qrencode) \
-		$(use_with qt5 gui qt5) \
-		$(use_with upnp miniupnpc) \
+		$(use_enable static)           \
+		$(use_enable test tests)       \
+		$(use_with daemon)             \
+		$(use_with dbus qtdbus)        \
+		$(use_with libraries libs)     \
+		$(use_with pic)                \
+		$(use_with qrcode qrencode)    \
+		$(use_with qt5 gui qt5)        \
+		$(use_with upnp miniupnpc)     \
 		$(use_with utils)
 }
 
