@@ -29,6 +29,8 @@ REQUIRED_USE="
 	qrcode? ( qt5 )
 "
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	>=dev-libs/libevent-2.1.12
 	daemon? (
