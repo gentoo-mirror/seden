@@ -49,9 +49,7 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/jack
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-fix_CuteLogger_install_dir.patch
-)
+PATCHES=()
 
 src_configure() {
 	local mycmakeargs=(
