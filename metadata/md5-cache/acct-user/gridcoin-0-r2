@@ -6,5 +6,5 @@ IUSE=boinc
 KEYWORDS=~amd64 ~x86
 RDEPEND=boinc? ( acct-user/boinc ) acct-group/gridcoin
 SLOT=0
-_eclasses_=user-info	69a1ed744ec33cf2c910ff2bd6084d11	user	1f6dd43c7e925ba0272de52bcd326972	acct-user	38e6655114f60cacc969baf808da755b
+_eclasses_=user-info	69a1ed744ec33cf2c910ff2bd6084d11	user	ee8b59cbe68b390f981e3ee247ed908f	acct-user	38e6655114f60cacc969baf808da755b
 _md5_=98fd23350950127bcba73fb471c40804
