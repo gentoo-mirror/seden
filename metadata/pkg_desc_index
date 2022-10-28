@@ -11,7 +11,7 @@ games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-plugins/frei0r-plugins 1.8.0: A minimalistic plugin API for video effects
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r4: FastTracker 2 inspired music tracker
-media-video/shotcut 22.09.23: A free, open source, cross-platform video editor
+media-video/shotcut 22.10.25: A free, open source, cross-platform video editor
 net-im/teams-insiders 1.5.00.23861: Microsoft Teams, an Office 365 multimedia collaboration client, Insiders Build
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
