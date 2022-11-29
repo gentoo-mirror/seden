@@ -10,6 +10,9 @@
 		https://gridcoin.us/
 		https://github.com/gridcoin/Gridcoin-Research
 	</longdescription>
+	<upstream>
+		<remote-id type="github">gridcoin-community/Gridcoin-Research</remote-id>
+	</upstream>
 	<use>
 		<flag name="bench">Compile benchmarks</flag>
 		<flag name="boinc">Enable research wallet functions for BOINC mining</flag>
