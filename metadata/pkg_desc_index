@@ -16,7 +16,7 @@ net-im/teams-insiders 1.5.00.23861-r1: Microsoft Teams, an Office 365 multimedia
 net-mail/davmail-bin 6.0.0 6.0.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
 net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum protocol
-net-p2p/gridcoin 5.4.0.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
+net-p2p/gridcoin 5.4.1.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sci-misc/boinc 7.20.2-r1: The Berkeley Open Infrastructure for Network Computing
 sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
