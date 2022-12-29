@@ -19,5 +19,5 @@ net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum prot
 net-p2p/gridcoin 5.4.1.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sci-misc/boinc 7.20.2-r1: The Berkeley Open Infrastructure for Network Computing
-sys-auth/elogind 239.9999 241.9999 243.9999 246.9999: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 239.9999 241.9999 243.9999 246.9999 252.9999: The systemd project's logind, extracted to a standalone package
 x11-themes/kvantum 1.0.5: SVG-based theme engine for Qt5, KDE Plasma and LXQt
