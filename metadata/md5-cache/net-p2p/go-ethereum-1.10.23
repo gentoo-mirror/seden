@@ -10,5 +10,5 @@ LICENSE=GPL-3+ LGPL-3+
 RESTRICT=test strip
 SLOT=0
 SRC_URI=https://github.com/ethereum/go-ethereum/archive/v1.10.23.tar.gz -> go-ethereum-1.10.23.tar.gz
-_eclasses_=go-module	4c4b34f361efda91762ffeda8f632c02
+_eclasses_=go-module	fdf8c78611f9efa20d26b955399a44c7
 _md5_=5f2755dad28fe9bcae69ac7b58eb2474
