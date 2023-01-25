@@ -7,6 +7,7 @@ acct-user/gridcoin 0-r2: user for gridcoin daemon
 app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs archives as possible.
 dev-cpp/cli11 2.2.0: Command line parser for C++11
 dev-cpp/ethash 0.9.0: C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
+dev-games/ogre 13.6.0: Object-oriented Graphics Rendering Engine
 games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-plugins/frei0r-plugins 1.8.0: A minimalistic plugin API for video effects
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
