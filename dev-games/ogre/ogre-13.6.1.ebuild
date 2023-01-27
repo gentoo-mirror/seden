@@ -1,9 +1,9 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-CMAKE_REMOVE_MODULES_LIST="FindFreetype FindDoxygen FindZLIB"
+CMAKE_REMOVE_MODULES_LIST=( FindFreetype FindDoxygen FindZLIB )
 inherit cmake
 
 IMGUI_PN="imgui"
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/OGRECave/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/ocornut/${IMGUI_PN}/archive/v${IMGUI_PV}.tar.gz -> ${IMGUI_P}.tar.gz"
 
 LICENSE="MIT public-domain"
-SLOT="0/13.5"
+SLOT="0/13.6"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="assimp bullet +cache cg debug deprecated doc double-precision egl examples +freeimage
