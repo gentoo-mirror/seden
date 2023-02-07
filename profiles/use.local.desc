@@ -4,24 +4,6 @@
 
 acct-user/ethminer:boinc - Add user to boinc group, too.
 acct-user/gridcoin:boinc - Add user to boinc group, too.
-dev-games/ogre:assimp - Use media-libs/assimp to import assets from 3D files
-dev-games/ogre:boost - Enable boost support
-dev-games/ogre:bullet - Use sci-physics/bullet for physics plugin
-dev-games/ogre:cache - Enable GL state cache support
-dev-games/ogre:cg - NVIDIA toolkit plugin
-dev-games/ogre:deprecated - Build deprecated nodeless positioning of Lights and Cameras.
-dev-games/ogre:double-precision - More precise calculations at the expense of speed
-dev-games/ogre:egl - Use egl instead of glx
-dev-games/ogre:freeimage - Support images via media-libs/freeimage
-dev-games/ogre:gl3plus - Build OpenGL 3+ RenderSystem
-dev-games/ogre:gles2 - Build OpenGL ES 2.x RenderSystem
-dev-games/ogre:gles3 - Enable OpenGL ES 3.x Features
-dev-games/ogre:json - Use dev-libs/rapidjson (needed by Hlms JSON materials)
-dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois for samples
-dev-games/ogre:poco - When USE=threads, use poco for threading
-dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
-dev-games/ogre:tbb - When USE=threads, use tbb for threading
-dev-games/ogre:tools - Build and install AssimpConverter (assimp USE flag is enabled), MeshUpgrader, VRMLConverter and XMLConverter
 media-plugins/frei0r-plugins:facedetect - Enables building of facedetect plugin, which depends on media-libs/opencv
 media-plugins/frei0r-plugins:scale0tilt - Enables building of scale0tilt and vectorscope plugins, which depend on media-libs/gavl
 media-sound/milkytracker:midi - Use media-libs/rtmidi for MIDI support
