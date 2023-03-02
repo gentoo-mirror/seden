@@ -1,7 +1,0 @@
-# Masked for removal at 2023-02-28
-#
-# Microsoft has removed all packages, as the electron app is "abandoned".
-# Use PWA instead. Head to the teams.microsoft.com website in a PWA-friendly web browser
-# (anything Chromium-based), sign in, and then wait for the “install” prompt to be shown.
-# If the prompt does not appear, you can use the tools > ‘create a shortcut’ menu option.
-net-im/teams-insiders
