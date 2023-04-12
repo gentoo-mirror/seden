@@ -4,15 +4,17 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit python-single-r1 cmake
+inherit cmake git-r3 python-single-r1
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
-SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/mltframework/${PN}.git"
+EGIT_BRANCH="master"
+EGIT_SUBMODULES=()
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
 IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
