@@ -12,6 +12,6 @@ RDEPEND=>=dev-libs/libevent-2.1.12 daemon? ( acct-group/gridcoin acct-user/gridc
 REQUIRED_USE=^^ ( daemon qt5 ) dbus? ( qt5 ) qrcode? ( qt5 )
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://github.com/gridcoin-community/Gridcoin-Research/archive/refs/tags/5.4.3.0.tar.gz -> gridcoin-5.4.3.0.tar.gz
+SRC_URI=https://github.com/gridcoin-community/Gridcoin-Research/archive/refs/tags/5.4.5.0.tar.gz -> gridcoin-5.4.5.0.tar.gz
 _eclasses_=toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multilib	d1408425c7c4a7669b9b17735404b693	flag-o-matic	514815b1cc0dd4aeac177c2e812b3b1a	systemd	5f4bb0758df2e483babf68cd517078ca	desktop	021728fdc1b03b36357dbc89489e0f0d
 _md5_=8f8857f773635ecec8c6b6feb0179961
