@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="frei0r">Build the module for <pkg>media-plugins/frei0r-plugins</pkg></flag>
+		<flag name="glaxnimate" restrict="&gt;=7.16.0">Build Glaxnimate plugin</flag>
 		<flag name="opencv">Build motion tracking module using <pkg>media-libs/opencv</pkg></flag>
 		<flag name="python">Build SWIG bindings for Python</flag>
 		<flag name="rtaudio">Builds rtaudio consumer for native audio support on multiple platforms</flag>
