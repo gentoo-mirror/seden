@@ -7,6 +7,7 @@ acct-user/gridcoin 0-r2: user for gridcoin daemon
 app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs archives as possible.
 dev-cpp/cli11 2.2.0: Command line parser for C++11
 dev-cpp/ethash 0.9.0: C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
+games-strategy/endless-sky 0.10.1: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/glfrontier 20060623-r5: Frontier: Elite 2 with OpenGL support
 media-libs/mlt 7.16.0 9999: Open source multimedia framework for television broadcasting
 media-plugins/frei0r-plugins 1.8.0: A minimalistic plugin API for video effects
