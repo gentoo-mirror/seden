@@ -30,7 +30,7 @@ RESTRICT="test"
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
 	sci-libs/fftw:3.0=
-	ffmpeg? ( media-video/ffmpeg:0=[vdpau?,-flite] )
+	ffmpeg? ( media-video/ffmpeg:0=[vdpau?] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (
 		media-libs/libexif
