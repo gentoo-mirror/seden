@@ -4,20 +4,22 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
-inherit cmake git-r3 python-single-r1
+inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
-EGIT_REPO_URI="https://github.com/mltframework/${PN}.git"
-EGIT_BRANCH="master"
-EGIT_SUBMODULES=()
+SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0/7"
-KEYWORDS=""
-IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 rtaudio rubberband sdl test vdpau vidstab xine xml"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
+IUSE="debug ffmpeg frei0r glaxnimate gtk jack libsamplerate opencv opengl python qt5 qt6 rtaudio rubberband sdl sox test vdpau vidstab xine xml"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="
+	?? ( qt5 qt6 )
+	glaxnimate? ( || ( qt5 qt6 ) )
+	python? ( ${PYTHON_REQUIRED_USE} )
+"
 
 # Needs unpackaged 'kwalify'
 RESTRICT="test"
@@ -28,7 +30,7 @@ RESTRICT="test"
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
 	sci-libs/fftw:3.0=
-	ffmpeg? ( media-video/ffmpeg:0=[vdpau?,-flite] )
+	ffmpeg? ( media-video/ffmpeg:0=[vdpau?] )
 	frei0r? ( media-plugins/frei0r-plugins )
 	gtk? (
 		media-libs/libexif
@@ -55,6 +57,13 @@ DEPEND="
 		media-libs/libexif
 		x11-libs/libX11
 	)
+	qt6? (
+		dev-qt/qt5compat:6
+		dev-qt/qtbase:6[gui,widgets,xml]
+		dev-qt/qtsvg:6
+		media-libs/libexif
+		x11-libs/libX11
+	)
 	rtaudio? (
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
@@ -64,6 +73,7 @@ DEPEND="
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
 	)
+	sox? ( media-sound/sox )
 	vidstab? ( media-libs/vidstab )
 	xine? ( >=media-libs/xine-lib-1.1.2_pre20060328-r7 )
 	xml? ( >=dev-libs/libxml2-2.5 )
@@ -108,6 +118,7 @@ src_configure() {
 		-DGPL=ON
 		-DGPL3=ON
 		-DBUILD_TESTING=$(usex test)
+		-DCLANG_FORMAT=OFF
 		-DMOD_KDENLIVE=ON
 		-DMOD_SDL1=OFF
 		-DMOD_SDL2=$(usex sdl)
@@ -116,17 +127,19 @@ src_configure() {
 		-DMOD_FREI0R=$(usex frei0r)
 		-DMOD_GDK=$(usex gtk)
 		-DMOD_JACKRACK=$(usex jack)
-		-DMOD_GLAXNIMATE=OFF
+		-DMOD_GLAXNIMATE=$(usex glaxnimate $(usex qt5) OFF)
+		-DMOD_GLAXNIMATE_QT6=$(usex glaxnimate $(usex qt6) OFF)
 		-DMOD_RESAMPLE=$(usex libsamplerate)
 		-DMOD_OPENCV=$(usex opencv)
 		-DMOD_MOVIT=$(usex opengl)
 		-DMOD_QT=$(usex qt5)
+		-DMOD_QT6=$(usex qt6)
 		-DMOD_RTAUDIO=$(usex rtaudio)
 		-DMOD_RUBBERBAND=$(usex rubberband)
 		-DMOD_VIDSTAB=$(usex vidstab)
 		-DMOD_XINE=$(usex xine)
 		-DMOD_XML=$(usex xml)
-		-DMOD_SOX=OFF
+		-DMOD_SOX=$(usex sox)
 	)
 
 	# TODO: rework upstream CMake to allow controlling MMX/SSE/SSE2
