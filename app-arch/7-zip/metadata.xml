@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sven@eden-worx.com</email>
+		<name>Sven Eden</name>
+	</maintainer>
+	<use>
+		<flag name="asm">Enable use of <pkg>dev-lang/jwasm</pkg>.</flag>
+		<flag name="rar">Enable RAR unpack capabilities.</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">sevenzip</remote-id>
+	</upstream>
+</pkgmetadata>
