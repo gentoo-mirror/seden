@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="A file archiver with a high compression ratio"
 HOMEPAGE="https://7-zip.org"
 SRC_URI="mirror://sourceforge/project/sevenzip/7-Zip/${PV}/7z$(ver_rs 1 '')-src.tar.xz"
-RESTRICT="primaryuri"
+RESTRICT="mirror"
 S="${WORKDIR}"
 
 LICENSE="LGPL-2.1 BSD rar? ( unRAR )"
