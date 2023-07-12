@@ -4,6 +4,7 @@ acct-group/gridcoin 0: group for gridcoin daemon
 acct-user/davmail 0: user for davmail server
 acct-user/ethminer 0: user for ethminer daemon
 acct-user/gridcoin 0-r2: user for gridcoin daemon
+app-arch/7-zip 23.01: A file archiver with a high compression ratio
 app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs archives as possible.
 dev-cpp/cli11 2.2.0: Command line parser for C++11
 dev-cpp/ethash 0.9.0: C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
