@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+asm rar static"
 
-RDEPEND=""
+RDEPEND="!app-arch/p7zip"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	asm? ( dev-lang/jwasm )
@@ -64,5 +64,6 @@ src_compile() {
 
 src_install() {
 	dobin 7zz$(usex static 's' '')
+	dosym 7zz /usr/bin/7z
 	einstalldocs
 }

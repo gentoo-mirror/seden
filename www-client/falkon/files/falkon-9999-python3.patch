@@ -1,0 +1,17 @@
+--- a/CMakeLists.txt	2023-07-24 14:03:29.236349763 +0200
++++ b/CMakeLists.txt	2023-07-24 14:07:24.585362133 +0200
+@@ -134,12 +134,12 @@
+ # Optional: PySide2
+ option(BUILD_PYTHON_SUPPORT "Support for Python plugins" ON)
+ if (BUILD_PYTHON_SUPPORT)
++    find_package(Python3 COMPONENTS Development)
+     find_package(PySide2 "2.0.0")
+     find_package(Shiboken2 "2.0.0")
+-    find_package(Python3 COMPONENTS Development)
++    set_package_properties(Python3 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     set_package_properties(PySide2 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     set_package_properties(Shiboken2 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+-    set_package_properties(Python3 PROPERTIES DESCRIPTION "Python plugins" TYPE OPTIONAL)
+     if (PySide2_FOUND AND Shiboken2_FOUND AND Python3_FOUND)
+         set(ENABLE_PYTHON_PLUGINS TRUE)
+     endif()
