@@ -25,6 +25,7 @@ DEPEND="
 	server? ( acct-user/davmail )
 "
 RDEPEND="${DEPEND}"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
