@@ -19,8 +19,7 @@ RESTRICT="bindist mirror strip"
 DEPEND=""
 RDEPEND="
 	media-libs/alsa-lib
-	app-accessibility/at-spi2-atk
-	dev-libs/atk
+	>=app-accessibility/at-spi2-core-2.46.0
 	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
@@ -34,7 +33,7 @@ RDEPEND="
 	media-libs/mesa
 	dev-libs/nss
 	x11-libs/pango
-	media-video/pipewire
+	media-libs/libpulse
 	virtual/libudev
 	sys-power/upower
 	x11-libs/xcb-util-image
