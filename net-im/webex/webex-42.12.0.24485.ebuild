@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/mesa
 	dev-libs/nss
 	x11-libs/pango
-	media-sound/pulseaudio
+	media-video/pipewire
 	virtual/libudev
 	sys-power/upower
 	x11-libs/xcb-util-image
