@@ -42,7 +42,7 @@ DEPEND="
 		virtual/jack
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
-	opencv? ( >=media-libs/opencv-4.5.1:=[contrib] )
+	opencv? ( media-libs/opencv[contrib] )
 	opengl? (
 		media-libs/libglvnd
 		media-video/movit
