@@ -40,6 +40,7 @@ RDEPEND="
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
+	virtual/libcrypt
 "
 
 S=${WORKDIR}
