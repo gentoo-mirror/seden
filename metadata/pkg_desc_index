@@ -14,7 +14,7 @@ media-libs/mlt 7.18.0-r102: Open source multimedia framework for television broa
 media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r4: FastTracker 2 inspired music tracker
 media-video/shotcut 23.07.09: A free, open source, cross-platform video editor
-net-im/webex 42.12.0.24485: Cisco video conferencing and online meeting software
+net-im/webex 43.8.0.26955: Cisco video conferencing and online meeting software
 net-mail/davmail-bin 6.0.1 6.1.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
 net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum protocol
