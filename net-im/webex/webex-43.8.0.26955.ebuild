@@ -18,29 +18,30 @@ RESTRICT="bindist mirror strip"
 
 DEPEND=""
 RDEPEND="
-	media-libs/alsa-lib
 	>=app-accessibility/at-spi2-core-2.46.0
+	app-crypt/libsecret
+	app-crypt/tpm2-tss[mbedtls]
+	dev-libs/nss
+	dev-libs/wayland
+	media-libs/alsa-lib
+	media-libs/libglvnd
+	media-libs/libpulse
+	media-libs/mesa
+	sys-apps/lshw
+	sys-power/upower
+	virtual/libcrypt
+	virtual/libudev
 	x11-libs/libXScrnSaver
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
 	x11-libs/libXrandr
 	x11-libs/libnotify
-	app-crypt/libsecret
-	dev-libs/wayland
 	x11-libs/libxkbcommon
-	sys-apps/lshw
-	media-libs/libglvnd
-	media-libs/mesa
-	dev-libs/nss
 	x11-libs/pango
-	media-libs/libpulse
-	virtual/libudev
-	sys-power/upower
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
-	virtual/libcrypt
 "
 
 S=${WORKDIR}
