@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,7 +38,7 @@ RDEPEND="
 		acct-user/gridcoin[boinc=]
 	)
 	dev-libs/boost
-	dev-libs/openssl:0/1.1
+	dev-libs/openssl-compat:1.1.1
 	dev-libs/libzip
 	sys-libs/db:5.3[cxx]
 	dbus? ( dev-qt/qtdbus:5 )
