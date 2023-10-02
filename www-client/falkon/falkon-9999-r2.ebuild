@@ -64,7 +64,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
 
-PATCHES=( "${FILESDIR}/${P}-python3.patch" )
+PATCHES=()
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
