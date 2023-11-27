@@ -6,6 +6,7 @@ acct-user/ethminer:boinc - Add user to boinc group, too.
 acct-user/gridcoin:boinc - Add user to boinc group, too.
 app-arch/7-zip:asm - Enable use of dev-lang/jwasm.
 app-arch/7-zip:rar - Enable RAR unpack capabilities.
+app-office/texstudio:video - Use phonon for video embedding
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
 media-libs/mlt:glaxnimate - Build Glaxnimate plugin
 media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
