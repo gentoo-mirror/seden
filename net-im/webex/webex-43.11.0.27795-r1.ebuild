@@ -20,7 +20,7 @@ DEPEND=""
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	app-crypt/libsecret
-	app-crypt/tpm2-tss[mbedtls]
+	app-crypt/tpm2-tss
 	dev-libs/nss
 	dev-libs/wayland
 	media-libs/alsa-lib
