@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 inherit python-single-r1 cmake
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
@@ -42,7 +42,7 @@ DEPEND="
 		virtual/jack
 	)
 	libsamplerate? ( >=media-libs/libsamplerate-0.1.2 )
-	opencv? ( media-libs/opencv[contrib] )
+	opencv? ( >=media-libs/opencv-4.5.1:=[contrib] )
 	opengl? (
 		media-libs/libglvnd
 		media-video/movit
@@ -51,6 +51,7 @@ DEPEND="
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
@@ -93,6 +94,7 @@ BDEPEND="
 DOCS=( AUTHORS NEWS README.md )
 
 PATCHES=(
+	# downstream
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
@@ -115,10 +117,10 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
+		-DCLANG_FORMAT=OFF
 		-DGPL=ON
 		-DGPL3=ON
 		-DBUILD_TESTING=$(usex test)
-		-DCLANG_FORMAT=OFF
 		-DMOD_KDENLIVE=ON
 		-DMOD_SDL1=OFF
 		-DMOD_SDL2=$(usex sdl)
@@ -127,13 +129,13 @@ src_configure() {
 		-DMOD_FREI0R=$(usex frei0r)
 		-DMOD_GDK=$(usex gtk)
 		-DMOD_JACKRACK=$(usex jack)
-		-DMOD_GLAXNIMATE=$(usex glaxnimate $(usex qt5) OFF)
-		-DMOD_GLAXNIMATE_QT6=$(usex glaxnimate $(usex qt6) OFF)
 		-DMOD_RESAMPLE=$(usex libsamplerate)
 		-DMOD_OPENCV=$(usex opencv)
 		-DMOD_MOVIT=$(usex opengl)
 		-DMOD_QT=$(usex qt5)
+		-DMOD_GLAXNIMATE=$(usex glaxnimate $(usex qt5) OFF)
 		-DMOD_QT6=$(usex qt6)
+		-DMOD_GLAXNIMATE_QT6=$(usex glaxnimate $(usex qt6) OFF)
 		-DMOD_RTAUDIO=$(usex rtaudio)
 		-DMOD_RUBBERBAND=$(usex rubberband)
 		-DMOD_VIDSTAB=$(usex vidstab)
@@ -147,7 +149,10 @@ src_configure() {
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
 	if use python; then
-		mycmakeargs+=( -DSWIG_PYTHON=ON )
+		mycmakeargs+=(
+			-DSWIG_PYTHON=ON
+			-DPython3_EXECUTABLE="${PYTHON}"
+		)
 	fi
 
 	cmake_src_configure

@@ -26,11 +26,12 @@ BDEPEND="
 DEPEND="
 	dev-qt/qtbase:6[concurrent,dbus,gui,network,opengl,sql,vulkan,widgets,xml]
 	dev-qt/qtdeclarative:6[widgets]
-	dev-qt/qtmultimedia:6
+	dev-qt/qtmultimedia:6[qml]
 	dev-qt/qtwebsockets:6
-	>=media-libs/mlt-7.16.0-r100[ffmpeg,frei0r,fftw(+),jack,opengl,qt6,sdl,xml]
-	x11-libs/libxkbcommon
+	>=media-libs/mlt-7.22.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt6,sdl,xml]
 	media-video/ffmpeg
+	sci-libs/fftw
+	x11-libs/libxkbcommon
 "
 RDEPEND="${DEPEND}
 	virtual/jack
