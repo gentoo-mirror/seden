@@ -53,6 +53,10 @@ DEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
+PATCHES="
+	"${FILESDIR}"/${P}-add_missing_boost_array_include.patch
+"
+
 S="${WORKDIR}/${PN^}-Research-${PV}"
 
 pkg_setup() {

@@ -1,0 +1,10 @@
+--- a/src/wallet/diagnose.h	2024-01-08 23:51:01.722151300 +0100
++++ b/src/wallet/diagnose.h	2024-01-08 23:52:35.935154175 +0100
+@@ -14,6 +14,7 @@
+ #include "net.h"
+ #include "util.h"
+ #include <atomic>
++#include <boost/array.hpp>
+ #include <boost/asio.hpp>
+ #include <boost/asio/ip/udp.hpp>
+ #include <boost/asio/system_timer.hpp>
