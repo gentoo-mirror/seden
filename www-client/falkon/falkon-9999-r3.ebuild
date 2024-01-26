@@ -4,8 +4,8 @@
 EAPI=8
 
 ECM_TEST="true"
-KFMIN=5.106.0
-QTMIN=5.15.9
+KF6MIN=5.248.0
+QTMIN=6.6.1
 PYTHON_COMPAT=( python3_{10..11} )
 inherit ecm gear.kde.org python-single-r1
 
@@ -22,24 +22,20 @@ RESTRICT="test" # bug 653046
 
 COMMON_DEPEND="
 	dev-libs/openssl:0=
-	>=dev-qt/qtdeclarative-${QTMIN}:5[widgets]
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtnetwork-${QTMIN}:5[ssl]
-	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5[sqlite]
-	>=dev-qt/qtwebchannel-${QTMIN}:5
-	>=dev-qt/qtwebengine-${QTMIN}:5=[widgets]
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=kde-frameworks/karchive-${KFMIN}:5
+	>=dev-qt/qtbase-${QTMIN}:6[concurrent,dbus=,gui,network,sql,widgets]
+	>=dev-qt/qtdeclarative-${QTMIN}:6
+	>=dev-qt/qtwebchannel-${QTMIN}:6
+	>=dev-qt/qtwebengine-${QTMIN}:6
+	>=kde-frameworks/extra-cmake-modules-${KF6MIN}
+	>=kde-frameworks/karchive-${KF6MIN}:6
 	virtual/libintl
-	dbus? ( >=dev-qt/qtdbus-${QTMIN}:5 )
 	kde? (
-		>=kde-frameworks/kcoreaddons-${KFMIN}:5
-		>=kde-frameworks/kcrash-${KFMIN}:5
-		>=kde-frameworks/kio-${KFMIN}:5
-		>=kde-frameworks/kjobwidgets-${KFMIN}:5
-		>=kde-frameworks/kwallet-${KFMIN}:5
-		>=kde-frameworks/purpose-${KFMIN}:5
+		>=kde-frameworks/kcoreaddons-${KF6MIN}:6
+		>=kde-frameworks/kcrash-${KF6MIN}:6
+		>=kde-frameworks/kio-${KF6MIN}:6
+		>=kde-frameworks/kjobwidgets-${KF6MIN}:6
+		>=kde-frameworks/kwallet-${KF6MIN}:6
+		>=kde-frameworks/purpose-${KF6MIN}:6
 	)
 	python? (
 		${PYTHON_DEPS}
@@ -49,21 +45,18 @@ COMMON_DEPEND="
 		")
 	)
 	X? (
-		>=dev-qt/qtx11extras-${QTMIN}:5
+		>=dev-qt/qtmultimedia-${QTMIN}:6[X]
 		x11-libs/libxcb:=
 		x11-libs/xcb-util
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	>=dev-qt/qtconcurrent-${QTMIN}:5
-"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	DEPEND+=" >=kde-frameworks/ki18n-${KFMIN}:5"
+	DEPEND+=" >=kde-frameworks/ki18n-${KF6MIN}:6"
 fi
 RDEPEND="${COMMON_DEPEND}
-	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:6
 "
-BDEPEND=">=dev-qt/linguist-tools-${QTMIN}:5"
+BDEPEND=">=dev-qt/qttools-${QTMIN}:6[linguist]"
 
 PATCHES=()
 
@@ -76,8 +69,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_KEYRING=OFF
 		-DDISABLE_DBUS=$(usex !dbus)
-		$(cmake_use_find_package kde KF5Wallet)
-		$(cmake_use_find_package kde KF5KIO)
+		$(cmake_use_find_package kde KF6Wallet)
+		$(cmake_use_find_package kde KF6KIO)
 		-DBUILD_PYTHON_SUPPORT=$(usex python)
 		-DNO_X11=$(usex !X)
 	)

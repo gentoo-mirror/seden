@@ -1,0 +1,5 @@
+# Falkon is transitioning to KF6 and Qt6
+# As KF6 is highly experimental and masked in Gentoo, Falkon is now
+# masked, too, until KF6 becomes stable and officially released.
+# 2024-01-26 - sed - EdenWorX
+=www-client/falkon-9999-r3
