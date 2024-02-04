@@ -1,22 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit flag-o-matic git-r3 linux-info meson pam udev xdg-utils
+inherit git-r3 linux-info meson pam udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
 EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v246-stable"
+EGIT_BRANCH="v255-stable"
 EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+acl debug doc efi +pam +policykit selinux"
+KEYWORDS=""
+IUSE="+acl audit debug doc efi +pam +policykit selinux"
 
 COMMON_DEPEND="
+	audit? ( sys-process/audit )
 	sys-apps/util-linux
 	sys-libs/libcap
 	virtual/libudev:=
@@ -42,15 +43,13 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-243.6-docs.patch"
+	"${FILESDIR}/${PN}-252-docs.patch"
 )
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
 
-	if use kernel_linux; then
-		linux-info_pkg_setup
-	fi
+	use kernel_linux && linux-info_pkg_setup
 }
 
 src_prepare() {
@@ -59,38 +58,24 @@ src_prepare() {
 }
 
 src_configure() {
-	local rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
-	local cgroupmode="legacy"
-	local debugmode=""
-
-	if [[ "xhybrid" = "x${rccgroupmode}" ]]; then
-		cgroupmode="hybrid"
-	elif [[ "xunified" = "x${rccgroupmode}" ]]; then
-		cgroupmode="unified"
-	fi
-
-	if use debug; then
-		debugmode="-Ddebug-extra=elogind"
-	fi
-
-	# Duplicating C[XX]FLAGS in LDFLAGS is deprecated and will become
-	# a hard error in future meson versions:
-	filter-ldflags $CFLAGS $CXXFLAGS
-
+	# Removed -Ddefault-hierarchy=${cgroupmode}
+	# -> It is completely irrelevant with -Dcgroup-controller=openrc anyway.
 	local emesonargs=(
-		$debugmode
+		$(usex debug "-Ddebug-extra=elogind" "")
 		--buildtype $(usex debug debug release)
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		-Dacl=$(usex acl true false)
+		-Daudit=$(usex audit true false)
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dcgroup-controller=openrc
-		-Ddefault-hierarchy=${cgroupmode}
-		-Ddefault-kill-user-processes=false
+		-Ddefault-kill-user-processes=true
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Defi=$(usex efi true false)
 		-Dhtml=$(usex doc auto false)
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		-Dinstall-sysconfdir=true
 		-Dman=auto
+		-Dmode=release
 		-Dpam=$(usex pam true false)
 		-Dpamlibdir=$(getpam_mod_dir)
 		-Drootlibdir="${EPREFIX}"/$(get_libdir)
@@ -106,8 +91,6 @@ src_configure() {
 }
 
 src_install() {
-	DOCS+=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
-
 	meson_src_install
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
@@ -117,6 +100,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
 		elog "elogind is currently started from boot runlevel."
 	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
@@ -130,4 +114,8 @@ pkg_postinst() {
 		ewarn "You may add it to the boot runlevel by:"
 		ewarn "# rc-update add elogind boot"
 	fi
+}
+
+pkg_postrm() {
+	udev_reload
 }
