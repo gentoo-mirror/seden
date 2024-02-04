@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit git-r3 linux-info meson pam udev xdg-utils
+PYTHON_COMPAT=( python3_{10..12} )
+
+inherit git-r3 linux-info meson pam python-any-r1 udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -16,7 +18,16 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+acl audit debug doc efi +pam +policykit selinux"
 
-COMMON_DEPEND="
+BDEPEND="
+	app-text/docbook-xml-dtd:4.2
+	app-text/docbook-xml-dtd:4.5
+	app-text/docbook-xsl-stylesheets
+	dev-util/gperf
+	virtual/pkgconfig
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
+"
+DEPEND="
 	audit? ( sys-process/audit )
 	sys-apps/util-linux
 	sys-libs/libcap
@@ -25,16 +36,7 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 	selinux? ( sys-libs/libselinux )
 "
-DEPEND="${COMMON_DEPEND}
-	app-text/docbook-xml-dtd:4.2
-	app-text/docbook-xml-dtd:4.5
-	app-text/docbook-xsl-stylesheets
-	dev-util/gperf
-	dev-util/intltool
-	sys-devel/libtool
-	virtual/pkgconfig
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!sys-apps/systemd
 "
 PDEPEND="
@@ -45,6 +47,11 @@ PDEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}-252-docs.patch"
 )
+
+python_check_deps() {
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
