@@ -3,6 +3,8 @@
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_{10..12} )
+
 if [[ ${PV} = *9999* ]]; then
 	EGIT_BRANCH="v252-stable"
 	EGIT_REPO_URI="https://github.com/elogind/elogind.git"
@@ -12,7 +14,7 @@ else
 	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
 fi
 
-inherit linux-info meson pam udev xdg-utils
+inherit linux-info meson pam python-any-r1 udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
@@ -51,6 +53,11 @@ DOCS=( README.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-252-docs.patch"
 )
+
+python_check_deps() {
+	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
