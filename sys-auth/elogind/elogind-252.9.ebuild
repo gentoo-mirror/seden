@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv ~s390 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
 
 inherit linux-info meson pam python-any-r1 udev xdg-utils
@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit debug doc +pam +policykit selinux test"
+IUSE="+acl audit +cgroup-hybrid debug doc +pam +policykit selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -30,6 +30,8 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-util/gperf
 	virtual/pkgconfig
+	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 DEPEND="
 	audit? ( sys-process/audit )
@@ -71,34 +73,41 @@ src_prepare() {
 }
 
 src_configure() {
-	# Removed -Ddefault-hierarchy=${cgroupmode}
-	# -> It is completely irrelevant with -Dcgroup-controller=openrc anyway.
+	if use cgroup-hybrid; then
+		cgroupmode="hybrid"
+	else
+		cgroupmode="unified"
+	fi
+
+	python_setup
+
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
 		--buildtype $(usex debug debug release)
+		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
+		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		-Dpamlibdir=$(getpam_mod_dir)
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		-Drootlibdir="${EPREFIX}"/$(get_libdir)
+		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
+		-Drootprefix="${EPREFIX}/"
+		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
+		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 		-Dacl=$(usex acl true false)
 		-Daudit=$(usex audit true false)
-		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dcgroup-controller=openrc
+		-Ddefault-hierarchy=${cgroupmode}
 		-Ddefault-kill-user-processes=false
-		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtml=$(usex doc auto false)
-		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dinstall-sysconfdir=true
 		-Dman=auto
 		-Dmode=release
 		-Dpam=$(usex pam true false)
-		-Dpamlibdir=$(getpam_mod_dir)
-		-Drootlibdir="${EPREFIX}"/$(get_libdir)
-		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
-		-Drootprefix="${EPREFIX}/"
 		-Dselinux=$(usex selinux true false)
 		-Dsmack=true
 		-Dtests=$(usex test true false)
-		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
 		-Dutmp=$(usex elibc_musl false true)
-		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
 	)
 
 	meson_src_configure
@@ -114,6 +123,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	udev_reload
 	if ! use pam; then
 		ewarn "${PN} will not be managing user logins/seats without USE=\"pam\"!"
 		ewarn "In other words, it will be useless for most applications."
@@ -146,4 +156,16 @@ pkg_postinst() {
 			elog "when the first service calls it via dbus."
 		fi
 	fi
+
+	for version in ${REPLACING_VERSIONS}; do
+		if ver_test "${version}" -lt 252.9; then
+			elog "Starting with release 252.9 the sleep configuration is now done"
+			elog "in the /etc/elogind/sleep.conf. Should you use non-default sleep"
+			elog "configuration remember to migrate those to new configuration file."
+		fi
+	done
+}
+
+pkg_postrm() {
+	udev_reload
 }
