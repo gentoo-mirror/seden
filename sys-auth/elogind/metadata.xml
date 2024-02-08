@@ -9,6 +9,9 @@
       Support rebooting into EFI firmware
     </flag>
   </use>
+  <use>
+    <flag name="cgroup-hybrid">Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.</flag>
+  </use>
   <upstream>
     <remote-id type="github">elogind/elogind</remote-id>
   </upstream>

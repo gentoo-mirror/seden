@@ -15,7 +15,6 @@ EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-KEYWORDS=""
 IUSE="+acl audit debug doc efi +pam +policykit selinux"
 
 BDEPEND="
