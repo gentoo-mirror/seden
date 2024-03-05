@@ -83,7 +83,7 @@ src_configure() {
 
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
-		--buildtype $(usex debug debug release)
+		-Dbuildtype=$(usex debug debug release)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dpamlibdir=$(getpam_mod_dir)
