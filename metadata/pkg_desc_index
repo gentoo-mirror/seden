@@ -20,7 +20,7 @@ net-im/webex 43.11.0.27795-r1: Cisco video conferencing and online meeting softw
 net-mail/davmail-bin 6.2.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
 net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum protocol
-net-p2p/gridcoin 5.4.5.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
+net-p2p/gridcoin 5.4.6.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
 sys-auth/elogind 252.9 252.9999 255.9999: The systemd project's logind, extracted to a standalone package
 www-client/falkon 9999-r3: Cross-platform web browser using QtWebEngine
