@@ -45,7 +45,6 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-252-docs.patch"
-	"${FILESDIR}/${PN}-252.9-musl-lfs.patch"
 )
 
 python_check_deps() {
