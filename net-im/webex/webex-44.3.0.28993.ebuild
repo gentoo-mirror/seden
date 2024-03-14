@@ -9,18 +9,18 @@ DESCRIPTION="Cisco video conferencing and online meeting software"
 HOMEPAGE="https://www.webex.com/"
 SRC_URI="https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.rpm -> ${P}.rpm"
 
+S=${WORKDIR}
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 
 RESTRICT="bindist mirror strip"
 
-DEPEND=""
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0
 	app-crypt/libsecret
 	app-crypt/tpm2-tss
+	<dev-cpp/tbb-2021
 	dev-libs/nss
 	dev-libs/wayland
 	media-libs/alsa-lib
@@ -43,8 +43,6 @@ RDEPEND="
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
 "
-
-S=${WORKDIR}
 
 QA_PREBUILT="*"
 
