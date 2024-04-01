@@ -1,0 +1,12 @@
+--- a/frontvm3-20060623/Makefile-C	2024-04-01 11:36:34.251039715 +0200
++++ b/frontvm3-20060623/Makefile-C	2024-04-01 11:37:15.826041900 +0200
+@@ -1,6 +1,6 @@
+-export CFLAGS = -march=native -pipe -O2 -Wall -DOGG_MUSIC
+-export LIBS = -lGL -lGLU -lvorbisfile -lvorbis -logg -lm
+-export FE2OBJS = ../fe2.part1.o ../fe2.part2.o
++export CFLAGS  := -march=native -pipe -O2 -Wall -fcommon -DOGG_MUSIC
++export LIBS    := -fcommon -lGL -lGLU -lvorbisfile -lvorbis -logg -lm
++export FE2OBJS := ../fe2.part1.o ../fe2.part2.o
+ 
+ THIS=Makefile-C
+ VERSION=20060623
