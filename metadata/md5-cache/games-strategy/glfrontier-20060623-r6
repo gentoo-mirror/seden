@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile install
 DEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
 DESCRIPTION=Frontier: Elite 2 with OpenGL support
-EAPI=7
+EAPI=8
 HOMEPAGE=https://www.frontierastro.co.uk/Hires/hiresfe2.html
 INHERIT=desktop
 KEYWORDS=~amd64 ~x86
@@ -10,4 +10,4 @@ RDEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
 SLOT=0
 SRC_URI=https://prydeworx.com/glfrontier/frontvm3-20060623.tar.bz2 https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d
-_md5_=cef990436fa6ad917b2260c4b09cd2b9
+_md5_=72d691e8afa8d4ad80b87ba9539a634f
