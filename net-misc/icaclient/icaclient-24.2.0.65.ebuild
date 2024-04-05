@@ -168,7 +168,7 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
-	
+
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
 		doins nls/en.UTF-8/eula.txt
