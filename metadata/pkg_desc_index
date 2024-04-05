@@ -18,6 +18,7 @@ media-video/shotcut 23.09.29 23.12.15: A free, open source, cross-platform video
 net-im/skypeforlinux 8.106.0.212: Instant messaging client, with support for audio and video
 net-im/webex 44.3.0.28993: Cisco video conferencing and online meeting software
 net-mail/davmail-bin 6.2.1: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
+net-misc/icaclient 24.2.0.65: ICA Client for Citrix Presentation servers
 net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
 net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum protocol
 net-p2p/gridcoin 5.4.7.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation

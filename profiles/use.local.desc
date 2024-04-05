@@ -16,6 +16,8 @@ media-libs/mlt:rubberband - Enable audio pitch-shifting using media-libs/rubberb
 media-libs/mlt:vidstab - Enabled video stabilization with media-libs/vidstab
 media-sound/milkytracker:midi - Use media-libs/rtmidi for MIDI support
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
+net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
+net-misc/icaclient:usb - Allow connecting USB devices to virtual desktops
 net-p2p/ethminer:apicore - Build with API server support
 net-p2p/ethminer:binkern - Install AMD binary kernels
 net-p2p/ethminer:cpu - Build with CPU mining (ONLY for development!)
