@@ -3,6 +3,10 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<name>Sven Eden</name>
-		<email>yamakuzure@gmx.net</email>
+		<email>sven@eden-worx.com</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">perl5-dbi/DBD-Oracle</remote-id>
+		<changelog>https://github.com/perl5-dbi/DBD-Oracle/blob/master/Changes</changelog>
+	</upstream>
 </pkgmetadata>
