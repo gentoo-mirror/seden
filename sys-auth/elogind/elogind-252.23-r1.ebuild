@@ -12,6 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}-r1.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	S="${WORKDIR}/${PN}-${PV}-r1"
 fi
 
 inherit linux-info meson pam python-any-r1 udev xdg-utils
