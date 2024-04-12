@@ -26,6 +26,6 @@
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments with media-gfx/qrencode</flag>
 		<flag name="qt5">Build the Qt GUI</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
-		<flag name="utils">Build bitcoin-cli and bitcoin-tx utilities</flag>
+		<flag name="utils">Build bitcoin-core with 'cli' USE flag</flag>
 	</use>
 </pkgmetadata>
