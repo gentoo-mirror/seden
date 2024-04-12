@@ -38,6 +38,6 @@ net-p2p/gridcoin:pic - Disable optimized assembly code that is not PIC friendly
 net-p2p/gridcoin:qrcode - Enable generation of QR Codes for receiving payments with media-gfx/qrencode
 net-p2p/gridcoin:qt5 - Build the Qt GUI
 net-p2p/gridcoin:upnp - Enable Universal Plug and Play
-net-p2p/gridcoin:utils - Build bitcoin-cli and bitcoin-tx utilities
+net-p2p/gridcoin:utils - Build bitcoin-core with 'cli' USE flag
 sys-auth/elogind:cgroup-hybrid - Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.
 sys-auth/elogind:efi - Support rebooting into EFI firmware
