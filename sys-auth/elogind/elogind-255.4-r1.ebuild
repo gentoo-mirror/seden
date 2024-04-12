@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,12 +6,14 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..12} )
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_BRANCH="v252-stable"
+	EGIT_BRANCH="v255-stable"
 	EGIT_REPO_URI="https://github.com/elogind/elogind.git"
+	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}-r1.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+	S="${WORKDIR}/${PN}-${PV}-r1"
 fi
 
 inherit linux-info meson pam python-any-r1 udev xdg-utils
@@ -21,7 +23,7 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit +cgroup-hybrid debug doc +pam +policykit selinux test"
+IUSE="+acl audit debug doc +pam +policykit selinux test"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -50,8 +52,6 @@ PDEPEND="
 	policykit? ( sys-auth/polkit )
 "
 
-DOCS=( README.md )
-
 PATCHES=(
 	"${FILESDIR}/${PN}-252-docs.patch"
 )
@@ -73,38 +73,37 @@ src_prepare() {
 }
 
 src_configure() {
-	if use cgroup-hybrid; then
-		cgroupmode="hybrid"
-	else
-		cgroupmode="unified"
-	fi
-
 	python_setup
 
+	# Removed -Ddefault-hierarchy=${cgroupmode}
+	# -> It is completely irrelevant with "-Dcgroup-controller=openrc".
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
 		-Dbuildtype=$(usex debug debug release)
+		--prefix="${EPREFIX}/usr"
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--libexecdir="${EPREFIX}"/$(get_libdir)/elogind
+		--localstatedir="${EPREFIX}"/var
+		--sysconfdir="${EPREFIX}"/etc
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
+		-Ddbuspolicydir="${EPREFIX}"/usr/share/dbus-1/system.d
+		-Ddbussystemservicedir="${EPREFIX}"/usr/share/dbus-1/system-services
 		-Dpamlibdir=$(getpam_mod_dir)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		-Drootlibdir="${EPREFIX}"/$(get_libdir)
-		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
-		-Drootprefix="${EPREFIX}/"
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
-		-Dacl=$(usex acl true false)
-		-Daudit=$(usex audit true false)
+		-Dacl=$(usex acl enabled disabled)
+		-Daudit=$(usex audit enabled disabled)
 		-Dcgroup-controller=openrc
-		-Ddefault-hierarchy=${cgroupmode}
-		-Ddefault-kill-user-processes=false
-		-Dhtml=$(usex doc auto false)
+		-Ddefault-kill-user-processes=true
+		-Defi=false
+		-Dhtml=$(usex doc auto disabled)
 		-Dinstall-sysconfdir=true
 		-Dman=auto
 		-Dmode=release
-		-Dpam=$(usex pam true false)
-		-Dselinux=$(usex selinux true false)
+		-Dpam=$(usex pam enabled disabled)
+		-Dselinux=$(usex selinux enabled disabled)
 		-Dsmack=true
 		-Dtests=$(usex test true false)
 		-Dutmp=$(usex elibc_musl false true)
@@ -116,9 +115,10 @@ src_configure() {
 src_install() {
 	meson_src_install
 
+	keepdir /var/lib/elogind
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 
-	sed -e "s|@libdir@|$(get_libdir)|" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
+	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
 	newconfd ${PN}.conf ${PN}
 }
 
@@ -146,22 +146,24 @@ pkg_postinst() {
 		elog "elogind is currently not started from any runlevel."
 		elog "You may add it to the boot runlevel by:"
 		elog "# rc-update add elogind boot"
-		elog
-		elog "Alternatively, you can leave elogind out of any"
-		elog "runlevel. It will then be started automatically"
-		if use pam; then
-			elog "when the first service calls it via dbus, or"
-			elog "the first user logs into the system."
-		else
-			elog "when the first service calls it via dbus."
-		fi
+	fi
+	elog
+	elog "Alternatively, you can leave elogind out of any"
+	elog "runlevel. It will then be started automatically"
+	if use pam; then
+		elog "when the first service calls it via dbus, or"
+		elog "the first user logs into the system."
+	else
+		elog "when the first service calls it via dbus."
 	fi
 
 	for version in ${REPLACING_VERSIONS}; do
 		if ver_test "${version}" -lt 252.9; then
-			elog "Starting with release 252.9 the sleep configuration is now done"
-			elog "in the /etc/elogind/sleep.conf. Should you use non-default sleep"
-			elog "configuration remember to migrate those to new configuration file."
+			elog "Starting with release 255.4 the sleep configuration is now done"
+			elog "in the /etc/elogind/sleep.conf while the elogind additions have"
+			elog "been moved to /etc/elogind/sleep.conf.d/10-elogind.conf."
+			elog "Should you use non-default sleep configuration remember to migrate"
+			elog "those to a new configuration file in /etc/elogind/sleep.conf.d/."
 		fi
 	done
 }
