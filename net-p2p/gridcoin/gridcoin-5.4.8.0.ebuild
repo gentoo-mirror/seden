@@ -48,7 +48,7 @@ RDEPEND="
 	qrcode? ( media-gfx/qrencode )
 	upnp? ( net-libs/miniupnpc )
 	boinc? ( sci-misc/boinc )
-	utils? ( net-p2p/bitcoin-core[bitcoin-cli] )
+	utils? ( net-p2p/bitcoin-core[cli] )
 "
 DEPEND="
 	${RDEPEND}
