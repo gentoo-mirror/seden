@@ -2,11 +2,7 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-acct-user/ethminer:boinc - Add user to boinc group, too.
 acct-user/gridcoin:boinc - Add user to boinc group, too.
-app-arch/7-zip:asm - Enable use of dev-lang/jwasm.
-app-arch/7-zip:rar - Enable RAR unpack capabilities.
-app-office/texstudio:video - Use phonon for video embedding
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
 media-libs/mlt:glaxnimate - Build Glaxnimate plugin
 media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
@@ -18,14 +14,6 @@ media-sound/milkytracker:midi - Use media-libs/rtmidi for MIDI support
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
 net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
 net-misc/icaclient:usb - Allow connecting USB devices to virtual desktops
-net-p2p/ethminer:apicore - Build with API server support
-net-p2p/ethminer:binkern - Install AMD binary kernels
-net-p2p/ethminer:cpu - Build with CPU mining (ONLY for development!)
-net-p2p/ethminer:cuda - Build with CUDA mining
-net-p2p/ethminer:opencl - Build with OpenCL mining
-net-p2p/ethminer:system-opencl - Use system OpenCL
-net-p2p/ethminer:verbose-debug - Log developer metrics
-net-p2p/go-ethereum:devtools - Build Ethereum development tools (evm, abigen, puppeth, ...)
 net-p2p/gridcoin:bench - Compile benchmarks
 net-p2p/gridcoin:boinc - Enable research wallet functions for BOINC mining
 net-p2p/gridcoin:ccache - Use ccache for building

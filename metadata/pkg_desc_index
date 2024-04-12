@@ -1,28 +1,16 @@
 acct-group/davmail 0: group for davmail server
-acct-group/ethminer 0: group for ethminer daemon
 acct-group/gridcoin 0: group for gridcoin daemon
 acct-user/davmail 0: user for davmail server
-acct-user/ethminer 0: user for ethminer daemon
 acct-user/gridcoin 0-r2: user for gridcoin daemon
-app-arch/7-zip 23.01: A file archiver with a high compression ratio
 app-arch/lhasa 0.3.1: Lhasa aims to be compatible with as many types of lzh/lzs archives as possible.
-app-office/texstudio 4.6.3: Free cross-platform LaTeX editor (fork from texmakerX)
-dev-cpp/cli11 2.2.0: Command line parser for C++11
-dev-cpp/ethash 0.9.0: C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
-games-strategy/endless-sky 0.10.1: Space exploration, trading & combat in the tradition of Terminal Velocity
+games-strategy/endless-sky 0.10.6: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/glfrontier 20060623-r6: Frontier: Elite 2 with OpenGL support
 media-libs/mlt 7.20.0-r101 7.22.0-r101: Open source multimedia framework for television broadcasting
-media-plugins/vocoder-ladspa 0.4-r1: A vocoder is a sound effect that can make a human voice sound synthetic
 media-sound/milkytracker 9999-r4: FastTracker 2 inspired music tracker
 media-video/shotcut 24.02.29: A free, open source, cross-platform video editor
-net-im/skypeforlinux 8.106.0.212: Instant messaging client, with support for audio and video
 net-im/webex 44.3.0.28993: Cisco video conferencing and online meeting software
 net-mail/davmail-bin 6.2.2: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
 net-misc/icaclient 24.2.0.65: ICA Client for Citrix Presentation servers
-net-p2p/ethminer 9999: Ethereum miner with CUDA and stratum support
-net-p2p/go-ethereum 1.10.23: Official golang implementation of the Ethereum protocol
 net-p2p/gridcoin 5.4.8.0-r1: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
-perl-cpan/DBD-Oracle 1.80 9999: Oracle database driver for the DBI module
+perl-cpan/DBD-Oracle 1.90.5: Oracle database driver for the DBI module
 sys-auth/elogind 252.23 252.9999 255.4 255.9999: The systemd project's logind, extracted to a standalone package
-www-client/falkon 9999-r3: Cross-platform web browser using QtWebEngine
-x11-themes/kvantum 1.0.5: SVG-based theme engine for Qt5, KDE Plasma and LXQt
