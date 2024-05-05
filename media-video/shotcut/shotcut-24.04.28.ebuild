@@ -28,7 +28,7 @@ DEPEND="
 	dev-qt/qtdeclarative:6[widgets]
 	dev-qt/qtmultimedia:6
 	dev-qt/qtcharts:6
-	>=media-libs/mlt-7.22.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt6,sdl,xml]
+	>=media-libs/mlt-7.24.0[ffmpeg,frei0r,fftw(+),jack,opengl,qt6,sdl,xml]
 	media-video/ffmpeg
 "
 
