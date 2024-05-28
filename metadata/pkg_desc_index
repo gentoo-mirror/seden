@@ -15,3 +15,4 @@ net-p2p/gridcoin 5.4.8.0-r1: Gridcoin Proof-of-Stake based crypto-currency that 
 perl-cpan/DBD-Oracle 1.90.5: Oracle database driver for the DBI module
 sci-misc/boinc 8.0.1: The Berkeley Open Infrastructure for Network Computing
 sys-auth/elogind 252.24 252.9999 255.5 255.9999: The systemd project's logind, extracted to a standalone package
+x11-misc/sddm 0.21.0-r101: Simple Desktop Display Manager
