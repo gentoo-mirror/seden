@@ -10,6 +10,6 @@ LICENSE=all-rights-reserved
 RDEPEND=>=app-accessibility/at-spi2-core-2.46.0 app-crypt/libsecret app-crypt/tpm2-tss <dev-cpp/tbb-2021 dev-libs/nss dev-libs/wayland media-libs/alsa-lib media-libs/libglvnd media-libs/libpulse media-libs/mesa sys-apps/lshw sys-power/upower virtual/libcrypt virtual/libudev x11-libs/libXScrnSaver x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXrandr x11-libs/libnotify x11-libs/libxkbcommon x11-libs/pango x11-libs/xcb-util-image x11-libs/xcb-util-keysyms x11-libs/xcb-util-renderutil x11-libs/xcb-util-wm
 RESTRICT=bindist mirror strip
 SLOT=0
-SRC_URI=https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.rpm -> webex-44.3.0.28993.rpm
+SRC_URI=https://binaries.webex.com/WebexDesktop-CentOS-Official-Package/Webex.rpm -> webex-44.5.0.29672.rpm
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	baea6080dd821f5562d715887954c9d3	xdg	4a14c5c24f121e7da66e5aab4a168c6e	estack	c61c368a76fdf3a82fdf8dbaebea3804	rpm	7828cd38ff559545ca52f92064d0f8f4
 _md5_=7de70ddb910f763d93a5aed78697fda6
