@@ -48,12 +48,16 @@ RDEPEND="
 	qrcode? ( media-gfx/qrencode )
 	upnp? ( net-libs/miniupnpc )
 	boinc? ( sci-misc/boinc )
-	utils? ( net-p2p/bitcoin-core[cli] )
+	utils? ( >=net-p2p/bitcoin-core-27[cli] )
 "
 DEPEND="
 	${RDEPEND}
 	qt5? ( dev-qt/linguist-tools:5 )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_upnp_call.patch
+)
 
 pkg_setup() {
 	BDB_VER="$(best_version sys-libs/db:5.3)"
