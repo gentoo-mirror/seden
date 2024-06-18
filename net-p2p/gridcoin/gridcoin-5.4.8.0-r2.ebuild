@@ -55,6 +55,10 @@ DEPEND="
 	qt5? ( dev-qt/linguist-tools:5 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_upnp_call.patch
+)
+
 pkg_setup() {
 	BDB_VER="$(best_version sys-libs/db:5.3)"
 	export BDB_CFLAGS="-I/usr/include/db${BDB_VER:12:3}"
