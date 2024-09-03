@@ -4,7 +4,6 @@
 
 acct-user/gridcoin:boinc - Add user to boinc group, too.
 media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
-media-libs/mlt:glaxnimate - Build Glaxnimate plugin
 media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
 media-libs/mlt:python - Build SWIG bindings for Python
 media-libs/mlt:rtaudio - Builds rtaudio consumer for native audio support on multiple platforms
