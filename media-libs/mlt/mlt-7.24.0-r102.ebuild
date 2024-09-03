@@ -3,8 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..12} )
-inherit python-single-r1 cmake
+PYTHON_COMPAT=( python3_{10..12} )
+inherit python-single-r1 cmake flag-o-matic
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -13,13 +13,9 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 LICENSE="GPL-3"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug ffmpeg frei0r glaxnimate gtk jack libsamplerate opencv opengl python qt5 qt6 rtaudio rubberband sdl sox test vdpau vidstab xine xml"
+IUSE="debug ffmpeg frei0r gtk jack libsamplerate opencv opengl python qt5 qt6 rtaudio rubberband sdl sox test vdpau vidstab xine xml"
 
-REQUIRED_USE="
-	?? ( qt5 qt6 )
-	glaxnimate? ( || ( qt5 qt6 ) )
-	python? ( ${PYTHON_REQUIRED_USE} )
-"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Needs unpackaged 'kwalify'
 RESTRICT="test"
@@ -60,7 +56,7 @@ DEPEND="
 	)
 	qt6? (
 		dev-qt/qt5compat:6
-		dev-qt/qtbase:6[gui,widgets,xml]
+		dev-qt/qtbase:6[gui,network,opengl,widgets,xml]
 		dev-qt/qtsvg:6
 		media-libs/libexif
 		x11-libs/libX11
@@ -97,6 +93,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch
 	"${FILESDIR}"/${PN}-6.22.1-no_lua_bdepend.patch
 	"${FILESDIR}"/${PN}-7.0.1-cmake-symlink.patch
+	"${FILESDIR}"/${PN}-7.24.0-musl-build-fix.patch
 )
 
 pkg_setup() {
@@ -114,6 +111,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# Workaround for bug #919981
+	append-ldflags $(test-flags-CCLD -Wl,--undefined-version)
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
 		-DCLANG_FORMAT=OFF
@@ -130,11 +130,12 @@ src_configure() {
 		-DMOD_JACKRACK=$(usex jack)
 		-DMOD_RESAMPLE=$(usex libsamplerate)
 		-DMOD_OPENCV=$(usex opencv)
+		-DMOD_SPATIALAUDIO=OFF # TODO: package libspatialaudio
 		-DMOD_MOVIT=$(usex opengl)
 		-DMOD_QT=$(usex qt5)
-		-DMOD_GLAXNIMATE=$(usex glaxnimate $(usex qt5) OFF)
+		-DMOD_GLAXNIMATE=$(usex qt5)
 		-DMOD_QT6=$(usex qt6)
-		-DMOD_GLAXNIMATE_QT6=$(usex glaxnimate $(usex qt6) OFF)
+		-DMOD_GLAXNIMATE_QT6=$(usex qt6)
 		-DMOD_RTAUDIO=$(usex rtaudio)
 		-DMOD_RUBBERBAND=$(usex rubberband)
 		-DMOD_VIDSTAB=$(usex vidstab)
