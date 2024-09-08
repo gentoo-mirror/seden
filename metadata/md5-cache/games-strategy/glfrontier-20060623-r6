@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-libs/freeglut-2.6 media-libs/libsdl media-libs/libogg
 SLOT=0
 SRC_URI=https://prydeworx.com/glfrontier/frontvm3-20060623.tar.bz2 https://prydeworx.com/glfrontier/frontvm-audio-20060222.tar.bz2
-_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d
+_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6
 _md5_=72d691e8afa8d4ad80b87ba9539a634f
