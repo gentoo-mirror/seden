@@ -3,12 +3,6 @@
 # * generated automatically using pmaint *
 
 acct-user/gridcoin:boinc - Add user to boinc group, too.
-media-libs/mlt:frei0r - Build the module for media-plugins/frei0r-plugins
-media-libs/mlt:opencv - Build motion tracking module using media-libs/opencv
-media-libs/mlt:python - Build SWIG bindings for Python
-media-libs/mlt:rtaudio - Builds rtaudio consumer for native audio support on multiple platforms
-media-libs/mlt:rubberband - Enable audio pitch-shifting using media-libs/rubberband
-media-libs/mlt:vidstab - Enabled video stabilization with media-libs/vidstab
 media-sound/milkytracker:midi - Use media-libs/rtmidi for MIDI support
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
 net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
