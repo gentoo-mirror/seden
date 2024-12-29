@@ -1,0 +1,12 @@
+diff --git a/source/Files.cpp b/source/Files.cpp
+index 6182d9dd..81df818e 100644
+--- a/source/Files.cpp
++++ b/source/Files.cpp
+@@ -112,6 +112,7 @@ void Files::Init(const char * const *argv)
+ 			resources = LOCAL_PATH / RESOURCE_PATH;
+ 		else if(IsParent(STANDARD_PATH, resources))
+ 			resources = STANDARD_PATH / RESOURCE_PATH;
++		resources = STANDARD_PATH / RESOURCE_PATH;
+ #endif
+ 	}
+ 	// If the resources are not here, search in the directories containing this
