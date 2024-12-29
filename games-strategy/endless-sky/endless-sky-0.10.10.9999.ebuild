@@ -36,6 +36,9 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${P}-fix_resource_search.patch
+)
 
 src_prepare() {
 	cmake_src_prepare
