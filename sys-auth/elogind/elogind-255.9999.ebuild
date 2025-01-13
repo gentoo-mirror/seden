@@ -1,21 +1,28 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
-inherit git-r3 linux-info meson pam python-any-r1 udev xdg-utils
+if [[ ${PV} = *9999* ]]; then
+	EGIT_BRANCH="v255-stable"
+	EGIT_REPO_URI="https://github.com/elogind/elogind.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
+
+inherit linux-info meson pam python-any-r1 udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
-EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v255-stable"
-EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit debug doc efi +pam +policykit selinux"
+IUSE="+acl audit debug doc +pam +policykit selinux test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
@@ -23,7 +30,7 @@ BDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-util/gperf
 	virtual/pkgconfig
-	$(python_gen_any_dep 'dev-python/jinja[${PYTHON_USEDEP}]')
+	$(python_gen_any_dep 'dev-python/jinja2[${PYTHON_USEDEP}]')
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 DEPEND="
@@ -44,11 +51,12 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-252-docs.patch"
+	# all downstream patches:
+	"${FILESDIR}/${PN}-252.9-nodocs.patch"
 )
 
 python_check_deps() {
-	python_has_version "dev-python/jinja[${PYTHON_USEDEP}]" &&
+	python_has_version "dev-python/jinja2[${PYTHON_USEDEP}]" &&
 	python_has_version "dev-python/lxml[${PYTHON_USEDEP}]"
 }
 
@@ -69,32 +77,26 @@ src_configure() {
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
 		-Dbuildtype=$(usex debug debug release)
-		--prefix="${EPREFIX}/usr"
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		--libexecdir="${EPREFIX}"/$(get_libdir)/elogind
-		--localstatedir="${EPREFIX}"/var
-		--sysconfdir="${EPREFIX}"/etc
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-		-Ddbuspolicydir="${EPREFIX}"/usr/share/dbus-1/system.d
-		-Ddbussystemservicedir="${EPREFIX}"/usr/share/dbus-1/system-services
-		-Dpamlibdir=$(getpam_mod_dir)
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
+		--libexecdir="lib/elogind"
+		--localstatedir="${EPREFIX}"/var
 		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
-		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
+		-Dman=auto
+		-Dsmack=true
+		-Dcgroup-controller=openrc
+		-Ddefault-kill-user-processes=false
 		-Dacl=$(usex acl enabled disabled)
 		-Daudit=$(usex audit enabled disabled)
-		-Dcgroup-controller=openrc
-		-Ddefault-kill-user-processes=true
-		-Defi=$(usex efi true false)
 		-Dhtml=$(usex doc auto disabled)
-		-Dinstall-sysconfdir=true
-		-Dman=auto
-		-Dmode=release
 		-Dpam=$(usex pam enabled disabled)
+		-Dpamlibdir="$(getpam_mod_dir)"
 		-Dselinux=$(usex selinux enabled disabled)
-		-Dsmack=true
-	)
+		-Dtests=$(usex test true false)
+		-Dutmp=$(usex elibc_musl false true)
+		-Dmode=release
+)
 
 	meson_src_configure
 }
@@ -102,11 +104,9 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	keepdir /var/lib/elogind
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
 
-	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
-	newconfd ${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
 
 pkg_postinst() {
@@ -153,6 +153,22 @@ pkg_postinst() {
 			elog "those to a new configuration file in /etc/elogind/sleep.conf.d/."
 		fi
 	done
+
+	local file files
+	# find custom hooks excluding known (nvidia-drivers, sys-power/tlp)
+	if [[ -d "${EROOT}"/$(get_libdir)/elogind/system-sleep ]]; then
+		readarray -t files < <(find "${EROOT}"/$(get_libdir)/elogind/system-sleep/ \
+		          -type f \( -not -iname ".keep_dir" -a \
+		          -not -iname "nvidia" -a \
+		          -not -iname "49-tlp-sleep" \) || die)
+	fi
+	if [[ ${#files[@]} -gt 0 ]]; then
+		ewarn "*** Custom hooks in obsolete path detected ***"
+		for file in "${files[@]}"; do
+			ewarn "    ${file}"
+		done
+		ewarn "Move these custom hooks to ${EROOT}/etc/elogind/system-sleep/ instead."
+	fi
 }
 
 pkg_postrm() {
