@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,12 +7,12 @@ inherit desktop wrapper xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
-SRC_URI="linuxx64-${PV}.tar.gz"
+SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
 
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb"
+IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb selfservice"
 RESTRICT="mirror strip fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -30,7 +30,7 @@ REQUIRES_EXCLUDE="
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	!hdx? ( libunwind.so.1 )
 "
-# we have binaries which would still support gstreamer:0.10
+# we have binaries which wouls still support gstreamer:0.10
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstapp-0.10.so.0
 	libgstbase-0.10.so.0
@@ -54,7 +54,6 @@ RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2
 	app-crypt/libsecret
 	dev-libs/glib:2
-	dev-libs/libxml2
 	media-fonts/font-adobe-100dpi
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-ethiopic
@@ -68,15 +67,15 @@ RDEPEND="
 	media-libs/libogg
 	media-libs/libpng
 	media-libs/libpulse
+	media-libs/libva
 	media-libs/libvorbis
 	media-libs/mesa
 	media-libs/speex
 	media-libs/speexdsp
 	net-libs/libsoup:2.4
-	net-libs/webkit-gtk:4
 	sys-apps/util-linux
-	sys-libs/libcxx
-	sys-libs/libcxxabi
+	llvm-runtimes/libcxx
+	llvm-runtimes/libcxxabi
 	sys-libs/zlib
 	virtual/krb5
 	virtual/libudev
@@ -98,6 +97,11 @@ RDEPEND="
 	${BDEPEND}
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
+	selfservice? (
+		dev-libs/libxml2
+		net-libs/webkit-gtk:4
+		dev-libs/xerces-c
+	)
 "
 
 DEPEND="dev-util/patchelf"
@@ -132,8 +136,8 @@ src_prepare() {
 	if use usb; then
 		# inspired by debian usb support package postinst
 		sed -i -e 's/^[ \t]*VirtualDriver[ \t]*=.*$/&, GenericUSB/' module.ini || die
-		sed -i -e '/\[ICA 3.0\]/a\GenericUSB=on' module.ini || true
-		echo "[GenericUSB]" >> module.ini || true
+		sed -i -e '/\[ICA 3.0\]/a\GenericUSB=on' module.ini || die
+		echo "[GenericUSB]" >> module.ini
 		echo "DriverName=VDGUSB.DLL" >> module.ini
 	fi
 
@@ -283,7 +287,7 @@ src_install() {
 pkg_preinst() {
 	# previous versions of the ebuild created that and left it around
 	# we own it now and avoid conflict warnings with this
-	rm -f "${ROOT}${ICAROOT}/config/module.ini"
+	rm -f "${ROOT}${ICAROOT}/config/module.ini" || die
 }
 
 pkg_postinst() {
