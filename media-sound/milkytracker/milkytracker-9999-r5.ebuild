@@ -15,7 +15,7 @@ EGIT_SUBMODULES=()
 
 LICENSE="|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="**"
+KEYWORDS=""
 IUSE="alsa jack midi"
 
 RDEPEND="
