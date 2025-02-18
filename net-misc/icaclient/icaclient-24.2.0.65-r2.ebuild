@@ -12,7 +12,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb selfservice"
+IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb"
 RESTRICT="mirror strip fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -97,11 +97,9 @@ RDEPEND="
 	${BDEPEND}
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
-	selfservice? (
-		dev-libs/libxml2
-		net-libs/webkit-gtk:4
-		dev-libs/xerces-c
-	)
+	dev-libs/libxml2
+	net-libs/webkit-gtk:4
+	dev-libs/xerces-c
 "
 
 DEPEND="dev-util/patchelf"
