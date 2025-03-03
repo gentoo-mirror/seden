@@ -1,19 +1,19 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 inherit desktop java-pkg-2
 
-MY_REV="3546"
+MY_REV="3627"
 MY_PN="davmail"
 MY_P="${MY_PN}-${PV}-${MY_REV}"
 
-SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.zip"
 DESCRIPTION="POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
-RESTRICT="mirror"
+SRC_URI="https://sourceforge.net/projects/${MY_PN}/files/${MY_PN}/${PV}/${MY_P}.zip/download -> ${P}.zip"
 
+S="${WORKDIR}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -26,8 +26,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="app-arch/unzip"
-
-S="${WORKDIR}"
 
 src_install() {
 	# libraries
