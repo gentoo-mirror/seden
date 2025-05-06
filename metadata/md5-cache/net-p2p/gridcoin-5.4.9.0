@@ -13,5 +13,5 @@ REQUIRED_USE=?? ( daemon qt5 ) dbus? ( qt5 ) qrcode? ( qt5 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/gridcoin-community/Gridcoin-Research/archive/refs/tags/5.4.9.0.tar.gz -> gridcoin-5.4.9.0.tar.gz
-_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	e8de74bac929ba17427e740e95707d00	systemd	a964c0cbe818b5729da1dbfcee5be861	desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed
+_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	systemd	a964c0cbe818b5729da1dbfcee5be861	desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed
 _md5_=52d131f84510aad57ee168e08085a0d3
