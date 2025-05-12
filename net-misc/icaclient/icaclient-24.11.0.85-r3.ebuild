@@ -30,7 +30,7 @@ REQUIRES_EXCLUDE="
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	!hdx? ( libunwind.so.1 )
 "
-# we have binaries which wouls still support gstreamer:0.10
+# we have binaries which would still support gstreamer:0.10
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstapp-0.10.so.0
 	libgstbase-0.10.so.0
@@ -41,9 +41,9 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 
 # video background blurring, optional
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libopencv_core.so.407
-	libopencv_imgcodecs.so.407
-	libopencv_imgproc.so.407
+	libopencv_core.so.410
+	libopencv_imgcodecs.so.410
+	libopencv_imgproc.so.410
 "
 
 BDEPEND="
@@ -172,6 +172,11 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
+	doexe lib/*.so.*
+	doexe lib/*_ext/*.so
+
+	# Also install third party (aka opencv), as the newest supported in 4.10 and Gentoo is at 4.11
+	doexe lib/third_party/libopencv_*.so.4.10.0
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"

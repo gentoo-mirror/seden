@@ -12,7 +12,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb"
+IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh-CN hdx usb selfservice"
 RESTRICT="mirror strip fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -30,7 +30,7 @@ REQUIRES_EXCLUDE="
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	!hdx? ( libunwind.so.1 )
 "
-# we have binaries which wouls still support gstreamer:0.10
+# we have binaries which would still support gstreamer:0.10
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstapp-0.10.so.0
 	libgstbase-0.10.so.0
@@ -41,9 +41,9 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 
 # video background blurring, optional
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libopencv_core.so.407
-	libopencv_imgcodecs.so.407
-	libopencv_imgproc.so.407
+	libopencv_core.so.410
+	libopencv_imgcodecs.so.410
+	libopencv_imgproc.so.410
 "
 
 BDEPEND="
@@ -97,9 +97,11 @@ RDEPEND="
 	${BDEPEND}
 	!hdx? ( !media-plugins/hdx-realtime-media-engine )
 	usb? ( virtual/libudev )
-	dev-libs/libxml2
-	net-libs/webkit-gtk:4
-	dev-libs/xerces-c
+	selfservice? (
+		dev-libs/libxml2
+		net-libs/webkit-gtk:4
+		dev-libs/xerces-c
+	)
 "
 
 DEPEND="dev-util/patchelf"
@@ -170,6 +172,11 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
+	doexe lib/*.so.*
+	doexe lib/*_ext/*.so
+
+	# Also install third party (aka opencv), as the newest supported in 4.10 and Gentoo is at 4.11
+	doexe lib/third_party/libopencv_*.so.4.10.0
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
@@ -230,7 +237,7 @@ src_install() {
 	dosym en /opt/Citrix/ICAClient/nls/C
 
 	insinto "${ICAROOT}"/icons
-	doins icons/*
+	doins -r icons/*
 
 	insinto "${ICAROOT}"/keyboard
 	doins keyboard/*
