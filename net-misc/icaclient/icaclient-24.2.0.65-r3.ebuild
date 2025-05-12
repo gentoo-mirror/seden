@@ -175,6 +175,11 @@ src_install() {
 	# Also install third party (aka opencv), as the newest supported in 4.7 and Gentoo is at 4.11
 	doexe lib/third_party/libopencv_*.so.4.7.0
 
+	# Unfortunately the package bundles *.so.4.7.0 but the libbgblur.so is linked to *.so.407
+	dosym -r "${ICAROOT}"/lib/libopencv_core.so.4.7.0 "${ICAROOT}"/lib/libopencv_core.so.407
+	dosym -r "${ICAROOT}"/lib/libopencv_imgcodecs.so.4.7.0 "${ICAROOT}"/lib/libopencv_imgcodecs.so.407
+	dosym -r "${ICAROOT}"/lib/libopencv_imgproc.so.4.7.0 "${ICAROOT}"/lib/libopencv_imgproc.so.407
+
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
 		doins nls/en.UTF-8/eula.txt
