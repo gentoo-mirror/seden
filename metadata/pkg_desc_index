@@ -14,4 +14,4 @@ net-misc/icaclient 24.2.0.65-r3 24.11.0.85-r3 25.03.0.66-r3: ICA Client for Citr
 net-p2p/gridcoin 5.4.9.0: Gridcoin Proof-of-Stake based crypto-currency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.90.5: Oracle database driver for the DBI module
 sci-misc/boinc 8.0.3: The Berkeley Open Infrastructure for Network Computing
-sys-auth/elogind 252.24 252.9999 255.17: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 252.24 252.9999 255.17 255.9999: The systemd project's logind, extracted to a standalone package
