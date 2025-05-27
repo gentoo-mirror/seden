@@ -99,7 +99,7 @@ RDEPEND="
 	usb? ( virtual/libudev )
 	selfservice? (
 		dev-libs/libxml2
-		net-libs/webkit-gtk:4
+		net-libs/webkit-gtk:4.1
 		dev-libs/xerces-c
 	)
 "
