@@ -1,4 +1,4 @@
-# Copyright 2023-2024 Gentoo Authors
+# Copyright 2023-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI+=" https://github.com/BOINC/boinc/archive/client_release/${MY_PV}/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~ia64 ~ppc ppc64 sparc ~x86"
+	KEYWORDS="amd64 arm64 ~ppc ppc64 sparc ~x86"
 	S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 fi
 
@@ -53,7 +53,7 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 		x11-libs/libxcb:=
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		x11-libs/wxGTK:${WX_GTK_VER}=[X,opengl,webkit]
 		x11-libs/xcb-util
 	)
 "
@@ -106,12 +106,10 @@ src_configure() {
 	append-libs -L"${ESYSROOT}"/usr/$(get_libdir) -L"${ESYSROOT}"/$(get_libdir)
 
 	local myeconfargs=(
-		--disable-fcgi
 		--disable-server
-		--disable-static
 		--enable-client
 		--enable-dynamic-client-linkage
-		--enable-libraries
+		--disable-static
 		--enable-unicode
 		--with-ssl
 		$(use_with X x)
@@ -130,11 +128,11 @@ src_install() {
 		# Create new icons. bug 593362
 		local s SIZES=(16 22 24 32 36 48 64 72 96 128 192 256)
 		for s in "${SIZES[@]}"; do
-			# The convert command is not checked, because it will issue warnings and exit with
+			# The magick command is not checked, because it will issue warnings and exit with
 			# an error code if imagemagick is used and was merged with USE="-xml", although the
 			# conversion has worked. See #766093
 			# Instead, newicon will fail if the conversion did not produce the icon.
-			convert "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png
+			magick "${DISTDIR}"/${PN}.tif -resize ${s}x${s} "${WORKDIR}"/boinc_${s}.png
 			newicon -s $s "${WORKDIR}"/boinc_${s}.png boinc.png
 		done
 		make_desktop_entry boincmgr "${PN}" "${PN}" "Math;Science" "Path=/var/lib/${PN}"
