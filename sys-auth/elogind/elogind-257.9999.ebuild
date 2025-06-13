@@ -5,17 +5,24 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit git-r3 linux-info meson pam python-any-r1 udev xdg-utils
+if [[ ${PV} = *9999* ]]; then
+	EGIT_BRANCH="v257-stable"
+	EGIT_REPO_URI="https://github.com/elogind/elogind.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+fi
+
+inherit linux-info meson pam python-any-r1 udev xdg-utils
 
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 HOMEPAGE="https://github.com/elogind/elogind"
-EGIT_REPO_URI="https://github.com/elogind/elogind.git"
-EGIT_BRANCH="v252-stable"
-EGIT_SUBMODULES=()
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit debug doc efi +pam +policykit selinux"
+IUSE="+acl audit debug doc +pam +policykit selinux test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	app-text/docbook-xml-dtd:4.2
@@ -44,7 +51,8 @@ PDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-252-docs.patch"
+	# all downstream patches:
+	"${FILESDIR}/${PN}-252.9-nodocs.patch"
 )
 
 python_check_deps() {
@@ -69,29 +77,26 @@ src_configure() {
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
 		-Dbuildtype=$(usex debug debug release)
-		--libdir="${EPREFIX}"/usr/$(get_libdir)
-		-Dacl=$(usex acl true false)
-		-Daudit=$(usex audit true false)
-		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
-		-Dcgroup-controller=openrc
-		-Ddefault-kill-user-processes=true
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
-		-Defi=$(usex efi true false)
-		-Dhtml=$(usex doc auto false)
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
-		-Dinstall-sysconfdir=true
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
+		--libexecdir="lib/elogind"
+		--localstatedir="${EPREFIX}"/var
+		-Dbashcompletiondir="${EPREFIX}/usr/share/bash-completion/completions"
 		-Dman=auto
-		-Dmode=release
-		-Dpam=$(usex pam true false)
-		-Dpamlibdir=$(getpam_mod_dir)
-		-Drootlibdir="${EPREFIX}"/$(get_libdir)
-		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
-		-Drootprefix="${EPREFIX}/"
-		-Dselinux=$(usex selinux true false)
 		-Dsmack=true
-		-Dudevrulesdir="$(get_udevdir)"/rules.d
-		-Dzshcompletiondir="${EPREFIX}/usr/share/zsh/site-functions"
-	)
+		-Dcgroup-controller=openrc
+		-Ddefault-kill-user-processes=false
+		-Dacl=$(usex acl enabled disabled)
+		-Daudit=$(usex audit enabled disabled)
+		-Dhtml=$(usex doc auto disabled)
+		-Dpam=$(usex pam enabled disabled)
+		-Dpamlibdir="$(getpam_mod_dir)"
+		-Dselinux=$(usex selinux enabled disabled)
+		-Dtests=$(usex test true false)
+		-Dutmp=$(usex elibc_musl false true)
+		-Dmode=release
+)
 
 	meson_src_configure
 }
@@ -99,10 +104,9 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	newinitd "${FILESDIR}"/${PN}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
 
-	sed -e "s/@libdir@/$(get_libdir)/" "${FILESDIR}"/${PN}.conf.in > ${PN}.conf || die
-	newconfd ${PN}.conf ${PN}
+	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
 
 pkg_postinst() {
@@ -141,12 +145,30 @@ pkg_postinst() {
 	fi
 
 	for version in ${REPLACING_VERSIONS}; do
-		if ver_test "${version}" -lt 252.9; then
-			elog "Starting with release 252.9 the sleep configuration is now done"
-			elog "in the /etc/elogind/sleep.conf. Should you use non-default sleep"
-			elog "configuration remember to migrate those to new configuration file."
+		if ver_test "${version}" -lt 255.3; then
+			elog "Starting with release 255.3 the sleep configuration is now done"
+			elog "in the /etc/elogind/sleep.conf while the elogind additions have"
+			elog "been moved to /etc/elogind/sleep.conf.d/10-elogind.conf."
+			elog "Should you use non-default sleep configuration remember to migrate"
+			elog "those to a new configuration file in /etc/elogind/sleep.conf.d/."
 		fi
 	done
+
+	local file files
+	# find custom hooks excluding known (nvidia-drivers, sys-power/tlp)
+	if [[ -d "${EROOT}"/$(get_libdir)/elogind/system-sleep ]]; then
+		readarray -t files < <(find "${EROOT}"/$(get_libdir)/elogind/system-sleep/ \
+		          -type f \( -not -iname ".keep_dir" -a \
+		          -not -iname "nvidia" -a \
+		          -not -iname "49-tlp-sleep" \) || die)
+	fi
+	if [[ ${#files[@]} -gt 0 ]]; then
+		ewarn "*** Custom hooks in obsolete path detected ***"
+		for file in "${files[@]}"; do
+			ewarn "    ${file}"
+		done
+		ewarn "Move these custom hooks to ${EROOT}/etc/elogind/system-sleep/ instead."
+	fi
 }
 
 pkg_postrm() {
