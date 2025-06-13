@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_BRANCH="v252-stable"
@@ -134,9 +134,9 @@ pkg_postinst() {
 		ewarn "USE=\"policykit\"! That means e.g. no suspend or hibernate."
 		ewarn
 	fi
-	if [[ "$(rc-config list boot | grep elogind)" != "" ]]; then
+	if [[ "$(rc-status boot | grep elogind)" != "" ]]; then
 		elog "elogind is currently started from boot runlevel."
-	elif [[ "$(rc-config list default | grep elogind)" != "" ]]; then
+	elif [[ "$(rc-status default | grep elogind)" != "" ]]; then
 		ewarn "elogind is currently started from default runlevel."
 		ewarn "Please remove elogind from the default runlevel and"
 		ewarn "add it to the boot runlevel by:"
