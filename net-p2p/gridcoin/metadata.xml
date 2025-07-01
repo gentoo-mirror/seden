@@ -14,18 +14,6 @@
 		<remote-id type="github">gridcoin-community/Gridcoin-Research</remote-id>
 	</upstream>
 	<use>
-		<flag name="bench">Compile benchmarks</flag>
-		<flag name="boinc">Enable research wallet functions for BOINC mining</flag>
-		<flag name="ccache">Use ccache for building</flag>
-		<flag name="daemon">Build research wallet daemon</flag>
-		<flag name="dbus">Enable desktop notifications via DBus</flag>
-		<flag name="debug">Use debug compiler flags and macros</flag>
-		<flag name="harden">Attempt to harden the resulting executables</flag>
-		<flag name="libraries">Build extra libraries</flag>
-		<flag name="pic">Disable optimized assembly code that is not PIC friendly</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments with media-gfx/qrencode</flag>
-		<flag name="qt5">Build the Qt GUI</flag>
-		<flag name="upnp">Enable Universal Plug and Play</flag>
-		<flag name="utils">Build bitcoin-core with 'cli' USE flag</flag>
 	</use>
 </pkgmetadata>
