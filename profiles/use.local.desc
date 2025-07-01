@@ -8,18 +8,6 @@ net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to 
 net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
 net-misc/icaclient:selfservice - Install and enable the self-service component
 net-misc/icaclient:usb - Allow connecting USB devices to virtual desktops
-net-p2p/gridcoin:bench - Compile benchmarks
-net-p2p/gridcoin:boinc - Enable research wallet functions for BOINC mining
-net-p2p/gridcoin:ccache - Use ccache for building
-net-p2p/gridcoin:daemon - Build research wallet daemon
-net-p2p/gridcoin:dbus - Enable desktop notifications via DBus
-net-p2p/gridcoin:debug - Use debug compiler flags and macros
-net-p2p/gridcoin:harden - Attempt to harden the resulting executables
-net-p2p/gridcoin:libraries - Build extra libraries
-net-p2p/gridcoin:pic - Disable optimized assembly code that is not PIC friendly
 net-p2p/gridcoin:qrcode - Enable generation of QR Codes for receiving payments with media-gfx/qrencode
-net-p2p/gridcoin:qt5 - Build the Qt GUI
-net-p2p/gridcoin:upnp - Enable Universal Plug and Play
-net-p2p/gridcoin:utils - Build bitcoin-core with 'cli' USE flag
 sys-auth/elogind:cgroup-hybrid - Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.
 sys-auth/elogind:efi - Support rebooting into EFI firmware
