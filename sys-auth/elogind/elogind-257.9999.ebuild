@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit debug doc +pam +policykit selinux test"
+IUSE="+acl audit debug doc +pam +policykit selinux test +userdb"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -80,7 +80,7 @@ src_configure() {
 	EMESON_BUILDTYPE="$(usex debug debug release)"
 
 	# Removed -Ddefault-hierarchy=${cgroupmode}
-	# -> It is completely irrelevant with -Dcgroup-controller=openrc anyway.
+	# -> It is deprecated and will be ignored by the build system
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
@@ -100,6 +100,7 @@ src_configure() {
 		-Dpamlibdir="$(getpam_mod_dir)"
 		-Dselinux=$(usex selinux enabled disabled)
 		-Dtests=$(usex test true false)
+		-Duserdb=$(usex userdb true false)
 		-Dutmp=$(usex elibc_musl false true)
 		-Dmode=release
 
@@ -117,11 +118,15 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	keepdir l/var/lib/elogind
+	keepdir /var/lib/elogind
 
-	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
-
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
+
+	if use userdb; then
+		newinitd "${FILESDIR}"/${PN}-userdbd.init ${PN}-userdbd
+		newconfd "${FILESDIR}"/${PN}-userdbd.conf ${PN}-userdbd
+	fi
 }
 
 pkg_postinst() {
