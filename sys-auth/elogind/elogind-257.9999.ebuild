@@ -21,7 +21,7 @@ HOMEPAGE="https://github.com/elogind/elogind"
 
 LICENSE="CC0-1.0 LGPL-2.1+ public-domain"
 SLOT="0"
-IUSE="+acl audit debug doc +pam +policykit selinux test +userdb"
+IUSE="+acl audit debug doc efi +pam +policykit selinux test +userdb"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -95,6 +95,7 @@ src_configure() {
 		-Ddefault-kill-user-processes=false
 		-Dacl=$(usex acl enabled disabled)
 		-Daudit=$(usex audit enabled disabled)
+		-Defi=$(usex efi true false)
 		-Dhtml=$(usex doc auto disabled)
 		-Dpam=$(usex pam enabled disabled)
 		-Dpamlibdir="$(getpam_mod_dir)"
