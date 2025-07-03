@@ -104,7 +104,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	keepdir "${EPREFIX}"/var/lib/elogind
+	keepdir /var/lib/elogind
 
 	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
 

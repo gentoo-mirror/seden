@@ -50,6 +50,8 @@ PDEPEND="
 	policykit? ( sys-auth/polkit )
 "
 
+DOCS=( README.md )
+
 PATCHES=(
 	# all downstream patches:
 	"${FILESDIR}/${PN}-252.9-nodocs.patch"
@@ -72,11 +74,15 @@ src_prepare() {
 }
 
 src_configure() {
+
+	python_setup
+
+	EMESON_BUILDTYPE="$(usex debug debug release)"
+
 	# Removed -Ddefault-hierarchy=${cgroupmode}
 	# -> It is completely irrelevant with -Dcgroup-controller=openrc anyway.
 	local emesonargs=(
 		$(usex debug "-Ddebug-extra=elogind" "")
-		-Dbuildtype=$(usex debug debug release)
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
@@ -96,7 +102,14 @@ src_configure() {
 		-Dtests=$(usex test true false)
 		-Dutmp=$(usex elibc_musl false true)
 		-Dmode=release
-)
+
+		# Ensure consistency between merged-usr and split-usr (bug 945965)
+		-Dhalt-path="${EPREFIX}/sbin/halt"
+		-Dkexec-path="${EPREFIX}/usr/sbin/kexec"
+		-Dnologin-path="${EPREFIX}/sbin/nologin"
+		-Dpoweroff-path="${EPREFIX}/sbin/poweroff"
+		-Dreboot-path="${EPREFIX}/sbin/reboot"
+	)
 
 	meson_src_configure
 }
@@ -104,7 +117,7 @@ src_configure() {
 src_install() {
 	meson_src_install
 
-	keepdir "${EPREFIX}"/var/lib/elogind
+	keepdir l/var/lib/elogind
 
 	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
 
@@ -160,9 +173,9 @@ pkg_postinst() {
 	# find custom hooks excluding known (nvidia-drivers, sys-power/tlp)
 	if [[ -d "${EROOT}"/$(get_libdir)/elogind/system-sleep ]]; then
 		readarray -t files < <(find "${EROOT}"/$(get_libdir)/elogind/system-sleep/ \
-		          -type f \( -not -iname ".keep_dir" -a \
-		          -not -iname "nvidia" -a \
-		          -not -iname "49-tlp-sleep" \) || die)
+			-type f \( -not -iname ".keep_dir" -a \
+				-not -iname "nvidia" -a \
+				-not -iname "49-tlp-sleep" \) || die)
 	fi
 	if [[ ${#files[@]} -gt 0 ]]; then
 		ewarn "*** Custom hooks in obsolete path detected ***"
