@@ -106,7 +106,7 @@ src_install() {
 
 	keepdir /var/lib/elogind
 
-	newinitd "${FILESDIR}"/${PN}.init-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
 }
