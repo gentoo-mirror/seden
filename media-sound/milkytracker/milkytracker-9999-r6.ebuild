@@ -30,6 +30,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-docs.patch
+	"${FILESDIR}"/${P}-fix-cmp0004.patch
 )
 
 src_install() {
