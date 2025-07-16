@@ -174,8 +174,9 @@ src_install() {
 	doexe lib/*.so
 	doexe lib/*.so.*
 	doexe lib/*_ext/*.so
+	doexe lib/*_ext/*.so.*
 
-	# Also install third party (aka opencv), as the newest supported in 4.10 and Gentoo is at 4.11
+	# Also install third party (aka opencv), as the newest supported is 4.10 and Gentoo is at 4.11
 	doexe lib/third_party/libopencv_*.so.4.10.0
 
 	# Unfortunately the package bundles *.so.4.10.0 but the libbgblur.so is linked to *.so.410
@@ -202,6 +203,9 @@ src_install() {
 
 	insinto "${ICAROOT}"/gtk/glade
 	doins gtk/glade/*
+
+	insinto "${ICAROOT}"/gtk/shaders/core420
+	doins gtk/shaders/core420/*
 
 	insinto "${ICAROOT}"/site
 	doins -r site/*
@@ -257,6 +261,7 @@ src_install() {
 	local other_files=(
 		icasessionmgr
 		NativeMessagingHost
+		UrlRedirector
 		UtilDaemon
 	)
 
