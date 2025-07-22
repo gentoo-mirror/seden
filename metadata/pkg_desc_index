@@ -10,7 +10,7 @@ media-sound/milkytracker 9999-r6: FastTracker 2 inspired music tracker
 media-video/shotcut 24.11.17: A free, open source, cross-platform video editor
 net-im/webex 45.6.1.32593: Cisco video conferencing and online meeting software
 net-mail/davmail-bin 6.3.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
-net-misc/icaclient 25.03.0.66-r3 25.05.0.44-r1: ICA Client for Citrix Presentation servers
+net-misc/icaclient 25.03.0.66-r3 25.05.0.44-r2: ICA Client for Citrix Presentation servers
 net-p2p/gridcoin 5.4.9.0: Proof-of-Stake based cryptocurrency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.91.2: Oracle database driver for the DBI module
 sci-misc/boinc 8.2.2: The Berkeley Open Infrastructure for Network Computing
