@@ -106,6 +106,10 @@ RDEPEND="
 
 DEPEND="dev-util/patchelf"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-deactivate_VDWEBRTC-module.patch
+)
+
 pkg_nofetch() {
 	elog "Download the client file ${A} from
 	https://www.citrix.com/downloads/workspace-app/"
