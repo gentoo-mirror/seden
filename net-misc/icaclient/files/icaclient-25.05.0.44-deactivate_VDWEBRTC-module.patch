@@ -1,0 +1,121 @@
+--- a/nls/es/module.ini	2025-07-22 12:37:03.093994580 +0200
++++ b/nls/es/module.ini	2025-07-22 12:37:03.095280510 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/de/module.ini	2025-07-22 12:37:03.105227189 +0200
++++ b/nls/de/module.ini	2025-07-22 12:37:03.106411023 +0200
+@@ -56,7 +56,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/it/module.ini	2025-07-22 12:37:03.107965694 +0200
++++ b/nls/it/module.ini	2025-07-22 12:37:03.109073695 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/ja/module.ini	2025-07-22 12:37:03.110424368 +0200
++++ b/nls/ja/module.ini	2025-07-22 12:37:03.111514019 +0200
+@@ -54,7 +54,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/nl/module.ini	2025-07-22 12:37:03.113049709 +0200
++++ b/nls/nl/module.ini	2025-07-22 12:37:03.114349174 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/fr/module.ini	2025-07-22 12:37:03.115796415 +0200
++++ b/nls/fr/module.ini	2025-07-22 12:37:03.117014067 +0200
+@@ -56,7 +56,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/en/module.ini	2025-07-22 12:37:03.118571938 +0200
++++ b/nls/en/module.ini	2025-07-22 12:37:03.119647336 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/pt_BR/module.ini	2025-07-22 12:37:03.121203840 +0200
++++ b/nls/pt_BR/module.ini	2025-07-22 12:37:03.122350014 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/ko/module.ini	2025-07-22 12:37:03.123740034 +0200
++++ b/nls/ko/module.ini	2025-07-22 12:37:03.124849293 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/zh_HANS/module.ini	2025-07-22 12:37:03.126435687 +0200
++++ b/nls/zh_HANS/module.ini	2025-07-22 12:37:03.127491559 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
+--- a/nls/ru/module.ini	2025-07-22 12:37:03.129048464 +0200
++++ b/nls/ru/module.ini	2025-07-22 12:37:03.130171226 +0200
+@@ -55,7 +55,7 @@
+ PortForward=On
+ VDTUI=On
+ NSAP=On
+-VDWEBRTC=On
++VDWEBRTC=Off
+ MobileReceiver=On
+ FIDO2=On
+ VDGDT=On
