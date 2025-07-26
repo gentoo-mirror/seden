@@ -1,0 +1,19 @@
+--- a/src/secp256k1/CMakeLists.txt	2025-07-26 08:15:21.471352837 +0200
++++ b/src/secp256k1/CMakeLists.txt	2025-07-26 08:16:18.979467536 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(CMAKE_VERSION VERSION_GREATER 3.14)
+   # MSVC runtime library flags are selected by the CMAKE_MSVC_RUNTIME_LIBRARY abstraction.
+--- a/src/crc32c/CMakeLists.txt	2025-07-26 08:15:30.644370328 +0200
++++ b/src/crc32c/CMakeLists.txt	2025-07-26 08:16:22.315785746 +0200
+@@ -2,7 +2,7 @@
+ # Use of this source code is governed by a BSD-style license that can be
+ # found in the LICENSE file. See the AUTHORS file for names of contributors.
+ 
+-cmake_minimum_required(VERSION 3.1)
++cmake_minimum_required(VERSION 3.5)
+ project(Crc32c VERSION 1.1.0 LANGUAGES C CXX)
+ 
+ # C standard can be overridden when this is used as a sub-project.
