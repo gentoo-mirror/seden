@@ -9,6 +9,9 @@ net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
 net-misc/icaclient:selfservice - Install and enable the self-service component
 net-misc/icaclient:usb - Allow connecting USB devices to virtual desktops
 net-p2p/gridcoin:qrcode - Enable generation of QR Codes for receiving payments with media-gfx/qrencode
+sci-ml/ollama:cuda - Enable NVIDIA CUDA support
+sci-ml/ollama:mkl - Use sci-libs/mkl for blas, lapack and sparse blas routines
+sci-ml/ollama:rocm - Enable ROCm gpu computing support
 sys-auth/elogind:cgroup-hybrid - Use hybrid cgroup hierarchy (OpenRC's default) instead of unified.
 sys-auth/elogind:efi - Support rebooting into EFI firmware
 sys-auth/elogind:userdb - Build and install elogind-userdbd, a drop-in replacement for systemd-userdbd, plus userdbctl.
