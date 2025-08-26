@@ -4,6 +4,9 @@
 
 acct-user/gridcoin:boinc - Add user to boinc group, too.
 media-sound/milkytracker:midi - Use media-libs/rtmidi for MIDI support
+net-libs/webkit-gtk:examples - Install the MiniBrowser example application
+net-libs/webkit-gtk:gamepad - Enable gamepad input support via dev-libs/libmanette
+net-libs/webkit-gtk:jumbo-build - Combine source files to speed up build process
 net-mail/davmail-bin:server - Add a davmail user and an entry to /etc/init.d to use davmail as a service
 net-misc/icaclient:hdx - Install and enable hdx-realtime-media-engine plugin
 net-misc/icaclient:selfservice - Install and enable the self-service component
