@@ -99,7 +99,7 @@ RDEPEND="
 	usb? ( virtual/libudev )
 	selfservice? (
 		dev-libs/libxml2
-		net-libs/webkit-gtk:4.1
+		net-libs/webkit-gtk:4/37
 		dev-libs/xerces-c
 	)
 "
@@ -159,9 +159,23 @@ src_install() {
 
 	keepdir /etc/icaclient
 
+	local wfica_libs=(
+		ctxh264_fb.so libAMSDK.so libAnalyticsInterface.so libAppProtectionSdk.so libavcodec.so.60 libavutil.so.58
+		libbgblur.so libctxbeffect.so libctxVideoDecoder.so libGnomeKeeper.so libkcph.so libkcpm.so libproxyparser.so
+		libSecretKeeper.so libUrlRedirection_client.so UIDialogLib3.so UIDialogLib.so
+	)
+	local selfs_libs=(
+		UIDialogLibWebKit3.so UIDialogLibWebKit3_ext/UIDialogLibWebKit3_ext.so AML_ext/libAMLExtension.so
+		AccountConfig_ext/libAccountConfigExtension.so Auth_ext/libAuthExtension.so CLSync_ext/libCLSyncExtension.so
+		CustomPortal_ext/libCustomPortalExtension.so WebView_ext/libextension.so
+	)
+
 	insinto "${ICAROOT}"
 	exeinto "${ICAROOT}"
-	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
+	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager ServiceRecord
+	if use selfservice; then
+		doexe selfservice
+	fi
 	if use usb; then
 		doexe usb/ctxusb usb/ctxusbd usb/ctx_usb_isactive
 		doins usb/*.DLL
@@ -171,14 +185,24 @@ src_install() {
 		insinto "${ICAROOT}"
 	fi
 
-	# libwebrtc has a DT_RPATH problem
-	patchelf --set-rpath '$ORIGIN' lib/HdxRtcEngine_ext/libwebrpc.so || die
-
 	exeinto "${ICAROOT}"/lib
-	doexe lib/*.so
-	doexe lib/*.so.*
-	doexe lib/*_ext/*.so
-	doexe lib/*_ext/*.so.*
+
+	for bin in ${wfica_libs[@]}; do
+		doexe lib/$bin
+	done
+
+	if use hdx; then
+		# libwebrtc has a DT_RPATH problem
+		patchelf --set-rpath '$ORIGIN' lib/HdxRtcEngine_ext/libwebrpc.so || die
+		doexe lib/HdxRtcEngine_ext/*.so
+		doexe lib/HdxRtcEngine_ext/*.so.*
+	fi
+
+	if use selfservice; then
+		for bin in ${selfs_libs[@]}; do
+			doexe lib/$bin
+		done
+	fi
 
 	# Also install third party (aka opencv), as the newest supported is 4.10 and Gentoo is at 4.11
 	doexe lib/third_party/libopencv_*.so.4.10.0
@@ -256,7 +280,10 @@ src_install() {
 	doins keyboard/*
 
 	cp -a util "${ED}/${ICAROOT}" || die
-	test -f util/HdxRtcEngine && fperms 0755 "${ICAROOT}"/util/HdxRtcEngine
+	test -f "${ED}/${ICAROOT}"/util/HdxRtcEngine && fperms 0755 "${ICAROOT}"/util/HdxRtcEngine
+	if ! use selfservice; then
+		test -f "${ED}/${ICAROOT}"/util/webcontainer && rm "${ED}/${ICAROOT}"/util/webcontainer
+	fi
 
 	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 	insinto "${ICAROOT}"/keystore/intcerts
@@ -282,12 +309,14 @@ src_install() {
 	doenvd "${FILESDIR}"/10ICAClient
 
 	for bin in configmgr conncenter new_store ; do
-		make_wrapper ${bin} "${ICAROOT}"/util/${bin} . "${ICAROOT}"/util
+		make_wrapper ${bin} "${ICAROOT}"/util/${bin} "${ICAROOT}" "${ICAROOT}"/util:"${ICAROOT}"/lib
 	done
 
-	for bin in selfservice wfica ; do
-		make_wrapper ${bin} "${ICAROOT}"/${bin} . "${ICAROOT}"
-	done
+	make_wrapper wfica "${ICAROOT}"/wfica "${ICAROOT}" "${ICAROOT}":"${ICAROOT}"/lib
+
+	if use selfservice; then
+		make_wrapper selfservice "${ICAROOT}"/selfservice "${ICAROOT}" "${ICAROOT}":"${ICAROOT}"/lib
+	fi
 
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
