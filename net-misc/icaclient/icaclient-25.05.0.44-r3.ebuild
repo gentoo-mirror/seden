@@ -99,7 +99,7 @@ RDEPEND="
 	usb? ( virtual/libudev )
 	selfservice? (
 		dev-libs/libxml2
-		net-libs/webkit-gtk:4.0
+		net-libs/webkit-gtk:4/37
 		dev-libs/xerces-c
 	)
 "
@@ -160,9 +160,9 @@ src_install() {
 	keepdir /etc/icaclient
 
 	local wfica_libs=(
-		ctxh264_fb.so libAMSDK.so libAnalyticsInterface.so libAppProtectionSdk.so libbgblur.so libctxbeffect.so
-		libctxVideoDecoder.so libGnomeKeeper.so libkcph.so libkcpm.so libproxyparser.so libSecretKeeper.so
-		libUrlRedirection_client.so UIDialogLib3.so UIDialogLib.so
+		ctxh264_fb.so libAMSDK.so libAnalyticsInterface.so libAppProtectionSdk.so libavcodec.so.60 libavutil.so.58
+		libbgblur.so libctxbeffect.so libctxVideoDecoder.so libGnomeKeeper.so libkcph.so libkcpm.so libproxyparser.so
+		libSecretKeeper.so libUrlRedirection_client.so UIDialogLib3.so UIDialogLib.so
 	)
 	local selfs_libs=(
 		UIDialogLibWebKit3.so UIDialogLibWebKit3_ext/UIDialogLibWebKit3_ext.so AML_ext/libAMLExtension.so
