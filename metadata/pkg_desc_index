@@ -15,5 +15,4 @@ net-misc/icaclient 25.05.0.44-r3: ICA Client for Citrix Presentation servers
 net-p2p/gridcoin 5.4.9.0-r1: Proof-of-Stake based cryptocurrency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.91.2: Oracle database driver for the DBI module
 sci-misc/boinc 8.2.2: The Berkeley Open Infrastructure for Network Computing
-sci-ml/ollama 0.11.6: Get up and running with Llama 3, Mistral, Gemma, and other language models.
 sys-auth/elogind 252.24 252.9999 255.17 255.9999 257.9999: The systemd project's logind, extracted to a standalone package
