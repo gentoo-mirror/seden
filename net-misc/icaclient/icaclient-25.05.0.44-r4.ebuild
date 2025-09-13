@@ -99,7 +99,7 @@ RDEPEND="
 	usb? ( virtual/libudev )
 	selfservice? (
 		|| (
-			~dev-libs/libxml2-2.13
+			<dev-libs/libxml2-2.14
 			dev-libs/libxml2-compat
 		)
 		net-libs/webkit-gtk:4/37
