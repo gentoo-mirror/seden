@@ -11,7 +11,7 @@ media-video/shotcut 24.11.17: A free, open source, cross-platform video editor
 net-im/webex 45.6.1.32593: Cisco video conferencing and online meeting software
 net-libs/webkit-gtk 2.48.3-r1: Open source web browser engine
 net-mail/davmail-bin 6.3.0: POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway
-net-misc/icaclient 25.05.0.44-r3: ICA Client for Citrix Presentation servers
+net-misc/icaclient 25.05.0.44-r4: ICA Client for Citrix Presentation servers
 net-p2p/gridcoin 5.4.9.0-r1: Proof-of-Stake based cryptocurrency that rewards BOINC computation
 perl-cpan/DBD-Oracle 1.91.2: Oracle database driver for the DBI module
 sci-misc/boinc 8.2.2: The Berkeley Open Infrastructure for Network Computing
